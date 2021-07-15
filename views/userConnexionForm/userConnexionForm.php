@@ -1,4 +1,4 @@
-<div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgConnexion1.jpg);">
+<div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgConnexion.jpg);">
     <div id="formPosition" class="row justify-content-center align-items-center h-100">
         <div class="col-md-6 col-lg-4">
             <div class="login-wrap p-0">

@@ -10,7 +10,7 @@
                             - Les Failles en sécurité informatiques -
                         </h1>
                         <div class="card-body">
-                            <img src="/../assets/img/3.jpg" height="400" class="card-img-top"
+                            <img src="/../assets/img/imCard3.jpg" height="400" class="card-img-top"
                                 alt="bannière d'un écran avec du code" title="bannière d'un écran avec du code">
                             <p class="card-text mt-2">Les menaces se multipliant de plus en plus,(virus, vers,
                                 spywares
@@ -139,7 +139,7 @@
                 <div class="sticky-top">
                     <div class="card rounded-3 shadow-lg mb-3">
                         <div class="card-body">
-                            <img src="/../assets/img/1.png" height="117" width="279" class="card-img-top"
+                            <img src="/../assets/img/imgCard5.png" height="117" width="279" class="card-img-top"
                                 alt="...........................">
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             Meilleurs Articles
                         </div>
                         <div class="card-body">
-                            <img src="/../assets/img/5.jpg" class="card-img-top" alt="...........................">
+                            <img src="/../assets/img/imgCard1.jpg" class="card-img-top" alt="...........................">
                         </div>
                         <ul class="list-group list-group-flush mb-2">
                             <li class="list-group-item">
@@ -184,7 +184,7 @@
                         </div>
                         <div class="overflow-auto" style="max-height: 42vh">
                             <div class="card-body">
-                                <img src="/../assets/img/6.jpg" class="card-img-top" alt="...........................">
+                                <img src="/../assets/img/imgCard4.jpg" class="card-img-top" alt="...........................">
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">

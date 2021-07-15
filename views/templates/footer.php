@@ -2,7 +2,7 @@
         <!-- =========================FIN MAIN========================================== -->
         <!-- ===============================DEBUT FOOTER============================= -->
 
-        <footer id="footerHeight" class="bg-dark text-white border-top 100vh pb-2">
+        <footer id="footerHeight" class="bg-dark text-white border-top 100vh">
             <div class="container-fluid h-100">
                 <div class="row align-items-center h-100">
                     <div class="col-12 col-lg-4 d-flex flex-column infos text-center text-lg-start">

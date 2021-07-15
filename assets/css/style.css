@@ -43,6 +43,11 @@ a:hover {
 
 /* ==========FIN FOOTER========== */
 
+#footerHeight{
+    height:15vh;
+    background-size: cover;
+}
+
 /*================NAVBAR========== */
 .navbar {
     background-color:#053180;
@@ -68,7 +73,6 @@ a:hover {
 }
 
 /* ==========FIN NAVBAR========== */
-
 
 /* ========Background Formulaire connexion===== */
 
