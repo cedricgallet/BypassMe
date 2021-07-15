@@ -1,0 +1,57 @@
+html,
+body {
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color:rgb(23, 252, 23) !important;
+}
+
+a:hover {
+    color:rgb(180, 66, 66) !important;
+}
+
+label {
+    color:rgb(0, 173, 0) !important;
+}
+
+
+/* =========TITRE========= */
+
+/*h1 {
+    font-family: 'ArchicocoRegul';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 16px !important;
+    color: white;
+}
+
+h2 {
+    font-size: 15px !important;
+}
+
+h3 {
+    font-size: 14px !important;
+} */
+
+/* ==========FIN NAVBAR========== */
+
+/* ==========FOOTER========== */
+
+#footerHeight {
+    height: 190px;
+}
+
+.navbar {
+    background-color:#053180;
+    height: 110px;
+    
+}
+
+/* ========Background Formulaire connexion===== */
+
+#bgImageConnexion {
+    background-size: cover;
+}
+
