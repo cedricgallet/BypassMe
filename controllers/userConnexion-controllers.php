@@ -4,6 +4,7 @@ include(dirname(__FILE__).'/../utils/regex.php');
 
 // Tableau d'erreur vide //
 $error = [];
+//echo 'bonjour';
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 

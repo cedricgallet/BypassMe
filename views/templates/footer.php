@@ -2,15 +2,15 @@
         <!-- =========================FIN MAIN========================================== -->
         <!-- ===============================DEBUT FOOTER============================= -->
 
-        <footer id="footerHeight" class="bg-dark text-white pt-2 border-top">
+        <footer id="footerHeight" class="bg-dark text-white border-top 100vh pb-2">
             <div class="container-fluid h-100">
                 <div class="row align-items-center h-100">
-                    <div class="d-flex flex-column infos col-12 col-lg-4 text-center text-lg-start">
+                    <div class="col-12 col-lg-4 d-flex flex-column infos text-center text-lg-start">
                         <div>Informations pratiques :</div>
                         <div><a class="text-decoration-none text-white" href="mailto:cedric@anon.org">cedric@anon.org</a></div>
                     </div>
 
-                    <div class="d-flex flex-column col-12 col-lg-4 text-center">
+                    <div class="col-12 col-lg-4 d-flex flex-column text-center">
                         <div><a class="text-decoration-none text-white" href="/views/mentions-legales.php">Mentions Légales</a></div>
                         <div><a class="text-decoration-none text-white" href="/views/politiques-de-confidentialite.php">politiques de confidentialité</a></div>
                         <div class="copyright">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <div class=" d-flex flex-column imgSocial col-12 col-lg-4 text-center text-lg-end">
+                    <div class="col-12 col-lg-4  d-flex flex-column text-center text-lg-end imgSocial">
                         <div class="social me-lg-3">Réseaux</div>
                         <div class="me-lg-2">
                             <a href="https://linkedin.com"><img class="img-fluid"
