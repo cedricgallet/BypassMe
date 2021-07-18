@@ -3,17 +3,19 @@
     <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgConnexion.jpg);">
 
         <div class="row">
-            <div class="mt-3 col-lg-10 col-md-12 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12 mt-3">
+                <div id="imgIntro" class="card bg-light shadow bg-body rounded-3 mb-2"
+                    style="background-image: url(/../assets/img/imgCard3.jpg);">
+
+                    <h1 class="card-title text-dark text-center mt-5">
+                        - Les Failles en sécurité informatiques -
+                    </h1>
+                </div>
+
                 <div class="card bg-light shadow bg-body rounded-3 mb-2">
-                    <div class="">
-                        <h1 class="card-title text-dark text-center m-3">
-                            - Les Failles en sécurité informatiques -
-                        </h1>
+                    <div class="card-body">
 
-                        <img src="/../assets/img/imgCard3.jpg" height="400" class="card-img-top"
-                            alt="bannière d'un écran avec du code" title="bannière d'un écran avec du code">
-
-                        <p class="card-text m-3">Les menaces se multipliant de plus en plus,(virus, vers,
+                        <p class="card-text">Les menaces se multipliant de plus en plus,(virus, vers,
                             spywares
                             et intrusions),il est primordial de savoir quelles attitudes et actions adopter
                             pour se prémunir et réagir aux problèmes de sécurité.Je vous propose une liste des
@@ -23,16 +25,16 @@
                             principales failles
                             de sécurité à éviter.
                         </p>
-
                     </div>
                 </div>
-                        <!-- =========================AJOUTER UN ARTICLE========================== -->
+
+                <!-- =========================AJOUTER UN ARTICLE========================== -->
                 <div id="space" class="card rounded-3 mb-2 text-center">
-                    <div class="card-body"><a href="/../controllers/addArticle-controllers.php"><button type="submit"
+                    <div class="card-body"><a href="/controllers/addArticle-controllers.php"><button type="submit"
                                 class="btn btn-outline-warning w-30">Ajouter un article</button></a>
                     </div>
                 </div>
-
+                <!-- ========================================================================== -->
                 <div class="card bg-light shadow bg-body rounded-3 mb-2">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -59,10 +61,13 @@
                     </div>
                 </div>
 
-                <div id="space" class="card rounded-3 mb-2">
-                    <div class="card-body">
+                <!-- =========================AJOUTER UN ARTICLE========================== -->
+                <div id="space" class="card rounded-3 mb-2 text-center">
+                    <div class="card-body"><a href="/controllers/addArticle-controllers.php"><button type="submit"
+                                class="btn btn-outline-warning w-30">Ajouter un article</button></a>
                     </div>
                 </div>
+                <!-- ========================================================================== -->
 
                 <div class="card bg-light shadow bg-body rounded-3 mb-2">
                     <div class="card-body">
@@ -90,10 +95,14 @@
                     </div>
                 </div>
 
-                <div id="space" class="card rounded-3 mb-2">
-                    <div class="card-body">
+                <!-- =========================AJOUTER UN ARTICLE========================== -->
+                <div id="space" class="card rounded-3 mb-2 text-center">
+                    <div class="card-body"><a href="/controllers/addArticle-controllers.php"><button type="submit"
+                                class="btn btn-outline-warning w-30">Ajouter un article</button></a>
                     </div>
                 </div>
+                <!-- ========================================================================== -->
+
 
 
                 <div class="card bg-light shadow bg-body rounded-3 mb-2">
@@ -108,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="card bg-light shadow bg-body rounded-3 mb-2">
+                <div class="card bg-light shadow bg-body rounded-3 mb-3">
                     <div class="card-body">
                         <h2 class="card-title text-dark">
                             TITRE
@@ -122,7 +131,7 @@
                 </div>
 
                 <!-- =========================================PAGINATION============================================ -->
-                <nav class="mt-3" aria-label="Page navigation">
+                <!-- <nav class="mt-3" aria-label="Page navigation">
                     <ul class="pagination  justify-content-center">
 
                         <li class="page-item"><a class="page-link text-decoration-none text-dark"
@@ -135,7 +144,7 @@
                         <li class="page-item"><a class="page-link text-decoration-none text-dark"
                                 href="faille-web.html">4</a></li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
 
             <!-- ========================================DEBUT SECTION DROITE========================================= -->
@@ -148,31 +157,36 @@
                         </div>
                     </div>
 
-                    <div class="bg-light shadow bg-body rounded-3 mb-3">
+                    <div id="colorText" class="bg-light shadow bg-body rounded-3 mb-3">
                         <div class="card-header text-white fw-bold fs-5">
                             Meilleurs Articles
                         </div>
                         <div class="card-body">
-                            <img src="/../assets/img/imgCard1.png" height="117" width="279" class="card-img-top"
-                                alt="...........................">
+                            <img src="/../assets/img/imgCard1.png" height="117" width="279"
+                                class="card-img-top img-fluid" alt="...........................">
                         </div>
+
                         <ul class="list-group list-group-flush mb-2">
-                            <li class="list-group-item">
-                                Les failles XSS
+                            <li class="list-group-item"><a href="#">
+                                    Les failles XSS </a>
                                 <div>
                                     <small class="text-muted">27 Juin 2021,</small>
                                     <small class="text-muted">67 vues</small>
                                 </div>
                             </li>
-                            <li class="list-group-item">
-                                MITM attaque
+
+
+                            <li class="list-group-item"><a href="#">MITM attaque
+                                </a>
                                 <div>
                                     <small class="text-muted">27 Mai 2021,</small>
                                     <small class="text-muted">42 vues </small>
                                 </div>
                             </li>
-                            <li class="list-group-item">
-                                Les attaques ARP
+
+
+                            <li class="list-group-item"><a href="#">
+                                    Les attaques ARP</a>
                                 <div>
                                     <small class="text-muted">27 Avril 2021,</small>
                                     <small class="text-muted">55 vues </small>
@@ -189,24 +203,24 @@
                         </div>
                         <div class="overflow-auto" style="max-height: 42vh">
                             <div class="card-body">
-                                <img src="/../assets/img/imgCard4.jpg" height="117" width="279" class="card-img-top"
-                                    alt="...........................">
+                                <img src="/../assets/img/imgCard4.jpg" height="117" width="279"
+                                    class="card-img-top img-fluid" alt="...........................">
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Faille applicative
+                                    <a href="#">Faille applicative</a>
                                     <span class="badge bg-danger rounded-pill">32</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Faille Humaine
+                                    <a href="#">Faille Humaine</a>
                                     <span class="badge bg-danger rounded-pill">23</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Faille Réseau
+                                    <a href="#">Faille Réseau</a>
                                     <span class="badge bg-danger rounded-pill">43</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Faille Web
+                                    <a href="#">Faille Web</a>
                                     <span class="badge bg-danger rounded-pill">17</span>
                                 </li>
                             </ul>

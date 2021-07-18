@@ -8,11 +8,15 @@
     <meta name="description" content="">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/../assets/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/../assets/img/logo.png">
     <!-- Lien css -->
     <link href="/../assets/css/style.css" rel="stylesheet">
     <!-- Lien bootstap -->
     <link href="/../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
     <title>LookThis</title>
 </head>
 
@@ -24,11 +28,11 @@
         <nav class="navbar navbar-expand-lg navbar-light border-bottom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/../index.php">
-                    <img src="/../assets/img/logo.png" alt="" width="35" height="35" class="d-inline-block">
+                    <img src="/../assets/img/logo.png" alt="" width="70" height="70" class="d-inline-block">
                     LookThis
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler border-success" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -53,33 +57,29 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" 
-                                        href="/../views/faille-humaine.php">Faille-humaine</a>
+                                <li><a class="dropdown-item" href="/../views/faille-humaine.php">Faille-humaine</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" 
-                                        href="/../views/faille-reseaux.php">Faille-reseaux</a>
+                                <li><a class="dropdown-item" href="/../views/faille-reseaux.php">Faille-reseaux</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" 
-                                        href="/../views/faille-reseaux.php">Faille-web</a>
+                                <li><a class="dropdown-item" href="/../views/faille-reseaux.php">Faille-web</a>
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Solutions</a>
+                            <a class="nav-link" href="/../views/solutions.php">Solutions</a>
                         </li>
                     </ul>
 
                     <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="xss,mitm,.."
-                            aria-label="Search">
-                        <button class="btn btn-outline-warning me-2" type="submit">Chercher</button>
+                        <input class="form-control rounded-pill me-2" type="search" placeholder="xss,mitm,.." aria-label="Search">
+                        <button class="btn btn-outline-warning rounded-pill me-2" type="submit">Chercher</button>
                     </form>
 
                     <ul class="nav navbar-nav navbar-right text-white h-100">
@@ -99,6 +99,6 @@
         </nav>
     </header>
 
-            <!-- ==============================FIN NAVBAR===================================-->
+    <!-- ==============================FIN NAVBAR===================================-->
 
     <!-- =======================================FIN HEADER==================================== -->

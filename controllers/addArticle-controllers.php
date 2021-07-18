@@ -3,18 +3,15 @@
 // Tableau d'erreur vide //
 $error = [];
 
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!empty($article)){
-        $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
         //  On vérifie si c'est le format attendu 
-        
-    } else {
-        $error["article"]= "Le format utilisé n'est pas autorisé!!"
-    }
+        $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
     
-} else { // Pour le champ obligatoire, on retourne une erreur
-    $error["article"] = "Vous devez entrer un article!!";
-}
+    }
+} else {
+}        
 
     //CONNEXION BDD + ENVOI
 

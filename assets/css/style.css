@@ -7,45 +7,61 @@ body {
 /* =========TITRE========= */
 
 h1 {
-    color: white;
-    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(82, 82, 241), 0 0 0.2em rgb(137, 230, 84);
-    filter: brightness(65%);
-    z-index: -1;
+    font-size:50px!important;
+    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
+    filter: brightness(1.25);
+}
+
+@media (max-width:576px) {
+    h1 {
+        font-size:20px!important;
+    }
 }
 
 h2 {
-    font-size: 2.5em;
-    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(64, 64, 240), 0 0 0.2em rgb(137, 230, 84);
-
+    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
 }
 
 h3 {
-    font-size: 1.5em;
-    text-shadow: 1px 1px 2px rgb(190, 235, 107), 0 0 1em blue, 0 0 0.2em rgb(137, 230, 84);
-
+    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
 }
 
+
 /* ========FIN TITRE========= */
+
+p {
+	font-family: 'Cabin', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	line-height: 25px;
+    color: rgb(105, 103, 103);
+}
 
 
 /* ========DEBUT LIEN========== */
 
 a {
     text-decoration: none;
-    color: white !important;
+    color: #1fe5e9!important;
 }
 
 a:hover {
-    color: rgb(230, 212, 59) !important;
+    color:#1fe5e9!important;
 }
-
-/* ========FIN LIEN========== */
-
 
 /*===========NAVBAR========== */
 .navbar {
     background-color: #053180;
+    font-size: 20px;
 }
+
+.navbar a {
+    color:#1fe5e9!important;
+}
+
+.navbar a:hover {
+    color:#4ee91f!important;
+}
+
 
 .dropdown-menu {
     background-color: #053180!important;
@@ -55,14 +71,30 @@ a:hover {
     background-color: #053180!important;
 }
 
-/*===========NAVBAR========== */
+/* ======ACCUEIL======= */
+
+#imgIntro{
+    background-size: cover;
+    height: 600px!important;
+}
+
+#space {
+    background-color:  rgb(88, 161, 27);
+}
 
 
-/* ======CARDHEADER ACCUEIL======= */
+
 .card-header {
     background-color: #5835f3 !important;
 }
 
+/* ==========SECTION DROITE=========== */
+
+/* Meilleur Article */
+#colorText {
+    text-decoration: none;
+    color: red;
+}
 
 /* ==========FOOTER========== */
 
@@ -70,32 +102,13 @@ a:hover {
     height: 190px;
 }
 
-#mentions {
-    background-color: #dedede;
+#mentionPoli {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-/* ==========FIN FOOTER========== */
-
-
-/* ====Formulaire connexion===== */
+/* ====FORMULAIRE CONNEXION===== */
 
 #bgImageConnexion {
     background-size: cover;
 }
 
-#space {
-    background-color: rgb(88, 161, 27);
-
-}
-
-/* ====Formulaire ajout utilisateur==== */
-
-
-/* ============SECTION DROITE========= */
-
-
-/* ====Formulaire lot de passe oublié====== */
-
-/* #formPosition {
-    margin-right: 60px;
-} */

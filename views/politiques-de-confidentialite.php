@@ -23,7 +23,7 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
 
 ?>
 
-        <div id="mentions" class="d-flex container-fluid align-items-center h-100">
+        <div id="mentionPoli" class="d-flex container-fluid align-items-center h-100">
             <div class="card bg-warningshadow bg-body rounded-3 mb-2">
                 <div class="card-body">
                     <h2 class="card-title mb-3">
