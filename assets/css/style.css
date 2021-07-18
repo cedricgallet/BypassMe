@@ -8,24 +8,27 @@ body {
 
 h1 {
     color: white;
-    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em blue, 0 0 0.2em rgb(137, 230, 84);
-    filter: brightness(85%);
+    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(82, 82, 241), 0 0 0.2em rgb(137, 230, 84);
+    filter: brightness(65%);
     z-index: -1;
 }
 
 h2 {
     font-size: 2.5em;
-    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em blue, 0 0 0.2em rgb(137, 230, 84);
+    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(64, 64, 240), 0 0 0.2em rgb(137, 230, 84);
 
 }
 
 h3 {
     font-size: 1.5em;
-    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em blue, 0 0 0.2em rgb(137, 230, 84);
+    text-shadow: 1px 1px 2px rgb(190, 235, 107), 0 0 1em blue, 0 0 0.2em rgb(137, 230, 84);
 
-} 
+}
 
-/* ========LIEN========== */
+/* ========FIN TITRE========= */
+
+
+/* ========DEBUT LIEN========== */
 
 a {
     text-decoration: none;
@@ -33,55 +36,66 @@ a {
 }
 
 a:hover {
-    color: rgb(230, 212, 59)!important;
+    color: rgb(230, 212, 59) !important;
 }
 
 /* ========FIN LIEN========== */
 
 
+/*===========NAVBAR========== */
+.navbar {
+    background-color: #053180;
+}
+
+.dropdown-menu {
+    background-color: #053180!important;
+}
+
+.dropdown-item {
+    background-color: #053180!important;
+}
+
+/*===========NAVBAR========== */
+
+
+/* ======CARDHEADER ACCUEIL======= */
+.card-header {
+    background-color: #5835f3 !important;
+}
+
+
 /* ==========FOOTER========== */
+
+#footerHeight {
+    height: 190px;
+}
+
+#mentions {
+    background-color: #dedede;
+}
 
 /* ==========FIN FOOTER========== */
 
-#footerHeight{
-    height:15vh;
-    background-size: cover;
-}
 
-/*================NAVBAR========== */
-.navbar {
-    background-color:#053180;
-    height: 10vh;
-    z-index: 1;
-}
-
-.navbar .navbar-nav .nav-link {
-    color: white;
-    font-size: 1.7em;
-}
-
-.navbar .navbar-nav .nav-link:hover {
-    color: red;
-}
-
-.navbar-logo-centered .navbar-nav .nav-link {
-    padding: .5em 1em;
-}
-
-.dropdown-menu .dropdown-item {
-    background-color:#053180!important; 
-}
-
-/* ==========FIN NAVBAR========== */
-
-/* ========Background Formulaire connexion===== */
+/* ====Formulaire connexion===== */
 
 #bgImageConnexion {
     background-size: cover;
 }
 
+#space {
+    background-color: rgb(88, 161, 27);
+
+}
+
+/* ====Formulaire ajout utilisateur==== */
+
+
 /* ============SECTION DROITE========= */
 
-.card-header {
-    background-color:#6012f0!important;
-}
+
+/* ====Formulaire lot de passe oublié====== */
+
+/* #formPosition {
+    margin-right: 60px;
+} */

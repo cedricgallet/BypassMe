@@ -4,7 +4,7 @@
             <div class="login-wrap p-0">
                 <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="signin-form px-4 py-3">
                     <div class="form-group">
-                        <label for="email1" class="form-label text-white">Adresse Email*</label>
+                        <label for="email1" class="form-label text-warning">Adresse Email*</label>
                         <input type="email" name="email1" class="form-control rounded-pill" id="email1" class="form-control"
                             placeholder="Votre e-mail" autocomplete="email1"
                             value="<?= htmlentities($_POST['email1'] ?? '', ENT_QUOTES, 'UTF-8')?>" required>
@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="password1" class="form-label text-white">Mot de passe*</label>
+                        <label for="password1" class="form-label text-warning">Mot de passe*</label>
                         <input type="password" name="password1" class="form-control rounded-pill" id="password1"
                             placeholder="Votre mot de passe" autocomplete="new-password" maxlength="20" minlength="8"
                             value="<?= htmlentities($_POST['password1'] ?? '',)?>" required>

@@ -5,24 +5,31 @@
         <div class="row">
             <div class="mt-3 col-lg-10 col-md-12 col-sm-12">
                 <div class="card bg-light shadow bg-body rounded-3 mb-2">
-                    <div class="card-body">
-                        <h1 class="card-title text-dark text-center">
+                    <div class="">
+                        <h1 class="card-title text-dark text-center m-3">
                             - Les Failles en sécurité informatiques -
                         </h1>
-                        <div class="card-body">
-                            <img src="/../assets/img/imCard3.jpg" height="400" class="card-img-top"
-                                alt="bannière d'un écran avec du code" title="bannière d'un écran avec du code">
-                            <p class="card-text mt-2">Les menaces se multipliant de plus en plus,(virus, vers,
-                                spywares
-                                et intrusions),il est primordial de savoir quelles attitudes et actions adopter
-                                pour se prémunir et réagir aux problèmes de sécurité.Je vous propose une liste des
-                                principales failles de sécurité informatique, que se soit dans les
-                                technologies liées au web,au réseau,à la cryptographie il existe des failles dans
-                                tous les domaines.Je vais donc ici vous présenter une liste par thème des
-                                principales failles
-                                de sécurité à éviter.
-                            </p>
-                        </div>
+
+                        <img src="/../assets/img/imgCard3.jpg" height="400" class="card-img-top"
+                            alt="bannière d'un écran avec du code" title="bannière d'un écran avec du code">
+
+                        <p class="card-text m-3">Les menaces se multipliant de plus en plus,(virus, vers,
+                            spywares
+                            et intrusions),il est primordial de savoir quelles attitudes et actions adopter
+                            pour se prémunir et réagir aux problèmes de sécurité.Je vous propose une liste des
+                            principales failles de sécurité informatique, que se soit dans les
+                            technologies liées au web,au réseau,à la cryptographie il existe des failles dans
+                            tous les domaines.Je vais donc ici vous présenter une liste de catégorie des
+                            principales failles
+                            de sécurité à éviter.
+                        </p>
+
+                    </div>
+                </div>
+                        <!-- =========================AJOUTER UN ARTICLE========================== -->
+                <div id="space" class="card rounded-3 mb-2 text-center">
+                    <div class="card-body"><a href="/../controllers/addArticle-controllers.php"><button type="submit"
+                                class="btn btn-outline-warning w-30">Ajouter un article</button></a>
                     </div>
                 </div>
 
@@ -33,9 +40,9 @@
                         </h2>
                         <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
                         </p>
-                        <!-- <div class="d-flex text-center border-top border-1 pt-2">bbbbbbbbbbbbbbbbb
-                            Continuer à lire l'article
-                        </div> -->
+                        <div class="d-flex text-center border-top border-1 pt-2">Continuer à lire l'article
+
+                        </div>
                     </div>
                 </div>
 
@@ -46,9 +53,14 @@
                         </h2>
                         <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
                         </p>
-                        <!-- <div class="d-flex text-center border-top border-1 pt-2">
+                        <div class="d-flex text-center border-top border-1 pt-2">Continuer à lire l'article
 
-                        </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="space" class="card rounded-3 mb-2">
+                    <div class="card-body">
                     </div>
                 </div>
 
@@ -59,9 +71,9 @@
                         </h2>
                         <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
                         </p>
-                        <!-- <div class="d-flex text-center border-top border-1 pt-2">
+                        <div class="d-flex text-center border-top border-1 pt-2">Continuer à lire l'article
 
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 
@@ -72,9 +84,27 @@
                         </h2>
                         <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
                         </p>
-                        <!-- <div class="d-flex text-center border-top border-1 pt-2">
+                        <div class="d-flex text-center border-top border-1 pt-2">Continuer à lire l'article
 
-                        </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="space" class="card rounded-3 mb-2">
+                    <div class="card-body">
+                    </div>
+                </div>
+
+
+                <div class="card bg-light shadow bg-body rounded-3 mb-2">
+                    <div class="card-body">
+                        <h2 class="card-title text-dark">
+                            TITRE
+                        </h2>
+                        <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
+                            <div class="d-flex text-center border-top border-1 pt-2">Continuer à lire l'article
+
+                            </div>
                     </div>
                 </div>
 
@@ -85,35 +115,9 @@
                         </h2>
                         <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
                         </p>
-                        <!-- <div class="d-flex text-center border-top border-1 pt-2">
+                        <div class="d-flex text-center border-top border-1 pt-2">Continuer à lire l'article
 
-                        </div> -->
-                    </div>
-                </div>
-
-
-                <div class="card bg-light shadow bg-body rounded-3 mb-2">
-                    <div class="card-body">
-                        <h2 class="card-title text-dark">
-                            TITRE
-                        </h2>
-                        <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
-                            <!-- <div class="d-flex text-center border-top border-1 pt-2">
-
-                            </div> -->
-                    </div>
-                </div>
-
-                <div class="card bg-light shadow bg-body rounded-3 mb-2">
-                    <div class="card-body">
-                        <h2 class="card-title text-dark">
-                            TITRE
-                        </h2>
-                        <p class="card-text">BLaaaaaaaaaaablaaaaaaaaaaaaaaaaa
-                        </p>
-                        <!-- <div class="d-flex text-center border-top border-1 pt-2">
-
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 
@@ -139,8 +143,8 @@
                 <div class="sticky-top">
                     <div class="card rounded-3 shadow-lg mb-3">
                         <div class="card-body">
-                            <img src="/../assets/img/imgCard5.png" height="117" width="279" class="card-img-top"
-                                alt="...........................">
+                            <img src="/../assets/img/imgCard5.jpg" height="117" width="279"
+                                class="card-img-top img-fluid" alt="...........................">
                         </div>
                     </div>
 
@@ -149,7 +153,8 @@
                             Meilleurs Articles
                         </div>
                         <div class="card-body">
-                            <img src="/../assets/img/imgCard1.jpg" class="card-img-top" alt="...........................">
+                            <img src="/../assets/img/imgCard1.png" height="117" width="279" class="card-img-top"
+                                alt="...........................">
                         </div>
                         <ul class="list-group list-group-flush mb-2">
                             <li class="list-group-item">
@@ -184,7 +189,8 @@
                         </div>
                         <div class="overflow-auto" style="max-height: 42vh">
                             <div class="card-body">
-                                <img src="/../assets/img/imgCard4.jpg" class="card-img-top" alt="...........................">
+                                <img src="/../assets/img/imgCard4.jpg" height="117" width="279" class="card-img-top"
+                                    alt="...........................">
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">

@@ -26,10 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else { // Pour les champs obligatoires, on retourne une erreur    
         $error["pseudo"] = "Vous devez entrer un pseudo!";
-    }
-
-    //ENVOI + CONNEXION BDD 
-    
+    }    
 
       /////////////////////////////Etablir une correspondance avec le mot de passe chiffré de la base de données et le mot de passe saisi par l'utilisateur/////////////////
 
@@ -42,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 include(dirname(__FILE__).'/../views/templates/navBar.php');
 
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
-     // On réaffiche le formulaire d'inscription
+    // On réaffiche le formulaire d'inscription
     include(dirname(__FILE__).'/../views/userConnexionForm/userConnexionForm.php');
 }
 

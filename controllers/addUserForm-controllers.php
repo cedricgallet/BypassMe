@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $error['password1'] = 'Le mot de passe est obligatoire !!';
         $error['password2'] = 'Le mot de passe est obligatoire !!';
     }        
-        //CONNEXION BDD + ENVOI +INSCRIPTION
+        //===============================================CONNEXION BDD + ENVOI +INSCRIPTION==============================================
 
 
     //var_dump($error);

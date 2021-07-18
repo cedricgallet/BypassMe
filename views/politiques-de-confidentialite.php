@@ -15,15 +15,22 @@
 </head>
 
 <body>
-    <div id="PDC" class="container-fluid">
-        <div class="row mx-auto">
-            <div
-                class="col-12 col-lg-12 text-center text-decoration-underline bg-light rounded-3 border border-danger mb-2 mt-2">
-                <h4>-Politiques de Confidentialité-</h4>
-            </div>
-            <div class="col-12 col-lg-12 text-start bg-light rounded-3 border border-danger">
-                <span>
-                    <p>Soucieux du respect de la vie privée de ses Utilisateurs, cédric Gallet (ci-après le « Dirigeant
+
+<?php
+
+// Génération du Header+Navbar:
+include(dirname(__FILE__).'/../views/templates/navBar.php');
+
+?>
+
+        <div id="mentions" class="d-flex container-fluid align-items-center h-100">
+            <div class="card bg-warningshadow bg-body rounded-3 mb-2">
+                <div class="card-body">
+                    <h2 class="card-title mb-3">
+                        - Politiques de Confidentialité -
+                    </h2>
+                    <p class="card-text">Soucieux du respect de la vie privée de ses Utilisateurs, cédric Gallet
+                        (ci-après le « Dirigeant
                         »)
                         s’engage à
                         assurer la protection des données personnelles de ses Utilisateurs.
@@ -144,15 +151,19 @@
                         durée de
                         validité, de reconnaître le terminal concerné à chaque fois que ce terminal accède à un contenu
                         numérique
-                        comportant des cookies du même émetteur.</p>
-                </span>
+                        comportant des cookies du même émetteur.
+                    </p>
+                </div>
             </div>
         </div>
-        <a class="btn bg-light rounded-3 border border-danger mt-2 mx-auto" href="/index.php" role="button">Retour à l'acceuil</a>
-    </div>
-    <!-- Bootstrap js -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    
 
-</body>
+    <?php
 
-</html>
+// Génération du Footer:
+include(dirname(__FILE__).'/../views/templates/footer.php');
+
+
+
+
+    ?>

@@ -2,12 +2,12 @@
         <!-- =========================FIN MAIN========================================== -->
         <!-- ===============================DEBUT FOOTER============================= -->
 
-        <footer id="footerHeight" class="bg-dark text-white border-top 100vh">
+        <footer id="footerHeight" class="bg-dark text-white border-top">
             <div class="container-fluid h-100">
                 <div class="row align-items-center h-100">
                     <div class="col-12 col-lg-4 d-flex flex-column infos text-center text-lg-start">
                         <div>Informations pratiques :</div>
-                        <div><a class="text-decoration-none text-white" href="mailto:cedric@anon.org">cedric@anon.org</a></div>
+                        <div><a class="text-decoration-none text-white" href="mailto:LookThis@protonmail.com">LookThis@protonmail.com</a></div>
                     </div>
 
                     <div class="col-12 col-lg-4 d-flex flex-column text-center">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-lg-4  d-flex flex-column text-center text-lg-end imgSocial">
+                    <div class="col-12 col-lg-4  d-flex flex-column text-center text-lg-end imgSocial mb-1">
                         <div class="social me-lg-3">Réseaux</div>
                         <div class="me-lg-2">
                             <a href="https://linkedin.com"><img class="img-fluid"

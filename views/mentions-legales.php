@@ -15,58 +15,70 @@
 </head>
 
 <body>
-    <div class="container-fluid w-75">
-        <div class="row mx-auto">
-            <div
-                class="col-12 col-lg-12 text-decoration-underline text-center bg-light rounded-3 border border-danger mb-2 mt-2">
-                <h4>Mentions légales</h4>
-            </div>
-            <div class="col-12 col-lg-12 text-start bg-light rounded-3 border border-danger">
-                <span>
-                    <p>
-                        Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en
-                        l’économie numérique,
-                        il est précisé aux utilisateurs du site Anon.com l’identité des différents intervenants dans le
-                        cadre de sa
-                        réalisation et de son suivi.
-                        Edition du site
+<?php
 
-                        Le site Anon.com est édité par Cédric Gallet, inscrit en tant qu’auto-entrepreneur au RCS de
-                        Toulon sous le
-                        numéro de Siret 51194517200035.
-                        Responsable de publication
+// Génération du Header+Navbar:
+include(dirname(__FILE__).'/../views/templates/navBar.php');
 
-                        Cédric Gallet
-                        Hébergeur
+?>
 
-                        Le site Anon.com est hébergé par la société K Media Tech – https://www.wpxhosting.com/
+    <div id="mentions" class="d-flex container-fluid align-items-center h-100">
+        <div class="card bg-warningshadow bg-body rounded-3 mb-2">
+            <div class="card-body">
+                <h2 class="card-title mb-3">
+                    Mentions légales
+                </h2>
+                <p class="card-text"> Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la
+                    confiance
+                    en
+                    l’économie numérique,
+                    il est précisé aux utilisateurs du site LookThis l’identité des différents intervenants dans le
+                    cadre de sa
+                    réalisation et de son suivi.
+                    Edition du site
 
-                        Le stockage des données personnelles des Utilisateurs est exclusivement réalisé sur les centre
-                        de données
-                        (“clusters”) localisés dans des Etats membres de l’Union Européenne de la société K Media Tech.
+                    Le site LookThis est édité par Cédric Gallet, inscrit en tant qu’auto-entrepreneur au RCS de
+                    Toulon sous le
+                    numéro de Siret 51194517200035.
+                    Responsable de publication
 
-                        Nous contacter
+                    Cédric Gallet
+                    Hébergeur
 
-                        Par email : galletcedric@protonmail.com
+                    Le site LookThis est hébergé par la société K Media Tech – https://www.wpxhosting.com/
 
-                        CNIL
+                    Le stockage des données personnelles des Utilisateurs est exclusivement réalisé sur les centre
+                    de données
+                    (“clusters”) localisés dans des Etats membres de l’Union Européenne de la société K Media Tech.
 
-                        Le représentant de ce site s’engage à conserver dans ses systèmes informatiques et dans des
-                        conditions
-                        raisonnables de sécurité une preuve de la transaction comprenant le bon de commande et la
-                        facture.
+                    Nous contacter
 
-                        Conformément aux dispositions de la loi 78-17 du 6 janvier 1978 modifiée, l’Utilisateur dispose
-                        d’un droit
-                        d’accès, de modification et de suppression des informations collectées par Anon.com. Pour
-                        exercer ce
-                        droit, il reviendra à l’Utilisateur d’envoyer un message à l’adresse suivante :
-                        galletcedric@protonmail.com</p>
-                </span>
+                    Par email : LookThis@protonmail.com
+
+                    CNIL
+
+                    Le représentant de ce site s’engage à conserver dans ses systèmes informatiques et dans des
+                    conditions
+                    raisonnables de sécurité une preuve de la transaction comprenant le bon de commande et la
+                    facture.
+
+                    Conformément aux dispositions de la loi 78-17 du 6 janvier 1978 modifiée, l’Utilisateur dispose
+                    d’un droit
+                    d’accès, de modification et de suppression des informations collectées par LookThis. Pour
+                    exercer ce
+                    droit, il reviendra à l’Utilisateur d’envoyer un message à l’adresse suivante :
+                    LookThis@protonmail.com
+                </p>
             </div>
         </div>
-        <a class="btn bg-light rounded-3 border border-danger mt-2" href="/index.php" role="button">Retour à l'acceuil</a>
     </div>
+
+<?php
+
+// Génération du Footer:
+include(dirname(__FILE__).'/../views/templates/footer.php');
+
+?>
 
     <!-- Bootstrap js -->
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
