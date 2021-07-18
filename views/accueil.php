@@ -63,8 +63,8 @@
 
                 <!-- =========================AJOUTER UN ARTICLE========================== -->
                 <div id="space" class="card rounded-3 mb-2 text-center">
-                    <div class="card-body"><a href="/controllers/addArticle-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Ajouter un article</button></a>
+                    <div class="card-body"><a href="/controllers/userConnexion-controllers.php"><button type="submit"
+                                class="btn btn-outline-warning w-30">Inscris-toi et bénificie des Solutions!!</button></a>
                     </div>
                 </div>
                 <!-- ========================================================================== -->
@@ -97,8 +97,8 @@
 
                 <!-- =========================AJOUTER UN ARTICLE========================== -->
                 <div id="space" class="card rounded-3 mb-2 text-center">
-                    <div class="card-body"><a href="/controllers/addArticle-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Ajouter un article</button></a>
+                    <div class="card-body"><a href="/controllers/userConnexion-controllers.php"><button type="submit"
+                                class="btn btn-outline-warning w-30">Inscris-toi et bénificie des Solutions!!</button></a>
                     </div>
                 </div>
                 <!-- ========================================================================== -->
@@ -162,7 +162,7 @@
                             Meilleurs Articles
                         </div>
                         <div class="card-body">
-                            <img src="/../assets/img/imgCard1.png" height="117" width="279"
+                            <img src="/../assets/img/imgCard4.jpg" height="117" width="279"
                                 class="card-img-top img-fluid" alt="...........................">
                         </div>
 
@@ -203,7 +203,7 @@
                         </div>
                         <div class="overflow-auto" style="max-height: 42vh">
                             <div class="card-body">
-                                <img src="/../assets/img/imgCard4.jpg" height="117" width="279"
+                                <img src="/../assets/img/imgCard1.png" height="117" width="279"
                                     class="card-img-top img-fluid" alt="...........................">
                             </div>
                             <ul class="list-group list-group-flush">

@@ -1,12 +1,12 @@
 html,
 body {
     height: 100vh;
-    font-family: 'Roboto Slab', serif;
 }
 
 /* =========TITRE========= */
 
 h1 {
+    font-family: 'Allan', Helvetica, Arial, sans-serif;
     font-size:50px!important;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
     filter: brightness(1.25);
@@ -14,20 +14,24 @@ h1 {
 
 @media (max-width:576px) {
     h1 {
-        font-size:20px!important;
+        font-size:30px!important;
     }
 }
 
 h2 {
+    font-family: 'Allan', Helvetica, Arial, sans-serif;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
 }
 
 h3 {
+    font-family: 'Allan', Helvetica, Arial, sans-serif;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
 }
 
 
 /* ========FIN TITRE========= */
+
+/* ========PARAGRAPHE======= */
 
 p {
 	font-family: 'Cabin', Helvetica, Arial, sans-serif;
@@ -35,6 +39,14 @@ p {
 	line-height: 25px;
     color: rgb(105, 103, 103);
 }
+
+/* p {
+    font-family: 'Cardo', Georgia, Times, serif;
+	font-size: 18px;
+	line-height: 25px;
+    color: rgb(105, 103, 103);
+
+} */
 
 
 /* ========DEBUT LIEN========== */
@@ -79,13 +91,7 @@ a:hover {
 }
 
 #space {
-    background-color:  rgb(88, 161, 27);
-}
-
-
-
-.card-header {
-    background-color: #5835f3 !important;
+    background-color:  #c5d6f57e;
 }
 
 /* ==========SECTION DROITE=========== */
@@ -93,7 +99,10 @@ a:hover {
 /* Meilleur Article */
 #colorText {
     text-decoration: none;
-    color: red;
+}
+
+.card-header {
+    background-color: #4e2cade7 !important;
 }
 
 /* ==========FOOTER========== */

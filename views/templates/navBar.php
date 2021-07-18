@@ -15,8 +15,8 @@
     <link href="/../assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font -->
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Allan:bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
     <title>LookThis</title>
 </head>
 
@@ -78,7 +78,8 @@
                     </ul>
 
                     <form class="d-flex">
-                        <input class="form-control rounded-pill me-2" type="search" placeholder="xss,mitm,.." aria-label="Search">
+                        <input class="form-control rounded-pill me-2" type="search" placeholder="xss,mitm,.."
+                            aria-label="Search">
                         <button class="btn btn-outline-warning rounded-pill me-2" type="submit">Chercher</button>
                     </form>
 
