@@ -1,3 +1,10 @@
+<?php
+
+// Initialiser la session
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/../assets/img/favicon.ico">
     <!-- Lien css -->
     <link href="/assets/css/style.css" rel="stylesheet">
     <!-- Lien bootstap -->
@@ -22,8 +29,8 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
 
 ?>
 
-    <div id="mentionPoli" class="d-flex container-fluid align-items-center h-100">
-        <div class="card bg-warningshadow bg-body rounded-3 mb-2">
+    <div id="mentionPoli" class="d-flex align-items-center container-fluid h-100">
+        <div class="card shadow rounded-3 mb-2 mt-2">
             <div class="card-body">
                 <h2 class="card-title mb-3">
                     Mentions légales

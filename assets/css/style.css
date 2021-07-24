@@ -10,17 +10,19 @@ h1 {
     font-size: 70px !important;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
     filter: brightness(1.25);
+    text-align: center;
 }
 
 @media (max-width:576px) {
     h1 {
-        font-size: 30px !important;
+        font-size: 45px !important;
     }
 }
 
 h2 {
     font-family: 'Allan', Helvetica, Arial, sans-serif;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
+    margin-bottom: 10px;
 }
 
 h3 {
@@ -35,21 +37,12 @@ h3 {
 
 p {
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 25px;
     color: rgb(105, 103, 103);
 }
 
-/* p {
-    font-family: 'Cardo', Georgia, Times, serif;
-	font-size: 18px;
-	line-height: 25px;
-    color: rgb(105, 103, 103);
-
-} */
-
-
-/* ========DEBUT LIEN========== */
+/* ========LIEN========== */
 
 a {
     text-decoration: none;
@@ -63,11 +56,11 @@ a:hover {
 /*===========NAVBAR========== */
 .navbar {
     background-color: #053180;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .navbar a {
-    color: #1fe5e9 !important;
+    color: #1fe5e9!important;
 }
 
 .navbar a:hover {
@@ -80,14 +73,24 @@ a:hover {
 }
 
 .dropdown-item {
-    background-color: #053180 !important;
+    background-color: #053180;
+}
+
+@media (min-width: 992px){
+    #logoutLogin{
+        text-align: end;
+    }
 }
 
 /* ======ACCUEIL======= */
 
 #imgIntro {
     background-size: cover;
-    height: 600px !important;
+    height: 600px;
+}
+
+#cardHeight {
+    margin-bottom:10px;
 }
 
 #space {
@@ -108,14 +111,9 @@ a:hover {
 /* ==========FOOTER========== */
 
 #footerHeight {
-    height: 190px;
+    height: 220px;
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
     font-size: 18px;
-    line-height: 25px;
-}
-
-#mentionPoli {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 /* ====FORMULAIRE CONNEXION===== */

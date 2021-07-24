@@ -1,5 +1,8 @@
 <?php
 
+// Initialiser la session
+session_start();
+
 // Tableau d'erreur vide //
 $error = [];
 

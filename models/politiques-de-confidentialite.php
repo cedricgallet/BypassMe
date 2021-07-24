@@ -1,3 +1,10 @@
+<?php
+
+// Initialiser la session
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -18,13 +25,13 @@
 
 <?php
 
-// Génération du Header+Navbar:
-include(dirname(__FILE__).'/../views/templates/navBar.php');
+    // Génération du Header+Navbar:
+    include(dirname(__FILE__).'/../views/templates/navBar.php');
 
 ?>
 
-        <div id="mentionPoli" class="d-flex container-fluid align-items-center h-100">
-            <div class="card bg-warningshadow bg-body rounded-3 mb-2">
+        <div id="mentionPoli" class="d-flex align-items-center container-fluid h-100">
+            <div class="card shadow rounded-3 mb-2 mt-2">
                 <div class="card-body">
                     <h2 class="card-title mb-3">
                         - Politiques de Confidentialité -
@@ -57,7 +64,7 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
 
                         – Utilisateur : toute personne physique majeure capable, ou toute personne morale, utilisant les
                         services qui
-                        sont proposés sur le Site Anon.com, pouvant être soit un particulier, soit un professionnel.
+                        sont proposés sur le Site LookThis@protonmail.com, pouvant être soit un particulier, soit un professionnel.
 
                         II. Collecte et diffusion des données personnelles
 
@@ -113,7 +120,7 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
 
                         IV. Hébergement des données personnelles
 
-                        Le site Anon.com est hébergé par la société SiteGround.
+                        Le site LookThis.com est hébergé par la société SiteGround.
 
 
 
@@ -140,7 +147,7 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
 
                         VI. Utilisation de cookies
 
-                        Le Dirigeant informe l’Utilisateur qu’elle peut être amenée à utiliser des cookies. Ce dernier
+                        Le Dirigeant informe l’Utilisateur qu’il peut être amené à utiliser des cookies. Ce dernier
                         accepte
                         expressément l’utilisation des cookies en poursuivant sa navigation sur le site.
 
@@ -158,12 +165,10 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
         </div>
     
 
-    <?php
+<?php
 
-// Génération du Footer:
-include(dirname(__FILE__).'/../views/templates/footer.php');
-
-
+    // Génération du Footer:
+    include(dirname(__FILE__).'/../views/templates/footer.php');
 
 
-    ?>
+?>

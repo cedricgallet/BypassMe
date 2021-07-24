@@ -22,9 +22,9 @@
 
 <body>
 
-    <!-- =======================DEBUT HEADER + NAVBAR========================= -->
+    <!-- =======================NAVBAR========================= -->
 
-    <header>
+    
         <nav class="navbar navbar-expand-lg navbar-light border-bottom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/../index.php">
@@ -73,23 +73,26 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/../views/solutions.php">Solutions</a>
+                            <a class="nav-link" href="/../views/solutions.php">Bonus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/../controllers/contact-controllers.php">Contact</a>
                         </li>
                     </ul>
 
                     <form class="d-flex">
-                        <input class="form-control rounded-pill me-2" type="search" placeholder="xss,mitm,.."
+                        <input class="form-control rounded-pill me-2 mb-2" type="search" placeholder="xss,mitm,.."
                             aria-label="Search">
                         <button class="btn btn-outline-warning rounded-pill me-2" type="submit">Chercher</button>
                     </form>
 
-                    <ul class="nav navbar-nav navbar-right text-white h-100">
+                    <ul id="logoutLogin" class="nav navbar-nav navbar-right text-white h-100">
                         <li>
-                            <a href="/controllers/userConnexion-controllers.php"
+                            <a href="/controllers/login-controllers.php"
                                 class="bottom text-decoration-none rounded-pill">
                                 Se connecter</a>
 
-                            <a href="/controllers/addUserForm-controllers.php"
+                            <a href="/controllers/registration-controllers.php"
                                 class="bottom text-decoration-none rounded-pill">
                                 Inscription
                             </a>
@@ -98,8 +101,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    
 
     <!-- ==============================FIN NAVBAR===================================-->
 
-    <!-- =======================================FIN HEADER==================================== -->

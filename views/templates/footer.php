@@ -11,8 +11,8 @@
                     </div>
 
                     <div class="col-12 col-lg-4 d-flex flex-column text-center">
-                        <div><a class="text-decoration-none text-white" href="/views/mentions-legales.php">Mentions Légales</a></div>
-                        <div><a class="text-decoration-none text-white" href="/views/politiques-de-confidentialite.php">politiques de confidentialité</a></div>
+                        <div><a class="text-decoration-none text-white" href="/models/mentions-legales.php">Mentions Légales</a></div>
+                        <div><a class="text-decoration-none text-white" href="/models/politiques-de-confidentialite.php">politiques de confidentialité</a></div>
                         <div class="copyright">
                             &copy; Copyright <strong><span>Anon - 2021</span></strong> - Tous droits réservés.
                         </div>
@@ -20,12 +20,9 @@
 
                     <div class="col-12 col-lg-4  d-flex flex-column text-center text-lg-end imgSocial mb-1">
                         <div class="social me-lg-3">Réseaux</div>
-                        <div class="me-lg-2">
+                        <div class="me-lg-3">
                             <a href="https://linkedin.com"><img class="img-fluid"
                                     src="/assets/img/linkedin.webp" alt="réseau linkedin personnel" height="35"
-                                    width="35"></a>
-                            <a href="https://twitter.com"><img class="img-fluid"
-                                    src="/assets/img/twitter.webp" alt="réseau twitter personnel" height="35"
                                     width="35"></a>
                         </div>
                     </div>
