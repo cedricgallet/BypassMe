@@ -45,12 +45,24 @@ p {
 /* ========LIEN========== */
 
 a {
-    text-decoration: none;
-    color: #1fe5e9 !important;
+    text-decoration: none!important;
+    text-shadow: 1px 1px rgb(31, 84, 230);
 }
 
 a:hover {
-    color: #1fe5e9 !important;
+    color: #1fdce9 !important;
+}
+
+/* =========ESPACES ======== */
+
+#space {
+    background-color: #c5f5e594;
+}
+
+/* ==========CARD============ */
+
+#cardHeight {
+    margin-bottom:10px;
 }
 
 /*===========NAVBAR========== */
@@ -82,24 +94,16 @@ a:hover {
     }
 }
 
-/* ======ACCUEIL======= */
+/* =====HEADER======= */
 
 #imgIntro {
     background-size: cover;
     height: 600px;
 }
 
-#cardHeight {
-    margin-bottom:10px;
-}
-
-#space {
-    background-color: #c5d6f57e;
-}
-
 /* ==========SECTION DROITE=========== */
 
-/* Meilleur Article */
+/* =======MEILLEUR ARTICLE========= */
 #colorText {
     text-decoration: none;
 }
@@ -111,7 +115,7 @@ a:hover {
 /* ==========FOOTER========== */
 
 #footerHeight {
-    height: 220px;
+    height: 230px;
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
     font-size: 18px;
 }

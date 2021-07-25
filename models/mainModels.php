@@ -1,46 +1,5 @@
 <!-- =======================================DEBUT MAIN===================================== -->
-<main>
-    <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgAccueil.jpg);">
 
-        <div class="row">
-            <div class="col-lg-10 col-md-12 col-sm-12 w-100">
-                <div id="imgIntro" class="card bg-light shadow bg-body rounded-3 mt-3 mb-3"
-                    style="background-image: url(/../assets/img/bgAccueil.jpg);">
-
-                    <h1 class="card-title d-flex justify-content-sm-center align-items-center h-100">
-                        Les Failles en sécurité informatiques
-                    </h1>
-
-                    <!-- =========================AJOUTER UN ARTICLE========================== -->
-
-                    <div class="card-body text-end position-absolute bottom-0 end-0"><a
-                            href="/controllers/addArticle-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Ajouter un article</button></a>
-                    </div>
-
-                    <!-- ==========================INTRODUCTION============================= -->
-
-                </div>
-            </div>
-
-            <div class="col-lg-10 col-md-12 col-sm-12 w-100">
-
-                <div class="card bg-light shadow bg-body rounded-3 mb-2">
-                    <div class="card-body">
-
-                        <p class="card-text">Les menaces se multipliant de plus en plus,(virus, vers,
-                            spywares
-                            et intrusions),il est primordial de savoir quelles attitudes et actions adopter
-                            pour se prémunir et réagir aux problèmes de sécurité.Je vous propose une liste des
-                            principales failles de sécurité informatique, que se soit dans les
-                            technologies liées au web,au réseau,à la cryptographie il existe des failles dans
-                            tous les domaines.Je vais donc ici vous présenter une liste de catégorie des
-                            principales failles
-                            de sécurité à éviter.
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-lg-5 col-md-12 col-sm-12">
 
@@ -69,16 +28,14 @@
                     </div>
                 </div>
 
-                <!-- =========================AJOUTER UN UTILISATEUR========================== -->
+                <!-- =========================ESPACE========================== -->
 
-                <div id="space" class="rounded-3 mb-2 text-center">
-                    <div class="card-body"><a href="/controllers/registration-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Inscris-toi et bénificie des
-                                Solutions!!</button></a>
-                    </div>
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
                 </div>
 
-                <!-- ========================================================================== -->
+                <!-- ============================================================================== -->
+
 
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
                     <div class="card-body">
@@ -105,6 +62,15 @@
                     </div>
                 </div>
 
+                <!-- =========================ESPACE========================== -->
+
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
+                </div>
+
+                <!-- ============================================================================== -->
+
+
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -129,6 +95,15 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- =========================ESPACE========================== -->
+
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
+                </div>
+
+                <!-- ============================================================================== -->
+
 
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
                     <div class="card-body">
@@ -150,19 +125,16 @@
                         </div>
                     </div>
                 </div>
-                <!-- =========================AJOUTER UN UTILISATEUR========================== -->
 
-                <div id="space" class="rounded-3 mb-2 text-center">
-                    <div class="card-body"><a href="/controllers/registration-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Inscris-toi et bénificie des
-                                Solutions!!</button></a>
-                    </div>
+                <!-- =========================ESPACE========================== -->
+
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
                 </div>
             </div>
 
+            <!-- ============================================================================== -->
 
-
-            <!-- ========================================================================== -->
 
             <div class="col-lg-5 col-md-12 col-sm-12">
 
@@ -187,13 +159,10 @@
                     </div>
                 </div>
 
-                    <!-- =========================AJOUTER UN UTILISATEUR========================== -->
+                <!-- =========================ESPACE========================== -->
 
-                    <div id="space" class="rounded-3 mb-2 text-center">
-                    <div class="card-body"><a href="/controllers/registration-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Inscris-toi et bénificie des
-                                Solutions!!</button></a>
-                    </div>
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
                 </div>
 
                 <!-- ============================================================================== -->
@@ -219,6 +188,14 @@
                     </div>
                 </div>
 
+                <!-- =========================ESPACE========================== -->
+
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
+                </div>
+
+                <!-- ============================================================================== -->
+
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -240,6 +217,14 @@
                     </div>
                 </div>
 
+                <!-- =========================ESPACE========================== -->
+
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
+                </div>
+
+                <!-- ============================================================================== -->
+
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -260,106 +245,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- =========================AJOUTER UN UTILISATEUR========================== -->
+                <!-- =========================ESPACE========================== -->
 
-                <div id="space" class="rounded-3 text-center mb-2">
-                    <div class="card-body"><a href="/controllers/registration-controllers.php"><button type="submit"
-                                class="btn btn-outline-warning w-30">Inscris-toi et bénificie des
-                                Solutions!!</button></a>
-                    </div>
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
                 </div>
             </div>
 
-            <!-- ===================================DEBUT SECTION DROITE=========================== -->
-
-            <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
-                <div class="sticky-top">
-
-                    <!-- ==============================CATEGORIE================================= -->
-
-
-                    <div class="d-flex flex-column bg-light shadow bg-body rounded">
-                        <div class="card-header text-white fw-bold fs-5">
-                            Catégories
-                        </div>
-                        <div class="overflow-auto">
-                            <!-- <div class="card-body">
-                                <img src="/../assets/img/imgCard1.png" height="117" width="279"
-                                    class="card-img-top img-fluid" alt="...........................">
-                            </div> -->
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a href="#">Faille applicative</a>
-                                    <span class="badge bg-danger rounded-pill">32</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a href="#">Faille Humaine</a>
-                                    <span class="badge bg-danger rounded-pill">23</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a href="#">Faille Réseau</a>
-                                    <span class="badge bg-danger rounded-pill">43</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a href="#">Faille Web</a>
-                                    <span class="badge bg-danger rounded-pill">17</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- =========================IMAGE CARD========================== -->
-
-                    <div class="card rounded-3 shadow-lg mb-3 mt-3">
-
-                        <div class="card-body">
-                            <img src="/../assets/img/imgCard5.jpg" class="card-img-top img-fluid"
-                                alt="...........................">
-                        </div>
-                    </div>
-
-                    <!-- ===================================MEILLEUR ARTICLE================================= -->
-
-                    <div id="colorText" class="bg-light shadow bg-body rounded-3">
-                        <div class="card-header text-white fw-bold fs-5">
-                            Meilleurs Articles
-                        </div>
-                        <div class="card-body">
-                            <img src="/../assets/img/imgCard4.jpg" class="card-img-top img-fluid"
-                                alt="...........................">
-                        </div>
-
-                        <ul class="list-group list-group-flush mb-2">
-                            <li class="list-group-item"><a href="#">
-                                    Les failles XSS </a>
-                                <div>
-                                    <small class="text-muted">27 Juin 2021,</small>
-                                    <small class="text-muted">67 vues</small>
-                                </div>
-                            </li>
-
-
-                            <li class="list-group-item"><a href="#">MITM attaque
-                                </a>
-                                <div>
-                                    <small class="text-muted">27 Mai 2021,</small>
-                                    <small class="text-muted">42 vues </small>
-                                </div>
-                            </li>
-
-
-                            <li class="list-group-item"><a href="#">
-                                    Les attaques ARP</a>
-                                <div>
-                                    <small class="text-muted">27 Avril 2021,</small>
-                                    <small class="text-muted">55 vues </small>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-<!-- ====================================FIN MAIN========================================== -->

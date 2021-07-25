@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING));
     
     } else {
-        $error["subject"] = "Le format du text est incorrect!";
+        $error["subject"] = "Le format du sujet est incorrect!";
     }
 
     if(!empty($comment)){

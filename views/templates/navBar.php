@@ -24,7 +24,7 @@
 
     <!-- =======================NAVBAR========================= -->
 
-    
+    <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgAccueil.jpg);">
         <nav class="navbar navbar-expand-lg navbar-light border-bottom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/../index.php">
@@ -73,7 +73,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/../views/solutions.php">Bonus</a>
+                            <a class="nav-link" href="/../views/bonus.php">Bonus</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/../controllers/contact-controllers.php">Contact</a>
@@ -102,6 +102,6 @@
             </div>
         </nav>
     
+        <!-- ==============================FIN NAVBAR===================================-->
 
-    <!-- ==============================FIN NAVBAR===================================-->
-
+        
