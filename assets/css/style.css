@@ -7,7 +7,7 @@ body {
 
 h1 {
     font-family: 'Allan', Helvetica, Arial, sans-serif;
-    font-size: 70px !important;
+    font-size: 55px !important;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
     filter: brightness(1.25);
     text-align: center;
@@ -37,7 +37,7 @@ h3 {
 
 p {
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 25px;
     color: rgb(105, 103, 103);
 }
@@ -45,13 +45,20 @@ p {
 /* ========LIEN========== */
 
 a {
-    text-decoration: none!important;
+    text-decoration: none !important;
     text-shadow: 1px 1px rgb(31, 84, 230);
 }
 
 a:hover {
     color: #1fdce9 !important;
 }
+
+/* =====FOND ECRAN PRINCIPAL====== */
+
+/* #bgImg {
+    border: 1px solid;
+    color: #4ee91f;
+} */
 
 /* =========ESPACES ======== */
 
@@ -62,7 +69,7 @@ a:hover {
 /* ==========CARD============ */
 
 #cardHeight {
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 /*===========NAVBAR========== */
@@ -72,7 +79,7 @@ a:hover {
 }
 
 .navbar a {
-    color: #1fe5e9!important;
+    color: #1fe5e9 !important;
 }
 
 .navbar a:hover {
@@ -88,8 +95,8 @@ a:hover {
     background-color: #053180;
 }
 
-@media (min-width: 992px){
-    #logoutLogin{
+@media (min-width: 992px) {
+    #logoutLogin {
         text-align: end;
     }
 }
@@ -101,12 +108,49 @@ a:hover {
     height: 600px;
 }
 
+#message {
+    max-width: 100%;
+    /* largeur de la fenêtre */
+    margin: 1em auto 1em;
+    border: 10px solid #F0F0FF;
+    overflow: hidden;
+    /* masque tout ce qui dépasse */
+    background-color: #c5f5e594;
+    color:  rgb(228, 63, 63);
+    font-size: x-large;
+}
+
+#message> :first-child {
+    display: inline-block;
+    /* modèle de boîte en ligne */
+    padding-right: 2em;
+    /* un peu d'espace pour la transition */
+    padding-left: 100%;
+    /* placement à droite du conteneur */
+    white-space: nowrap;
+    /* pas de passage à la ligne */
+    animation: defilement-rtl 50s infinite linear;
+}
+
+@keyframes defilement-rtl {
+    0% {
+        transform: translate3d(0, 0, 0);
+        /* position initiale à droite */
+    }
+
+    100% {
+        transform: translate3d(-100%, 0, 0);
+        /* position finale à gauche */
+    }
+}
+
 /* ==========SECTION DROITE=========== */
 
 /* =======MEILLEUR ARTICLE========= */
 #colorText {
     text-decoration: none;
 }
+
 
 .card-header {
     background-color: #4e2cade7 !important;

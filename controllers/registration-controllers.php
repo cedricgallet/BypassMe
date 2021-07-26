@@ -70,31 +70,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
      // On vérifie que ce n'est pas vide
     if (!empty($_POST['password1']) && !empty($_POST['password2'])) { 
-        $password_encrypted = password_hash($password1, PASSWORD_BCRYPT);
+        $hashed_password = password_hash($password1, PASSWORD_BCRYPT);
+        // var_dump($hashed_password);
 
         if($password1 != $password2) {
             $error['password1'] = "Les mots de passe sont différents!!";
             $error['password2'] = "Les mots de passe sont différents!!";
 
-        } else {
-            $testRegex = preg_match('/'.REGEX_PASSWORD.'/',$password1);
+        } 
 
-            if(!$testRegex) {
-                $error['password1'] = 'Il vous faut au moins 8 caractéres, 1 Majuscule, 1 minuscule, 1chiffre, 1 caractére spécial';
-                $error['password2'] = 'Il vous faut au moins 8 caractéres, 1 Majuscule, 1 minuscule, 1chiffre, 1 caractére spécial';
-            }   
-        }
-
-    } 
-
-    else {
+    } else {
         $error['password1'] = 'Le mot de passe est obligatoire !!';
         $error['password2'] = 'Le mot de passe est obligatoire !!';
     }        
         //===============================================CONNEXION BDD + ENVOI +INSCRIPTION==============================================
 
 
-    //var_dump($error);
 
     
 
@@ -110,6 +101,9 @@ include(dirname(__FILE__).'/../views/templates/navBar.php');
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
      // On réaffiche le formulaire d'inscription
     include(dirname(__FILE__).'/../views/form/registration.php');
+}else {
+    include(dirname(__FILE__).'/../models/mainModels.php');
+
 }
 
 include(dirname(__FILE__).'/../views/templates/footer.php');

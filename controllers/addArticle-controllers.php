@@ -27,8 +27,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }  
 
-  ////Etablir une correspondance avec le mot de passe chiffré de la base de données et le mot de passe saisi par l'utilisateur/////////////
-
 
 
 //////////////////////////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////////////////

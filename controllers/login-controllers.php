@@ -9,15 +9,16 @@ include(dirname(__FILE__).'/../utils/regex.php');
 $error = [];
 //echo 'bonjour';
 
+// ON VERIFIFIE QUE LE FORMULAIRE EST ENVOYÉ
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    ////////////////////////////////////////////////////////////////EMAIL : NETTOYAGE ET VALIDATION//////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////PSEUDO : NETTOYAGE ET VALIDATION/////////////////////////////////////
 
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
     
     // On vérifie que ce n'est pas vide
     if(!empty($pseudo)){
-        $testRegex = preg_match('/'.REGEX_PSEUDO.'/',$pseudo);
         //  On vérifie si c'est le format attendu 
         if(!$testRegex){
             $error["pseudo"] = "Le pseudo n'est pas au bon format!!"; 
@@ -31,19 +32,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $error["pseudo"] = "Vous devez entrer un pseudo!";
     }    
 
-      /////////////////////////////Etablir une correspondance avec le mot de passe chiffré de la base de données et le mot de passe saisi par l'utilisateur/////////////////
+      ////////////Etablir une correspondance avec le mot de passe chiffré de la base de données et le mot de passe saisi par l'utilisateur/////////////////
 
 
 
 }
 
-//////////////////////////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////////////////
+////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////
 
 include(dirname(__FILE__).'/../views/templates/navBar.php');
 
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
     // On réaffiche le formulaire d'inscription
     include(dirname(__FILE__).'/../views/form/login.php');
+}else {
+    include(dirname(__FILE__).'/../models/mainModels.php');
 }
 
 include(dirname(__FILE__).'/../views/templates/footer.php');

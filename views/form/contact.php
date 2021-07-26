@@ -8,6 +8,20 @@
                 <div class="card-body">
                     <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
+                        <div class="form-group mt-3">
+                            <div class="mb-3">
+                                <select name="subject" id="subject" class="form-control" required>
+                                    <option value="">Choix du sujet</option>
+
+                        <!-- ============================boucle pour choix du sujet======================================== -->
+                                    <?php foreach ($arraySubject as $subjectInSelect) {
+                                $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
+                                echo "<option value=\"$subjectInSelect\" $isSelected>$subjectInSelect</option>";}?>
+                                </select>
+                                <div class="error"><?=$error['subject'] ?? ''?></div>
+                            </div>
+                        </div>
+
                         <!-- ============================boucle pour choix catégories======================================== -->
                         <div class="form-group">
                             <select name="categories" id="categories" class="form-control" required>
@@ -18,20 +32,6 @@
                                 echo "<option value=\"$categoriesInSelect\" $isSelected>$categoriesInSelect</option>";}?>
                             </select>
                             <div class="error"><?=$error['categories'] ?? ''?></div>
-                        </div>
-
-                        <!-- ============================================================================================== -->
-                        <div class="form-group mt-3">
-                            <div class="mb-3">
-                                <select name="subject" id="subject" class="form-control" required>
-                                    <option value="">Choix du sujet</option>
-
-                                    <?php foreach ($arraySubject as $subjectInSelect) {
-                                $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
-                                echo "<option value=\"$subjectInSelect\" $isSelected>$subjectInSelect</option>";}?>
-                                </select>
-                                <div class="error"><?=$error['subject'] ?? ''?></div>
-                            </div>
                         </div>
 
                         <!-- =================================================================================================== -->

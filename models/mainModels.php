@@ -1,6 +1,7 @@
 <!-- =======================================DEBUT MAIN===================================== -->
 
-
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
 
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
@@ -21,9 +22,45 @@
                             du code HTML de la page, exécution d'exploits contre le navigateur : en bref, tout ce que
                             ces langages de script vous permettent de faire.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================ESPACE========================== -->
+
+                <div id="space" class="rounded-3 mb-2">
+                    <div class="card-body"></div>
+                </div>
+
+                <!-- ============================================================ -->
+
+
+                <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            Qu'est-ce qu'une faille XSS ?
+                        </h2>
+
+                        <!-- <img src="/../assets/img/xss.png" class="img-fluid"
+                            alt="..........................."> -->
+
+                        <p class="card-text">Une faille XSS consiste à injecter du code directement interprétable par le
+                            navigateur Web, comme, par exemple, du JavaScript ou du HTML. Cette attaque ne vise pas
+                            directement le site comme le ferait une injection SQL mais concerne plutôt la partie client
+                            c'est-à-dire vous (ou plutôt votre navigateur). Ce dernier ne fera aucune différence entre
+                            le code du site et celui injecté par le pirate, il va donc l'exécuter sans broncher. Les
+                            possibilités sont nombreuses : redirection vers un autre site, vol de cookies, modification
+                            du code HTML de la page, exécution d'exploits contre le navigateur : en bref, tout ce que
+                            ces langages de script vous permettent de faire.
+                        </p>
+
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -55,43 +92,10 @@
                             du code HTML de la page, exécution d'exploits contre le navigateur : en bref, tout ce que
                             ces langages de script vous permettent de faire.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
-                        </div>
-                    </div>
-                </div>
-
-                <!-- =========================ESPACE========================== -->
-
-                <div id="space" class="rounded-3 mb-2">
-                    <div class="card-body"></div>
-                </div>
-
-                <!-- ============================================================================== -->
-
-
-                <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            Qu'est-ce qu'une faille XSS ?
-                        </h2>
-
-                        <!-- <img src="/../assets/img/xss.png" class="img-fluid"
-                            alt="..........................."> -->
-
-                        <p class="card-text">Une faille XSS consiste à injecter du code directement interprétable par le
-                            navigateur Web, comme, par exemple, du JavaScript ou du HTML. Cette attaque ne vise pas
-                            directement le site comme le ferait une injection SQL mais concerne plutôt la partie client
-                            c'est-à-dire vous (ou plutôt votre navigateur). Ce dernier ne fera aucune différence entre
-                            le code du site et celui injecté par le pirate, il va donc l'exécuter sans broncher. Les
-                            possibilités sont nombreuses : redirection vers un autre site, vol de cookies, modification
-                            du code HTML de la page, exécution d'exploits contre le navigateur : en bref, tout ce que
-                            ces langages de script vous permettent de faire.
-                        </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
-
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -119,9 +123,10 @@
                             milieu » est particulièrement applicable dans la méthode d'échange de clés Diffie-Hellman,
                             quand cet échange est utilisé sans authentification.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -152,9 +157,10 @@
                             milieu » est particulièrement applicable dans la méthode d'échange de clés Diffie-Hellman,
                             quand cet échange est utilisé sans authentification.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -181,9 +187,10 @@
                             milieu » est particulièrement applicable dans la méthode d'échange de clés Diffie-Hellman,
                             quand cet échange est utilisé sans authentification.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -210,9 +217,10 @@
                             milieu » est particulièrement applicable dans la méthode d'échange de clés Diffie-Hellman,
                             quand cet échange est utilisé sans authentification.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -239,9 +247,10 @@
                             milieu » est particulièrement applicable dans la méthode d'échange de clés Diffie-Hellman,
                             quand cet échange est utilisé sans authentification.
                         </p>
-                        <div class="border-top border-1 pt-2"><a href="/../views/solutions.php">s'en
-                                protéger?</a>
 
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-controllers.php">
+                            commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -251,4 +260,12 @@
                     <div class="card-body"></div>
                 </div>
             </div>
+            
+            <?php
+            // Génération du rightMenu:
+            include(dirname(__FILE__).'/../views/templates/rightMenu.php');
+            ?>
+
+        </div>
+    </div>
 

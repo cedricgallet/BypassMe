@@ -24,7 +24,8 @@
 
     <!-- =======================NAVBAR========================= -->
 
-    <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgAccueil.jpg);">
+    <div class="container-fluid p-0">
+
         <nav class="navbar navbar-expand-lg navbar-light border-bottom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/../index.php">
@@ -62,7 +63,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/../views/faille-reseaux.php">Faille-reseaux</a>
+                                <li><a class="dropdown-item" href="/../views/faille-reseaux.php">Faille-réseaux</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -101,7 +102,10 @@
                 </div>
             </div>
         </nav>
-    
+    </div>
         <!-- ==============================FIN NAVBAR===================================-->
+
+        <!-- ==============================HEADER===================================-->
+
 
         

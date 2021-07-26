@@ -25,22 +25,22 @@ session_start();
 
 <?php
 
-    // Génération du Header+Navbar:
+    // Génération de la Navbar:
     include(dirname(__FILE__).'/../views/templates/navBar.php');
 
 ?>
 
-        <div id="mentionPoli" class="d-flex align-items-center container-fluid h-100">
+<div id="mentionPoli" class="d-flex align-items-center container-fluid">
+    <div class="row">
+        <div class="col-12">
             <div class="card shadow rounded-3 mb-2 mt-2">
                 <div class="card-body">
-                    <h2 class="card-title mb-3">
+                    <h2 class="card-title text-center mb-3">
                         - Politiques de Confidentialité -
                     </h2>
+
                     <p class="card-text">Soucieux du respect de la vie privée de ses Utilisateurs, cédric Gallet
-                        (ci-après le « Dirigeant
-                        »)
-                        s’engage à
-                        assurer la protection des données personnelles de ses Utilisateurs.
+                        (ci-après le « Dirigeant») s’engage à assurer la protection des données personnelles de ses Utilisateurs.
 
                         Par conséquent, aucune donnée transmise par l’intermédiaire de notre site ne pourra être
                         consultée
@@ -53,8 +53,10 @@ session_start();
                         politique
                         de
                         confidentialité.
+                    </p>
 
-                        I. Définitions
+                    <h3>I. Définitions</h3>
+                    <p class="card-text">
 
                         – donnée personnelle : toute information relative à une personne physique identifiée ou qui peut
                         être
@@ -65,8 +67,10 @@ session_start();
                         – Utilisateur : toute personne physique majeure capable, ou toute personne morale, utilisant les
                         services qui
                         sont proposés sur le Site LookThis@protonmail.com, pouvant être soit un particulier, soit un professionnel.
+                    </p>
 
-                        II. Collecte et diffusion des données personnelles
+                    <h3>II. Collecte et diffusion des données personnelles</h3>
+                    <p class="card-text">
 
                         Le Dirigeant est susceptible de collecter des données personnelles liées à l’Utilisateur
                         notamment
@@ -99,8 +103,10 @@ session_start();
                         effectif du
                         paiement. Lors d’un paiement en ligne, toutes les données personnelles transmises sont
                         protégées.
+                    </p>
 
-                        III. Conservation des données personnelles
+                    <h3>III. Conservation des données personnelles</h3>
+                    <p class="card-text">
 
                         Les données personnelles de l’Utilisateur sont conservées jusqu’à leur suppression à la demande
                         de
@@ -117,8 +123,10 @@ session_start();
                         commerciales et du Code de la consommation relatives à la conservation des contrats conclus par
                         voie
                         électronique, en l’occurrence dix ans.
+                    </p>
 
-                        IV. Hébergement des données personnelles
+                    <h3>IV. Hébergement des données personnelles</h3>
+                    <p class="card-text">
 
                         Le site LookThis.com est hébergé par la société SiteGround.
 
@@ -128,8 +136,10 @@ session_start();
                         de
                         données («
                         clusters ») localisés dans des Etats membres de l’Union Européenne de la société SiteGround.
+                    </p>
 
-                        V. Droit d’accès et de suppression des données personnelles par l’Utilisateur
+                    <h3>V. Droit d’accès et de suppression des données personnelles par l’Utilisateur</h3>
+                    <p class="card-text">
 
                         Conformément aux dispositions de la loi 78-17 du 6 janvier 1978 modifiée, l’Utilisateur dispose
                         d’un
@@ -144,8 +154,10 @@ session_start();
 
                         Pour exercer ce droit, il reviendra à l’Utilisateur d’envoyer un message à l’adresse suivante :
                         pierre.giraud@edhec.com.
+                    </p>
 
-                        VI. Utilisation de cookies
+                    <h3>VI. Utilisation de cookies</h3>
+                    <p class="card-text">
 
                         Le Dirigeant informe l’Utilisateur qu’il peut être amené à utiliser des cookies. Ce dernier
                         accepte
@@ -163,7 +175,8 @@ session_start();
                 </div>
             </div>
         </div>
-    
+    </div>
+</div>
 
 <?php
 

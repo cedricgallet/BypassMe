@@ -11,7 +11,7 @@ $arrayCategories = ['applicative','web','réseau','humaine',];
 
 
 // Tableau des sujets disponible //
-$arraySubject = ['avis sur un article?','soummettre une idée?','signaler un bug sur le site?'];
+$arraySubject = ['avis sur un article','soummettre une idée','signaler un bug sur le site'];
 
 
 // Vérifiez si l'utilisateur est connecté, sinon redirigez vers la page de connexion

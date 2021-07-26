@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
-                        <div><label for="imgArticle">Choisir image:</label>
+                        <div><label for="imgArticle">Choisir une image:</label>
 
                             <input type="file" id="imgArticle" name="imgArticle" accept="image/png, image/jpeg"></div>
 
@@ -30,12 +30,12 @@
                         <div class="mb-3">
                             <label for="titre" class="form-label">Titre</label>
                             <input type="text" name="titre" id="titre" class="form-control"
-                                placeholder="Titre de l'article" 'required <?= $titre ?? ''?>>
+                                placeholder="Titre de l'article"<?=$titre ?? ''?>>
                         </div>
 
                         <div class="mb-3">
                             <label for="Textarea1" class="form-label">Contenu de l' article</label> <textarea
-                                class="form-control" id="textarea1" rows="9" placeholder="Tapez votre article" 'required <?= $article ?? ''?>></textarea>
+                                class="form-control" id="textarea1" rows="9" placeholder="Tapez votre article"<?=$article ?? ''?>></textarea>
                         </div>
                         <button type="submit" class="btn btn-outline-warning rounded-pill w-100">Enregistrer</button>
                     </form>

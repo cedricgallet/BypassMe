@@ -13,9 +13,6 @@ include(dirname(__FILE__).'/views/templates/header.php');
 // Génération du mainModels:
 include(dirname(__FILE__).'/models/mainModels.php');
 
-// Génération du rightMenu:
-include(dirname(__FILE__).'/views/templates/rightMenu.php');
-
 // Génération du Footer:
 include(dirname(__FILE__).'/views/templates/footer.php');
 
