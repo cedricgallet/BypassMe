@@ -77,7 +77,7 @@
                             </label>
                         </div>
                         <div class="w-50 text-md-end">
-                            <a class="text-decoration-none text-warning" href="/../controllers/findPasswordForm-controllers.php" >Mot de passe oublié?</a>
+                            <a class="text-decoration-none text-warning" href="/../controllers/findPassword-ctrl.php" >Mot de passe oublié?</a>
                         </div>
                     </div>
                 </form>

@@ -26,7 +26,7 @@ session_start();
 <?php
 
     // Génération de la Navbar:
-    include(dirname(__FILE__).'/../views/templates/navBar.php');
+    include(dirname(__FILE__).'/../views/templates/navbar.php');
 
 ?>
 

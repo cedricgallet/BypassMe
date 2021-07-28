@@ -12,7 +12,7 @@
                         <!-- =========================AJOUTER UN ARTICLE========================== -->
 
                         <div class="card-body text-end position-absolute bottom-0 end-0"><a
-                                href="/controllers/addArticle-controllers.php"><button type="submit"
+                                href="/controllers/addArticle-ctrl.php"><button type="submit"
                                     class="btn btn-outline-warning w-30">Ajouter un article</button></a>
                         </div>
 

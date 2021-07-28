@@ -96,13 +96,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //////////////////////////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////////////////
 
-include(dirname(__FILE__).'/../views/templates/navBar.php');
+include(dirname(__FILE__).'/../views/templates/navbar.php');
 
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
-     // On réaffiche le formulaire d'inscription
+     // On réaffiche le formulaire 
     include(dirname(__FILE__).'/../views/form/registration.php');
 }else {
-    include(dirname(__FILE__).'/../models/mainModels.php');
+    include(dirname(__FILE__).'/../models/home.php');
 
 }
 

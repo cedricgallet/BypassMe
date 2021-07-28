@@ -1,25 +1,15 @@
 <?php  
 
-// Initialiser la session
-session_start();
-
 // Tableau d'erreur vide //
 $error = [];
 
 // Tableau des catégories disponibles //
-$arrayCategories = ['applicative','web','réseau','humaine',];
+$arrayCategories = ['autre','applicative','web','réseau','humaine',];
 
 
 // Tableau des sujets disponible //
-$arraySubject = ['avis sur un article','soummettre une idée','signaler un bug sur le site'];
+$arraySubject = ['avis sur un article','soummettre une idée','signaler un bug sur le site','signaler un lien mort'];
 
-
-// Vérifiez si l'utilisateur est connecté, sinon redirigez vers la page de connexion
-// if(!isset($_SESSION["pseudo"])){
-//     header("Location: /controllers/login-controllers.php");
-// } else {
-//     $error["pseudo"] = "Vous devevez être connecter pour envoyer un commentaire.";
-// }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!empty($categories)){
@@ -49,11 +39,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 }  
 //////////////////////////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////////////////
 
-include(dirname(__FILE__).'/../views/templates/navBar.php');
+include(dirname(__FILE__).'/../views/templates/navbar.php');
 
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
-     // On réaffiche le formulaire d'inscription
+     // On réaffiche le formulaire 
     include(dirname(__FILE__).'/../views/form/contact.php');
+}else {
+    include(dirname(__FILE__).'/../models/home.php');
 }
 
 include(dirname(__FILE__).'/../views/templates/footer.php');

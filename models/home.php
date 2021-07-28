@@ -1,5 +1,5 @@
 <!-- =======================================DEBUT MAIN===================================== -->
-
+<main>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
@@ -11,7 +11,7 @@
                         </h2>
 
                         <!-- <img src="/../assets/img/xss.png" class="img-fluid"
-                            alt="..........................."> -->
+                                alt="..........................."> -->
 
                         <p class="card-text">Une faille XSS consiste à injecter du code directement interprétable par le
                             navigateur Web, comme, par exemple, du JavaScript ou du HTML. Cette attaque ne vise pas
@@ -23,9 +23,10 @@
                             ces langages de script vous permettent de faire.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
                             <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -33,7 +34,6 @@
                 <!-- =========================ESPACE========================== -->
 
                 <div id="space" class="rounded-3 mb-2">
-                    <div class="card-body"></div>
                 </div>
 
                 <!-- ============================================================ -->
@@ -46,7 +46,7 @@
                         </h2>
 
                         <!-- <img src="/../assets/img/xss.png" class="img-fluid"
-                            alt="..........................."> -->
+                                alt="..........................."> -->
 
                         <p class="card-text">Une faille XSS consiste à injecter du code directement interprétable par le
                             navigateur Web, comme, par exemple, du JavaScript ou du HTML. Cette attaque ne vise pas
@@ -58,9 +58,10 @@
                             ces langages de script vous permettent de faire.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                         </h2>
 
                         <!-- <img src="/../assets/img/xss.png" class="img-fluid"
-                            alt="..........................."> -->
+                                alt="..........................."> -->
 
                         <p class="card-text">Une faille XSS consiste à injecter du code directement interprétable par le
                             navigateur Web, comme, par exemple, du JavaScript ou du HTML. Cette attaque ne vise pas
@@ -93,9 +94,10 @@
                             ces langages de script vous permettent de faire.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -106,7 +108,7 @@
                     <div class="card-body"></div>
                 </div>
 
-                <!-- ============================================================================== -->
+                <!-- ===================================================== -->
 
 
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
@@ -124,9 +126,10 @@
                             quand cet échange est utilisé sans authentification.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -158,9 +161,10 @@
                             quand cet échange est utilisé sans authentification.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -188,9 +192,10 @@
                             quand cet échange est utilisé sans authentification.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -218,9 +223,10 @@
                             quand cet échange est utilisé sans authentification.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -248,9 +254,10 @@
                             quand cet échange est utilisé sans authentification.
                         </p>
 
-                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-controllers.php">
-                            commenter?</a>
+                        <div class="d-flex justify-content-between border-top border-1 pt-2"><a
+                                href="/../views/solutions.php">s'en protéger?</a>
+                            <a href="/../controllers/contact-ctrl.php">
+                                commenter?</a>
                         </div>
                     </div>
                 </div>
@@ -260,12 +267,12 @@
                     <div class="card-body"></div>
                 </div>
             </div>
-            
+
             <?php
-            // Génération du rightMenu:
-            include(dirname(__FILE__).'/../views/templates/rightMenu.php');
-            ?>
+                // =================================Génération du rightMenu=========================
+                include(dirname(__FILE__).'/../views/templates/rightMenu.php');
+                ?>
 
         </div>
     </div>
-
+</main>

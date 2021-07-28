@@ -11,7 +11,7 @@ include(dirname(__FILE__).'/../views/templates/header.php');
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-10 col-md-12 col-sm-12">
-            <!-- ===============================CONTENU DU BONUS======================================= -->
+            <!-- ===============================CONTENU DES SOLUTIONS======================================= -->
         </div>
         <?php
         // Génération du rightMenu:

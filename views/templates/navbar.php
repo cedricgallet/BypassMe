@@ -77,7 +77,7 @@
                             <a class="nav-link" href="/../views/bonus.php">Bonus</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/../controllers/contact-controllers.php">Contact</a>
+                            <a class="nav-link" href="/../controllers/contact-ctrl.php">Contact</a>
                         </li>
                     </ul>
 
@@ -89,11 +89,11 @@
 
                     <ul id="logoutLogin" class="nav navbar-nav navbar-right text-white h-100">
                         <li>
-                            <a href="/controllers/login-controllers.php"
+                            <a href="/controllers/login-ctrl.php"
                                 class="bottom text-decoration-none rounded-pill">
                                 Se connecter</a>
 
-                            <a href="/controllers/registration-controllers.php"
+                            <a href="/controllers/registration-ctrl.php"
                                 class="bottom text-decoration-none rounded-pill">
                                 Inscription
                             </a>

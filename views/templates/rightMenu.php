@@ -7,8 +7,8 @@
 
 
                     <div class="d-flex flex-column bg-light shadow bg-body rounded">
-                        <div class="card-header text-white fw-bold fs-5">
-                            Catégories
+                        <div class="card-header fw-bold fs-5"><h4>
+                            Catégories</h4>
                         </div>
                         <div class="overflow-auto">
                             <!-- <div class="card-body">
@@ -36,9 +36,9 @@
                         </div>
                     </div>
 
-                    <!-- =========================AJOUTER UN UTILISATEUR========================== -->
+                    <!-- =========================BOUTON INSCRIPTION========================== -->
 
-                    <div id="space" class="rounded-3 text-center mb-2 mt-3">
+                    <div id="btnConnect" class="rounded-3 text-center mb-2 mt-3">
                         <div class="card-body"><a href="/controllers/registration-controllers.php"><button type="submit"
                                     class="btn btn-outline-danger w-30">Inscris-toi et bénificie des
                                     Solutions!!</button></a>
@@ -58,8 +58,8 @@
                     <!-- ===================================MEILLEUR ARTICLE================================= -->
 
                     <div id="colorText" class="bg-light shadow bg-body rounded-3">
-                        <div class="card-header text-white fw-bold fs-5">
-                            Meilleurs Articles
+                        <div class="card-header fw-bold fs-5"><h4>
+                            Meilleurs Articles</h4>
                         </div>
                         <div class="card-body">
                             <img src="/../assets/img/imgCard4.jpg" class="card-img-top img-fluid"

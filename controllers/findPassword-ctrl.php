@@ -31,11 +31,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //////////////////////////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////////////////
 
-include(dirname(__FILE__).'/../views/templates/navBar.php');
+include(dirname(__FILE__).'/../views/templates/navbar.php');
 
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
-     // On réaffiche le formulaire d'inscription
-    include(dirname(__FILE__).'/../views/findPasswordForm/findPasswordForm.php');
+     // On réaffiche le formulaire 
+    include(dirname(__FILE__).'/../views/findPasswordForm/findPassword.php');
+}else {
+    include(dirname(__FILE__).'/../models/home.php');
 }
 
 include(dirname(__FILE__).'/../views/templates/footer.php');
