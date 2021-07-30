@@ -26,14 +26,14 @@
 
     <div class="container-fluid p-0">
 
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/../index.php">
                     <img src="/../assets/img/logo.png" alt="" width="70" height="70" class="d-inline-block">
                     LookThis
                 </a>
 
-                <button class="navbar-toggler border-success" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -84,7 +84,7 @@
                     <form class="d-flex">
                         <input class="form-control rounded-pill me-2 mb-2" type="search" placeholder="xss,mitm,.."
                             aria-label="Search">
-                        <button class="btn btn-outline-warning rounded-pill me-2" type="submit">Chercher</button>
+                        <button class="btn btn-outline-warning btn-sm me-2" type="submit">Chercher</button>
                     </form>
 
                     <ul id="logoutLogin" class="nav navbar-nav navbar-right text-white h-100">

@@ -1,13 +1,13 @@
             <!-- ===================================DEBUT SECTION DROITE=========================== -->
 
-            <div class="col-lg-2 col-md-12 col-sm-12 mb-2 p-0">
+            <div class="col-lg-2 col-md-12 col-sm-12 mb-1 me-0">
                 <div class="sticky-top">
 
                     <!-- ==============================CATEGORIE================================= -->
 
 
-                    <div class="d-flex flex-column bg-light shadow bg-body rounded">
-                        <div class="card-header fw-bold fs-5"><h4>
+                    <div class="card d-flex flex-column bg-light shadow bg-body rounded">
+                        <div class="card-header fw-bold fs-5 text-center"><h4>
                             Catégories</h4>
                         </div>
                         <div class="overflow-auto">
@@ -18,19 +18,19 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <a href="#">Faille applicative</a>
-                                    <span class="badge bg-danger rounded-pill">32</span>
+                                    <span class="badge bg-danger rounded-pill">1</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <a href="#">Faille Humaine</a>
-                                    <span class="badge bg-danger rounded-pill">23</span>
+                                    <span class="badge bg-danger rounded-pill">2</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <a href="#">Faille Réseau</a>
-                                    <span class="badge bg-danger rounded-pill">43</span>
+                                    <span class="badge bg-danger rounded-pill">3</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <a href="#">Faille Web</a>
-                                    <span class="badge bg-danger rounded-pill">17</span>
+                                    <span class="badge bg-danger rounded-pill">4</span>
                                 </li>
                             </ul>
                         </div>
@@ -47,50 +47,38 @@
 
                     <!-- =========================IMAGE CARD========================== -->
 
-                    <div class="card rounded-3 shadow-lg mb-3 mt-3">
+                    <div class="card rounded shadow-lg mb-3 mt-3">
 
                         <div class="card-body">
-                            <img src="/../assets/img/imgCard5.jpg" class="card-img-top img-fluid"
+                            <img src="/../assets/img/imgCard5.jpg" class="img-fluid"
                                 alt="...........................">
                         </div>
                     </div>
 
                     <!-- ===================================MEILLEUR ARTICLE================================= -->
 
-                    <div id="colorText" class="bg-light shadow bg-body rounded-3">
+                    <div id="colorText" class="card bg-light shadow bg-body rounded-3">
                         <div class="card-header fw-bold fs-5"><h4>
                             Meilleurs Articles</h4>
                         </div>
                         <div class="card-body">
-                            <img src="/../assets/img/imgCard4.jpg" class="card-img-top img-fluid"
+                            <img src="/../assets/img/imgCard4.jpg" class="img-fluid"
                                 alt="...........................">
                         </div>
 
                         <ul class="list-group list-group-flush mb-2">
                             <li class="list-group-item"><a href="#">
                                     Les failles XSS </a>
-                                <div>
-                                    <small class="text-muted">27 Juin 2021,</small>
-                                    <small class="text-muted">67 vues</small>
-                                </div>
                             </li>
 
 
                             <li class="list-group-item"><a href="#">MITM attaque
                                 </a>
-                                <div>
-                                    <small class="text-muted">27 Mai 2021,</small>
-                                    <small class="text-muted">42 vues </small>
-                                </div>
                             </li>
 
 
                             <li class="list-group-item"><a href="#">
                                     Les attaques ARP</a>
-                                <div>
-                                    <small class="text-muted">27 Avril 2021,</small>
-                                    <small class="text-muted">55 vues </small>
-                                </div>
                             </li>
                         </ul>
                     </div>
