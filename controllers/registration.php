@@ -1,8 +1,5 @@
 <?php
 
-// Initialiser la session
-session_start();
-
 // Tableau d'erreur vide //
 $error = [];
 
@@ -82,12 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error['password1'] = 'Le mot de passe est obligatoire !!';
         $error['password2'] = 'Le mot de passe est obligatoire !!';
-    }        
-        //===============================================CONNEXION BDD + ENVOI +INSCRIPTION==============================================
-
-
-
-    
+    }            
 
 }
 

@@ -1,8 +1,5 @@
 <?php
 
-// Initialiser la session
-session_start();
-
 // Tableau d'erreur vide //
 $error = [];
 
@@ -35,9 +32,7 @@ include(dirname(__FILE__).'/../views/templates/navbar.php');
 
 if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)){
      // On réaffiche le formulaire 
-    include(dirname(__FILE__).'/../views/findPasswordForm/findPassword.php');
-}else {
-    include(dirname(__FILE__).'/../models/home.php');
+    include(dirname(__FILE__).'/../views/form/findPassword.php');
 }
 
 include(dirname(__FILE__).'/../views/templates/footer.php');

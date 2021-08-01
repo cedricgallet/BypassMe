@@ -1,8 +1,5 @@
 <?php
 
-// Initialiser la session
-session_start();
-
 include(dirname(__FILE__).'/../utils/regex.php');
 
 // Tableau d'erreur vide //
@@ -25,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Vérifier la longueur de chaine (on aurait pu le faire dans la regex)
             if(strlen($pseudo)<=1 || strlen($pseudo)>=20){
-                $error["pseudo"] = "La longueur du pseudo  n'est pas bonne";
+                $error["pseudo"] = "La longueur du pseudo n'est pas bonne";
             }
         }
     } else { // Pour les champs obligatoires, on retourne une erreur    

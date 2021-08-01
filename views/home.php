@@ -1,6 +1,6 @@
 <!-- =======================================DEBUT MAIN===================================== -->
 <main>
-    <div class="container-fluid">
+    <div id="bgImageConnexion" class="container-fluid p-2 shadow">
         <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
 
@@ -136,7 +136,7 @@
 
                 <!-- =========================ESPACE========================== -->
 
-                <div id="space" class="rounded-3 mb-2">
+                <div id="space" class="rounded-3">
                     <div class="card-body"></div>
                 </div>
             </div>
@@ -263,7 +263,7 @@
                 </div>
                 <!-- =========================ESPACE========================== -->
 
-                <div id="space" class="rounded-3 mb-2">
+                <div id="space" class="rounded-3">
                     <div class="card-body"></div>
                 </div>
             </div>

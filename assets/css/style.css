@@ -15,9 +15,17 @@ h1 {
 
 @media (max-width:576px) {
     h1 {
-        font-size: 45px !important;
+        font-size: 35px !important;
+        text-align: center;
     }
 }
+
+@media (min-width:576px) {
+    h1 {
+        text-align: center;
+    }
+}
+
 
 h2 {
     font-family: 'Allan', Helvetica, Arial, sans-serif;
@@ -72,13 +80,20 @@ a:hover {
     height: 20px;
 }
 
-/* ==========CARD============ */
+/*==========HOME ======== */
+
+/*CARD*/
 
 #cardHeight {
     margin-bottom: 10px;
 }
 
 /*===========NAVBAR========== */
+
+.navbar-toggler {
+    color:#1fe5e9!important;
+}
+
 .navbar {
     background-color: #053180;
     font-size: 17px;
@@ -111,7 +126,7 @@ a:hover {
 
 #imgIntro {
     background-size: cover;
-    height: 400px;
+    height: 500px;
 }
 
 #message {

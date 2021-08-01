@@ -1,14 +1,14 @@
-<div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgConnexion.jpg);">
-    <div id="formPosition" class="row justify-content-center align-items-center h-100">
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-header bg-gradient text-center text-white fw-bold fs-5">
-                    Ajouter un nouvel article ?
+<div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">
+    <div class="row h-100">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="card w-50">
+                <div class="card-header bg-gradient text-center shadow fw-bold fs-5">
+                    <h2>Ajouter un nouvel article ?</h2>
                 </div>
                 <div class="card-body">
                     <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
-                        <div><label for="imgArticle">Choisir une image:</label>
+                        <div class="mb-2"><label for="imgArticle">Choisir une image:</label>
 
                             <input type="file" id="imgArticle" name="imgArticle" accept="image/png, image/jpeg"></div>
 
