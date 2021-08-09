@@ -28,13 +28,13 @@
                         <!-- ================================================================================================= -->
 
                         <div class="mb-3">
-                            <label for="titre" class="form-label">Titre</label>
+                            <label for="titre" class="col-form-label">Titre</label>
                             <input type="text" name="titre" id="titre" class="form-control"
                                 placeholder="Titre de l'article"<?=$titre ?? ''?>>
                         </div>
 
                         <div class="mb-3">
-                            <label for="Textarea1" class="form-label">Contenu de l' article</label> <textarea
+                            <label for="Textarea1" class="col-form-label">Contenu de l' article</label> <textarea
                                 class="form-control" id="textarea1" rows="9" placeholder="Tapez votre article"<?=$article ?? ''?>></textarea>
                         </div>
                         <button type="submit" class="btn btn-outline-warning rounded-pill w-100">Enregistrer</button>

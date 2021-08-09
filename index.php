@@ -1,18 +1,16 @@
 <?php
 
-// Génération du Navbar:
+// Génération du navbar:
 include(dirname(__FILE__).'/views/templates/navbar.php');
 
 // Génération du header:
 include(dirname(__FILE__).'/views/templates/header.php');
 
-// Génération du mainModels:
-include(dirname(__FILE__).'/views/home.php');
+// Génération du home:
+include(dirname(__FILE__) . '/views/home.php');
 
-// Génération du Footer:
+// Génération du footer
 include(dirname(__FILE__).'/views/templates/footer.php');
-
-
 
 
 

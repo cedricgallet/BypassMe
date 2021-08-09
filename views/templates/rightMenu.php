@@ -39,7 +39,7 @@
                     <!-- =========================BOUTON INSCRIPTION========================== -->
 
                     <div id="btnConnect" class="rounded-3 text-center mb-2 mt-3">
-                        <div class="card-body"><a href="/controllers/registration-controllers.php"><button type="submit"
+                        <div class="card-body"><a href="/controllers/registration-ctrl.php"><button type="submit"
                                     class="btn btn-outline-danger w-30">Inscris-toi et bénificie des
                                     Solutions!!</button></a>
                         </div>

@@ -1,6 +1,7 @@
 <!-- =======================================DEBUT MAIN===================================== -->
+
 <main>
-    <div id="bgImageConnexion" class="container-fluid p-2 shadow">
+    <div id="bgImageConnexion" class="container-fluid p-2">
         <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
 
@@ -269,10 +270,11 @@
             </div>
 
             <?php
-                // =================================Génération du rightMenu=========================
-                include(dirname(__FILE__).'/../views/templates/rightMenu.php');
-                ?>
+            // =================================Génération du rightMenu=========================
+            include(dirname(__FILE__).'/../views/templates/rightMenu.php');
+            ?>
 
         </div>
     </div>
 </main>
+

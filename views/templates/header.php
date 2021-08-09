@@ -37,7 +37,7 @@
                         <!-- =========================MESSAGE INTRO DEFILANT========================== -->
 
                         <div id="message" class="rounded-3 mt-0 mb-0 fw-bold">
-                            <div>Bienvenue sur ce site !! je vous invite à découvrir le monde des failles informatiques et comment s'en protéger.</div>
+                            <div>Bienvenue sur ce site !! je vous invite à découvrir le monde des failles informatiques et comment s'en protéger.Suivez-moi c'est par ici...</div>
                         </div>
                     </div>
                 </div>

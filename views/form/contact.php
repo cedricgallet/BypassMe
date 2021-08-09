@@ -1,6 +1,6 @@
 <div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">
     <div class="row h-100">
-        <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+        <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="login-wrap p-0">
                     <h2 class="text-center">Ajouter un commentaire</h2>
                 
@@ -37,14 +37,13 @@
                     <!-- =================================================================================================== -->
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="textarea1" class="form-label"></label> <textarea
+                            <label for="textarea1" class="col-form-label"></label> <textarea
                                 class="form-control" id="textarea1" rows="9" placeholder="Votre message" required
                             <?= $comment ?? ''?>></textarea>
                     </div>
                     <button type="submit" class="btn btn-outline-warning rounded-pill w-100">Envoyer</button>
                     </div>
                 </form>
-                <div class="border-bottom border-2 mb-2 mt-2"></div>
             </div>
         </div>
     </div>
