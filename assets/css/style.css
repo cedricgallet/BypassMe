@@ -196,3 +196,10 @@ a:hover {
 #bgImageConnexion {
     background-size: cover;
 }
+
+/* ========LANDING============ */
+
+#landingSpace {
+    background-size: cover;
+    background-image: url(/../assets/img/bgLanding1.jpg);
+}

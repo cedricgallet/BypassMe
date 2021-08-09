@@ -1,5 +1,14 @@
 <!-- =======================================DEBUT MAIN===================================== -->
 
+<?php session_start();
+
+
+// Génération du navbar:
+include(dirname(__FILE__).'/../views/templates/navbar.php');
+include(dirname(__FILE__).'/../views/templates/header.php');
+
+?>
+
 <main>
     <div id="bgImageConnexion" class="container-fluid p-2">
         <div class="row">
@@ -277,4 +286,11 @@
         </div>
     </div>
 </main>
+
+<?php    
+
+// Génération du footer
+include(dirname(__FILE__).'/../views/templates/footer.php');
+
+?>
 

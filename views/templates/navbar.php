@@ -28,7 +28,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark border-bottom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/../index.php">
+                <a class="navbar-brand" href="/../views/home.php">
                     <img src="/../assets/img/logo.png" alt="" width="70" height="70" class="d-inline-block">
                     LookThis
                 </a>
@@ -43,7 +43,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                         <li class='nav-item'>
-                            <a class='nav-link' href='/../index.php'>Accueil</a>
+                            <a class='nav-link' href='/../views/home.php'>Accueil</a>
                         </li>
 
                         <li class='nav-item dropdown'>
@@ -98,7 +98,7 @@
                         <!-- =========================================AFFICHAGE BOUTON SE DECONNECTER ET MON ESPACE================================ -->
 
                         <?php
-                        // si la session n'existe pas/n'est pas vide 
+                        // si la session n'existe pas
                         if(!isset($_SESSION['user'])){
                             echo " <li>
                                     <a href='/../controllers/login-ctrl.php'
@@ -122,9 +122,6 @@
                                     class='bottom text-decoration-none rounded-pill'>
                                     Mon espace</a>
                                 </li>";
-
-                                die();
-                            
                         }
                         ?>
                     </ul>

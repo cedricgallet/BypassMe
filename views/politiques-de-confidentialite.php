@@ -58,7 +58,7 @@ session_start();
                     <h3>I. Définitions</h3>
                     <p class="card-text">
 
-                        – donnée personnelle : toute information relative à une personne physique identifiée ou qui peut
+                        – Donnée personnelle : toute information relative à une personne physique identifiée ou qui peut
                         être
                         identifiée, directement ou indirectement, par référence à un numéro d’identification ou à un ou
                         plusieurs

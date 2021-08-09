@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     // On créer la session et on redirige sur landing.php
                     $_SESSION['user'] = $data['token'];
 
-                    header('Location: /../views/landing.php');
+                    header('Location: /../views/form/landing.php');
                     die();
 
                 } else {
@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $error["row"] = "Le compte n'existe pas!!";
         }
     
-    } else { // Pour les champs obligatoires/Vides, on redirige sur login
+    } else { // Pour les champs obligatoires/Vides,OU on redirige sur login???
         $error["email"] = "Tous les champs sont obligatoires!!";
         $error["password"] = "Tous les champs sont obligatoires!!";
     }

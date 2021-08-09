@@ -3,6 +3,6 @@
 
     session_destroy(); // on détruit la session
 
-    header('Location:/../index.php'); // On redirige
+    header('Location:/../views/home.php'); // On redirige
     
     die();
