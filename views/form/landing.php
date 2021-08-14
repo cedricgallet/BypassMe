@@ -20,17 +20,18 @@
     <div class="row h-100">
         <div class="col-md-12 h-100">
             <div class="text-center h-100">
-                <h2 class="p-5">Bonjour <?php echo  $data['pseudo']; ?> ! Bienvenue sur ton espace personnel</h2>
+                <div><h2 class="p-5">Bonjour <?php echo  $data['pseudo']; ?> ! </h2></div>
+                <div class="mb-4"><h2>Bienvenue sur ton espace personnel</h2></div>
 
                 <!-- Boutton modal -->
 
                 <a href="/../controllers/logout-ctrl.php" class="btn btn-danger">Déconnexion</a>
 
-                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                <button type="button" class="btn btn-info text-danger" data-bs-toggle="modal"
                     data-bs-target="#change_password">Changer
                     mon mot de passe</button>
 
-                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#avatar">Changer
+                <button type="button" class="btn btn-info text-danger" data-bs-toggle="modal" data-bs-target="#avatar">Changer
                     mon avatar</button>
 
 

@@ -1,8 +1,8 @@
 
 
 <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgForm.jpg);height:90%;">
-    <div class="row h-100">
-        <div class="col-12 d-flex justify-content-center align-items-center">        
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-4">        
             <div class="login-wrap p-0">
             <h2 class="text-center">Connexion</h2>
 

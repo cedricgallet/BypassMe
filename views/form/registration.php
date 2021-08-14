@@ -2,7 +2,7 @@
 
 <div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">
     <div class="row justify-content-center align-items-center h-100">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
         <h2 class="text-center">Inscription</h2>
             <div class="login-wrap p-0">
                 
@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label for="password2" class="col-form-label text-warning">Confirmation mot de passe*</label>
                         <input type="password" name="password2" class="form-control" id="password2"
-                            placeholder="Confirmé votre mot de passe" autocomplete="new-password" minlength="8"
+                            placeholder="Confirmer votre mot de passe" autocomplete="new-password" minlength="8"
                             maxlength="20"
                             value="<?= htmlentities($_POST['password2'] ?? '',)?>" 'required>
                         <div class="text-danger"><?= htmlentities($error['password2'] ?? '', ENT_QUOTES, 'UTF-8')?>
@@ -70,11 +70,6 @@
                     
                     <div class="form-group mt-4">
                         <button type="submit" class="form-control btn btn-outline-warning submit px-3 rounded-pill">Connexion</button>
-                    </div>
-                    <div class="form-group d-md-flex mt-2">
-                        <div class="w-50 justify-content-end">
-                            <a class="text-decoration-none text-warning" href="/../controllers/findPassword-ctrl.php" >Mot de passe oublié?</a>
-                        </div>
                     </div>
                 </form>
             </div>
