@@ -1,12 +1,74 @@
 <!-- ==========================================================FORMULAIRE INSCRIPTION========================================================= -->
+<?php ob_start() ?>
+
+<?php
+include(dirname(__FILE__).'/../../views/templates/navbar.php');
+include(dirname(__FILE__) . '/../../utils/regex.php'); // On inclut la regex pseudo
+?>
 
 <div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">
-    <div class="row justify-content-center align-items-center h-100">
+    <div class="row justify-content-center h-100">
+    <h2 class="text-center"><?=$title ?? ''?></h2>
+
         <div class="col-12 col-lg-4">
-        <h2 class="text-center">Inscription</h2>
             <div class="login-wrap p-0">
+                <?php 
+                    if(isset($_GET['reg_err']))
+                    {
+                        $err = htmlspecialchars($_GET['reg_err']);
+
+                        switch($err)
+                        {
+                            case 'success':
+                            ?>
+
+                            <div class="alert alert-success">
+                                <strong>Succès</strong> inscription réussie !
+                            </div>
+
+                            <?php
+                            break;
+
+                            case 'password':
+                            ?>
+
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Les mots de passe sont différent
+                            </div>
+
+                            <?php
+                            break;
+
+                            case 'email':
+                            ?>
+
+                            <div class="alert alert-danger">
+                    
+                            <strong>Erreur</strong> Format email non valide
+                            </div>
+
+                            <?php 
+                            case 'already':
+                            ?>
+
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Ce compte existe déjà
+                            </div>
+
+                            <?php 
+                            case 'empty':
+                            ?>
+
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Tous les champs sont obligatoires
+                            </div>
+                            <?php 
+
+                        }
+                    }
+                ?>
                 
-                <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="signin-form">
+                <form action="/../controllers/registration-ctrl.php" method="post" class="signin-form">
 
                     <!-- =============================================CHAMP PSEUDO=============================================== -->
 
@@ -16,9 +78,7 @@
                             placeholder="Entrez votre pseudo" class="form-control"
                             autocomplete="given-name"
                             value="<?= htmlentities($_POST['pseudo'] ?? '', ENT_QUOTES, 'UTF-8')?>"
-                            pattern="<?=REGEX_PSEUDO?>" 'required>
-                        <div class="text-danger"><?= htmlentities($error['pseudo'] ?? '', ENT_QUOTES, 'UTF-8')?>
-                        </div>
+                            pattern="<?=REGEX_PSEUDO?>" required>
                     </div>
 
                     <!-- ============================================CHAMP EMAIL=================================================== -->
@@ -28,9 +88,7 @@
                         <label for="email" class="col-form-label text-warning">Adresse Email*</label>
                         <input type="email" name="email" class="form-control" id="email" class="form-control"
                             placeholder="Adresse e-mail" autocomplete="email"
-                            value="<?= htmlentities($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
-                        <div class="text-danger"><?= htmlentities($error['email'] ?? '', ENT_QUOTES, 'UTF-8')?>
-                        </div>
+                            value="<?= htmlentities($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8')?>" required>
                     </div>
 
                     <!-- =====================================CHAMP EMAIL CONFIRMATION============================================== -->
@@ -39,9 +97,7 @@
                         <label for="email2" class="col-form-label text-warning">Adresse Email*</label>
                         <input type="email" name="email2" class="form-control" id="email2"
                             class="form-control" placeholder="Confirmé votre e-mail" autocomplete="email2"
-                            value="<?= htmlentities($_POST['email2'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
-                        <div class="text-danger"><?= htmlentities($error['email2'] ?? '', ENT_QUOTES, 'UTF-8')?>
-                        </div>
+                            value="<?= htmlentities($_POST['email2'] ?? '', ENT_QUOTES, 'UTF-8')?>" required>
                     </div>
 
                     <!-- =======================================CHAMP MOT DE PASSE================================================== -->
@@ -50,9 +106,7 @@
                         <label for="password" class="col-form-label text-warning">Mot de passe*</label>
                         <input type="password" name="password" class="form-control" id="password"
                             placeholder="Votre mot de passe" autocomplete="new-password" minlength="8" maxlength="20" 
-                            value="<?= htmlentities($_POST['password'] ?? '',)?>" 'required>
-                        <div class="text-danger"><?= htmlentities($error['password'] ?? '', ENT_QUOTES, 'UTF-8')?>
-                        </div>
+                            value="<?= htmlentities($_POST['password'] ?? '',)?>" required>
                     </div>
 
                     <!-- ================================CHAMP MOT DE PASSE CONFIRMATION============================================= -->
@@ -62,9 +116,7 @@
                         <input type="password" name="password2" class="form-control" id="password2"
                             placeholder="Confirmer votre mot de passe" autocomplete="new-password" minlength="8"
                             maxlength="20"
-                            value="<?= htmlentities($_POST['password2'] ?? '',)?>" 'required>
-                        <div class="text-danger"><?= htmlentities($error['password2'] ?? '', ENT_QUOTES, 'UTF-8')?>
-                        </div>
+                            value="<?= htmlentities($_POST['password2'] ?? '',)?>" required>
                     </div>
                     
                     
@@ -77,4 +129,8 @@
     </div>
 </div>
 
-<!-- ================================================================FIN FORMULAIRE================================================================================ -->
+<?php    
+include(dirname(__FILE__).'/../../views/templates/footer.php');
+$content = ob_get_clean();
+?>
+<!-- ================================================================FIN INSCRIPTION================================================================================ -->

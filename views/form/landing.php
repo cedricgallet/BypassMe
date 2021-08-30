@@ -3,7 +3,7 @@
     include(dirname(__FILE__).'/../../utils/config.php'); // ajout connexion bdd 
     include(dirname(__FILE__).'/../../views/templates/navbar.php'); // Génération du navbar:
 
-   // si la session existe pas soit si l'utilisateur n'est pas connecté on redirige
+   // si la session n'existe /Si l'utilisateur n'est pas connecté on redirige
     if(!isset($_SESSION['user'])){
         header('Location:/../views/form/login.php');
         die();
@@ -27,11 +27,13 @@
 
                 <a href="/../controllers/logout-ctrl.php" class="btn btn-danger">Déconnexion</a>
 
-                <button type="button" class="btn btn-info text-danger" data-bs-toggle="modal"
+                <button type="button" class="btn btn-info text-white
+                " data-bs-toggle="modal"
                     data-bs-target="#change_password">Changer
                     mon mot de passe</button>
 
-                <button type="button" class="btn btn-info text-danger" data-bs-toggle="modal" data-bs-target="#avatar">Changer
+                <button type="button" class="btn btn-info text-white
+                " data-bs-toggle="modal" data-bs-target="#avatar">Changer
                     mon avatar</button>
 
 
@@ -90,12 +92,16 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+
                             <form action="layouts/change_avatar.php" method="POST" enctype="multipart/form-data">
 
                                 <div class="mb-3">
                                     <label for="avatar">Images autorisées : png, jpg, jpeg, gif - max 20Mo</label>
-                                    <input type="file" name="avatar_file"
-                                        accept="image/png, image/jpg, image/jpeg, image/gif">
+
+                                    <input type="file" 
+                                            name="avatar_file"
+                                            accept="image/png, image/jpg, image/jpeg, image/gif">
+                                            
                                     <button type="submit" class="btn btn-success mb-2">Modifier</button>
                                 </div>
                             </form>

@@ -3,7 +3,9 @@
     session_start();
 
     // Include de la base de données
-    require_once __DIR__ . '/../utils/config.php';
+    require_once __DIR__ . '/../utils/db.php';
+    include(dirname(__FILE__) . '/../models/Users.php');// Models
+
 
     // Si la session n'existe pas 
     if(!isset($_SESSION['user']))
