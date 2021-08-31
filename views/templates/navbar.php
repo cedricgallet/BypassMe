@@ -112,13 +112,13 @@
                                     </a>
                                 </li>";
                         } else {
-                                // Si la session existe affiche
+                                // Si la session existe on affiche
                             echo "<li>
                                     <a href='/../controllers/logout-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
                                     Se deconnecter</a>
                             
-                                    <a href='/../views/form/landing.php'
+                                    <a href='/../views/landing.php'
                                     class='bottom text-decoration-none rounded-pill'>
                                     Mon espace</a>
                                 </li>";

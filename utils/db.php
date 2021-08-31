@@ -1,5 +1,5 @@
 <?php
-
+require_once dirname(__FILE__).'/../utils/config.php';
 class Database{
 
 private static $_pdo;
@@ -13,8 +13,8 @@ public static function db_connect()
             self::$_pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         }
         return self::$_pdo;
-    } catch (PDOException $ex) {
-        echo sprintf('Probleme de connexion avec l\'erreur %s', $ex->getMessage());
+    } catch (PDOException $e) {
+        echo sprintf('Probleme de connexion avec l\'erreur %s', $e->getMessage());
         die();
     }
 }

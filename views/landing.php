@@ -1,26 +1,20 @@
 <?php 
-    session_start();//On demarre la session
-    include(dirname(__FILE__).'/../../utils/config.php'); // ajout connexion bdd 
-    include(dirname(__FILE__).'/../../views/templates/navbar.php'); // Génération du navbar:
+session_start();//On demarre la session
+include(dirname(__FILE__).'/../utils/db.php'); //ajout connexion bdd 
+include(dirname(__FILE__).'/../views/templates/navbar.php'); //Génération du navbar:
 
-   // si la session n'existe /Si l'utilisateur n'est pas connecté on redirige
-    if(!isset($_SESSION['user'])){
-        header('Location:/../views/form/login.php');
-        die();
-    }
 
     // On récupere les données de l'utilisateur
-    $req = $bdd->prepare('SELECT * FROM users WHERE token = ?');
-    $req->execute(array($_SESSION['user']));
-    $data = $req->fetch();
-        
+    //$req = $pdo->prepare('SELECT * FROM users WHERE token = ?');
+    //$req->execute(array($_SESSION['user']));
+    //$data = $req->fetch();
 ?>
 
 <div id="landingSpace" class="container-fluid h-100 p-0">
     <div class="row h-100">
         <div class="col-md-12 h-100">
             <div class="text-center h-100">
-                <div><h2 class="p-5">Bonjour <?php echo  $data['pseudo']; ?> ! </h2></div>
+                <div><h2 class="p-5">Bonjour <?=$_SESSION['user']['pseudo'] ?> ! </h2></div>
                 <div class="mb-4"><h2>Bienvenue sur ton espace personnel</h2></div>
 
                 <!-- Boutton modal -->
@@ -114,7 +108,7 @@
 </div>
 
 
-    <?php
+<?php
 // Génération du footer
-include(dirname(__FILE__).'/../../views/templates/footer.php');
+include(dirname(__FILE__).'/../views/templates/footer.php');
 ?>

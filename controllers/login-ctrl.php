@@ -1,74 +1,69 @@
 <?php
-
-session_start(); // Démarrage de la session    
-include(dirname(__FILE__). '/../utils/config.php'); // On inclut la connexion à la base de données
-
+session_start(); // Démarrage de la session        
+include(dirname(__FILE__).'/../utils/db.php'); // On inclut la connexion à la base de données
 include(dirname(__FILE__).'/../utils/regex.php');
+include(dirname(__FILE__).'/../models/User.php');//models
 
-// Tableau d'erreur vide //
-$error = [];
-
-    ///////////////////////////EMAIL/PASSWORD : NETTOYAGE ET VALIDATION MDP ET CREATION/CONNEXION BDD////////////////////////
+$email = ""; $password ="";
+///////////////////////////EMAIL/PASSWORD : NETTOYAGE ET VALIDATION ET CREATION/CONNEXION BDD////////////////////////
 
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
     if(!empty($_POST['email']) && !empty($_POST['password'])) // Si champs email, password ne sont pas vident
     {
-            $email = $_POST["email"];
-            $testEmail = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-            $password = $_POST['password'];
+        // Patch XSS
+        $email = htmlspecialchars($_POST['email']); 
+        $password = htmlspecialchars($_POST['password']);  
+        $email = strtolower($email); // email transformé en minuscule
 
-            // On regarde si l'utilisateur est inscrit dans la table users
-            $check = $bdd->prepare('SELECT pseudo, email, password, token FROM users WHERE email = ?');
-            $check->execute(array($email));
-            $data = $check->fetch();
-            $row = $check->rowCount();
+        // On instancie
+        $user = new User();
+        $user->email = $email;
+        // récupération des infos de l'utilisateur (correspondant au mail,id,pseudo)
+        $singleUser = $user->readOneUser($id,$email);
 
-        // Si l'utilisateur existe
-        if($row > 0)         
+        //L'email/l'utilisateur existent(si requete renvoie 1 c'est ok)
+        if($singleUser > 0)
         {
-            //  On vérifie si c'est le format attendu est correct
-            if($testEmail)
+            // Si le mail est bon niveau format
+            if(filter_var($email, FILTER_VALIDATE_EMAIL))
             {
-            
-                if(password_verify($password, $data['password']))
+                // Si le mot de passe est le bon
+                if(password_verify($password, $singleUser->password))
                 {
                     // On créer la session et on redirige sur landing.php
-                    $_SESSION['user'] = $data['token'];
+                    $_SESSION['user']['id'] = $singleUser->id;
+                    $_SESSION['user']['pseudo'] = $singleUser->pseudo;
 
-                    header('Location: /../views/form/landing.php');
+                    header('Location: /../controllers/landing-ctrl.php');
                     die();
 
-                } else {
-                    $error["password"] = "Le mot de passe est incorrecte!!";
-                    
+                }else{ 
+                    header('Location: /../views/form/login.php?login_err=password'); 
+                    die(); 
                 }
-
-            } else {
-                $error["email"] = "L'email n'est pas au bon format!!"; 
-            }   
-        } else { // On retourne une erreur
-            $error["row"] = "Le compte n'existe pas!!";
+            }else{ 
+                header('Location: /../views/form/login.php?login_err=email'); 
+                die(); 
+            }
+        }else{ 
+            header('Location: /../views/form/login.php?login_err=already'); 
+            die(); 
         }
-    
-    } else { // Pour les champs obligatoires/Vides,OU on redirige sur login???
-        $error["email"] = "Tous les champs sont obligatoires!!";
-        $error["password"] = "Tous les champs sont obligatoires!!";
-    }
+        
+    }else{ 
+        header('Location: /../views/form/login.php?login_err=empty');
+        die();
+    } // si le formulaire est envoyé sans aucune données
+
 }
 
-
- ////////////////////////////////////RENDU DES VUES CONCERNEES////////////////////////////////////////////
-
+// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
 include(dirname(__FILE__).'/../views/templates/navbar.php');
-
-if($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error))
+if($_SERVER["REQUEST_METHOD"] != "POST") 
 {
-    // On réaffiche le formulaire 
     include(dirname(__FILE__).'/../views/form/login.php');
-
 }
-
 include(dirname(__FILE__).'/../views/templates/footer.php');
 
 

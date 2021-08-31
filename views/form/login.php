@@ -1,7 +1,3 @@
-<?php
-include(dirname(__FILE__).'/../../views/templates/navbar.php');
-?>
-
 <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgForm.jpg);height:90%;">
     <div class="row justify-content-center align-items-center h-100">
     <h2 class="text-center">Connexion</h2>
@@ -42,10 +38,11 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                             case 'empty':
                             ?>
 
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> Tous les champs sont obligatoires
-                            </div>
+                                <div class="alert alert-danger">
+                                    <strong>Erreur</strong> Tous les champs sont obligatoires
+                                </div>
                             <?php 
+                            break;
                         }
                     }
                 ?> 
@@ -56,14 +53,14 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                         <label for="email" class="col-form-label text-warning">Adresse Email*</label>
                         <input type="email" name="email" class="form-control" id="email" class="form-control"
                             placeholder="Adresse e-mail" autocomplete="email"
-                            value="<?= htmlentities($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8')?>" required>
+                            value="<?= htmlentities($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="password" class="col-form-label text-warning">Mot de passe*</label>
                         <input type="password" name="password" class="form-control" id="password" 
                             placeholder="Votre mot de passe" autocomplete="off" minlength="8" maxlength="20" 
-                            value="<?= htmlentities($_POST['password'] ?? '',)?>" required>
+                            value="<?= htmlentities($_POST['password'] ?? '',)?>" 'required>
                     </div>
 
                     <div class="form-group mt-3">
@@ -86,7 +83,3 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
     </div>
 </div>
 
-<?php    
-include(dirname(__FILE__).'/../../views/templates/footer.php');
-$content = ob_get_clean();
-?>
