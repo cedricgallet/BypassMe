@@ -1,10 +1,10 @@
 <?php
-include(dirname(__FILE__).'/../utils/db.php'); // On inclut la connexion à la base de données
-include(dirname(__FILE__).'/../utils/regex.php');
-include(dirname(__FILE__).'/../models/User.php');//models
+require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
+require_once __DIR__.'/../utils/regex.php';
+require_once __DIR__.'/../models/User.php';//models
 
 $title = 'Inscription';
-$pseudo=''; $email=''; $password=''; $ip=''; $token='';
+$id='';$pseudo=''; $email=''; $password=''; $ip=''; $token='';
 
 
 // On vérifie que les données sont bien envoyées
@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = htmlspecialchars($_POST['password']);
         $password2 = htmlspecialchars($_POST['password2']);
         $testRegex = preg_match('/'.REGEX_PSEUDO.'/',$pseudo);
-        $testEmail = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+        $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
 
 
         // On vérifie si l'utilisateur existe
@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         { 
             if($testRegex != false)// On vérifie le format du pseudo
             {               
-                if(filter_var($email, FILTER_VALIDATE_EMAIL))// Si l'email est au bon format
+                if($testEmail != false)// Si l'email est au bon format
                 {
                     if($password === $password2)// si les deux mdp sont les mêmes
                     {
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         $users->create();
 
                         // On redirige avec le message de succès
-                        header('Location:/../controllers/landing-ctrl.php?reg_err=success');
+                        header('Location:/../views/landing.php?reg_err=success');
                         die();
 
                     }else{ 
@@ -95,12 +95,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-include(dirname(__FILE__).'/../views/templates/navbar.php');
+require_once __DIR__.'/../views/templates/navbar.php';
 if($_SERVER["REQUEST_METHOD"] != "POST") 
 {
-    include(dirname(__FILE__).'/../views/form/registration.php');
+    require_once __DIR__.'/../views/form/registration.php';
 }
-include(dirname(__FILE__).'/../views/templates/footer.php');
+require_once __DIR__.'/../views/templates/footer.php';
 
 
 

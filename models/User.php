@@ -54,23 +54,24 @@ class User
         //CREATE ok
         public function create(){
 
-            try{
-                $sql = 'INSERT INTO `users` (`pseudo`, `email`, `password`, `ip`, `token`) 
-                        VALUES (:pseudo, :email, :password, :ip, :token)';
-                $sth = $this->_pdo->prepare($sql);
-    
-                $sth->bindValue(':lastname',$this->_lastname,PDO::PARAM_STR);
-                $sth->bindValue(':firstname',$this->_firstname,PDO::PARAM_STR);
-                $sth->bindValue(':birthdate',$this->_birthdate,PDO::PARAM_STR);
-                $sth->bindValue(':phone',$this->_phone,PDO::PARAM_STR);
-                $sth->bindValue(':mail',$this->_mail,PDO::PARAM_STR);
-                return $sth->execute();
-            }
-            catch(PDOException $e){
-                return $e->getCode();
-            }
-    
+        try{
+            $sql = 'INSERT INTO `users` (`pseudo`, `email`, `password`, `ip`, `token`) 
+                    VALUES (:pseudo, :email, :password, :ip, :token)';
+                    
+            $sth = $this->pdo->prepare($sql);
+
+            $sth->bindValue(':lastname',$this->_lastname,PDO::PARAM_STR);
+            $sth->bindValue(':firstname',$this->_firstname,PDO::PARAM_STR);
+            $sth->bindValue(':birthdate',$this->_birthdate,PDO::PARAM_STR);
+            $sth->bindValue(':phone',$this->_phone,PDO::PARAM_STR);
+            $sth->bindValue(':mail',$this->_mail,PDO::PARAM_STR);
+            return $sth->execute();
         }
+        catch(PDOException $e){
+            return $e->getCode();
+        }
+
+    }
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //READ ALL ok  @return array

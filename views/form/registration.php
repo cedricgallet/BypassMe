@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__.'/../../utils/regex.php';
+require_once __DIR__.'/../../views/templates/navbar.php';
+?>
+
 <!-- ==========================================================FORMULAIRE INSCRIPTION========================================================= -->
 <div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">
     <div class="row justify-content-center h-100">
@@ -126,5 +131,9 @@
         </div>
     </div>
 </div>
+<?php
+require_once __DIR__.'/../../views/templates/footer.php';
+?>
+
 
 <!-- ================================================================FIN INSCRIPTION================================================================================ -->

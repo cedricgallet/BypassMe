@@ -1,10 +1,10 @@
 <?php
 session_start(); // Démarrage de la session        
-include(dirname(__FILE__).'/../utils/db.php'); // On inclut la connexion à la base de données
-include(dirname(__FILE__).'/../utils/regex.php');
-include(dirname(__FILE__).'/../models/User.php');//models
+require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
+require_once __DIR__.'/../utils/regex.php';
+require_once __DIR__.'/../models/User.php';//models
 
-$email = ""; $password ="";
+$email = ""; $password ="";$title ='Connexion';
 ///////////////////////////EMAIL/PASSWORD : NETTOYAGE ET VALIDATION ET CREATION/CONNEXION BDD////////////////////////
 
 if($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -13,8 +13,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // Patch XSS
         $email = htmlspecialchars($_POST['email']); 
-        $password = htmlspecialchars($_POST['password']);  
-        $email = strtolower($email); // email transformé en minuscule
+        $password = htmlspecialchars($_POST['password']); 
+        $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
 
         // On instancie
         $user = new User();
@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($singleUser > 0)
         {
             // Si le mail est bon niveau format
-            if(filter_var($email, FILTER_VALIDATE_EMAIL))
+            if($testEmail != false)
             {
                 // Si le mot de passe est le bon
                 if(password_verify($password, $singleUser->password))
@@ -59,12 +59,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-include(dirname(__FILE__).'/../views/templates/navbar.php');
+require_once __DIR__.'/../views/templates/navbar.php';
 if($_SERVER["REQUEST_METHOD"] != "POST") 
 {
-    include(dirname(__FILE__).'/../views/form/login.php');
+    require_once __DIR__.'/../views/form/login.php';
 }
-include(dirname(__FILE__).'/../views/templates/footer.php');
+require_once __DIR__.'/../views/templates/footer.php';
 
 
 

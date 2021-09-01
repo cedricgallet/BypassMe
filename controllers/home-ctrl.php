@@ -1,6 +1,6 @@
 <?php
 
 // Génération du home:
-include(dirname(__FILE__) . '/../views/home.php');
+require_once __DIR__ . '/../views/home.php';
 
 
