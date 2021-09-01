@@ -118,7 +118,7 @@
                                     class='bottom text-decoration-none rounded-pill'>
                                     Se deconnecter</a>
                             
-                                    <a href='/../views/landing.php'
+                                    <a href='/../controllers/landing-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
                                     Mon espace</a>
                                 </li>";

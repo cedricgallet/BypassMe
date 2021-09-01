@@ -4,7 +4,7 @@ require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de
 require_once __DIR__.'/../models/User.php';//models
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']))
+if(!isset($_SESSION['user']['id']))
 {
     header('Location:/../views/form/login.php');
     die();
