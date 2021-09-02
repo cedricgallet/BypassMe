@@ -3,9 +3,7 @@ require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
 
-$title = 'Inscription';
-$id='';$pseudo=''; $email=''; $password=''; $ip=''; $token='';
-
+$id='';$pseudo=''; $email=''; $password=''; $ip=''; $token='';$title = 'Inscription';
 
 // On vérifie que les données sont bien envoyées
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,13 +24,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         // On vérifie si l'utilisateur existe
         $user = new User();// On instancie
         $singleUser = $user->readOneUser($id,$email);//récupération des infos de l'utilisateur (correspondant au mail et id)
-
-
-        //$check = $bdd->prepare('SELECT pseudo, email, password FROM users WHERE email = ?');
-        //$check->execute(array($email));
-        //$data = $check->fetch();
-        //$row = $check->rowCount();
-
     
         // Si la requête renvoie un 0 alors l'utilisateur n'existe pas 
         if($singleUser == 0)
@@ -48,17 +39,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         $password = password_hash($password, PASSWORD_BCRYPT, $cost);
                                             
                         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
-
-                        // On insère l'utilisateur dans la base de données
-
-                        //$insert = $bdd->prepare('INSERT INTO users(pseudo, email, password, ip, token) VALUES(:pseudo, :email, :password, :ip, :token)');
-                            //$insert->execute(array(
-                                //'pseudo' => $pseudo,
-                                //'email' => $email,
-                                //'password' => $password,
-                                //'ip' => $ip,
-                                //'token' => bin2hex(openssl_random_pseudo_bytes(64))
-                           // ));
                         
                         $users = new User($pseudo, $email, $password, $ip, $token);//On récupère les infos/On instancie
                         $users->create();

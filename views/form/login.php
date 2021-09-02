@@ -4,7 +4,7 @@ require_once __DIR__.'/../../views/templates/navbar.php';
 
 <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgForm.jpg);height:90%;">
     <div class="row justify-content-center align-items-center h-100">
-    <h2 class="d-flex justify-content-center">Connexion</h2>
+    <h2 class="d-flex justify-content-center"><?=$title ?? ''?></h2>
 
         <div class="col-12 col-lg-4">        
             <div class="login-wrap p-0">

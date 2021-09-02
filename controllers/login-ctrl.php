@@ -34,6 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     // On créer la session et on redirige sur landing.php
                     $_SESSION['user']['id'] = $singleUser->id;
                     $_SESSION['user']['pseudo'] = $singleUser->pseudo;
+                    $_SESSION['user']['email'] = $singleUser->email;
+                    $_SESSION['user']['ip'] = $singleUser->ip;
 
                     header('Location: /../controllers/landing-ctrl.php');
                     die();
