@@ -1,5 +1,5 @@
 <?php
-session_start(); // Démarrage de la session        
+if (empty(session_id())) session_start(); // Démarrage de la session        
 require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
@@ -18,7 +18,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         // On instancie
         $user = new User();
-        $user->email = $email;
         // récupération des infos de l'utilisateur (correspondant au mail,id,pseudo)
         $singleUser = $user->readOneUser($id,$email);
 

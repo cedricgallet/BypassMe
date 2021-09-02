@@ -1,5 +1,5 @@
 <?php   
-session_start();// Démarrage de la session 
+ if (empty(session_id())) session_start(); // Démarrage de la session 
 require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
 require_once __DIR__.'/../models/User.php';//models
 

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<?php if ( empty(session_id()) ) session_start(); ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -112,15 +114,16 @@
                                     </a>
                                 </li>";
                         } else {
-                                // Si la session existe on affiche
+                                // Si la session existe on affiche  $_SESSION['user']['pseudo']
                             echo "<li>
                                     <a href='/../controllers/logout-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
                                     Se deconnecter</a>
-                            
+                                    
+
                                     <a href='/../controllers/landing-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
-                                    Mon espace</a>
+                                    Mon compte</a>
                                 </li>";
                         }
                         ?>

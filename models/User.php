@@ -29,22 +29,17 @@ class User
     // VERIFIFIER SI MAIL EXISTE ok
     public static function checkDuplicate($email)
     {
-        $checkMailSql ="SELECT `email`
-                        FROM `users` 
-                        WHERE `email`= :email;";
-
         $pdo = Database::db_connect();
 
-        $stmtCheckMailReq = $pdo->prepare($checkMailSql);
-        
-        $stmtCheckMailReq->bindValue(':email',$email,PDO::PARAM_STR);
-        
-        try 
-        {
-            $stmtCheckMailReq->execute();
-            $data = $stmtCheckMailReq->fetch();
-            return $data;
-        } catch (PDOException $ex) {
+        try{
+            $sql = 'SELECT `id`, `pseudo`, `email`, `password`, `ip`, `token` FROM `users` WHERE `email` = :email;';
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':email',$email,PDO::PARAM_STR);
+            $sth->execute();
+            return($sth->fetch());
+        }
+        catch(PDOException $e){
             return false;
         }
     }     
@@ -56,15 +51,21 @@ class User
 
         try{
             $sql = 'INSERT INTO `users` (`pseudo`, `email`, `password`, `ip`, `token`) 
-                    VALUES (:pseudo, :email, :password, :ip, :token)';
+                    VALUES (:pseudo, :email, :password, :ip, :token);';
                     
             $sth = $this->pdo->prepare($sql);
 
-            $sth->bindValue(':lastname',$this->_lastname,PDO::PARAM_STR);
-            $sth->bindValue(':firstname',$this->_firstname,PDO::PARAM_STR);
-            $sth->bindValue(':birthdate',$this->_birthdate,PDO::PARAM_STR);
-            $sth->bindValue(':phone',$this->_phone,PDO::PARAM_STR);
-            $sth->bindValue(':mail',$this->_mail,PDO::PARAM_STR);
+            echo "Pseudo :" . $this -> _pseudo . "<br/>";
+            echo "Email :" .$this -> _email . "<br/>";
+            echo "Password :" .$this -> _password . "<br/>";
+            echo "Ip :" .$this -> _ip . "<br/>";
+            echo "Token :" .$this -> _token . "<br/>";
+
+            $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
+            $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
+            $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
+            $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
+            $sth->bindValue(':token',$this->_token,PDO::PARAM_STR);
             return $sth->execute();
         }
         catch(PDOException $e){
@@ -80,7 +81,7 @@ class User
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT * FROM `users`';
+            $sql = 'SELECT * FROM `users`;';
             $sth = $pdo->query($sql);
             return($sth->fetchAll());
         }
