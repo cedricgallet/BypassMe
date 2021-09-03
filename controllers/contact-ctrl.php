@@ -1,5 +1,4 @@
 <?php  
-
 // Tableau d'erreur vide //
 $error = [];
 

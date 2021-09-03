@@ -1,5 +1,5 @@
 <?php
-if ( empty(session_id()) ) session_start(); // Démarrage de la session        
+if (empty(session_id())) session_start(); // Démarrage de la session        
 require_once __DIR__.'/../utils/db.php'; // Connexion bdd
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
@@ -47,18 +47,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                             
                         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
-                        $user = new User("", $pseudo, $email, $password, "", $ip, $token);//On récupère les infos/On instancie
+                        $user = new User("", $pseudo, $email, $password, $ip, $token, "");//On récupère les infos/On instancie
                         $user->create();
 
                         // On récupère les infos infos de l'utilisateur 
-                        $singleUser = $user->readOneUser("",$email);
+                        $singleUser = $user->readOneUser($id,$email);
 
                         //On crée les sessions
                         $_SESSION['user']['id'] = $singleUser->id;
                         $_SESSION['user']['pseudo'] = $singleUser->pseudo;
                         $_SESSION['user']['email'] = $singleUser->email;
+                        $_SESSION['user']['ip'] = $singleUser->ip;  
                         $_SESSION['user']['avatar'] = $singleUser->avatar;
-                        $_SESSION['user']['ip'] = $singleUser->ip;    
 
                         // On redirige avec le message de succès
                         header('Location:/../views/landing.php?reg_err=success');

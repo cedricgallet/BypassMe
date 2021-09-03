@@ -114,11 +114,11 @@
                                     </a>
                                 </li>";
                         } else {
-                                // Si la session existe on affiche  $_SESSION['user']['pseudo']
+                                // Si la session existe on affiche  
                             echo "<li>
                                     <a href='/../controllers/logout-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
-                                    Se deconnecter</a>
+                                    ".$_SESSION['user']['pseudo']."</a>
                                     
 
                                     <a href='/../controllers/landing-ctrl.php'

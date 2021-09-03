@@ -1,12 +1,11 @@
 <!-- =======================================DEBUT MAIN===================================== -->
-
-<?php session_start();
-
+<?php
+if (empty(session_id())) 
+session_start(); // Démarrage de la session
 
 // Génération du navbar:
 include(dirname(__FILE__).'/../views/templates/navbar.php');
 include(dirname(__FILE__).'/../views/templates/header.php');
-
 ?>
 
 <main>

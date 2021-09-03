@@ -59,7 +59,7 @@ class User
         //CREATE ok
         public function create(){
         try{
-            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) VALUES (:pseudo, :email, :password, :ip, "aaa")';
+            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) VALUES (:pseudo, :email, :password, :ip, :token)';
                     
             $sth = $this->pdo->prepare($sql);
 
@@ -73,7 +73,7 @@ class User
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
-            //$sth->bindValue(':token',$this->_token,PDO::PARAM_STR);
+            $sth->bindValue(':token',$this->_token,PDO::PARAM_STR);
             return $sth->execute();
         }
         catch(PDOException $e){

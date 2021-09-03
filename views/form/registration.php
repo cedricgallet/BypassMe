@@ -66,7 +66,7 @@ require_once __DIR__.'/../../views/templates/navbar.php';
                     }
                 ?>
                 
-                <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="signin-form">
+                <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="signin-form">
 
                     <!-- =============================================CHAMP PSEUDO=============================================== -->
 
