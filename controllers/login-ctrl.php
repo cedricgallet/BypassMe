@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         // On instancie
         $user = new User();
-        // récupération des infos de l'utilisateur (correspondant au mail,id,pseudo)
+        // récupération des infos de l'utilisateur (correspondant au mail,id)
         $singleUser = $user->readOneUser($id,$email);
 
         //L'email/l'utilisateur existent(si requete renvoie 1 c'est ok)

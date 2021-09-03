@@ -1,10 +1,10 @@
 <?php
 if ( empty(session_id()) ) session_start(); // Démarrage de la session        
-require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
+require_once __DIR__.'/../utils/db.php'; // Connexion bdd
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
 
-$id='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title = 'Inscription';
+$user =null; $id ='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title ='Inscription';
 
 // On vérifie que les données sont bien envoyées
 if($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -46,19 +46,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         $password = password_hash($password, PASSWORD_BCRYPT, $cost);
                                             
                         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
-                        $user = null;
-                        $user = new User("", $pseudo, $email, $password, $ip, $token);//On récupère les infos/On instancie
+
+                        $user = new User("", $pseudo, $email, $password, "", $ip, $token);//On récupère les infos/On instancie
                         $user->create();
 
-                        // On instancie
-                        $user = new User();
                         // On récupère les infos infos de l'utilisateur 
-                        $singleUser = $user->readOneUser($id,$email);
+                        $singleUser = $user->readOneUser("",$email);
 
                         //On crée les sessions
                         $_SESSION['user']['id'] = $singleUser->id;
                         $_SESSION['user']['pseudo'] = $singleUser->pseudo;
                         $_SESSION['user']['email'] = $singleUser->email;
+                        $_SESSION['user']['avatar'] = $singleUser->avatar;
                         $_SESSION['user']['ip'] = $singleUser->ip;    
 
                         // On redirige avec le message de succès
