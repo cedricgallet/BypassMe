@@ -73,17 +73,23 @@ a:hover {
     color: #4ee91f;
 } */
 
-/* =========ESPACES ======== */
+/* =========HORLOGE========= */
+#horloge {
+    text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
+    font-size:40px;
+    height: 30px;
+}
 
+
+
+/* =========ESPACES ======== */
 #space {
     background-color: #c5f5e594;
     height: 20px;
 }
 
 /*==========HOME ======== */
-
 /*CARD*/
-
 #cardHeight {
     margin-bottom: 10px;
 }
@@ -94,7 +100,6 @@ a:hover {
 }
 
 /*===========NAVBAR========== */
-
 .navbar-toggler {
     color:#1fe5e9!important;
 }
@@ -128,7 +133,6 @@ a:hover {
 }
 
 /* =====HEADER======= */
-
 #imgIntro {
     background-size: cover;
     height: 500px;
@@ -171,9 +175,7 @@ a:hover {
 }
 
 /* ==========SECTION DROITE=========== */
-
 /*RIGHT MENU*/
-
 #btnConnect {
     background-color: #c5f5e594;
 }
@@ -189,7 +191,6 @@ a:hover {
 }
 
 /* ==========FOOTER========== */
-
 #footerHeight {
     height: 230px;
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
@@ -197,13 +198,11 @@ a:hover {
 }
 
 /* ====FORMULAIRE CONNEXION===== */
-
 #bgImageConnexion {
     background-size: cover;
 }
 
 /* ========LANDING============ */
-
 #landingSpace {
     background-size: cover;
     background-image: url(/../assets/img/bgLanding1.jpg);

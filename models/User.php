@@ -7,9 +7,9 @@ class User
     private $_pseudo;
     private $_email;
     private $_password;
-    private $_avatar;
     private $_ip;
     private $_token;
+    private $_avatar;
     private $_active;
     private $_created_at;
     private $_updated_at;
@@ -17,16 +17,18 @@ class User
 
     private $_pdo;
 
-    public function __construct($id =NULL,$pseudo =NULL,$email =NULL, $password =NULL, $avatar =NULL, $ip =NULL, $token =NULL, $active =NULL, $created_at =NULL, $updated_at =NULL, $deleted_at =NULL)
+    public function __construct($id =NULL,$pseudo =NULL,$email =NULL, $password =NULL, $ip =NULL, 
+                                $token =NULL, $avatar =NULL, $active =NULL, $created_at =NULL,
+                                $updated_at =NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_id = $id;
         $this->_pseudo = $pseudo;
         $this->_email = $email;
         $this->_password = $password;
-        $this->_avatar = $avatar;
         $this->_ip = $ip;
         $this->_token = $token;
+        $this->_avatar = $avatar;
         $this->_active = $active;
         $this->_created_at = $created_at;
         $this->_updated_at = $updated_at;
@@ -42,7 +44,7 @@ class User
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT `id`, `pseudo`, `email`, `password`,`avatar`, `ip`, `token` FROM `users` WHERE `email` = :email;';
+            $sql = 'SELECT `id`, `pseudo`, `email`, `password`, `ip`, `token` FROM `users` WHERE `email` = :email;';
             $sth = $pdo->prepare($sql);
 
             $sth->bindValue(':email',$email,PDO::PARAM_STR);
@@ -59,7 +61,8 @@ class User
         //CREATE ok
         public function create(){
         try{
-            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) VALUES (:pseudo, :email, :password, :ip, :token)';
+            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) 
+                    VALUES (:pseudo, :email, :password, :ip, :token);';
                     
             $sth = $this->pdo->prepare($sql);
 
@@ -74,6 +77,7 @@ class User
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
             $sth->bindValue(':token',$this->_token,PDO::PARAM_STR);
+
             return $sth->execute();
         }
         catch(PDOException $e){
@@ -101,17 +105,17 @@ class User
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // READ ONE LIGNE ok
-    public static function readOneUser($id,$email){
+    public static function readOneUser($email)
+    {
     
         $pdo = Database::db_connect();
 
         try{
             $sql = 'SELECT * 
-            FROM `users` WHERE `id` = :id OR `email` = :email;';
+            FROM `users` WHERE `email` = :email;';
             $sth = $pdo->prepare($sql);
 
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            $sth->bindValue(':email',$email,PDO::PARAM_STR);
+            $sth->bindValue(':email',$email,PDO::PARAM_INT);
             $sth->execute();
             return($sth->fetch());
         }
@@ -128,14 +132,16 @@ class User
 
         try{
             $sql = 'UPDATE `users` SET `pseudo` = :pseudo, `email` = :email, `ip` = :ip
-                    WHERE `id` = :id';
+                    WHERE `id` = :id;';
+
             $sth = $this->_pdo->prepare($sql);
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
             $sth->bindValue(':token',$this->_token,PDO::PARAM_STR);
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+
             return($sth->execute()); 
         }
         catch(PDOException $e){

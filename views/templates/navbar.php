@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php if ( empty(session_id()) ) session_start(); ?>
+<?php if(empty(session_id())) session_start();?>
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
     <title>LookThis</title>
 </head>
 
-<body>
+<body onload=showDate();>
 
     <!-- =======================NAVBAR========================= -->
 

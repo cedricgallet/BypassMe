@@ -1,4 +1,5 @@
 <?php
+if (empty(session_id())) session_start(); // Démarrage de la session        
 require_once __DIR__.'/../../utils/regex.php';
 require_once __DIR__.'/../../views/templates/navbar.php';
 ?>
@@ -66,10 +67,10 @@ require_once __DIR__.'/../../views/templates/navbar.php';
                     }
                 ?>
                 
-                <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="signin-form">
-
+                <form action="/../controllers/registration-ctrl.php" method="post" class="signin-form">
+                <input type="hidden" value="<?= $id ?? '' ?>" class="form-control" id="id" name="id"> 
                     <!-- =============================================CHAMP PSEUDO=============================================== -->
-
+                    
                     <div class="form-group">
                         <label for="pseudo" class="col-form-label text-warning">Pseudo*</label>
                         
