@@ -47,15 +47,15 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2'
                     $user->create();
 
 
-                    $singleUser = $user -> readOneUser($email);
+                    $singleUser = $user->readOneUser($id,$email);
                     //On crée les sessions
-                    var_dump($singleUser);
-                    var_dump($singleUser -> id);
+                    //var_dump($singleUser);
+                    //var_dump($singleUser -> id);
                     $_SESSION['user']['id'] = $singleUser->id;
                     $_SESSION['user']['pseudo'] = $singleUser->pseudo;
                     $_SESSION['user']['email'] =$singleUser->email;
                     $_SESSION['user']['ip'] =$singleUser->ip;  
-                    $_SESSION['user']['avatar'] =$singleUser->avatar;  
+                    //$_SESSION['user']['avatar'] =$singleUser->avatar;  
 
                     // On redirige avec le message de succès
                     header('Location:/../views/landing.php?reg_err=success');

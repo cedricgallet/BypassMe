@@ -105,17 +105,17 @@ class User
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // READ ONE LIGNE ok
-    public static function readOneUser($email)
+    public static function readOneUser($id,$email)
     {
     
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT * 
-            FROM `users` WHERE `email` = :email;';
+            $sql = 'SELECT * FROM `users` WHERE `id` = :id OR `email` = :email;';
             $sth = $pdo->prepare($sql);
 
-            $sth->bindValue(':email',$email,PDO::PARAM_INT);
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+            $sth->bindValue(':email',$email,PDO::PARAM_STR);
             $sth->execute();
             return($sth->fetch());
         }

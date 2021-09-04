@@ -30,7 +30,7 @@ require_once __DIR__ .'/../views/templates/navbar.php';
         </div>
         
         <div class="col-12 col-lg-6 d-flex flex-column align-items-center mt-3 h-100">
-        <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
+            <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
             <a href="/../views/form/landingUpdatePassword.php" class="boutton btn btn-info text-white mb-2">Changer
                 mon mot de passe</a>
             <a href="/../views/form/landingAddAvatar.php" class="boutton btn btn-info text-white mb-2">Changer
