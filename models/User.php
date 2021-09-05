@@ -58,19 +58,14 @@ class User
 
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        //CREATE ok
-        public function create(){
+    //CREATE ok
+    public function create()
+    {
         try{
             $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) 
                     VALUES (:pseudo, :email, :password, :ip, :token);';
                     
             $sth = $this->pdo->prepare($sql);
-
-            //echo "Pseudo :" . $this -> _pseudo . "<br/>";
-            //echo "Email :" .$this -> _email . "<br/>";
-            //echo "Password :" .$this -> _password . "<br/>";
-            //echo "Ip :" .$this -> _ip . "<br/>";
-            //echo "Token :" .$this -> _token . "<br/>";
 
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
@@ -87,8 +82,8 @@ class User
     }
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //READ ALL ok  @return array
-    public static function readAllUsers()
+    //READ ALL ok 
+    public static function getAll()
     {
         $pdo = Database::db_connect();
 
@@ -105,7 +100,7 @@ class User
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // READ ONE LIGNE ok
-    public static function readOneUser($id,$email)
+    public static function getOne($id,$email)
     {
     
         $pdo = Database::db_connect();

@@ -50,7 +50,7 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2'
                     $user->create();
 
 
-                    $singleUser = $user->readOneUser($id,$email);
+                    $singleUser = $user->getOne($id,$email);
                     //On crée les sessions
                     //var_dump($singleUser);
                     //var_dump($singleUser -> id);
