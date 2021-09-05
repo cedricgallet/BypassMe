@@ -1,7 +1,9 @@
 <!-- =======================================DEBUT MAIN===================================== -->
 <?php
 if (empty(session_id())) 
-session_start(); // Démarrage de la session
+{
+    session_start(); // Démarrage de la session 
+}        
 
 // Génération du navbar:
 include(dirname(__FILE__).'/../views/templates/navbar.php');

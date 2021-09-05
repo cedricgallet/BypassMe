@@ -1,5 +1,8 @@
 <?php
-if (empty(session_id())) session_start(); // Démarrage de la session        
+if (empty(session_id())) 
+{
+    session_start(); // Démarrage de la session 
+}        
 require_once __DIR__.'/../utils/db.php'; // Connexion bdd
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
@@ -31,9 +34,9 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2'
 
     if($checkEmail ==0)// Si la requête renvoie un 0 alors l'utilisateur n'existe pas 
     { 
-        if($testRegex !=false)//On vérifie le format du pseudo
+        if($testRegex)//On vérifie le format du pseudo(=vrai)
         {               
-            if($testEmail !=false)//Si l'email est au bon format
+            if($testEmail)//Si l'email est au bon format(=vrai)
             {
                 if($password ===$password2)// si les deux mdp sont les mêmes
                 {

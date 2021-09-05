@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__.'/../../views/templates/navbar.php';
+if (empty(session_id())) 
+{
+    session_start(); // Démarrage de la session 
+}        
 ?>
 
 <div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgForm.jpg);height:90%;">

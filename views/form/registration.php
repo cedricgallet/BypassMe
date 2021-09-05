@@ -1,5 +1,8 @@
 <?php
-if (empty(session_id())) session_start(); // Démarrage de la session        
+if (empty(session_id())) 
+{
+    session_start(); // Démarrage de la session 
+}        
 require_once __DIR__.'/../../utils/regex.php';
 require_once __DIR__.'/../../views/templates/navbar.php';
 ?>

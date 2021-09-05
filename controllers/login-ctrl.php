@@ -1,5 +1,8 @@
 <?php
-if (empty(session_id())) session_start(); // Démarrage de la session        
+if (empty(session_id())) 
+{
+    session_start(); // Démarrage de la session 
+}        
 require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
@@ -25,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($singleUser > 0)
         {
             // Si le mail est bon niveau format
-            if($testEmail != false)
+            if($testEmail)
             {
                 // Si le mot de passe est le bon
                 if(password_verify($password, $singleUser->password))
