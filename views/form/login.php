@@ -3,7 +3,7 @@ require_once __DIR__.'/../../views/templates/navbar.php';
 require_once __DIR__.'/../../utils/config.php';//Gestion erreur
 ?>
 
-<div id="bgImageConnexion" class="container-fluid">
+<div id="bgImageConnexion" class="container-fluid bgImageConnexion">
     <div class="row justify-content-center align-items-center h-100">
     <h2 class="d-flex justify-content-center"><?=$title ?? ''?></h2>
 

@@ -1,7 +1,12 @@
 <?php
-session_start();
-require_once __DIR__.'/../../views/templates/navbar.php';
+if (empty(session_id())){
+    session_start(); // Démarrage de la session  
+}       
+//require_once __DIR__.'/../../views/templates/navbar.php';
+//require_once __DIR__.'/../models/User.php';//models
+//require_once __DIR__.'/../../utils/config.php';//Gestion erreur
 ?>
+
 <!-- ======================================CHANGER MOT DE PASSE=================================== -->
 <div id="landingSpace" class="container-fluid h-100">
     <div class="row justify-content-center h-100">
@@ -9,7 +14,18 @@ require_once __DIR__.'/../../views/templates/navbar.php';
 
         <div class="col-lg-4 p-0">
                 
-            <form action="/../controllers/landingChange_password-ctrl.php" method="POST">
+                <?php 
+                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
+                    {
+                        if(!array_key_exists($msgCode, $displayMsg))
+                        {
+                            $msgCode = 0;
+                        }
+                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    }
+                ?>
+
+            <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
                 <div class="mb-3">
                     <label for='current_password' class="text-warning">Mot de passe actuel*</label>                       
                     <input type="password" id="current_password" name="current_password"

@@ -1,4 +1,6 @@
-<?php if (empty(session_id())) session_start(); // Démarrage de la session  
+<?php if (empty(session_id())){
+    session_start(); // Démarrage de la session  
+} 
 require_once __DIR__ .'/../views/templates/navbar.php';
 ?>      
 
@@ -31,9 +33,9 @@ require_once __DIR__ .'/../views/templates/navbar.php';
         
         <div class="col-12 col-lg-6 d-flex flex-column align-items-center mt-3 h-100">
         <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
-            <a href="/../views/form/landingUpdatePassword.php" class="boutton btn btn-info text-white mb-2">Changer
+            <a href="/../views/form/userUpdatePass.php" class="boutton btn btn-info text-white mb-2">Changer
                 mon mot de passe</a>
-            <a href="/../views/form/landingAddAvatar.php" class="boutton btn btn-info text-white mb-2">Changer
+            <a href="/../views/form/userAddAvatar.php" class="boutton btn btn-info text-white mb-2">Changer
                 mon avatar</a>
                 <a href="/../controllers/logout-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
                 <a href="/../controllers/deleteUser-ctrl.php?id=" class="boutton btn btn-warning">supprimer mon compte</a>

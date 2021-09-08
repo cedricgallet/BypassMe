@@ -1,8 +1,10 @@
+<?php if(empty(session_id())){
+    session_start();
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
-<?php if(empty(session_id())) session_start();?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -118,12 +120,12 @@
                             echo "<li>
                                     <a href='/../controllers/logout-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
-                                    ".$_SESSION['user']['pseudo']."</a>
+                                    Mon compte</a>
                                     
 
                                     <a href='/../controllers/landing-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
-                                    Mon compte</a>
+                                    AVATAR</a>
                                 </li>";
                         }
                         ?>

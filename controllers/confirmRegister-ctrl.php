@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (empty(session_id())){
+    session_start(); // Démarrage de la session  
+}       
 require_once __DIR__. '/../models/User.php';
 
 // Nettoyage de l'id passé en GET dans l'url

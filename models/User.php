@@ -5,14 +5,12 @@ require_once __DIR__.'/../utils/sendMail.php';
 
 class User
 {
-    private $_id=0;
     private $_pseudo;
     private $_email;
     private $_password;
     private $_ip;
-    private $_token;
     private $_avatar;
-    private $_active;
+    private $_type;
     private $_created_at;
     private $_updated_at;
     private $_deleted_at;
@@ -20,7 +18,7 @@ class User
     private $_pdo;
 
     public function __construct($pseudo, $email, $password, $ip =NULL, 
-                                $token =NULL, $avatar =NULL, $active =NULL, $created_at =NULL,
+                                $avatar =NULL, $type, $created_at =NULL,
                                 $updated_at =NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -28,9 +26,8 @@ class User
         $this->_email = $email;
         $this->_password = $password;
         $this->_ip = $ip;
-        $this->_token = $token;
         $this->_avatar = $avatar;
-        $this->_active = $active;
+        $this->_type = $type;
         $this->_created_at = $created_at;
         $this->_updated_at = $updated_at;
         $this->_deleted_at = $deleted_at;
@@ -39,10 +36,9 @@ class User
     }
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // VERIFIFIER MAIL EXISTE ok
-    
-    public static function getByEmail($email){
-
+    // VERIFIFIER MAIL EXISTE ok 
+    public static function getByEmail($email)
+    {
         $pdo = Database::db_connect();
 
         try{
@@ -66,8 +62,8 @@ class User
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // READ ONE LIGNE ok
-    public static function get($id){
-        
+    public static function get($id)
+    {
         $pdo = Database::db_connect();
 
         try{
@@ -92,8 +88,8 @@ class User
     public function create()
     {
         try{
-            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `confirmation_token`) 
-            VALUES (:pseudo, :email, :password, :ip, :confirmation_token);';
+            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `confirmation_token`, `avatar` `type`) 
+            VALUES (:pseudo, :email, :password, :ip, :confirmation_token, :avatar, :type);';
             
             $sth = $this->_pdo->prepare($sql);
 
@@ -104,6 +100,8 @@ class User
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
             $sth->bindValue(':confirmation_token',$this->$token,PDO::PARAM_STR);
+            $sth->bindValue(':avatar',$this->_avatar,PDO::PARAM_STR);
+            $sth->bindValue(':type',$this->_type,PDO::PARAM_STR);
             
             if($sth->execute())
             {
@@ -121,6 +119,41 @@ class User
         catch(PDOException $e){
             return false;
         }
+    }
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // VALIDATION REGISTER
+
+    public static function validateSignUp($id)
+    {
+        try{
+
+            $pdo = Database::db_connect();
+            $sql = 'UPDATE `users` 
+                    SET `confirmed_at` = NOW()
+                    WHERE `id` = :id;';
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+            if($sth->execute()){
+                return $sth->rowCount(); 
+            }
+            
+        }
+        catch(PDOException $e){
+            return false;
+        }
+
+    }
+
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // TOKEN
+    private function setToken()
+    {
+        $length = 60;
+        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
     }
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -142,10 +175,11 @@ class User
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //UPDATE ok
-    public function updateUser($id){
+    public function updateUser($id)
+    {
 
         try{
-            $sql = 'UPDATE `users` SET `pseudo` = :pseudo, `email` = :email, `ip` = :ip
+            $sql = 'UPDATE `users` SET `pseudo` = :pseudo, `email` = :email, `ip` = :ip, `avatar` = :avatar
                     WHERE `id` = :id;';
 
             $sth = $this->_pdo->prepare($sql);
@@ -181,41 +215,6 @@ class User
             return false;
         }
     }
-
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // TOKEN
-    private function setToken()
-    {
-        $length = 60;
-        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
-        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
-    }
-
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // VALIDATION REGISTER
-
-    public static function validateSignUp($id)
-    {
-        try{
-
-            $pdo = Database::db_connect();
-            $sql = 'UPDATE `users` 
-                    SET `confirmed_at` = NOW()
-                    WHERE `id` = :id;';
-            $sth = $pdo->prepare($sql);
-
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            if($sth->execute()){
-                return $sth->rowCount(); 
-            }
-            
-        }
-        catch(PDOException $e){
-            return false;
-        }
-
-    }
-
 
 }
 

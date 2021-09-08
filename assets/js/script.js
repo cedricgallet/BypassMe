@@ -1,5 +1,6 @@
 //Horloge
-function refresh(){
+function refresh()
+{
     var t = 1000; // rafraîchissement en millisecondes
     setTimeout('showDate()',t)
 }

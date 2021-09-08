@@ -7,8 +7,8 @@ require_once __DIR__.'/../../views/templates/navbar.php';
 require_once __DIR__.'/../../utils/config.php';
 ?>
 
-<!-- ==========================================================FORMULAIRE INSCRIPTION========================================================= -->
-<div id="bgImageConnexion" class="container-fluid h-100">
+<!-- ================================FORMULAIRE INSCRIPTION==================================== -->
+<div id="signUpForm" class="container-fluid h-100 bgImageConnexion">
     <div class="row justify-content-center h-100">
     <h2 class="text-center mt-5"><?=$title ?? ''?></h2>
 
@@ -27,7 +27,7 @@ require_once __DIR__.'/../../utils/config.php';
                 ?>
                 
                 <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="signin-form">
-                    <!-- =============================================CHAMP PSEUDO=============================================== -->
+                    <!-- ===========================CHAMP PSEUDO=========================== -->
                     
                     <div class="form-group">
                         <label for="pseudo" class="col-form-label text-warning">Pseudo*</label>
@@ -39,7 +39,7 @@ require_once __DIR__.'/../../utils/config.php';
                             pattern="<?=REGEX_PSEUDO?>" 'required>
                     </div>
 
-                    <!-- ============================================CHAMP EMAIL=================================================== -->
+                    <!-- ===========================CHAMP EMAIL============================ -->
 
 
                     <div class="form-group">
@@ -50,7 +50,7 @@ require_once __DIR__.'/../../utils/config.php';
                             value="<?= htmlentities($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
                     </div>
 
-                    <!-- =====================================CHAMP EMAIL CONFIRMATION============================================== -->
+                    <!-- =================================CHAMP EMAIL CONFIRMATION============================ -->
 
                     <div class="form-group">
                         <label for="email2" class="col-form-label text-warning">Adresse Email*</label>
@@ -60,7 +60,7 @@ require_once __DIR__.'/../../utils/config.php';
                             value="<?= htmlentities($_POST['email2'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
                     </div>
 
-                    <!-- =======================================CHAMP MOT DE PASSE================================================== -->
+                    <!-- ===============================CHAMP MOT DE PASSE============================= -->
                 
                     <div class="form-group">
                         <label for="password" class="col-form-label text-warning">Mot de passe*</label>
@@ -70,7 +70,7 @@ require_once __DIR__.'/../../utils/config.php';
                             value="<?= htmlentities($_POST['password'] ?? '',)?>" 'required>
                     </div>
 
-                    <!-- ================================CHAMP MOT DE PASSE CONFIRMATION============================================= -->
+                    <!-- ============================CHAMP MOT DE PASSE CONFIRMATION========================= -->
 
                     <div class="form-group">
                         <label for="password2" class="col-form-label text-warning">Confirmation mot de passe*</label>
@@ -94,5 +94,5 @@ require_once __DIR__.'/../../utils/config.php';
 require_once __DIR__.'/../../views/templates/footer.php';
 ?>
 
-
-<!-- ================================================================FIN INSCRIPTION================================================================================ -->
+<script src="/../assets/js/checkPass.js"></script>
+<!-- =======================================FIN INSCRIPTION========================================== -->

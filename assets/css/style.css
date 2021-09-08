@@ -45,9 +45,9 @@ h4 {
 
 
 /* ========BACKGROUND FORM========= */
-#bgImageConnexion{
-    background-image: url(/../assets/img/bgForm.jpg);
-    height: 90%;
+.bgImageConnexion{
+    background-image: url(/../assets/img/bgForm.jpg)!important;
+    height: 90%!important;
 }
 /* ========PARAGRAPHE======= */
 

@@ -4,11 +4,11 @@ if (empty(session_id())){
 }       
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
-require_once __DIR__. '/../controllers/confirmSignUp-ctrl.php';//Confirmation register
+
 
 $isRegistered = false; $user =null; $id ='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title ='Inscription';
 
-if($_SERVER["REQUEST_METHOD"] == "POST") 
+if($_SERVER["REQUEST_METHOD"] == "POST") //On ne controle que s'il y a des données envoyées 
 {
     // Si les variables existent et qu'elles ne sont pas vides
     if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2']) && !empty($_POST['password']) && !empty($_POST['password2']))
@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                             
                         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
-                        $user =new User($pseudo, $email, $password, $ip, $token);//On récupère les infos/On instancie
+                        $user =new User($pseudo, $email, $password, $ip, $confirmation_token, "", $type);//On récupère les infos/On instancie
                         $result = $user->create();
 
                         if($result===true){
@@ -58,6 +58,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             // Si l'enregistrement s'est mal passé, on affiche à nouveau le formulaire de création avec un message d'erreur.
                             $msgCode = $result;
                         }
+
+
                     
 
                     }else{ 
