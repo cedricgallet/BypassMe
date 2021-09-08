@@ -1,61 +1,27 @@
 <?php
 require_once __DIR__.'/../../views/templates/navbar.php';
-if (empty(session_id())) 
-{
-    session_start(); // Démarrage de la session 
-}        
+require_once __DIR__.'/../../utils/config.php';//Gestion erreur
 ?>
 
-<div id="bgImageConnexion" class="container-fluid" style="background-image: url(/../assets/img/bgForm.jpg);height:90%;">
+<div id="bgImageConnexion" class="container-fluid">
     <div class="row justify-content-center align-items-center h-100">
     <h2 class="d-flex justify-content-center"><?=$title ?? ''?></h2>
 
         <div class="col-12 col-lg-4">        
             <div class="login-wrap p-0">
+                
                 <?php 
-                    if(isset($_GET['login_err']))
+                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
                     {
-                        $err = htmlspecialchars($_GET['login_err']);
-
-                        switch($err)
+                        if(!array_key_exists($msgCode, $displayMsg))
                         {
-                            case 'password':
-                            ?>
-                                <div class="alert alert-danger">
-                                    <strong>Erreur</strong> Le mot de passe est incorrect
-                                </div>
-                            <?php
-                            break;
-
-                            case 'email':
-                            ?>
-                                <div class="alert alert-danger">
-                                    <strong>Erreur</strong> format de l'email incorrect
-                                </div>
-                            <?php
-                            break;
-
-                            case 'already':
-                            ?>
-                                <div class="alert alert-danger">
-                                    <strong>Erreur</strong> Ce compte n'existe pas
-                                </div>
-                            <?php
-                            break;
-
-                            case 'empty':
-                            ?>
-
-                                <div class="alert alert-danger">
-                                    <strong>Erreur</strong> Tous les champs sont obligatoires
-                                </div>
-                            <?php 
-                            break;
+                            $msgCode = 0;
                         }
+                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                     }
-                ?> 
+                ?>
 
-                <form action="/../controllers/login-ctrl.php" method="post" class="signin-form px-4 py-3">
+                <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="signin-form px-4 py-3">
 
                     <div class="form-group">
                         <label for="email" class="col-form-label text-warning">Adresse Email*</label>

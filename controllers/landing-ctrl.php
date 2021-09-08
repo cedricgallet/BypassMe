@@ -1,10 +1,8 @@
 <?php
-if (empty(session_id())) 
-{
-    session_start(); // Démarrage de la session 
-}        
+if (empty(session_id())) session_start(); // Démarrage de la session        
+require_once __DIR__ .'/../utils/db.php'; // Connexion bdd
 
-$title = 'Tableau de bord';
+$title = 'Bienvenue sur ton espace personnel';
 
 // Si la session n'existe pas 
 if(!isset($_SESSION['user']['id']))

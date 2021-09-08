@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/../utils/db.php');
+require_once(dirname(__FILE__).'/../utils/config.php');
 
 class User
 {
@@ -58,14 +59,19 @@ class User
 
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //CREATE ok
-    public function create()
-    {
+        //CREATE ok
+        public function create(){
         try{
             $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) 
                     VALUES (:pseudo, :email, :password, :ip, :token);';
                     
-            $sth = $this->pdo->prepare($sql);
+            $sth = $this->_pdo->prepare($sql);
+
+            //echo "Pseudo :" . $this -> _pseudo . "<br/>";
+            //echo "Email :" .$this -> _email . "<br/>";
+            //echo "Password :" .$this -> _password . "<br/>";
+            //echo "Ip :" .$this -> _ip . "<br/>";
+            //echo "Token :" .$this -> _token . "<br/>";
 
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
@@ -82,8 +88,8 @@ class User
     }
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //READ ALL ok 
-    public static function getAll()
+    //READ ALL ok  @return array
+    public static function readAllUsers()
     {
         $pdo = Database::db_connect();
 
@@ -100,17 +106,16 @@ class User
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // READ ONE LIGNE ok
-    public static function getOne($id,$email)
+    public static function readOneUser($email)
     {
     
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT * FROM `users` WHERE `id` = :id OR `email` = :email;';
+            $sql = 'SELECT * FROM `users` WHERE `email` = :email;';
             $sth = $pdo->prepare($sql);
 
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            $sth->bindValue(':email',$email,PDO::PARAM_STR);
+            $sth->bindValue(':email',$email,PDO::PARAM_INT);
             $sth->execute();
             return($sth->fetch());
         }

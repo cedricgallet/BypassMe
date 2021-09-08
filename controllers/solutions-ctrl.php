@@ -1,13 +1,10 @@
 <?php
-if (empty(session_id())) 
-{
-    session_start(); // Démarrage de la session 
-}        
+if (empty(session_id())) session_start(); // Démarrage de la session 
 require_once __DIR__.'/../utils/db.php'; // Connexion bdd
 
 // si la session n'existe pas ou si l'utilisateur n'est pas connecté on redirige
 if(!isset($_SESSION['user'])){
-    header('Location:/../views/home.php');
+    header('Location:/index.php');
     die();
 }
 

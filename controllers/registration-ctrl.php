@@ -1,96 +1,89 @@
 <?php
-if (empty(session_id())) 
-{
-    session_start(); // Démarrage de la session 
-}        
+if (empty(session_id())){
+    session_start(); // Démarrage de la session  
+}       
 require_once __DIR__.'/../utils/db.php'; // Connexion bdd
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
 
 $user =null; $id ='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title ='Inscription';
 
-
-// Si les variables existent et qu'elles ne sont pas vides
-if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2']) && !empty($_POST['password']) && !empty($_POST['password2']))
+if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-    // Patch XSS
-    $pseudo = htmlspecialchars($_POST['pseudo']);
-    $email = htmlspecialchars($_POST['email']);
-    $email2 = htmlspecialchars($_POST['email2']);
-    $password = htmlspecialchars($_POST['password']);
-    $password2 = htmlspecialchars($_POST['password2']);
-    
-    $testRegex = preg_match('/'.REGEX_PSEUDO.'/',$pseudo);
-    $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
-    $email = strtolower($email); // on transforme toute les lettres majuscule en minuscule
-    $email2 = strtolower($email2); // on transforme toute les lettres majuscule en minuscule
+    // Si les variables existent et qu'elles ne sont pas vides
+    if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2']) && !empty($_POST['password']) && !empty($_POST['password2']))
+    {
+        // XSS
+        $pseudo = htmlspecialchars($_POST['pseudo']);
+        $email = htmlspecialchars($_POST['email']);
+        $email2 = htmlspecialchars($_POST['email2']);
+        $password = htmlspecialchars($_POST['password']);
+        $password2 = htmlspecialchars($_POST['password2']);
+        
+        $testRegex = preg_match('/'.REGEX_PSEUDO.'/',$pseudo);
+        $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $email = strtolower($email); // on transforme toute les lettres majuscule en minuscule
+        $email2 = strtolower($email2); // on transforme toute les lettres majuscule en minuscule
 
 
-    // On vérifie si l'utilisateur existe
-    // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe (grâce a son email)
-    $checkEmail = User::checkDuplicate($email);
+        // On vérifie si l'utilisateur existe
+        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe (grâce a son email)
+        $checkUser = User::checkDuplicate($email);
 
-    //if ($checkEmail == false) echo "check : " .$checkEmail; else echo "lol";  //OK OK
+        //if ($checkEmail == false) echo "check : " .$checkEmail; else echo "lol";  //OK OK
 
-    if($checkEmail ==0)// Si la requête renvoie un 0 alors l'utilisateur n'existe pas 
-    { 
-        if($testRegex)//On vérifie le format du pseudo(=vrai)
-        {               
-            if($testEmail)//Si l'email est au bon format(=vrai)
-            {
-                if($password ===$password2)// si les deux mdp sont les mêmes
+        if($checkUser == 0)// Si la requête renvoie un 0 alors l'utilisateur n'existe pas 
+        { 
+            if($testRegex)//On vérifie le format du pseudo
+            {               
+                if($testEmail)//Si l'email est au bon format
                 {
-                    // On hash le mot de passe avec Bcrypt, via un coût de 12
-                    $cost =['cost' => 12];
-                    $password =password_hash($password, PASSWORD_BCRYPT, $cost);
-                                        
-                    $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
+                    if($password === $password2)// si les deux mdp sont les mêmes
+                    {
+                        // On hash le mot de passe avec Bcrypt, via un coût de 12
+                        $cost =['cost' => 12];
+                        $password =password_hash($password, PASSWORD_DEFAULT, $cost);
+                                            
+                        $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
-                    $user =new User("",$pseudo, $email, $password, $ip, $token,"");//On récupère les infos/On instancie
-                    $user->create();
+                        $user =new User($pseudo, $email, $password, $ip, $token);//On récupère les infos/On instancie
+                        $result = $user->create();
 
+                        if($result===true){
+                            header('location: /../views/landing.php?msgCode=1');// On redirige avec le message de succès
+                            die;
 
-                    $singleUser = $user->getOne($id,$email);
-                    //On crée les sessions
-                    //var_dump($singleUser);
-                    //var_dump($singleUser -> id);
-                    $_SESSION['user']['id'] = $singleUser->id;
-                    $_SESSION['user']['pseudo'] = $singleUser->pseudo;
-                    $_SESSION['user']['email'] =$singleUser->email;
-                    $_SESSION['user']['ip'] =$singleUser->ip;  
-                    //$_SESSION['user']['avatar'] =$singleUser->avatar;  
+                        } else {
+                            // Si l'enregistrement s'est mal passé, on affiche à nouveau le formulaire de création avec un message d'erreur.
+                            $msgCode = $result;
+                        }
+                    
 
-                    // On redirige avec le message de succès
-                    header('Location:/../views/landing.php?reg_err=success');
-                    die();
+                    }else{ 
+                        header('Location: /../views/form/registration.php?msgCode=14'); 
+                        die();
+                    }
 
                 }else{ 
-                    header('Location: /../views/form/registration.php?reg_err=password'); 
+                    header('Location: /../views/form/registration.php?msgCode=16'); 
                     die();
                 }
 
             }else{ 
-                header('Location: /../views/form/registration.php?reg_err=email'); 
+                header('Location: /../views/form/registration.php?msgCode=15'); 
                 die();
             }
 
         }else{ 
-            header('Location: /../views/form/registration.php?reg_err=pseudo_length'); 
+            header('Location: /../views/form/registration.php?msgCode=13'); 
             die();
         }
 
-    }else{ 
-        header('Location: /../views/form/registration.php?reg_err=already'); 
+    } else {
+        header('Location: /../views/form/registration.php?msgCode=18'); 
         die();
-    }
-
-} else {
-    header('Location: /../views/form/registration.php?reg_err=empty'); 
-    die();
+    }     
 }     
-
-
-
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
 require_once __DIR__.'/../views/templates/navbar.php';
 require_once __DIR__.'/../views/form/registration.php';
