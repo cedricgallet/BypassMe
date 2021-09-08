@@ -13,17 +13,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(!empty($_POST['email']) && !empty($_POST['password'])) // Si champs email, password ne sont pas vident
     {
         // XSS
-        $email = htmlspecialchars($_POST['email']); 
         $password = htmlspecialchars($_POST['password']); 
+        $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
         $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
 
-        // On instancie
-        $user = new User();
         // récupération des infos de l'utilisateur (correspondant au mail,id)
-        $singleUser = $user->readOneUser($id,$email);
+        $user = User::getByEmail($email);
+
 
         //L'email/l'utilisateur existent(si requete renvoie 1 c'est ok)
-        if($singleUser > 0)
+        if($user > 0)
         {
             // Si le mail est bon niveau format
             if($testEmail)
@@ -32,10 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 if(password_verify($password, $singleUser->password))
                 {
                     // On créer la session et on redirige sur landing.php
-                    $_SESSION['user']['id'] = $singleUser->id;
-                    $_SESSION['user']['pseudo'] = $singleUser->pseudo;
-                    $_SESSION['user']['email'] = $singleUser->email;
-                    $_SESSION['user']['ip'] = $singleUser->ip;
+                    $_SESSION['user'] = $user;
 
                     header('Location: /../controllers/landing-ctrl.php');
                     die();

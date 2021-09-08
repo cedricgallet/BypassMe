@@ -1,6 +1,7 @@
 <?php
-require_once(dirname(__FILE__).'/../utils/db.php');
-require_once(dirname(__FILE__).'/../utils/config.php');
+require_once __DIR__.'/../utils/db.php';
+require_once __DIR__.'/../utils/config.php';
+require_once __DIR__.'/../utils/sendMail.php';
 
 class User
 {
@@ -18,12 +19,11 @@ class User
 
     private $_pdo;
 
-    public function __construct($id =NULL,$pseudo =NULL,$email =NULL, $password =NULL, $ip =NULL, 
+    public function __construct($pseudo, $email, $password, $ip =NULL, 
                                 $token =NULL, $avatar =NULL, $active =NULL, $created_at =NULL,
                                 $updated_at =NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
-        $this->_id = $id;
         $this->_pseudo = $pseudo;
         $this->_email = $email;
         $this->_password = $password;
@@ -39,57 +39,93 @@ class User
     }
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // VERIFIFIER SI MAIL EXISTE ok
-    public static function checkDuplicate($email)
-    {
+    // VERIFIFIER MAIL EXISTE ok
+    
+    public static function getByEmail($email){
+
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT `id`, `pseudo`, `email`, `password`, `ip`, `token` FROM `users` WHERE `email` = :email;';
+            $sql = 'SELECT * FROM `users` 
+                    WHERE `email` = :email AND confirmed_at IS NOT NULL';
+
             $sth = $pdo->prepare($sql);
 
-            $sth->bindValue(':email',$email,PDO::PARAM_STR);
-            $sth->execute();
-            return($sth->fetch());
+            $sth->bindValue(':email',$email);
+
+            if($sth->execute()){
+                return($sth->fetch());
+            }
+            
         }
         catch(PDOException $e){
-            return false;
+            return $e;
         }
-    }     
 
-    
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        //CREATE ok
-        public function create(){
+    }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // READ ONE LIGNE ok
+    public static function get($id){
+        
+        $pdo = Database::db_connect();
+
         try{
-            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `token`) 
-                    VALUES (:pseudo, :email, :password, :ip, :token);';
-                    
+            $sql = 'SELECT * FROM `users` 
+                    WHERE `id` = :id;';
+
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+            if($sth->execute()){
+                return($sth->fetch());
+            }
+            
+        }
+        catch(PDOException $e){
+            return $e;
+        }
+    }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //CREATE ok
+    public function create()
+    {
+        try{
+            $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `ip`, `confirmation_token`) 
+            VALUES (:pseudo, :email, :password, :ip, :confirmation_token);';
+            
             $sth = $this->_pdo->prepare($sql);
 
-            //echo "Pseudo :" . $this -> _pseudo . "<br/>";
-            //echo "Email :" .$this -> _email . "<br/>";
-            //echo "Password :" .$this -> _password . "<br/>";
-            //echo "Ip :" .$this -> _ip . "<br/>";
-            //echo "Token :" .$this -> _token . "<br/>";
+            $token = $this->setToken();
 
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
-            $sth->bindValue(':token',$this->_token,PDO::PARAM_STR);
+            $sth->bindValue(':confirmation_token',$this->$token,PDO::PARAM_STR);
+            
+            if($sth->execute())
+            {
+                //envoi d'un mail
+                $id = $this->_pdo->lastInsertId();
+                $this->sendMailConfirm($id, $this->_email, $token);
+                return true;
 
-            return $sth->execute();
+            } else {
+                return false;
+            }
+            
+
         }
         catch(PDOException $e){
-            return $e->getCode();
+            return false;
         }
-
     }
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //READ ALL ok  @return array
-    public static function readAllUsers()
+    public static function getAll()
     {
         $pdo = Database::db_connect();
 
@@ -103,28 +139,6 @@ class User
         }
 
     }
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // READ ONE LIGNE ok
-    public static function readOneUser($email)
-    {
-    
-        $pdo = Database::db_connect();
-
-        try{
-            $sql = 'SELECT * FROM `users` WHERE `email` = :email;';
-            $sth = $pdo->prepare($sql);
-
-            $sth->bindValue(':email',$email,PDO::PARAM_INT);
-            $sth->execute();
-            return($sth->fetch());
-        }
-        catch(PDOException $e){
-            return false;
-        }
-
-    }
-
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //UPDATE ok
@@ -167,6 +181,41 @@ class User
             return false;
         }
     }
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // TOKEN
+    private function setToken()
+    {
+        $length = 60;
+        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // VALIDATION REGISTER
+
+    public static function validateSignUp($id)
+    {
+        try{
+
+            $pdo = Database::db_connect();
+            $sql = 'UPDATE `users` 
+                    SET `confirmed_at` = NOW()
+                    WHERE `id` = :id;';
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+            if($sth->execute()){
+                return $sth->rowCount(); 
+            }
+            
+        }
+        catch(PDOException $e){
+            return false;
+        }
+
+    }
+
 
 }
 
