@@ -7,4 +7,5 @@ let checkPass = ( event ) => {
     } 
 }
 
+
 signUpForm.addEventListener('submit', checkPass);

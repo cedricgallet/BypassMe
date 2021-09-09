@@ -1,8 +1,8 @@
 <?php
-if (empty(session_id())){
-    session_start(); // Démarrage de la session  
-}       
-require_once __DIR__. '/../models/User.php';
+session_start();
+require_once(dirname(__FILE__) . '/../models/User.php');
+
+$isRegistered = false;
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
@@ -22,3 +22,7 @@ if($user && $tokenGet==$user->confirmation_token){
     }
 }
 
+
+include(dirname(__FILE__) . '/../views/templates/header.php');
+include(dirname(__FILE__) . '/../views/user/signUpConfirm.php');
+include(dirname(__FILE__) . '/../views/templates/footer.php');
