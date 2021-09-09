@@ -1,14 +1,3 @@
-<!-- =======================================DEBUT MAIN===================================== -->
-<?php
-if (empty(session_id())) 
-session_start(); // Démarrage de la session
-
-// Génération du navbar:
-include(dirname(__FILE__).'/../views/templates/navbar.php');
-include(dirname(__FILE__).'/../views/templates/header.php');
-?>
-
-<main>
     <div id="bgImageConnexion" class="container-fluid p-2">
         <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
@@ -19,8 +8,6 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                             Qu'est-ce qu'une faille XSS ?
                         </h2>
 
-                        <!-- <img src="/../assets/img/xss.png" class="img-fluid"
-                                alt="..........................."> -->
 
                         <p class="card-text">Une faille XSS consiste à injecter du code directement interprétable par le
                             navigateur Web, comme, par exemple, du JavaScript ou du HTML. Cette attaque ne vise pas
