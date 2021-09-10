@@ -1,8 +1,9 @@
 <?php
-session_start();
-include dirname(__FILE__).'/../config/regex.php';
-include dirname(__FILE__).'/../models/User.php';
-include dirname(__FILE__).'/../utils/config.php';//Gestion erreur';
+if (empty(session_id())){
+    session_start();// DÃ©marrage de la session  
+} 
+include dirname(__FILE__).'/../../config/regex.php';
+include dirname(__FILE__).'/../../models/User.php';
 
 
 $user =null; $pseudo=''; $email=''; $email2=''; $password=''; $password2=''; $title ='Inscription';
@@ -63,39 +64,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST") //On ne controle que s'il y a des donnÃ
                     
 
                     }else{ 
-                        header('Location: /../views/user/signUp.php?msgCode=14'); 
+                        header('Location: /../views/form/signUp.php?msgCode=14'); 
                         die;
                     }
 
                 }else{ 
-                    header('Location: /../views/user/signUp.php?msgCode=16'); 
+                    header('Location: /../views/form/signUp.php?msgCode=16'); 
                     die;
                 }
 
             }else{ 
-                header('Location: /../views/user/signUp.php?msgCode=15'); 
+                header('Location: /../views/form/signUp.php?msgCode=15'); 
                 die;
             }
 
         }else{ 
-            header('Location: /../views/user/signUp.php?msgCode=13'); 
+            header('Location: /../views/form/signUp.php?msgCode=13'); 
             die;
         }
 
     } else {
-        header('Location: /../views/user/signUp.php?msgCode=18'); 
+        header('Location: /../views/form/signUp.php?msgCode=18'); 
         die;
     }     
 }     
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-require_once __DIR__.'/../views/templates/navbar.php';
-require_once __DIR__.'/../views/user/signUp.php';
-require_once __DIR__.'/../views/templates/footer.php';
+include dirname(__FILE__).'/../../views/templates/navbar.php';
+include dirname(__FILE__).'/../../views/form/signUp.php';
+include dirname(__FILE__).'/../../views/templates/footer.php';
 
 
 
-include dirname(__FILE__).'/../views/templates/header.php';
-
-include dirname(__FILE__).'/../views/user/signUp.php';
-
-include dirname(__FILE__).'/../views/templates/footer.php';

@@ -15,8 +15,8 @@ class Database{
                 self::$_pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             }
             return self::$_pdo;
-        } catch (PDOException $ex) {
-            echo sprintf('ProblÃ¨me de connexion avec l\'erreur %s', $ex->getMessage());
+        } catch (PDOException $e) {
+            echo sprintf('ProblÃ¨me de connexion avec l\'erreur %s', $e->getMessage());
             die();
         }
     }

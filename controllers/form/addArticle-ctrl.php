@@ -1,7 +1,7 @@
 <?php
-
-// Initialiser la session
-session_start();
+if (empty(session_id())){
+    session_start(); // Démarrage de la session        
+} 
 
 // Tableau d'erreur vide //
 $error = [];

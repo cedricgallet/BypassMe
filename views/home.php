@@ -56,7 +56,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -221,7 +221,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
                                 href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                            <a href="/../controllers/form/contact-ctrl.php">
                                 commenter?</a>
                         </div>
                     </div>
@@ -271,12 +271,4 @@
 
         </div>
     </div>
-</main>
-
-<?php    
-
-// Génération du footer
-include(dirname(__FILE__).'/../views/templates/footer.php');
-
-?>
 

@@ -1,3 +1,10 @@
+<?php
+if (empty(session_id())) {
+    session_start(); // Démarrage de la session   
+}
+require_once __DIR__.'/../../views/templates/navbar.php';
+?>
+
 <div id="signUpForm" class="container-fluid h-100 bgImageConnexion">
     <div class="row justify-content-center h-100">
     <h2 class="text-center mt-5"><?=$title ?? ''?></h2>

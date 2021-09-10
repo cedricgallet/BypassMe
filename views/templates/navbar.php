@@ -1,8 +1,10 @@
+<?php if(empty(session_id())){
+    session_start();
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
-<?php if(empty(session_id())) session_start();?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +32,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark border-bottom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/../views/home.php">
+                <a class="navbar-brand" href="/../index.php">
                     <img src="/../assets/img/logo.png" alt="" width="70" height="70" class="d-inline-block">
                     LookThis
                 </a>
@@ -45,7 +47,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                         <li class='nav-item'>
-                            <a class='nav-link' href='/../views/home.php'>Accueil</a>
+                            <a class='nav-link' href='/../index.php'>Accueil</a>
                         </li>
 
                         <li class='nav-item dropdown'>
@@ -103,24 +105,25 @@
                         // si la session n'existe pas
                         if(!isset($_SESSION['user'])){
                             echo " <li>
-                                    <a href='/../controllers/login-ctrl.php'
+                                    <a href='/../controllers/form/signIn-ctrl.php'
                                         class='bottom text-decoration-none rounded-pill'>
-                                        Se connecter</a>
+                                        Se connecter |</a>
                                         
 
-                                    <a href='/../controllers/registration-ctrl.php'
+                                    <a href='/../controllers/form/signUp-ctrl.php'
                                         class='bottom text-decoration-none rounded-pill'>
-                                        Inscription
+                                        S'inscrire
                                     </a>
                                 </li>";
                         } else {
                                 // Si la session existe on affiche  
                             echo "<li>
-                                    <a href='/../controllers/logout-ctrl.php'
+                                    <a href='/../controllers/signOut-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
-                                    ".$_SESSION['user']['pseudo']."</a>
+                                    Deconnexion |</a>
                                     
-
+                                    
+                                    
                                     <a href='/../controllers/landing-ctrl.php'
                                     class='bottom text-decoration-none rounded-pill'>
                                     Mon compte</a>

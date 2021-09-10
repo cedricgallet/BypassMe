@@ -1,3 +1,11 @@
+<?php
+if (empty(session_id())) {
+    session_start(); // Démarrage de la session   
+}
+include dirname(__FILE__).'/../../config/config.php';//Gestion erreur
+include dirname(__FILE__).'/../../views/templates/navbar.php';
+?>
+
 <div id="bgImageConnexion" class="container-fluid bgImageConnexion">
     <div class="row justify-content-center align-items-center h-100">
     <h2 class="d-flex justify-content-center"><?=$title ?? ''?></h2>
@@ -53,3 +61,7 @@
         </div>
     </div>
 </div>
+
+<?php
+include dirname(__FILE__).'/../../views/templates/footer.php';
+?>
