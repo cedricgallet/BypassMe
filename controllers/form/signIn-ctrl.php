@@ -58,7 +58,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 } 
 
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++
-include dirname(__FILE__).'/../../views/templates/navbar.php';
 include dirname(__FILE__).'/../../views/form/signIn.php';
-include dirname(__FILE__).'/../../views/templates/footer.php';
 

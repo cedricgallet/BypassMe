@@ -2,7 +2,10 @@
 if (empty(session_id())) {
     session_start(); // Démarrage de la session   
 }
-require_once __DIR__.'/../../views/templates/navbar.php';
+
+include dirname(__FILE__).'/../../views/templates/navbar.php';
+include dirname(__FILE__).'/../../config/regex.php';
+include dirname(__FILE__).'/../../utils/config.php';//Gestion erreur
 ?>
 
 <div id="signUpForm" class="container-fluid h-100 bgImageConnexion">
@@ -89,4 +92,7 @@ require_once __DIR__.'/../../views/templates/navbar.php';
         </div>
     </div>
 </div>
+<?php
+include dirname(__FILE__).'/../../views/templates/footer.php';
+?>
 <script src="/assets/js/checkPass.js"></script>

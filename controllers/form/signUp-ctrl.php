@@ -2,7 +2,6 @@
 if (empty(session_id())){
     session_start();// D√©marrage de la session  
 } 
-include dirname(__FILE__).'/../../config/regex.php';
 include dirname(__FILE__).'/../../models/User.php';
 
 
@@ -89,9 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") //On ne controle que s'il y a des donn√
     }     
 }     
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-include dirname(__FILE__).'/../../views/templates/navbar.php';
 include dirname(__FILE__).'/../../views/form/signUp.php';
-include dirname(__FILE__).'/../../views/templates/footer.php';
 
 
 

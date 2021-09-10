@@ -2,8 +2,8 @@
 if (empty(session_id())) {
     session_start(); // Démarrage de la session   
 }
-include dirname(__FILE__).'/../../config/config.php';//Gestion erreur
 include dirname(__FILE__).'/../../views/templates/navbar.php';
+include dirname(__FILE__).'/../../utils/config.php';//Gestion erreur
 ?>
 
 <div id="bgImageConnexion" class="container-fluid bgImageConnexion">
