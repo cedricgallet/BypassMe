@@ -31,45 +31,52 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $user = User::getByEmail($email);
 
 
-        if($user == 0)// Si l'utilisateur n'existe pas 
+        if($user)// Si l'utilisateur n'existe pas 
         { 
             if($testRegex)//On vérifie le format du pseudo
-            {               
-                if($testEmail)//Si l'email est au bon format
-                {
-                    if($password === $password2)// si les deux mdp sont les mêmes
+            {         
+                if($email === $email2)//Si les 2 emails sont les mêmes
+                {         
+                    if($testEmail)//Si l'email est au bon format
                     {
+                        if($password === $password2)// si les deux mdp sont les mêmes
+                        {
 
 
-                        // On hash le mot de passe avec Bcrypt, via un coût de 12
-                        $cost =['cost' => 12];
-                        $password =password_hash($password, PASSWORD_DEFAULT, $cost);
-                                            
-                        $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
+                            // On hash le mot de passe avec Bcrypt, via un coût de 12
+                            $cost =['cost' => 12];
+                            $password =password_hash($password, PASSWORD_DEFAULT, $cost);
+                                                
+                            $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
-                        $user =new User($pseudo, $email, $password, $ip, $avatar, $type, $token);//On récupère les infos/On instancie
-                        $result = $user->create();
+                            $user =new User($pseudo, $email, $password, $ip, "", "", "");//On récupère les infos/On instancie
+                            $result = $user->create();
 
-                        if($result===true){
-                            header('location: /../views/landing.php?msgCode=1');// On redirige avec le message de succès
-                            die;
+                            if($result===true){
+                                header('location: /../views/landing.php?msgCode=1');// On redirige avec le message de succès
+                                die;
 
-                        } else {
-                            // Si l'enregistrement s'est mal passé, on affiche à nouveau le formulaire de création avec un message d'erreur.
-                            $msgCode = $result;
+                            } else {
+                                // Si l'enregistrement s'est mal passé, on affiche à nouveau le formulaire de création avec un message d'erreur.
+                                $msgCode = $result;
+                            }
+                        
+
+
+                        }else{ 
+                            header('Location: /../views/form/registration.php?msgCode=14'); 
+                            die();
                         }
-                    
-
 
                     }else{ 
-                        header('Location: /../views/form/registration.php?msgCode=14'); 
+                        header('Location: /../views/form/registration.php?msgCode=16'); 
                         die();
                     }
 
                 }else{ 
-                    header('Location: /../views/form/registration.php?msgCode=16'); 
-                    die();
-                }
+                        header('Location: /../views/form/registration.php?msgCode=17'); 
+                        die();
+                    }
 
             }else{ 
                 header('Location: /../views/form/registration.php?msgCode=15'); 

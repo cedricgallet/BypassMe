@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         $user = User::getByEmail($email);
 
-        //L'email/l'utilisateur existent(si requete renvoie 1 c'est ok)
+        //Si l'email/l'utilisateur existent
         if($user)
         {
             // Si le mail est bon niveau format

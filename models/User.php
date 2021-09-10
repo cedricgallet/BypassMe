@@ -20,7 +20,7 @@ class User{
 
 
     public function __construct($pseudo, $email, $password, $ip, 
-    $avatar =NULL, $type, $created_at =NULL,
+    $type, $avatar =NULL, $created_at =NULL,
     $updated_at =NULL, $deleted_at =NULL)
     {
 
@@ -100,7 +100,7 @@ class User{
     public function create()
     {
         try{
-            $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `avatar`, `type`, `confirmation_token`) 
+            $sql = 'INSERT INTO `user`(`pseudo`, `email`, `password`, `ip`, `avatar`, `type`, `confirmation_token`) 
                     VALUES (:pseudo, :email, :password, :ip, :avatar, :type, :confirmation_token);';
             
             $sth = $this->_pdo->prepare($sql);
