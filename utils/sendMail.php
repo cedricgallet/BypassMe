@@ -14,7 +14,6 @@ trait sendMail {
             <a href="'.$host.'/controllers/confirmSignUp-ctrl.php?id='.$id.'&token='.$token.'">
             '.$host.'/controllers/confirmSignUp-ctrl.php?id='.$id.'&token='.$token.'
             </a>
-
         ';
         mail($email,$subject, $message);
 

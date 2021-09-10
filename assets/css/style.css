@@ -45,7 +45,7 @@ h4 {
 
 
 /* ========BACKGROUND FORM========= */
-.bgImageConnexion{
+#signInForm{
     background-image: url(/../assets/img/bgForm.jpg)!important;
     height: 90%!important;
 }

@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__FILE__).'/../utils/database.php';
+require_once dirname(__FILE__).'/../utils/db.php';
+require_once dirname(__FILE__).'/../utils/config.php';
 require_once dirname(__FILE__).'/../utils/sendMail.php';
 
 
@@ -34,7 +35,7 @@ class User{
         $this->_updated_at = $updated_at;
         $this->_deleted_at = $deleted_at;
 
-        $this->_pdo = Database::getInstance();
+        $this->_pdo = Database::db_connect();
 
 
     }
@@ -49,7 +50,7 @@ class User{
     public static function get($id)
     {
         
-        $pdo = Database::getInstance();
+        $pdo = Database::db_connect();
 
         try{
             $sql = 'SELECT * FROM `user` 
@@ -73,7 +74,7 @@ class User{
     public static function getByEmail($email)
     {
 
-        $pdo = Database::getInstance();
+        $pdo = Database::db_connect();
 
         try{
             $sql = 'SELECT * FROM `user` 
@@ -99,17 +100,19 @@ class User{
     public function create()
     {
         try{
-            $sql = 'INSERT INTO `user` (`lastname`, `email`, `password`, `pseudo`, `confirmation_token`) 
-                    VALUES (:lastname, :email, :password, :pseudo, :confirmation_token);';
+            $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `avatar`, `type`, `confirmation_token`) 
+                    VALUES (:pseudo, :email, :password, :ip, :avatar, :type, :confirmation_token);';
             
             $sth = $this->_pdo->prepare($sql);
 
             $token = $this->setToken();
 
-            $sth->bindValue(':lastname',$this->_lastname,PDO::PARAM_STR);
+            $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
-            $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
+            $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
+            $sth->bindValue(':avatar',$this->_avatar,PDO::PARAM_STR);
+            $sth->bindValue(':type',$this->_type,PDO::PARAM_STR);
             $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
 
             
@@ -145,7 +148,7 @@ class User{
 
         try{
 
-            $pdo = Database::getInstance();
+            $pdo = Database::db_connect();
             $sql = 'UPDATE `user` 
                     SET `confirmed_at` = NOW()
                     WHERE `id` = :id;';
