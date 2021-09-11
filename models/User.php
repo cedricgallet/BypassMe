@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__FILE__).'/../utils/db.php';
-require_once dirname(__FILE__).'/../utils/config.php';
 require_once dirname(__FILE__).'/../utils/sendMail.php';
 
 
@@ -13,15 +12,14 @@ class User{
     private $_password;
     private $_ip;
     private $_avatar;
-    private $_type;
+    private $_state;
+    private $_confirmed_at;
     private $_created_at;
-    private $_updated_at;
     private $_deleted_at;
 
 
-    public function __construct($pseudo, $email, $password, $ip, 
-    $type, $avatar =NULL, $created_at =NULL,
-    $updated_at =NULL, $deleted_at =NULL)
+    public function __construct($pseudo, $email, $password, 
+    $ip=NULL, $avatar=NULL, $state=1, $confirmed_at = NULL, $created_at = NULL, $deleted_at =NULL)
     {
 
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -30,15 +28,49 @@ class User{
         $this->_password = $password;
         $this->_ip = $ip;
         $this->_avatar = $avatar;
-        $this->_type = $type;
+        $this->_state = $state;
+        $this->_confirmed_at = $confirmed_at;
         $this->_created_at = $created_at;
-        $this->_updated_at = $updated_at;
         $this->_deleted_at = $deleted_at;
 
         $this->_pdo = Database::db_connect();
 
 
     }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public function createUser(){
+        try{
+            $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `confirmation_token`) 
+                    VALUES (:pseudo, :email, :password, :ip, :confirmation_token);';
+            
+            $sth = $this->_pdo->prepare($sql);
+
+            $token = $this->setToken();
+
+            $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
+            $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
+            $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
+            $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
+            $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
+
+            
+            if($sth->execute()){
+                //envoi d'un mail
+                $id = $this->_pdo->lastInsertId();
+                $this->sendMailConfirm($id, $this->_email, $token);
+                return true;
+            } else {
+                return false;
+            }
+            
+
+        }
+        catch(PDOException $e){
+            return false;
+        }
+    }
+
 
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -47,7 +79,7 @@ class User{
      * 
      * @return object
      */
-    public static function get($id)
+    public static function getUser($id)
     {
         
         $pdo = Database::db_connect();
@@ -71,7 +103,7 @@ class User{
 
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public static function getByEmail($email)
+    public static function getUserByEmail($email)
     {
 
         $pdo = Database::db_connect();
@@ -93,43 +125,6 @@ class User{
             return $e;
         }
 
-    }
-
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public function create()
-    {
-        try{
-            $sql = 'INSERT INTO `user`(`pseudo`, `email`, `password`, `ip`, `avatar`, `type`, `confirmation_token`) 
-                    VALUES (:pseudo, :email, :password, :ip, :avatar, :type, :confirmation_token);';
-            
-            $sth = $this->_pdo->prepare($sql);
-
-            $token = $this->setToken();
-
-            $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
-            $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
-            $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
-            $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
-            $sth->bindValue(':avatar',$this->_avatar,PDO::PARAM_STR);
-            $sth->bindValue(':type',$this->_type,PDO::PARAM_STR);
-            $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
-
-            
-            if($sth->execute()){
-                //envoi d'un mail
-                $id = $this->_pdo->lastInsertId();
-                $this->sendMailConfirm($id, $this->_email, $token);
-                return true;
-            } else {
-                return false;
-            }
-            
-
-        }
-        catch(PDOException $e){
-            return false;
-        }
     }
 
 
@@ -165,6 +160,27 @@ class User{
             return false;
         }
 
+    }
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public static function getAllUser()
+    {
+        $sql = "SELECT * FROM `user`;";
+
+        $pdo = Database::db_connect();
+
+        $req = $pdo->prepare($sql);
+
+        try {
+            if($req->execute()) 
+            {
+                // on return les données récupérées
+                return $req->fetchAll(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $ex) {
+            return $ex;
+        }
+        
     }
 
 }

@@ -1,4 +1,7 @@
-<?php if (empty(session_id())) session_start(); // Démarrage de la session  
+<?php
+if (empty(session_id())){
+    session_start(); // Démarrage de la session  
+}       
 require_once __DIR__ .'/../views/templates/navbar.php';
 ?>      
 
@@ -6,7 +9,7 @@ require_once __DIR__ .'/../views/templates/navbar.php';
     <div class="row h-100">
         <div class="col-12 col-lg-12">
             <div class="text-center h-100">
-                <div><h2 class="pt-5 mb-3"><?='Bonjour et bienvenue'.' '. $_SESSION['user']['pseudo'] ?> ! </h2></div>
+                <div><h2 class="pt-5 mb-3"><?='Bonjour et bienvenue'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
                 <div class="mb-5"><h2><?=$title ?? ''?></h2></div>
                 <div><span id="horloge"></span></div>
             </div>
@@ -21,9 +24,9 @@ require_once __DIR__ .'/../views/templates/navbar.php';
                     <h4 class="card-title mb-0">Mes informations</h4>
                     <!-- Boutton -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['user']['pseudo'] ?></li>
-                        <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['user']['email'] ?></li>
-                        <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['user']['ip'] ?></li>
+                        <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['user']->pseudo ?></li>
+                        <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['user']->email ?></li>
+                        <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['user']->ip ?></li>
                     </ul>   
                 </div>
             </div>        

@@ -1,5 +1,5 @@
 <?php
-if (empty(session_id())) session_start(); // Démarrage de la session        
+session_start(); // Démarrage de la session  
 require_once __DIR__ .'/../utils/db.php'; // On inclut la connexion à la base de données
 require_once __DIR__.'/../utils/regex.php';
 require_once __DIR__.'/../models/User.php';//models
@@ -13,7 +13,8 @@ if(!isset($_SESSION['user']['id']))
     die();
 }
 
-if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['name'])) {
+if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['name'])) 
+{
     $tailleMax = 2097152;
     $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
 
@@ -34,6 +35,7 @@ if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['name'])) {
                     'id' => $_SESSION['id']
                     ));
                 header('Location: /../views/landing.php?id='.$_SESSION['id']);
+                die;
 
             } else {
             $msg = "Erreur durant l'importation de votre photo de profil";

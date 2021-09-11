@@ -1,10 +1,26 @@
+<?php
+require_once dirname(__FILE__).'/../../utils/config.php';
+?>
+
 <div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">
     <div class="row h-100">
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="login-wrap p-0">
                     <h2 class="text-center">Ajouter un commentaire</h2>
+
+
+                    <?php 
+                        if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
+                        {
+                            if(!array_key_exists($msgCode, $displayMsg))
+                            {
+                                $msgCode = 0;
+                            }
+                            echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                        }
+                    ?>
                 
-                
+                <!-- +++++++++++++++++++++++++++++++++++++SUBJECT+++++++++++++++++++++++++++++++++++++++++++++++= -->
                 <form id="signInForm" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
                     <div class="form-group mt-3">
@@ -34,11 +50,11 @@
                         <div class="error"><?=$error['categories'] ?? ''?></div>
                     </div>
 
-                    <!-- =================================================================================================== -->
+                    <!-- ===================================COMMENT=============================================== -->
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="textarea1" class="col-form-label"></label> <textarea
-                                class="form-control" id="textarea1" rows="9" placeholder="Votre message" required
+                            <label for="comment" class="col-form-label"></label> <textarea
+                                name ="comment" class="form-control" id="comment" rows="9" placeholder="Votre message" required
                             <?= $comment ?? ''?>></textarea>
                     </div>
                     <button type="submit" class="btn btn-outline-warning rounded-pill w-100">Envoyer</button>

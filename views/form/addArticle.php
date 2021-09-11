@@ -1,6 +1,24 @@
-<div id="signInForm" class="container-fluid h-100">
+<?php
+require_once dirname(__FILE__).'/../../utils/config.php';
+?>
+
+<div  class="container-fluid h-100">
     <div class="row h-100">
         <div class="col-12 d-flex justify-content-center align-items-center">
+
+
+                <?php 
+                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
+                    {
+                        if(!array_key_exists($msgCode, $displayMsg))
+                        {
+                            $msgCode = 0;
+                        }
+                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    }
+                ?>
+
+                
             <div class="card w-50">
                 <div class="card-header bg-gradient text-center shadow fw-bold fs-5">
                     <h2>Ajouter un nouvel article ?</h2>
@@ -12,7 +30,7 @@
 
                             <input type="file" id="imgArticle" name="imgArticle" accept="image/png, image/jpeg"></div>
 
-                        <!-- =============================boucle choix catégories======================================= -->
+                        <!-- =============================boucle choix catégories====================== -->
 
                         <select name="categories" id="categories" class="form-control">
                             <option value="">Choix de la catégorie</option>
@@ -25,17 +43,17 @@
                         </select>
                         <div class="error"><?=$error['categories'] ?? ''?></div>
 
-                        <!-- ================================================================================================= -->
+                        <!-- ==============================Titre=============================== -->
 
                         <div class="mb-3">
-                            <label for="titre" class="col-form-label">Titre</label>
-                            <input type="text" name="titre" id="titre" class="form-control"
-                                placeholder="Titre de l'article"<?=$titre ?? ''?>>
+                            <label for="title" class="col-form-label">Titre</label>
+                            <input type="text" name="title" id="title" class="form-control"
+                                placeholder="title de l'article"<?=$title ?? ''?>>
                         </div>
-
+                            <!-- ============================Article============================== -->
                         <div class="mb-3">
-                            <label for="Textarea1" class="col-form-label">Contenu de l' article</label> <textarea
-                                class="form-control" id="textarea1" rows="9" placeholder="Tapez votre article"<?=$article ?? ''?>></textarea>
+                            <label for="article" class="col-form-label">Contenu de l' article</label> <textarea
+                                name ="article "class="form-control" id="article" rows="9" placeholder="Tapez votre article"<?=$article ?? ''?>></textarea>
                         </div>
                         <button type="submit" class="btn btn-outline-warning rounded-pill w-100">Enregistrer</button>
                     </form>

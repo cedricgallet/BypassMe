@@ -1,10 +1,7 @@
 <?php
-if (empty(session_id())) {
-    session_start(); // Démarrage de la session   
-}
-require_once __DIR__.'/../../utils/regex.php';
-require_once __DIR__.'/../../views/templates/navbar.php';
-require_once __DIR__.'/../../utils/config.php';
+require_once dirname(__FILE__).'/../../utils/regex.php';
+require_once dirname(__FILE__).'/../../views/templates/navbar.php';
+require_once dirname(__FILE__).'/../../utils/config.php';
 ?>
 
 <!-- ==========================================================FORMULAIRE INSCRIPTION========================================================= -->
@@ -83,7 +80,7 @@ require_once __DIR__.'/../../utils/config.php';
                     
                     
                     <div class="form-group mt-4">
-                        <button id="btnSubmit" type="submit" class="form-control btn btn-outline-warning submit px-3 rounded-pill">Connexion</button>
+                        <button id="btnSubmit" type="submit" class="form-control btn btn-outline-warning submit px-3 rounded-pill">Créer mon compte</button>
                     </div>
                 </form>
             </div>
@@ -91,7 +88,7 @@ require_once __DIR__.'/../../utils/config.php';
     </div>
 </div>
 <?php
-require_once __DIR__.'/../../views/templates/footer.php';
+require_once dirname(__FILE__).'/../../views/templates/footer.php';
 ?>
 
 

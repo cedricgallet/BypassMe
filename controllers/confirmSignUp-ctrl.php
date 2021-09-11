@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+session_start(); // Démarrage de la session       
 require_once(dirname(__FILE__) . '/../models/User.php');
 
 $isRegistered = false;
@@ -12,7 +11,7 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 $tokenGet = trim(filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING));
 
 // Récupération du compte user en bdd
-$user = User::get($id);
+$user = User::getUser($id);
 
 //Comparer le token en GET avec le token en base
 if($user && $tokenGet==$user->confirmation_token){
@@ -25,6 +24,5 @@ if($user && $tokenGet==$user->confirmation_token){
 
 
 include(dirname(__FILE__) . '/../views/templates/header.php');
-include(dirname(__FILE__) . '/../views/user/signUpConfirm.php');
+include(dirname(__FILE__) . '/../views/signUpConfirm.php');
 include(dirname(__FILE__) . '/../views/templates/footer.php');
-?>
