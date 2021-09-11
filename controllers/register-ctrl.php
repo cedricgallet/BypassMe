@@ -25,14 +25,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
         // On vérifie si l'utilisateur existe
-        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe  si non ok (grâce a son email)
+        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe si non ok (grâce a son email)
         $checkUser = User::getUserByEmail($email);
 
-    // var_dump($checkUser);  // = booleen false 0 methode ok
-    // die;
+    var_dump($checkUser);  // = booleen false 0 methode ok
+    die;
 
         if($checkUser == 0)// Si l'utilisateur n'existe pas 
-        { 
+        {
             if($testRegex)//Si le format du pseudo est correct
             {         
                 if($email === $email2)//Si les 2 emails sont les mêmes
@@ -51,8 +51,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             $user = new User($pseudo, $email, $password, $ip);// On récupère les infos/On instancie
                             $user->createUser();
 
-                    // var_dump($result);  // = booleen true ok(inscription ok)
-                    // die;
+                                // var_dump($result);  // = booleen true ok(inscription ok)
+                                // die;
+
+                        
 
                         }else{ 
                             header('Location: /../views/form/register.php?msgCode=14'); 

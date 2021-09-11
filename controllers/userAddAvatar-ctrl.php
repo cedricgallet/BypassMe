@@ -1,6 +1,5 @@
 <?php
 session_start(); // Démarrage de la session  
-include(dirname(__FILE__) .'/../utils/db.php'); // On inclut la connexion à la base de données
 include(dirname(__FILE__).'/../utils/regex.php');
 include(dirname(__FILE__).'/../models/User.php');//models
 include(dirname(__FILE__).'/../views/templates/navbar.php');
@@ -40,14 +39,18 @@ if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['name']))
             } else {
             $msg = "Erreur durant l'importation de votre photo de profil";
             }
+
         } else {
             $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png";
         }
+
     } else {
         $msg = "Votre photo de profil ne doit pas dépasser 2Mo";
     }
+
 }
 
+// +++++++++++++++++++Templates et vues+++++++++++++++++++++++++++
 include(dirname(__FILE__) .'/../views/templates/navbar.php');
 include(dirname(__FILE__) .'/../views/form/landingAddAvatar.php');
 include(dirname(__FILE__) .'/../views/templates/footer.php');

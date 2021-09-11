@@ -121,6 +121,6 @@ require_once dirname(__FILE__).'/../../views/templates/footer.php';
 ?>
 
 <!-- Script Personnel -->
-<script src="/assets/js/checkPass.js"></script>
+<!-- <script src="/../../assets/js/checkPass.js"></script> -->
 
 <!-- ================================================================FIN INSCRIPTION================================================================================ -->

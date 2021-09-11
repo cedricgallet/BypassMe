@@ -26,8 +26,6 @@
     <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
     <title>LookThis</title>
 </head>
-
-            <!--    onload=showDate(); HEURE + script js-->
 <body >
     <!-- =======================NAVBAR========================= -->
 

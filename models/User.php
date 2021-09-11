@@ -14,12 +14,11 @@ class User{
     private $_avatar;
     private $_state;
     private $_confirmed_at;
-    private $_created_at;
     private $_deleted_at;
 
 
     public function __construct($pseudo, $email, $password, 
-    $ip=NULL, $avatar=NULL, $state=1, $confirmed_at = NULL, $created_at = NULL, $deleted_at =NULL)
+    $ip=NULL, $avatar=NULL, $state=1, $confirmed_at = NULL, $deleted_at =NULL)
     {
 
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -30,11 +29,9 @@ class User{
         $this->_avatar = $avatar;
         $this->_state = $state;
         $this->_confirmed_at = $confirmed_at;
-        $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
         $this->_pdo = Database::db_connect();
-
 
     }
 
@@ -72,6 +69,44 @@ class User{
     }
 
 
+     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    private function setToken()
+    {
+        $length = 60;
+        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    /**
+     * Méthode qui permet de récupérer le profil d'un Utilisateur
+     * 
+     * @retur
+     */
+    public static function validateSignUp($id)
+    {
+
+        try{
+
+            $pdo = Database::db_connect();
+            $sql = 'UPDATE `user` 
+                    SET `confirmed_at` = NOW()
+                    WHERE `id` = :id;';
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+            
+            if($sth->execute()){
+                return $sth->rowCount(); 
+            }
+            
+        }
+        catch(PDOException $e){
+            return false;
+        }
+
+    }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
@@ -110,7 +145,7 @@ class User{
 
         try{
             $sql = 'SELECT * FROM `user` 
-                    WHERE `email` = :email AND confirmed_at IS NOT NULL';
+                    WHERE `email` = :email';
 
             $sth = $pdo->prepare($sql);
 
@@ -127,40 +162,6 @@ class User{
 
     }
 
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    private function setToken()
-    {
-        $length = 60;
-        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
-        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
-    }
-
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public static function validateSignUp($id)
-    {
-
-        try{
-
-            $pdo = Database::db_connect();
-            $sql = 'UPDATE `user` 
-                    SET `confirmed_at` = NOW()
-                    WHERE `id` = :id;';
-            $sth = $pdo->prepare($sql);
-
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            
-            if($sth->execute()){
-                return $sth->rowCount(); 
-            }
-            
-        }
-        catch(PDOException $e){
-            return false;
-        }
-
-    }
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public static function getAllUser()

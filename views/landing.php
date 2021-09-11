@@ -14,8 +14,6 @@ require_once dirname(__FILE__) .'/../views/templates/navbar.php';
         </div>
     
         <div class="col-12 col-lg-6 d-flex justify-content-center mt-3 h-100">
-            <!-- Horloge -->
-            <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
             <div class="card bg-transparent" style="width: 20rem; height:31rem;">
                 <img src="/../assets/img/membres/avatars/avatar1.jpeg" class="card-img-top" alt="avatar-personnel">
                 <div class="card-body">

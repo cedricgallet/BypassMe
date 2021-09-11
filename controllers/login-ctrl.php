@@ -13,16 +13,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         
         // XSS/Nettoyage
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-        $password = $_POST['password']; 
         $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $password = $_POST['password']; 
 
 
         // On vérifie si l'utilisateur existe
         // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe  si non ok (grâce a son email)
         $checkUser = User::getUserByEmail($email);
 
-    // var_dump($user);
-    // die;
+        // var_dump($checkUser);
+        // die;
 
         if($checkUser > 0) //Si l'email/l'utilisateur existent = 1
         {
@@ -35,28 +35,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     // On créer la session et on redirige sur landing.php
                     $_SESSION['user'] = $user;
 
-                // var_dump($user);
-                // die;
+                    // var_dump($user);
+                    // die;
+
+                    
 
                     header('Location: /../controllers/landing-ctrl.php');
-                    die();
+                    die;
 
                     
                 }else{ 
                     header('Location: /../views/form/login.php?msgCode=20'); 
-                    die(); 
+                    die; 
                 }
+
             }else{ 
                 header('Location: /../views/form/login.php?msgCode=16'); 
-                die(); 
+                die; 
             }
+
         }else{ 
             header('Location: /../views/form/login.php?msgCode=19'); 
-            die(); 
+            die; 
         }
+
     }else{ 
         header('Location: /../views/form/login.php?msgCode=18'); // si le formulaire est envoyé sans aucune données
-        die(); 
+        die; 
     }
     
 } 
