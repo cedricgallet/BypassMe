@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/../../views/templates/navbar.php';
-require_once __DIR__.'/../../utils/config.php';//Gestion erreur
+include(dirname(__FILE__).'/../../views/templates/navbar.php');
+include(dirname(__FILE__).'/../../utils/config.php');//Gestion erreur
 ?>
 
 <div id="signInForm" class="container-fluid">
@@ -48,7 +48,7 @@ require_once __DIR__.'/../../utils/config.php';//Gestion erreur
                     </div>
                     <div class="form-group d-md-flex mt-2">
                         <div class="">
-                            <a class="text-decoration-none text-warning" href="/../controllers/registration-ctrl.php" >S'inscrire?</a>
+                            <a class="text-decoration-none text-warning" href="/../controllers/register-ctrl.php" >S'inscrire?</a>
                         </div>
                     </div>
                 </form>
@@ -58,7 +58,7 @@ require_once __DIR__.'/../../utils/config.php';//Gestion erreur
 </div>
 
 <?php
-require_once __DIR__.'/../../views/templates/footer.php';
+include(dirname(__FILE__).'/../../views/templates/footer.php');
 ?>
 
 

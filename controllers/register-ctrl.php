@@ -1,9 +1,9 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../utils/regex.php';
-require_once dirname(__FILE__).'/../models/User.php';//models
+include(dirname(__FILE__).'/../utils/regex.php');
+include(dirname(__FILE__).'/../models/User.php');//models
 
-$user =null; $id ='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title ='Inscription';
+$errorsArray = []; $user =null; $id ='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title ='Inscription';
 
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
@@ -50,54 +50,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
                             $user = new User($pseudo, $email, $password, $ip);// On récupère les infos/On instancie
                             $user->createUser();
+
                     // var_dump($result);  // = booleen true ok(inscription ok)
                     // die;
-                            // if($result===true){
-                            //     header('location: /../views/landing.php?msgCode=1');// On redirige avec le message de succès
-                            //     die;
-
-                            // } else {
-                            //     // Si l'enregistrement s'est mal passé, on affiche à nouveau le formulaire de création avec un message d'erreur.
-                            //     $msgCode = $result;
-                            // }
-                        
-
 
                         }else{ 
-                            header('Location: /../views/form/registration.php?msgCode=14'); 
+                            header('Location: /../views/form/register.php?msgCode=14'); 
                             die();
                         }
 
                     }else{ 
-                        header('Location: /../views/form/registration.php?msgCode=16'); 
+                        header('Location: /../views/form/register.php?msgCode=16'); 
                         die();
                     }
 
                 }else{ 
-                        header('Location: /../views/form/registration.php?msgCode=17'); 
+                        header('Location: /../views/form/register.php?msgCode=17'); 
                         die();
                     }
 
             }else{ 
-                header('Location: /../views/form/registration.php?msgCode=15'); 
+                header('Location: /../views/form/register.php?msgCode=15'); 
                 die();
             }
 
         }else{ 
-            header('Location: /../views/form/registration.php?msgCode=13'); 
+            header('Location: /../views/form/register.php?msgCode=13'); 
             die();
         }
 
     } else {
-        header('Location: /../views/form/registration.php?msgCode=18'); 
+        header('Location: /../views/form/register.php?msgCode=18'); 
         die();
     }  
     
 }     
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-require_once dirname(__FILE__).'/../views/templates/navbar.php';
-require_once dirname(__FILE__).'/../views/form/registration.php';
-require_once dirname(__FILE__).'/../views/templates/footer.php';
+include(dirname(__FILE__).'/../views/templates/navbar.php');
+include(dirname(__FILE__).'/../views/form/register.php');
+include(dirname(__FILE__).'/../views/templates/footer.php');
 
 
 

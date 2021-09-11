@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<?php if(empty(session_id())) session_start();?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Les menaces se multipliant de plus en plus,(virus, vers,
+                                    spywares
+                                    et intrusions),il est primordial de savoir quelles attitudes et actions adopter
+                                    pour se prémunir et réagir aux problèmes de sécurité.Je vous propose une liste des
+                                    principales failles de sécurité informatique, que se soit dans les
+                                    technologies liées au web,au réseau,à la cryptographie il existe des failles dans
+                                    tous les domaines.Je vais donc ici vous présenter une liste de catégorie des
+                                    principales failles
+                                    de sécurité à éviter.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/../assets/img/logo.png">
@@ -22,8 +27,8 @@
     <title>LookThis</title>
 </head>
 
-<body onload=showDate();>
-
+            <!--    onload=showDate(); HEURE + script js-->
+<body >
     <!-- =======================NAVBAR========================= -->
 
     <div class="container-fluid p-0">
@@ -101,18 +106,20 @@
 
                         <?php
                         // si la session n'existe pas
-                        if(!isset($_SESSION['user'])){
+                        if(!isset($_SESSION['user']))
+                        {
                             echo " <li>
                                     <a href='/../controllers/login-ctrl.php'
                                         class='bottom text-decoration-none rounded-pill'>
                                         Se connecter |</a>
                                         
 
-                                    <a href='/../controllers/registration-ctrl.php'
+                                    <a href='/../controllers/register-ctrl.php'
                                         class='bottom text-decoration-none rounded-pill'>
                                         S'inscrire
                                     </a>
                                 </li>";
+                                
                         } else {
                                 // Si la session existe on affiche  
                             echo "<li>

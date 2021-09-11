@@ -23,7 +23,7 @@ require_once dirname(__FILE__).'/../../utils/config.php';
                     }
                 ?>
                 
-                <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="signin-form">
+                <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" id="signUpForm">
                     <!-- =============================================CHAMP PSEUDO=============================================== -->
                     
                     <div class="form-group">
@@ -66,6 +66,7 @@ require_once dirname(__FILE__).'/../../utils/config.php';
                             placeholder="Votre mot de passe" autocomplete="new-password" minlength="8" maxlength="20" 
                             value="<?= htmlentities($_POST['password'] ?? '',)?>" 'required>
                     </div>
+                    <div class='text-danger' id='errPass'><?=$errorsArray['password'] ?? ''?></div>
 
                     <!-- ================================CHAMP MOT DE PASSE CONFIRMATION============================================= -->
 
@@ -77,6 +78,7 @@ require_once dirname(__FILE__).'/../../utils/config.php';
                             maxlength="20"
                             value="<?= htmlentities($_POST['password2'] ?? '',)?>" 'required>
                     </div>
+                    <div class='text-danger' id='errPass2'><?=$errorsArray['password'] ?? ''?></div>
                     
                     
                     <div class="form-group mt-4">
@@ -91,5 +93,7 @@ require_once dirname(__FILE__).'/../../utils/config.php';
 require_once dirname(__FILE__).'/../../views/templates/footer.php';
 ?>
 
+<!-- Script Personnel -->
+<script src="/assets/js/checkPass.js"></script>
 
 <!-- ================================================================FIN INSCRIPTION================================================================================ -->

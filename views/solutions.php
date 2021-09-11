@@ -1,5 +1,5 @@
 <?php
-if (empty(session_id())) session_start(); // Démarrage de la session
+session_start(); // Démarrage de la session
 ?>
 
 <div class="container-fluid">
@@ -7,10 +7,7 @@ if (empty(session_id())) session_start(); // Démarrage de la session
         <div class="col-lg-10 col-md-12 col-sm-12">
             <!-- ===============================CONTENU DES SOLUTIONS======================================= -->
         </div>
-        <?php
-        // Génération du rightMenu:
-        include(dirname(__FILE__).'/../views/templates/rightMenu.php');
-        ?>
+        <?php include(dirname(__FILE__).'/../views/templates/rightMenu.php');?>
     </div>
 </div>
 

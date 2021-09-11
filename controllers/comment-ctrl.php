@@ -1,6 +1,6 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../models/Comment';//models
+include(dirname(__FILE__).'/../models/Comment');//models
 
 
 if (!empty($_SESSION['user'])) {
@@ -28,6 +28,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe  si non ok (grâce a son email)
         $checkcomment = Comment::getComment($id);
 
+    // var_dump($checkcomment);
+    // die;
+
 
         if ($checkComment == 0) // Si l'article n'existe pas
         {
@@ -42,7 +45,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         $user = new Comment($subject, $categories, $title);// On récupère les infos/On instancie
                         $user->createComment();
 
-                        //Methode pour ajouter commentaire
+                        
+                    // var_dump($user);
+                    // die;
         
                     
                     }else {

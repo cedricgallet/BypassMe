@@ -1,8 +1,6 @@
 <?php
-if (empty(session_id())){
-    session_start(); // Démarrage de la session  
-}       
-require_once __DIR__ .'/../views/templates/navbar.php';
+session_start(); // Démarrage de la session       
+require_once dirname(__FILE__) .'/../views/templates/navbar.php';
 ?>      
 
 <div id="landingSpace" class="container-fluid h-100 p-0">
@@ -45,6 +43,6 @@ require_once __DIR__ .'/../views/templates/navbar.php';
 </div>
 
 <?php   
-require_once __DIR__ .'/../views/templates/footer.php';
+require_once dirname(__FILE__).'/../views/templates/footer.php';
 ?>      
 

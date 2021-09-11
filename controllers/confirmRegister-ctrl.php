@@ -1,6 +1,6 @@
 <?php
 session_start(); // Démarrage de la session       
-require_once(dirname(__FILE__) . '/../models/User.php');
+include(dirname(__FILE__) . '/../models/User.php');
 
 $isRegistered = false;
 
@@ -24,5 +24,5 @@ if($user && $tokenGet==$user->confirmation_token){
 
 
 include(dirname(__FILE__) . '/../views/templates/header.php');
-include(dirname(__FILE__) . '/../views/signUpConfirm.php');
+include(dirname(__FILE__) . '/../views/confirmRegister.php');
 include(dirname(__FILE__) . '/../views/templates/footer.php');

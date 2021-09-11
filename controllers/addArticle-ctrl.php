@@ -1,6 +1,6 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../models/Article.php';//models
+include(dirname(__FILE__).'/../models/Article.php');//models
 
 
 if (!empty($_SESSION['user']->type == 1)) {
@@ -25,8 +25,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // ON invoque la méthode statique permettant de vérifier si l'article existe  si non ok (grâce a son id)
         $checkArticle = Article::getArticle($id);
     
+    // var_dump($checkArticle);
+    // die;
 
-        if($checkArticle == 0) //Si l'article n'existe pas
+
+        if($checkArticle == 0) //Si l'article n'existe pas = false 0
         {
             if($categories) //Si le format est correct(= vrai)
             {
@@ -39,8 +42,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         $user = new Article($categories, $title, $article);// On récupère les infos/On instancie
                         $user->createArticle();
 
-                        // Méthode pour ajouter un article
-            
+                    // var_dump($user);
+                    // die;
+        
 
 
                     } else {

@@ -1,6 +1,4 @@
-<?php
-if (empty(session_id())) session_start(); // Démarrage de la session        
-?>
+<?php session_start(); // Démarrage de la session  ?>
 
         <div class='container-fluid'>
             <div class='row'>

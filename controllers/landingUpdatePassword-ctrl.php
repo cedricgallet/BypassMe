@@ -1,7 +1,7 @@
 <?php   
 session_start(); // Démarrage de la session  
-require_once __DIR__.'/../utils/db.php'; // On inclut la connexion à la base de données
-require_once __DIR__.'/../models/User.php';//models
+include(dirname(__FILE__).'/../utils/db.php'); // On inclut la connexion à la base de données
+include(dirname(__FILE__).'/../models/User.php');//models
 
 // Si la session n'existe pas 
 if(!isset($_SESSION['user']['id']))
@@ -68,6 +68,6 @@ else{
 
 
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-require_once __DIR__.'/../../views/templates/navbar.php';
-require_once __DIR__.'/../../views/landing.php';
-require_once __DIR__.'/../../views/templates/footer.php';
+include(dirname(__FILE__).'/../../views/templates/navbar.php');
+include(dirname(__FILE__).'/../../views/landing.php');
+include(dirname(__FILE__).'/../../views/templates/footer.php');
