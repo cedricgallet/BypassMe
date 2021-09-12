@@ -1,11 +1,4 @@
 <?php
-
-define('DSN','mysql:host=localhost;dbname=LookThis;charset=utf8');
-define('ROOT','cedric');
-define('PASSWORD','//');
-
-define('NB_ELEMENTS_BY_PAGE', 5);
-
 $displayMsg = array(
     
     '0' => ['type' => 'alert-danger', 'msg' => 'Une erreur inconnue s\'est produite'],
@@ -29,7 +22,6 @@ $displayMsg = array(
     '34' => ['type' => 'alert-danger', 'msg' => 'Le format du commentaire est un incorrect'],
 
 
-
     '21' => ['type' => 'alert-success', 'msg' => 'L\'article a bien été ajouté'],
     '22' => ['type' => 'alert-success', 'msg' => 'L\'article a bien été mis à jour'],
     '23' => ['type' => 'alert-danger', 'msg' => 'L\'article n\'a pas été trouvé'],
@@ -42,8 +34,10 @@ $displayMsg = array(
     '28' => ['type' => 'alert-danger', 'msg' => 'Le format du titre est incorrect'],
     '29' => ['type' => 'alert-danger', 'msg' => 'Le format de l\'article est un incorrect'],
     
-    '12' => ['type' => 'alert-success', 'msg' => 'Inscription réussite'],
 
+    '12' => ['type' => 'alert-success', 'msg' => 'Inscription réussite !! 1ère Connexion'],
+
+    
     '13' => ['type' => 'alert-danger', 'msg' => 'Le compte existe déjà'],
     '19' => ['type' => 'alert-danger', 'msg' => 'Le compte n\'existe pas'],
     '15' => ['type' => 'alert-danger', 'msg' => 'Le format du pseudo est incorrect'],
@@ -51,7 +45,7 @@ $displayMsg = array(
     '16' => ['type' => 'alert-danger', 'msg' => 'Le format de l\'email est incorrect'], 
     '14' => ['type' => 'alert-danger', 'msg' => 'Les mots de passe sont différents'],
     '20' => ['type' => 'alert-danger', 'msg' => 'Le mot de passe est incorrect'],
-    '18' => ['typ' => 'alert-danger', 'msg' => 'Tous les champs sont obligatoires'],
+    '18' => ['type' => 'alert-danger', 'msg' => 'Tous les champs sont obligatoires'],
 
     '30' => ['type' => 'alert-danger', 'msg' => 'Vous n\'avez pas accès a cette page'],
 

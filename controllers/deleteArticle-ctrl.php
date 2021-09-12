@@ -6,5 +6,9 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 //var_dump($id);
 
 //On invoque la méthode
-$delete = Article::deleteArticle($id);
+$delArticle = Article::deleteArticle($id);
+
+if($delArticle) {
+    header('location:/../views/landing.php?msgCode=31');
+}
 

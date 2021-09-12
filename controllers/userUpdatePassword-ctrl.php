@@ -1,16 +1,19 @@
 <?php   
 session_start(); // Démarrage de la session  
-include(dirname(__FILE__).'/../utils/db.php'); // On inclut la connexion à la base de données
 include(dirname(__FILE__).'/../models/User.php');//models
+// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
+include(dirname(__FILE__).'/../views/templates/navbar.php');
+include(dirname(__FILE__).'/../views/landing.php');
+include(dirname(__FILE__).'/../views/templates/footer.php');
+
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']['id']))
+if(!isset($_SESSION['user']))
 {
     header('Location:/../views/form/login.php');
     die();
 }
 
-$error = [];
 $title ='Modifier mon mot de passe';
 
 // ++++++++++++++++++++++++++++++UPDATE MOT DE PASSE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -64,7 +67,3 @@ if(!empty($_POST['current_password']) && !empty($_POST['new_password']) && !empt
     die();
 }  
 
-// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-include(dirname(__FILE__).'/../../views/templates/navbar.php');
-include(dirname(__FILE__).'/../../views/landing.php');
-include(dirname(__FILE__).'/../../views/templates/footer.php');

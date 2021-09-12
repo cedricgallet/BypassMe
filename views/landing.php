@@ -1,13 +1,8 @@
-<?php
-session_start(); // Démarrage de la session       
-require_once dirname(__FILE__) .'/../views/templates/navbar.php';
-?>      
-
 <div id="landingSpace" class="container-fluid h-100 p-0">
     <div class="row h-100">
         <div class="col-12 col-lg-12">
             <div class="text-center h-100">
-                <div><h2 class="pt-5 mb-3"><?='Bonjour et bienvenue'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
+                <div><h2 class="pt-5 mb-3"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
                 <div class="mb-5"><h2><?=$title ?? ''?></h2></div>
                 <div><span id="horloge"></span></div>
             </div>
@@ -30,17 +25,13 @@ require_once dirname(__FILE__) .'/../views/templates/navbar.php';
         
         <div class="col-12 col-lg-6 d-flex flex-column align-items-center mt-3 h-100">
         <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
-            <a href="/../views/form/userUpdatePassword.php" class="boutton btn btn-info text-white mb-2">Changer
+            <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Changer
                 mon mot de passe</a>
-            <a href="/../views/form/userAddAvatar.php" class="boutton btn btn-info text-white mb-2">Changer
+            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-info text-white mb-2">Ajouter
                 mon avatar</a>
                 <a href="/../controllers/logout-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
-                <a href="/../controllers/deleteUser-ctrl.php?id=" class="boutton btn btn-warning">supprimer mon compte</a>
         </div>        
     </div>
 </div>
 
-<?php   
-require_once dirname(__FILE__).'/../views/templates/footer.php';
-?>      
 

@@ -1,9 +1,12 @@
 <?php
 session_start(); // Démarrage de la session  
-include(dirname(__FILE__).'/../utils/regex.php');
 include(dirname(__FILE__).'/../models/User.php');//models
 
-$errorsArray = []; $user =null; $id ='';$pseudo=''; $email=''; $password=''; $ip=''; $token=''; $title ='Inscription';
+include(dirname(__FILE__).'/../views/form/register.php');
+
+
+$user = null; $pseudo=''; $email=''; $password='';
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
@@ -25,14 +28,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
         // On vérifie si l'utilisateur existe
-        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe si non ok (grâce a son email)
-        $checkUser = User::getUserByEmail($email);
+        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe  si non ok (grâce a son email)
+        $user = User::getByEmail($email);
 
-    var_dump($checkUser);  // = booleen false 0 methode ok
-    die;
+    //var_dump($checkEmail);  // = booleen false 0 methode ok
 
-        if($checkUser == 0)// Si l'utilisateur n'existe pas 
-        {
+        if($user == 0)// Si l'utilisateur n'existe pas 
+        { 
             if($testRegex)//Si le format du pseudo est correct
             {         
                 if($email === $email2)//Si les 2 emails sont les mêmes
@@ -44,53 +46,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
                             $cost =['cost' => 12]; // On hash le mot de passe avec Bcrypt, via un coût de 12
-                            $password =password_hash($password, PASSWORD_DEFAULT, $cost);
+                            $password = password_hash($password, PASSWORD_DEFAULT, $cost);
                                                 
                             $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
                             $user = new User($pseudo, $email, $password, $ip);// On récupère les infos/On instancie
                             $user->createUser();
 
-                                // var_dump($result);  // = booleen true ok(inscription ok)
-                                // die;
+                            header('location: /../views/form/login.php');
+                            die;
 
-                        
+
 
                         }else{ 
                             header('Location: /../views/form/register.php?msgCode=14'); 
-                            die();
+                            die;
                         }
 
                     }else{ 
                         header('Location: /../views/form/register.php?msgCode=16'); 
-                        die();
+                        die;
                     }
 
                 }else{ 
-                        header('Location: /../views/form/register.php?msgCode=17'); 
-                        die();
-                    }
+                    header('Location: /../views/form/register.php?msgCode=17'); 
+                    die;
+                }
 
             }else{ 
                 header('Location: /../views/form/register.php?msgCode=15'); 
-                die();
+                die;
             }
 
         }else{ 
             header('Location: /../views/form/register.php?msgCode=13'); 
-            die();
+            die;
         }
 
     } else {
         header('Location: /../views/form/register.php?msgCode=18'); 
-        die();
+        die;
     }  
     
 }     
-// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-include(dirname(__FILE__).'/../views/templates/navbar.php');
-include(dirname(__FILE__).'/../views/form/register.php');
-include(dirname(__FILE__).'/../views/templates/footer.php');
-
-
-

@@ -1,13 +1,12 @@
 <?php
-require_once dirname(__FILE__).'/../../utils/regex.php';
-require_once dirname(__FILE__).'/../../views/templates/navbar.php';
-require_once dirname(__FILE__).'/../../utils/config.php';
+include(dirname(__FILE__).'/../../utils/smgCode.php');//Gestion erreur
+include(dirname(__FILE__).'/../../utils/regex.php');
+include(dirname(__FILE__).'/../../views/templates/navbar.php');
 ?>
-
 <!-- ==========================================================FORMULAIRE INSCRIPTION========================================================= -->
 <div id="signInForm" class="container-fluid h-100">
     <div class="row justify-content-center h-100">
-    <h2 class="text-center mt-5"><?=$title ?? ''?></h2>
+    <h2 class="text-center mt-5">Inscription</h2>
 
         <div class="col-12 col-lg-4">
             <div class="login-wrap p-0">
@@ -117,10 +116,7 @@ require_once dirname(__FILE__).'/../../utils/config.php';
     </div>
 </div>
 <?php
-require_once dirname(__FILE__).'/../../views/templates/footer.php';
+include(dirname(__FILE__).'/../../views/templates/footer.php');
 ?>
-
-<!-- Script Personnel -->
-<!-- <script src="/../../assets/js/checkPass.js"></script> -->
 
 <!-- ================================================================FIN INSCRIPTION================================================================================ -->

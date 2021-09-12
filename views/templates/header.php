@@ -9,13 +9,6 @@
                             </h1>
                         </div>
 
-                        <!-- =========================MESSAGE INTRO DEFILANT========================== -->
-
-                        <div id="message" class="rounded-3 mt-0 mb-0 fw-bold">
-                            <div>Bienvenue sur ce site !! je vous invite à découvrir le monde des failles informatiques et comment s'en protéger.Suivez-moi c'est par ici...</div>
-                        </div>
-                        
-                        <!-- ========================================================================== -->
 
                         <div class="card bg-light shadow bg-body rounded-3 mb-2 ms-2 me-2">
                             <div class="card-body">

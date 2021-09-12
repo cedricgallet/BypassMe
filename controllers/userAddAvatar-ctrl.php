@@ -2,11 +2,15 @@
 session_start(); // Démarrage de la session  
 include(dirname(__FILE__).'/../utils/regex.php');
 include(dirname(__FILE__).'/../models/User.php');//models
-include(dirname(__FILE__).'/../views/templates/navbar.php');
+
+// +++++++++++++++++++Templates et vues+++++++++++++++++++++++++++
+include(dirname(__FILE__) .'/../views/templates/navbar.php');
+include(dirname(__FILE__) .'/../views/form/userAddAvatar.php');
+include(dirname(__FILE__) .'/../views/templates/footer.php');
 
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']['id']))
+if(!isset($_SESSION['user']))
 {
     header('Location:/../views/form/login.php');
     die();
@@ -50,7 +54,3 @@ if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['name']))
 
 }
 
-// +++++++++++++++++++Templates et vues+++++++++++++++++++++++++++
-include(dirname(__FILE__) .'/../views/templates/navbar.php');
-include(dirname(__FILE__) .'/../views/form/landingAddAvatar.php');
-include(dirname(__FILE__) .'/../views/templates/footer.php');

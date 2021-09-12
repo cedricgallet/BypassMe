@@ -1,11 +1,9 @@
 <?php
 require_once dirname(__FILE__).'/../utils/db.php';
-require_once dirname(__FILE__).'/../utils/sendMail.php';
 
 
 class User{
 
-    use sendMail;
 
     private $_pseudo;
     private $_email;
@@ -14,11 +12,12 @@ class User{
     private $_avatar;
     private $_state;
     private $_confirmed_at;
+    private $_created_at;
     private $_deleted_at;
 
 
     public function __construct($pseudo, $email, $password, 
-    $ip=NULL, $avatar=NULL, $state=1, $confirmed_at = NULL, $deleted_at =NULL)
+    $ip=NULL, $avatar=NULL, $state=1, $confirmed_at = NULL, $created_at = NULL, $deleted_at =NULL)
     {
 
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -29,14 +28,17 @@ class User{
         $this->_avatar = $avatar;
         $this->_state = $state;
         $this->_confirmed_at = $confirmed_at;
+        $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
         $this->_pdo = Database::db_connect();
 
+
     }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public function createUser(){
+    public function createUser()
+    {
         try{
             $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `confirmation_token`) 
                     VALUES (:pseudo, :email, :password, :ip, :confirmation_token);';
@@ -50,26 +52,16 @@ class User{
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
             $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
+    
+            return $sth->execute();
 
-            
-            if($sth->execute()){
-                //envoi d'un mail
-                $id = $this->_pdo->lastInsertId();
-                $this->sendMailConfirm($id, $this->_email, $token);
-                return true;
-            } else {
-                return false;
-            }
-            
-
-        }
-        catch(PDOException $e){
-            return false;
+        }catch(PDOException $e){
+            return $e->getCode();
         }
     }
 
 
-     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     private function setToken()
     {
         $length = 60;
@@ -82,39 +74,9 @@ class User{
     /**
      * Méthode qui permet de récupérer le profil d'un Utilisateur
      * 
-     * @retur
-     */
-    public static function validateSignUp($id)
-    {
-
-        try{
-
-            $pdo = Database::db_connect();
-            $sql = 'UPDATE `user` 
-                    SET `confirmed_at` = NOW()
-                    WHERE `id` = :id;';
-            $sth = $pdo->prepare($sql);
-
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            
-            if($sth->execute()){
-                return $sth->rowCount(); 
-            }
-            
-        }
-        catch(PDOException $e){
-            return false;
-        }
-
-    }
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    /**
-     * Méthode qui permet de récupérer le profil d'un Utilisateur
-     * 
      * @return object
      */
-    public static function getUser($id)
+    public static function get($id)
     {
         
         $pdo = Database::db_connect();
@@ -138,14 +100,14 @@ class User{
 
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public static function getUserByEmail($email)
+    public static function getByEmail($email)
     {
 
         $pdo = Database::db_connect();
 
         try{
             $sql = 'SELECT * FROM `user` 
-                    WHERE `email` = :email';
+                    WHERE `email` = :email;';
 
             $sth = $pdo->prepare($sql);
 
@@ -164,7 +126,7 @@ class User{
 
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public static function getAllUser()
+    public static function getAll()
     {
         $sql = "SELECT * FROM `user`;";
 
@@ -178,8 +140,8 @@ class User{
                 // on return les données récupérées
                 return $req->fetchAll(PDO::FETCH_OBJ);
             }
-        } catch (PDOException $ex) {
-            return $ex;
+        } catch (PDOException $e) {
+            return $e;
         }
         
     }
