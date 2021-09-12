@@ -2,7 +2,6 @@
 session_start(); // Démarrage de la session
 include(dirname(__FILE__).'/../utils/regex.php');
 include(dirname(__FILE__).'/../models/User.php');//models
-include(dirname(__FILE__).'/../utils/smgCode.php');//Gestion erreur
 
 include(dirname(__FILE__).'/../views/templates/navbar.php');
 include(dirname(__FILE__).'/../views/form/login.php');
@@ -45,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     // die;
 
                     
-                        header('Location: /../index.php');
+                        header('Location: /../views/landing.php');
                         die;
     
     

@@ -27,7 +27,7 @@
     <title>LookThis</title>
 </head>
 <body >
-    <!-- =======================NAVBAR========================= -->
+    <!-- =======================HEADER========================= -->
 
     <div class="container-fluid p-0">
 
@@ -100,7 +100,7 @@
 
                     <ul id='logoutLogin' class='nav navbar-nav navbar-right text-white h-100'>
 
-                        <!-- =========================================AFFICHAGE BOUTON SE DECONNECTER ET MON ESPACE================================ -->
+                        <!-- ======================AFFICHAGE BOUTON SE DECONNECTER ET MON COMPTE================== -->
 
                         <?php
                         // si la session n'existe pas

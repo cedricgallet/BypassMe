@@ -9,7 +9,6 @@ class User{
     private $_email;
     private $_password;
     private $_ip;
-    private $_avatar;
     private $_state;
     private $_confirmed_at;
     private $_created_at;
@@ -17,7 +16,7 @@ class User{
 
 
     public function __construct($pseudo, $email, $password, 
-    $ip=NULL, $avatar=NULL, $state=1, $confirmed_at = NULL, $created_at = NULL, $deleted_at =NULL)
+    $ip=NULL, $state=1, $confirmed_at = NULL, $created_at = NULL, $deleted_at =NULL)
     {
 
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -25,7 +24,6 @@ class User{
         $this->_email = $email;
         $this->_password = $password;
         $this->_ip = $ip;
-        $this->_avatar = $avatar;
         $this->_state = $state;
         $this->_confirmed_at = $confirmed_at;
         $this->_created_at = $created_at;

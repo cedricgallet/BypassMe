@@ -1,5 +1,4 @@
 <?php
-include(dirname(__FILE__).'/../../utils/smgCode.php');//Gestion erreur
 include(dirname(__FILE__).'/../../utils/regex.php');
 include(dirname(__FILE__).'/../../views/templates/navbar.php');
 ?>
@@ -35,7 +34,7 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                                 title="Le pseudo n' est pas au format attendu"
                                 placeholder="Entrez votre pseudo"
                                 autocomplete="given-name"
-                                value="<?= htmlentities($_POST['pseudo'] ?? '', ENT_QUOTES, 'UTF-8')?>"
+                                value="<?= htmlentities($_POST['pseudo'] ?? '')?>"
                                 pattern="<?=REGEX_PSEUDO?>" 'required>
                     </div>
 
@@ -52,7 +51,7 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                                 aria-describedby="emailHelp" 
                                 placeholder="Adresse e-mail" 
                                 autocomplete="email"
-                                value="<?= htmlentities($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
+                                value="<?= htmlentities($_POST['email'] ?? '')?>" 'required>
                     </div>
 
                     <!-- =====================================CHAMP EMAIL CONFIRMATION============================================== -->
@@ -67,7 +66,7 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                                 class="form-control" 
                                 placeholder="Confirmez votre e-mail" 
                                 autocomplete="email2"
-                                value="<?= htmlentities($_POST['email2'] ?? '', ENT_QUOTES, 'UTF-8')?>" 'required>
+                                value="<?= htmlentities($_POST['email2'] ?? '')?>" 'required>
                     </div>
 
                     <!-- =======================================CHAMP MOT DE PASSE================================================== -->
@@ -83,9 +82,8 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                                 autocomplete="new-password" 
                                 minlength="8" 
                                 maxlength="20" 
-                                value="<?= htmlentities($_POST['password'] ?? '',)?>" 'required>
+                                value="<?= htmlentities($_POST['password'] ?? '')?>" 'required>
                     </div>
-                    <div class='text-danger' id='errPass'><?=$errorsArray['password'] ?? ''?></div>
 
                     <!-- ================================CHAMP MOT DE PASSE CONFIRMATION============================================= -->
 
@@ -100,9 +98,8 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                                 autocomplete="new-password" 
                                 minlength="8"
                                 maxlength="20"
-                                value="<?= htmlentities($_POST['password2'] ?? '',)?>" 'required>
+                                value="<?= htmlentities($_POST['password2'] ?? '')?>" 'required>
                     </div>
-                    <div class='text-danger' id='errPass2'><?=$errorsArray['password'] ?? ''?></div>
                     
                     
                     <div class="form-group mt-4">

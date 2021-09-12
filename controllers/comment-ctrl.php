@@ -3,10 +3,13 @@ session_start(); // Démarrage de la session
 include(dirname(__FILE__).'/../models/Comment');//models
 
 
-if (!empty($_SESSION['user'])) {
-    header('Location: /../views/form/login.php?msgCode=30'); 
-    die;
+// Si la session n'existe pas 
+if(!isset($_SESSION['user']))
+{
+    header('Location:/../views/form/login.php?msgCode=30');
+    die();
 }
+
 
 // Tableau des catégories disponibles //
 $arrayCategories = ['autre','applicative','web','réseau','humaine',];

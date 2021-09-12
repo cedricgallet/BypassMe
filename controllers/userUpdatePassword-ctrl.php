@@ -8,7 +8,7 @@ include(dirname(__FILE__).'/../views/templates/footer.php');
 
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']))
+if(!isset($_SESSION['user']->id))
 {
     header('Location:/../views/form/login.php');
     die();

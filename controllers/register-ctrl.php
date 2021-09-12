@@ -1,14 +1,13 @@
 <?php
 session_start(); // Démarrage de la session  
 include(dirname(__FILE__).'/../models/User.php');//models
-
 include(dirname(__FILE__).'/../views/form/register.php');
 
 
 $user = null; $pseudo=''; $email=''; $password='';
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST") 
+if($_SERVER["REQUEST_METHOD"] == "POST") //Si il ya des données d'envoyées
 {
     // Si les variables existent et qu'elles ne sont pas vides
     if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['email2']) && !empty($_POST['password']) && !empty($_POST['password2']))
@@ -29,11 +28,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         // On vérifie si l'utilisateur existe
         // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe  si non ok (grâce a son email)
-        $user = User::getByEmail($email);
+        $CheckUser = User::getByEmail($email);
 
-    //var_dump($checkEmail);  // = booleen false 0 methode ok
+    //var_dump($user);  // = booleen false 0 methode ok
 
-        if($user == 0)// Si l'utilisateur n'existe pas 
+        if($CheckUser==0)// Si l'utilisateur n'existe pas 
         { 
             if($testRegex)//Si le format du pseudo est correct
             {         
@@ -53,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             $user = new User($pseudo, $email, $password, $ip);// On récupère les infos/On instancie
                             $user->createUser();
 
-                            header('location: /../views/form/login.php');
+                            header('location: /../controllers/login-ctrl.php');
                             die;
 
 

@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__).'/../utils/dbConfig.php');
+include(dirname(__FILE__).'/../utils/config.php');
 
 class Database
 {

@@ -10,8 +10,16 @@
     
         <div class="col-12 col-lg-6 d-flex justify-content-center mt-3 h-100">
             <div class="card bg-transparent" style="width: 20rem; height:31rem;">
-                <img src="/../assets/img/membres/avatars/avatar1.jpeg" class="card-img-top" alt="avatar-personnel">
-                <div class="card-body">
+            <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
+                <div id = "avatar">
+                    <img src =
+                        <?php 
+                        echo (file_exists("/../uploads/avatars/" . 1 . ".png")) ? "/../uploads/avatars/" . 1 . ".png" : "/../uploads/avatars/empty.png";
+                        ?>
+                        alt = "avatar-default" />
+                </div> 
+            <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+            <div class="card-body">
                     <h4 class="card-title mb-0">Mes informations</h4>
                     <!-- Boutton -->
                     <ul class="list-group list-group-flush">
@@ -24,14 +32,15 @@
         </div>
         
         <div class="col-12 col-lg-6 d-flex flex-column align-items-center mt-3 h-100">
-        <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
-            <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Changer
+            <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
+            <a href="/../controllers/userUpdaePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Changer
                 mon mot de passe</a>
-            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-info text-white mb-2">Ajouter
+            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-info text-white mb-2">Ajouter/Modifier
                 mon avatar</a>
                 <a href="/../controllers/logout-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
         </div>        
     </div>
 </div>
+
 
 

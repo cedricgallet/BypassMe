@@ -4,12 +4,12 @@
         <h2 class="d-flex justify-content-center align-items-center">Ajouter un avatar</h2>
 
         <div class="col-lg-5 p-0">
-            <form action="layouts/change_avatar.php" method="POST" enctype="multipart/form-data">
+            <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="avatar" class=" bg-success text-center text-warning">Images autorisées : png, jpg, jpeg, gif - 2Mo Max</label>
+                    <label for="avatar" class=" bg-success text-center text-warning">Images autorisées : png - 2Mo Max</label>
                     <input type="file" 
                             name="avatar_file"
-                            accept="image/png, image/jpg, image/jpeg, image/gif"
+                            accept="image/png"
                             class="bg-success text-warning">
                             
                     <button type="submit" class="btn btn-success mt-2">Modifier</button>

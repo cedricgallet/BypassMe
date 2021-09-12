@@ -1,6 +1,3 @@
-<?php
-include(dirname(__FILE__).'/../../utils/smgCode.php');//Gestion erreur
-?>
 
 <div id="signInForm" class="container-fluid">
     
