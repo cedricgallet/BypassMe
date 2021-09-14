@@ -6,7 +6,11 @@ class Article{
 
     private $_categories;
     private $_title;
-    private $_article;    
+    private $_article; 
+    private $_confirmed_at;
+    private $_created_at;
+    private $_deleted_at;
+
     private $_pdo;
 
     /**
@@ -14,13 +18,17 @@ class Article{
      * 
      * @return boolean
      */
-    public function __construct($categories=NULL, $title=NULL, $article=NULL)
+    public function __construct($categories=NULL, $title=NULL, $article=NULL, $confirmed_at=NULL, $created_at = NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
         $this->_categories = $categories;
         $this->_title = $title;
         $this->_article = $article;
+        $this->_confirmed_at = $confirmed_at;
+        $this->_created_at = $created_at;
+        $this->_deleted_at = $deleted_at;
+
     }
 
     /**

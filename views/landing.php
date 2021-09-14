@@ -33,9 +33,9 @@
         
         <div class="col-12 col-lg-6 d-flex flex-column align-items-center mt-3 h-100">
             <a href="/../views/home.php" class="boutton btn btn-danger mb-2">Accueil</a>
-            <a href="/../controllers/userUpdaePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Changer
+            <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Changer
                 mon mot de passe</a>
-            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-info text-white mb-2">Ajouter/Modifier
+            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier
                 mon avatar</a>
                 <a href="/../controllers/logout-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
         </div>        

@@ -119,8 +119,15 @@ a:hover {
     }
 }
 
+/* ======bgImgHome======== */
+#bgImgHome{
+    background-image: url(/../assets/img/bgImgHome.jpg);
+    background-size: cover;
+}
+
 /* =====HEADER======= */
-#imgIntro {
+#imgHeader {
+    background-image: url(/../assets/img/header.jpg);
     background-size: cover;
     height: 500px;
 }

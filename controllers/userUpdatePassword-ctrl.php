@@ -8,7 +8,7 @@ include(dirname(__FILE__).'/../views/templates/footer.php');
 
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']->id))
+if(!isset($_SESSION['user']))
 {
     header('Location:/../views/form/login.php');
     die();
@@ -35,7 +35,7 @@ if(!empty($_POST['current_password']) && !empty($_POST['new_password']) && !empt
 
     if(password_verify($current_password, $data_password['password'])) // Si le mot de passe est le bon
     {
-        if($new_password === $new_password2) // Si le mot de passe tapé est bon
+        if($new_password === $new_password2) // Si le 2s mdp sont les mêmes
         {
 
             $cost = ['cost' => 12]; // On chiffre le mot de passe

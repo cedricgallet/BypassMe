@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__).'/../../utils/config.php';
+session_start(); // Démarrage de la session  
 ?>
 
 <div id="bgImageConnexion" class="container-fluid h-100" style="background-image: url(/../assets/img/bgForm.jpg);">

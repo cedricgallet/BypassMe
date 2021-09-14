@@ -16,7 +16,7 @@ class User{
 
 
     public function __construct($pseudo, $email, $password, 
-    $ip=NULL, $state=1, $confirmed_at = NULL, $created_at = NULL, $deleted_at =NULL)
+    $ip=NULL, $state=1, $confirmed_at =NULL , $created_at =NULL, $deleted_at =NULL)
     {
 
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -95,8 +95,6 @@ class User{
             return $e;
         }
     }
-
-
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public static function getByEmail($email)
     {
@@ -123,7 +121,7 @@ class User{
     }
 
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public static function getAll()
     {
         $sql = "SELECT * FROM `user`;";

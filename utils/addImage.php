@@ -1,11 +1,11 @@
 <?php
 
-/* Check the given image and change it */
 function SaveImage($name, $path)
 {
     $width = 300;
     $height = 300;
     $extension = "";
+    
     if (isset($_FILES[$name]) && $_FILES[$name]["error"] == 0)
     {
         if ($_FILES[$name]["size"] < 8 * 1000 * 1000)

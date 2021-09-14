@@ -1,15 +1,36 @@
 <!-- =======================================DEBUT MAIN===================================== -->
-<?php
-session_start(); // Démarrage de la session
-include(dirname(__FILE__).'/../views/templates/navbar.php');
-include(dirname(__FILE__).'/../views/templates/header.php');
-?>
-
 <main>
-    <div id="bgImageConnexion" class="container-fluid p-2">
-        <div class="row">
+    <div id="bgImgHome" class="container-fluid p-2">
+        <div class="row h-100">
+            <div class="col-lg-12 p-0">
+                            
+                <div class=" me-3 ms-3 mb-2 rounded-3">
+                    <h1 class="d-flex justify-content-center align-items-center h-100">
+                        Les Failles en sécurité informatiques
+                    </h1>
+                </div>
+            </div>
+                        
+            <div class="col-lg-12">
+                <div class="card bg-light shadow bg-body rounded-3 mb-2">
+                    <div class="card-body">
+                        <p class="card-text">Les menaces se multipliant de plus en plus,(virus, vers,
+                            spywares
+                            et intrusions),il est primordial de savoir quelles attitudes et actions adopter
+                            pour se prémunir et réagir aux problèmes de sécurité.Je vous propose une liste
+                            des
+                            principales failles de sécurité informatique, que se soit dans les
+                            technologies liées au web,au réseau,à la cryptographie il existe des failles
+                            dans
+                            tous les domaines.Je vais donc ici vous présenter une liste de catégorie des
+                            principales failles
+                            de sécurité à éviter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="col-lg-5 col-md-12 col-sm-12">
-
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -26,11 +47,11 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                             le code du site et celui injecté par le pirate, il va donc l'exécuter sans broncher. Les
                             possibilités sont nombreuses : redirection vers un autre site, vol de cookies, modification
                             du code HTML de la page, exécution d'exploits contre le navigateur : en bref, tout ce que
-                            ces langages de script vous permettent de faire.
+                            ces langages de script vous permettent de le faire.
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
                             <a href="/../controllers/contact-controllers.php">
                                 commenter?</a>
                         </div>
@@ -65,8 +86,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -101,8 +122,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -133,8 +154,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -145,11 +166,12 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                 <div id="space" class="rounded-3">
                     <div class="card-body"></div>
                 </div>
+            
+
+                <!-- ============================================================================== -->
+
             </div>
-
-            <!-- ============================================================================== -->
-
-
+            
             <div class="col-lg-5 col-md-12 col-sm-12">
 
                 <div id="cardHeight" class="card bg-light shadow bg-body rounded-3">
@@ -168,8 +190,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -199,8 +221,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -230,8 +252,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -261,8 +283,8 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                         </p>
 
                         <div class="d-flex justify-content-between border-top border-1 pt-2"><a
-                                href="/../views/solutions.php">s'en protéger?</a>
-                            <a href="/../controllers/contact-ctrl.php">
+                                href="/../controllers/solutions-ctrl.php">s'en protéger?</a>
+                            <a href="/../controllers/comment-ctrl">
                                 commenter?</a>
                         </div>
                     </div>
@@ -273,20 +295,11 @@ include(dirname(__FILE__).'/../views/templates/header.php');
                     <div class="card-body"></div>
                 </div>
             </div>
-
-            <?php
-            // =================================Génération du rightMenu=========================
-            include(dirname(__FILE__).'/../views/templates/rightMenu.php');
-            ?>
-
+                <?php
+                // ======================Génération du rightMenu=================
+                include(dirname(__FILE__).'/../views/templates/rightMenu.php');
+                ?>
         </div>
     </div>
 </main>
-
-<?php    
-
-// Génération du footer
-include(dirname(__FILE__).'/../views/templates/footer.php');
-
-?>
 

@@ -1,3 +1,6 @@
+<?php
+session_start(); // Démarrage de la session  
+?>
 
 <div id="signInForm" class="container-fluid">
     
@@ -42,9 +45,9 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <button id="btnSubmit" 
+                        <input id="btnSubmit" 
                                 type="submit" 
-                                class="form-control btn btn-outline-warning submit px-3 rounded-pill">Connexion</button>
+                                class="form-control btn btn-outline-warning submit px-3 rounded-pill">Connexion</input>
                     </div>
 
                     <div class="form-group d-md-flex mt-2">

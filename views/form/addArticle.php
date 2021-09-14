@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__).'/../../utils/config.php';
+session_start(); // Démarrage de la session  
 ?>
 
 <div  class="container-fluid h-100">

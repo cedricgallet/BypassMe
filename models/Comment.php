@@ -6,7 +6,12 @@ class Comment{
 
     private $_categories;
     private $_title;
-    private $_article;    
+    private $_article;
+    private $_confirmed_at;
+    private $_created_at;
+    private $_deleted_at;
+
+    
     private $_pdo;
 
     /**
@@ -14,13 +19,17 @@ class Comment{
      * 
      * @return boolean
      */
-    public function __construct($categories=NULL, $title=NULL, $article=NULL)
+    public function __construct($categories=NULL, $title=NULL, $article=NULL,$confirmed_at=NULL, $created_at = NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
         $this->_categories = $categories;
         $this->_title = $title;
         $this->_article = $article;
+        $this->_confirmed_at = $confirmed_at;
+        $this->_created_at = $created_at;
+        $this->_deleted_at = $deleted_at;
+
     }
 
     /**
@@ -32,13 +41,13 @@ class Comment{
     {
 
         try{
-            $sql = 'INSERT INTO `comment` (`subject`, `categories`, `comment`) 
-                    VALUES (:subject, :categories, :comment);';
+            $sql = 'INSERT INTO `comment` (`categories`, `title`, `article`) 
+                    VALUES (:categories, :title, :article);';
             $stmt = $this->_pdo->prepare($sql);
 
-            $stmt->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
-            $stmt->bindValue(':categories',$this->_categories,PDO::PARAM_INT);
-            $stmt->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
+            $stmt->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
+            $stmt->bindValue(':title',$this->_title,PDO::PARAM_INT);
+            $stmt->bindValue(':article',$this->_article,PDO::PARAM_STR);
             return $stmt->execute();
         }
         catch(PDOException $e){
@@ -90,12 +99,12 @@ class Comment{
     {
 
         try{
-            $sql = 'UPDATE `comment` SET `subject` = :subject, `categories` = :categories, `comment` = :comment
+            $sql = 'UPDATE `comment` SET `categories` = :categories, `title` = :title, `article` = :article,
                     WHERE `id` = :id;';
             $sth = $this->_pdo->prepare($sql);
-            $sth->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
             $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $sth->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
+            $sth->bindValue(':title',$this->_title,PDO::PARAM_STR);
+            $sth->bindValue(':article',$this->_article,PDO::PARAM_STR);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             return($sth->execute()); 
         }
@@ -162,13 +171,13 @@ class Comment{
         try{
             if(!is_null($limit)){ // Si une limite est fixée, il faut tout lister
                 $sql = 'SELECT * FROM `comment` 
-                WHERE `subject` LIKE :search 
-                OR `categories` LIKE :search 
+                WHERE `categories` LIKE :search 
+                OR `title` LIKE :search 
                 LIMIT :limit OFFSET :offset;';
             } else {
                 $sql = 'SELECT * FROM `comment` 
-                WHERE `subject` LIKE :search 
-                OR `categories` LIKE :search;';
+                WHERE `categories` LIKE :search 
+                OR `title` LIKE :search;';
             }
 
             $pdo = Database::db_connect();

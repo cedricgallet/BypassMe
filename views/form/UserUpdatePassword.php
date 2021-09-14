@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!-- ======================================UPDATE MOT DE PASSE USER=================================== -->
 <div id="landingSpace" class="container-fluid h-100">
     <div class="row justify-content-center h-100">

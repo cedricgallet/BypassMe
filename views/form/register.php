@@ -1,4 +1,5 @@
 <?php
+session_start(); // Démarrage de la session  
 include(dirname(__FILE__).'/../../utils/regex.php');
 include(dirname(__FILE__).'/../../views/templates/navbar.php');
 ?>
@@ -21,7 +22,7 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                     }
                 ?>
                 
-                <form id="signUpForm" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                <form id="signInForm" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                     <!-- =============================================CHAMP PSEUDO=============================================== -->
                     
                     <div class="form-group">
@@ -103,9 +104,9 @@ include(dirname(__FILE__).'/../../views/templates/navbar.php');
                     
                     
                     <div class="form-group mt-4">
-                        <button id="btnSubmit" 
+                        <input id="btnSubmit" 
                                 type="submit" 
-                                class="form-control btn btn-outline-warning submit px-3 rounded-pill">Créer mon compte</button>
+                                class="form-control btn btn-outline-warning submit px-3 rounded-pill">Créer mon compte</input>
                     </div>
                 </form>
             </div>

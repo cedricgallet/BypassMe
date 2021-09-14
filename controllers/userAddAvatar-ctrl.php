@@ -8,13 +8,13 @@ if(!isset($_SESSION['user']))
     die();
 }
 
-include("../addImage.php");
+include(dirname(__FILE__).'/../utils/addImage.php');
 
-if($_SERVER["REQUEST_METHOD"] == "POST") 
+if($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-    SaveImage("avatar_file", "../uploads/avatars/" . $_SESSION["user"] -> id . ".png");
+    SaveImage('avatar_file', '/../uploads/avatars/' . $_SESSION['user']->id . '.png');
 
-    header("Location: landing-ctrl.php");
+    header('Location: /../controllers/landing-ctrl.php?smgCode=35');
     die();
 }
 
