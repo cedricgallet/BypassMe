@@ -12,6 +12,7 @@ $title = 'Bienvenue sur ton espace personnel';
 
 // Si la session n'existe pas 
 
+include(dirname(__FILE__) .'/../views/templates/header.php');
 include(dirname(__FILE__) .'/../views/templates/navbar.php');
 include(dirname(__FILE__) .'/../views/landing.php');
 include(dirname(__FILE__) .'/../views/templates/footer.php');

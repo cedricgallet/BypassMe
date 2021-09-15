@@ -1,10 +1,10 @@
 <!-- =======================================DEBUT MAIN===================================== -->
-<main>
-    <div id="bgImgHome" class="container-fluid p-2">
+
+    <div id="bgImgHome" class="container-fluid h-100">
+
         <div class="row h-100">
-            <div class="col-lg-12 p-0">
-                            
-                <div class=" me-3 ms-3 mb-2 rounded-3">
+            <div class="col-lg-12 p-0">        
+                <div id="imgHeader" class="mb-2">
                     <h1 class="d-flex justify-content-center align-items-center h-100">
                         Les Failles en sécurité informatiques
                     </h1>

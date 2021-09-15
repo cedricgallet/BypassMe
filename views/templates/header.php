@@ -20,15 +20,9 @@
 
     <title>LookThis</title>
 </head>
-<body class="m-0">
+<body>
     <!-- =======================NAVBAR========================= -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 ">
-                <?php include dirname(__FILE__).'/navbar.php';?>
-            </div>
-        </div>
-    </div>
 
-    <div id="imgHeader" class="container-fluid p-0">
+
+    <div class="container-fluid p-0 h-100">
 

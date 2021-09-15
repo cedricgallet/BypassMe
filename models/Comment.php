@@ -1,6 +1,6 @@
 <?php
-require_once(dirname(__FILE__).'/../utils/db.php');
-require_once(dirname(__FILE__).'/../utils/config.php');
+include(dirname(__FILE__).'/../utils/database.php');
+
 
 class Comment{
 

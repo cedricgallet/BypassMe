@@ -75,6 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 } 
 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++
+include(dirname(__FILE__).'/../views/templates/header.php');
 include(dirname(__FILE__).'/../views/templates/navbar.php');
 include(dirname(__FILE__).'/../views/form/addArticle.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

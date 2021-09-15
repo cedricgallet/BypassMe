@@ -1,7 +1,7 @@
 html,
 body {
     height: 100vh;
-    overflow-x: hidden;
+    background-color: rgb(142, 197, 179)!important;
 }
 
 /* =========TITRE========= */
@@ -63,10 +63,23 @@ a:hover {
     color: #1fdce9 !important;
 }
 
+/* ======bgImgHome======== */
+/* #bgImgHome{
+    background-image: url(/../assets/img/bgImgHome.jpg);
+    background-size: cover;
+} */
+
+/* =====HEADER======= */
+#imgHeader {
+    background-image: url(/../assets/img/header.jpg);
+    background-size: cover;
+    height: 500px!important;
+}
+
 /* ========BACKGROUND FORM========= */
 #signInForm{
-    background-image: url(/../assets/img/bgForm.jpg)!important;
-    height: 90%!important;
+    background-image: url(/../assets/img/bgForm.jpg);
+    background-size: cover;
 }
 
 /* =========ESPACES ======== */
@@ -119,19 +132,6 @@ a:hover {
     }
 }
 
-/* ======bgImgHome======== */
-#bgImgHome{
-    background-image: url(/../assets/img/bgImgHome.jpg);
-    background-size: cover;
-}
-
-/* =====HEADER======= */
-#imgHeader {
-    background-image: url(/../assets/img/header.jpg);
-    background-size: cover;
-    height: 500px;
-}
-
 /* ==========SECTION DROITE=========== */
 /*RIGHT MENU*/
 #btnConnect {
@@ -143,7 +143,7 @@ a:hover {
     text-decoration: none;
 }
 
-/* couleur des titres */ 
+/* ======couleur des titres====== */ 
 .card-header {      
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
 }
@@ -155,12 +155,7 @@ a:hover {
     font-size: 18px;
 }
 
-/* ====FORMULAIRE CONNEXION===== */
-#bgImageConnexion {
-    background-size: cover;
-}
-
-/* ========LANDING============ */
+/* ========LANDING BG============ */
 #landingSpace {
     background-size: cover;
     background-image: url(/../assets/img/bgLanding1.jpg);

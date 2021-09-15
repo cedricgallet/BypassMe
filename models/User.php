@@ -1,6 +1,5 @@
 <?php
-require_once dirname(__FILE__).'/../utils/db.php';
-
+include(dirname(__FILE__).'/../utils/database.php');
 
 class User{
 

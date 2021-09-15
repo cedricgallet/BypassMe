@@ -1,11 +1,6 @@
 <?php   
 session_start(); // Démarrage de la session  
 include(dirname(__FILE__).'/../models/User.php');//models
-// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-include(dirname(__FILE__).'/../views/templates/navbar.php');
-include(dirname(__FILE__).'/../views/landing.php');
-include(dirname(__FILE__).'/../views/templates/footer.php');
-
 
 // Si la session n'existe pas 
 if(!isset($_SESSION['user']))
@@ -66,4 +61,10 @@ if(!empty($_POST['current_password']) && !empty($_POST['new_password']) && !empt
     header('Location: /../views/form/register.php?msgCode=18'); 
     die();
 }  
+
+// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
+include(dirname(__FILE__).'/../views/templates/header.php');
+include(dirname(__FILE__).'/../views/templates/navbar.php');
+include(dirname(__FILE__).'/../views/form/UserUpdatePassword.php');
+include(dirname(__FILE__).'/../views/templates/footer.php');
 

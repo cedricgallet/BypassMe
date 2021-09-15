@@ -1,14 +1,14 @@
 <?php
 session_start(); // Démarrage de la session  
-include(dirname(__FILE__).'/../models/Comment');//models
+include(dirname(__FILE__).'/../models/Comment.php');//models
 
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']))
-{
-    header('Location:/../views/form/login.php?msgCode=30');
-    die();
-}
+//if(!isset($_SESSION['user']))
+//{
+  //  header('Location:/../views/form/login.php?msgCode=30');
+    //die();
+//}
 
 
 // Tableau des catégories disponibles //
@@ -81,7 +81,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }  
 
 // ++++++++++++++++++++Templates et vues++++++++++++++++++++++++++++
+include(dirname(__FILE__).'/../views/templates/header.php');
 include(dirname(__FILE__).'/../views/templates/navbar.php');
-include(dirname(__FILE__).'/../views/form/contact.php');
+include(dirname(__FILE__).'/../views/form/comment.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');
 

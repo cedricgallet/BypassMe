@@ -1,6 +1,6 @@
 <?php
-require_once(dirname(__FILE__).'/../utils/db.php');
-require_once(dirname(__FILE__).'/../utils/config.php');
+include(dirname(__FILE__).'/../utils/database.php');
+
 
 class Article{
 
@@ -88,6 +88,29 @@ class Article{
     }
 
 
+     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  Méthode qui permet de lister tous les article  
+    public static function getAllArticle()
+    {
+        $sql = "SELECT * FROM `article`;";
+
+        $pdo = Database::db_connect();
+
+        $req = $pdo->prepare($sql);
+
+        try {
+            if($req->execute()) 
+            {
+                // on return les données récupérées
+                return $req->fetchAll(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $ex) {
+            return $ex;
+        }
+        
+    }
+
+
     // +++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Méthode qui permet de modifier un article
@@ -137,27 +160,6 @@ class Article{
 
     }
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //  Méthode qui permet de lister tous les article  
-    public static function getAllArticle()
-    {
-        $sql = "SELECT * FROM `article`;";
-
-        $pdo = Database::db_connect();
-
-        $req = $pdo->prepare($sql);
-
-        try {
-            if($req->execute()) 
-            {
-                // on return les données récupérées
-                return $req->fetchAll(PDO::FETCH_OBJ);
-            }
-        } catch (PDOException $ex) {
-            return $ex;
-        }
-        
-    }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public static function searchAllArticle($search='', $limit=null, $offset=0)
