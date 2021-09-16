@@ -1,7 +1,8 @@
 html,
 body {
     height: 100vh;
-    background-color: rgb(142, 197, 179)!important;
+    background-color: rgba(36, 57, 241, 0.644)!important;
+    overflow-x: hidden;
 }
 
 /* =========TITRE========= */

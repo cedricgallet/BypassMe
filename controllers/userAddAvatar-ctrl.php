@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 
 // +++++++++++++++++++Templates et vues+++++++++++++++++++++++++++
-include(dirname(__FILE__).'/../views/templates/header.php');
-include(dirname(__FILE__) .'/../views/templates/navbar.php');
-include(dirname(__FILE__) .'/../views/form/userAddAvatar.php');
-include(dirname(__FILE__) .'/../views/templates/footer.php');
+require_once(dirname(__FILE__).'/../views/templates/header.php');
+require_once(dirname(__FILE__) .'/../views/templates/navbar.php');
+require_once(dirname(__FILE__) .'/../views/form/userAddAvatar.php');
+require_once(dirname(__FILE__) .'/../views/templates/footer.php');

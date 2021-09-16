@@ -1,4 +1,3 @@
-<!-- =======================================DEBUT MAIN===================================== -->
 
     <div id="bgImgHome" class="container-fluid h-100">
 
@@ -291,7 +290,7 @@
                 </div>
                 <!-- =========================ESPACE========================== -->
 
-                <div id="space" class="rounded-3">
+                <div id="space" class="rounded-3 mb-2">
                     <div class="card-body"></div>
                 </div>
             </div>
@@ -302,4 +301,5 @@
         </div>
     </div>
 </main>
+
 

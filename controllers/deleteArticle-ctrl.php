@@ -1,6 +1,6 @@
 <?php
 session_start(); // Démarrage de la session  
-include(dirname(__FILE__).'/../models/Article.php');
+require_once(dirname(__FILE__).'/../models/Article.php');
 
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 

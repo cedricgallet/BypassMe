@@ -1,6 +1,6 @@
             <!-- ===================================DEBUT SECTION DROITE=========================== -->
 
-            <div class="col-lg-2 col-md-12 col-sm-12 mb-1 me-0">
+            <div class="col-lg-2 col-md-12 col-sm-12 mb-2 me-0">
                 <div class="sticky-top">
 
                     <!-- ==============================CATEGORIE================================= -->
