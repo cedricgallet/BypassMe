@@ -6,15 +6,13 @@ $email = '';$password = ''; $title = 'Connexion';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
-
+    //++++++++++++++++Email+++++++++++++++++++++++
     // On test la valeur
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-    //++++++++++++++++Email+++++++++++++++++++++++
+
     if(!empty($email)) // On test si le champ n'est pas vide
     {
-
-        // On test la valeur
-        $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL); // On test la valeur
 
         if(!$testEmail)
         {    
@@ -43,6 +41,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 require_once dirname(__FILE__).'/../views/templates/header.php';
-require_once(dirname(__FILE__) . '/../views/templates/navbar.php');
 require_once dirname(__FILE__).'/../views/form/login.php';
 require_once dirname(__FILE__).'/../views/templates/footer.php';

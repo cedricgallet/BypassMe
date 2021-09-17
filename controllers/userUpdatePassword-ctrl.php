@@ -1,7 +1,7 @@
 <?php   
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../models/User.php');//models
-require_once(dirname(__FILE__).'/../utils/regex.php');//models
+require_once dirname(__FILE__).'/../models/User.php';//models
+require_once dirname(__FILE__).'/../utils/regex.php';
 
 // Si la session n'existe pas 
 if(!isset($_SESSION['user']))
@@ -31,7 +31,7 @@ if(!empty($_POST['current_password']) && !empty($_POST['new_password']) && !empt
 
     if(password_verify($current_password, $data_password['password'])) // Si le mot de passe est le bon
     {
-        if($new_password === $new_password2) // Si le 2s mdp sont les mêmes
+        if($new_password === $new_password2) // Si les 2 mdp sont les mêmes
         {
 
             $cost = ['cost' => 12]; // On chiffre le mot de passe
@@ -49,23 +49,22 @@ if(!empty($_POST['current_password']) && !empty($_POST['new_password']) && !empt
 
 
         }else{ 
-            header('Location: /../views/form/register.php?msgCode=14'); 
+            header('Location: /../views/views/form/UserUpdatePassword.php?msgCode=14'); 
             die;
         }
 
     }else{ 
-        header('Location: /../views/form/login.php?msgCode=20'); 
+        header('Location: /../views/form/UserUpdatePassword.php?msgCode=20'); 
         die; 
     }
     
 }else {
-    header('Location: /../views/form/register.php?msgCode=18'); 
+    header('Location: /../views/form/UserUpdatePassword.php?msgCode=18'); 
     die();
 }  
 
-// +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-require_once(dirname(__FILE__).'/../views/templates/header.php');
-require_once(dirname(__FILE__).'/../views/templates/navbar.php');
-require_once(dirname(__FILE__).'/../views/form/UserUpdatePassword.php');
-require_once(dirname(__FILE__).'/../views/templates/footer.php');
+// +++++++++++++++++++Templates et vues+++++++++++++++++++++++++++
+require_once dirname(__FILE__).'/../views/templates/header.php';
+require_once dirname(__FILE__) .'/../views/userUpdatePassword.php';
+require_once dirname(__FILE__) .'/../views/templates/footer.php';
 

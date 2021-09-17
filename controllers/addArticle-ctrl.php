@@ -75,8 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 } 
 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++
-require_once(dirname(__FILE__).'/../views/templates/header.php');
-require_once(dirname(__FILE__).'/../views/templates/navbar.php');
-require_once(dirname(__FILE__).'/../views/form/addArticle.php');
-require_once(dirname(__FILE__).'/../views/templates/footer.php');
+require_once dirname(__FILE__).'/../views/templates/header.php';
+require_once dirname(__FILE__).'/../views/form/addArticle.php';
+require_once dirname(__FILE__).'/../views/templates/footer.php';
 

@@ -8,6 +8,7 @@
                     <div class="mb-3">
                         <label for="avatar" class=" bg-success text-center text-warning">Images autorisées : png - 2Mo Max</label>
                         <input type="file" 
+                                id="avatar"
                                 name="avatar_file"
                                 accept="image/png"
                                 class="bg-success text-warning">

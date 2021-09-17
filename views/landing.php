@@ -11,7 +11,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center mt-3 h-100">
                 <div class="card bg-transparent" style="width: 20rem; height:31rem;">
                 <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
-                    <div id = "avatar">
+                    <div id= "avatar">
                         <img src =
                             <?php 
                             echo (file_exists("/../uploads/avatars/" . 1 . ".png")) ? "/../uploads/avatars/" . 1 . ".png" : "/../uploads/avatars/empty.png";

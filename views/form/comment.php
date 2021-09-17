@@ -55,7 +55,7 @@
                                     name ="comment" class="form-control" id="comment" rows="9" placeholder="Votre message" required
                                 <?= $comment ?? ''?>></textarea>
                         </div>
-                        <button type="submit" class="btn btn-outline-warning rounded-pill w-100">Envoyer</button>
+                        <button type="submit" class="btn btn-outline-warning rounded-pill w-100 mb-5">Envoyer</button>
                         </div>
                     </form>
                 </div>

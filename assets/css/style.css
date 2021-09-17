@@ -1,15 +1,17 @@
 html,
 body {
-    height: 100vh;
-    background-color: rgba(36, 57, 241, 0.644)!important;
     overflow-x: hidden;
+    font-family: 'Spartan', 'sans-serif';
+    font-size: 13px;
+    height: 100vh;
+    margin: 0;
 }
 
 /* =========TITRE========= */
 
 h1 {
     font-family: 'Allan', Helvetica, Arial, sans-serif;
-    font-size: 55px !important;
+    font-size: 50px !important;
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
     filter: brightness(1.25);
 }
@@ -74,11 +76,11 @@ a:hover {
 #imgHeader {
     background-image: url(/../assets/img/header.jpg);
     background-size: cover;
-    height: 500px!important;
+    height: 400px !important;
 }
 
 /* ========BACKGROUND FORM========= */
-#signInForm{
+#signInForm {
     background-image: url(/../assets/img/bgForm.jpg);
     background-size: cover;
 }
@@ -97,12 +99,12 @@ a:hover {
 
 /* ========Boutton landspace====== */
 .boutton {
-    width: 20rem !important;;
+    width: 20rem !important;
 }
 
 /*===========NAVBAR========== */
 .navbar-toggler {
-    color:#1fe5e9!important;
+    color: #1fe5e9 !important;
 }
 
 .navbar {
@@ -124,15 +126,15 @@ a:hover {
 }
 
 .dropdown-item {
-    background-color: #053180!important;
+    background-color: #053180 !important;
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     #logoutLogin {
         text-align: end;
     }
 }
-
+ */
 /* ==========SECTION DROITE=========== */
 /*RIGHT MENU*/
 #btnConnect {
@@ -144,8 +146,8 @@ a:hover {
     text-decoration: none;
 }
 
-/* ======couleur des titres====== */ 
-.card-header {      
+/* ======couleur  des titres====== */
+.card-header {
     text-shadow: 1px 1px 2px rgb(160, 230, 31), 0 0 1em rgb(56, 247, 72), 0 0 0.2em rgb(137, 230, 84);
 }
 
@@ -156,8 +158,10 @@ a:hover {
     font-size: 18px;
 }
 
-/* ========LANDING BG============ */
+/* ========LANDING BACKGROUND============ */
 #landingSpace {
     background-size: cover;
     background-image: url(/../assets/img/bgLanding1.jpg);
 }
+
+

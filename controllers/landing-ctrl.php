@@ -12,7 +12,6 @@ $title = 'Bienvenue sur ton espace personnel';
 
 // Si la session n'existe pas 
 
-require_once(dirname(__FILE__) .'/../views/templates/header.php');
-require_once(dirname(__FILE__) .'/../views/templates/navbar.php');
-require_once(dirname(__FILE__) .'/../views/landing.php');
-require_once(dirname(__FILE__) .'/../views/templates/footer.php');
+require_once dirname(__FILE__) .'/../views/templates/header.php';
+require_once dirname(__FILE__) .'/../views/landing.php';
+require_once dirname(__FILE__) .'/../views/templates/footer.php';

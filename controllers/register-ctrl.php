@@ -51,6 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         }else{
             $errorsArray['email'] = 'Les emails sont différents';
+            $errorsArray['email2'] = 'Les emails sont différents';
         }
     
     }else{
@@ -72,7 +73,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
     // ***********************Password***************************
-
     if(empty($errorsArray)) // Si aucune erreur 
     {
         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
@@ -94,7 +94,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 /* ************* AFFICHAGE DES VUES **************************/
 require_once(dirname(__FILE__) . '/../views/templates/header.php');
-require_once(dirname(__FILE__) . '/../views/templates/navbar.php');
 require_once(dirname(__FILE__) . '/../views/form/register.php');
 require_once(dirname(__FILE__) . '/../views/templates/footer.php');
 
