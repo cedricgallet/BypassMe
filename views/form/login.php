@@ -1,10 +1,11 @@
     <div id="signInForm" class="container-fluid h-100">
     
         <div class="row justify-content-center h-100">
-            <div class="col-12 col-lg-4 h-100">
-            <div><h2 class="text-center mt-5"><?=$title ?? ''?></h2></div>
+        <div><h2 class="d-flex justify-content-center mt-5"><?=$title ?? ''?></h2></div>
 
-                <div class="d-flex justify-content-center align-items-center login-wrap h-100">
+            <div class=" col-12 col-lg-4">
+
+                <div class="d-flex justify-content-center align-items-center login-wrap">
 
                     <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 

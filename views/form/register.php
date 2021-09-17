@@ -6,6 +6,17 @@
                 <h2 class="mt-5"><?=$title ?? ''?></h2>
                 <div class="login-wrap p-0">
 
+                <?php 
+                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
+                    {
+                        if(!array_key_exists($msgCode, $displayMsg))
+                        {
+                            $msgCode = 0;
+                        }
+                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    }
+                ?>
+
                     <!-- =============================CHAMP PSEUDO=============================== -->
 
                     <form id="signUpForm" class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
@@ -103,7 +114,7 @@
                         <div class='text-danger' id='errPass2'><?=htmlentities($errorsArray['password2'] ?? '')?></div>
                         
                         
-                        <div class="form-outline mt-4">
+                        <div class="form-outline mt-4 mb-5">
                             <button id="btnSubmit" 
                                     type="submit" 
                                     class="form-control btn btn-outline-warning submit px-3 rounded-pill">Créer mon compte</button>
@@ -115,3 +126,4 @@
     </div>
 <!-- ===============================FIN INSCRIPTION============================= -->
 
+<script src="/assets/js/checkPass.js"></script>

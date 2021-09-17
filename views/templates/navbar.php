@@ -9,9 +9,9 @@
         <div id="avatar">
             <img width="70" height="70" src=<?php 
                             echo (file_exists("/../uploads/avatars/" . 1 . ".png")) ? "/../uploads/avatars/" . 1 . ".png" : "/../uploads/avatars/empty.png";
-                            ?> alt="avatar-default" />
+                            ?> alt="avatar-default">
         </div>
-
+        <!-- =================================================================== -->
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

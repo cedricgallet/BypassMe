@@ -17,6 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         if(!$testEmail)
         {    
             $errorsArray['email'] = 'L\'email n\'est pas valide';
+            header('Location:/../views/form/login.php?smgCode=30');
         }
 
     }else{

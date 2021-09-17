@@ -1,6 +1,9 @@
 <?php
 require_once(dirname(__FILE__).'/../models/User.php');//models
 require_once(dirname(__FILE__) .'/../utils/regex.php');
+require_once(dirname(__FILE__) .'/../utils/regex.php');
+require_once(dirname(__FILE__) . '/../utils/smgCode.php');
+
 
 $user=null;$pseudo = '';$email = '';$password = '';$email2 = '';$password2 = '';$ip = '';$title = 'Inscription';
     
@@ -64,12 +67,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
-    if($password!=$password2)
+    if(!empty($email) && !empty($email2))
     {
-        $errorsArray['password'] = 'Les mots de passe sont différents';
-    } else {
-        $cost =['cost' => 12]; // On hash le mot de passe avec Bcrypt, via un coût de 12
-        $password = password_hash($password, PASSWORD_DEFAULT,$cost);
+        if($password!=$password2)
+        {
+            $errorsArray['password'] = 'Les mots de passe sont différents';
+        } else {
+            $cost =['cost' => 12]; // On hash le mot de passe avec Bcrypt, via un coût de 12
+            $password = password_hash($password, PASSWORD_DEFAULT,$cost);
+        }
+        
+    }else {
+        $errorsArray['password'] = 'Le champ est obligatoire';
+        $errorsArray['password2'] = 'Le champ est obligatoire';
     }
 
     // ***********************Password***************************
