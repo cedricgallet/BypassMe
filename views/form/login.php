@@ -1,11 +1,26 @@
-    <div id="signInForm" class="container-fluid h-100">
-    
-        <div class="row justify-content-center h-100">
-        <div><h2 class="d-flex justify-content-center mt-5"><?=$title ?? ''?></h2></div>
+<!-- ============================Formulaire connexion====================== -->
 
-            <div class=" col-12 col-lg-4">
+    <div id="signInForm" class="container-fluid">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="d-flex flex-column col-12 col-lg-4">
+                <h2 class="mt-5"><?=$title ?? ''?></h2>
+                <div class="login-wrap">
 
-                <div class="d-flex justify-content-center align-items-center login-wrap">
+                <!-- Affichage d'un message d'erreur personnalisé -->
+                <?php 
+
+                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
+                    {
+                        if(!array_key_exists($msgCode, $displayMsg))
+                        {
+                            $msgCode = 0;
+                        }
+                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    } 
+
+                ?>
+                <!-- -------------------------------------------- -->
+
 
                     <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
@@ -22,7 +37,7 @@
                             <div class="valid-feedback">Parfait!</div>
                             <div class="invalid-feedback">Merci de choisir un email valide.</div>
                         </div>
-                        <div class="text-danger"><?= htmlentities($errorsArray['email'] ?? '')?></div>
+                        <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
 
                         <div class="form-outline mt-3">
@@ -37,7 +52,7 @@
                                     value="<?= htmlentities($_POST['password'] ?? '')?>" 'required>
                             <label for="password" class="col-form-label text-warning">Mot de passe*</label>
                         </div>
-                        <div class='text-danger' id='errPass1'><?=htmlentities($errorsArray['password'] ?? '')?></div>
+                        <div class='invalid-feedback-2' id='errPass1'><?=htmlentities($errorsArray['password'] ?? '')?></div>
 
 
                         <div class="form-outline mt-3">

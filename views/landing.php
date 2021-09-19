@@ -12,7 +12,7 @@
                 <div class="card bg-transparent" style="width: 20rem; height:31rem;">
                 <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
                     <div id= "avatar">
-                        <img src =
+                        <img width="150" height="150" src =
                             <?php 
                             echo (file_exists("/../uploads/avatars/" . 1 . ".png")) ? "/../uploads/avatars/" . 1 . ".png" : "/../uploads/avatars/empty.png";
                             ?>

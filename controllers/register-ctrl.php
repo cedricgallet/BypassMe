@@ -1,8 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/../models/User.php');//models
 require_once(dirname(__FILE__) .'/../utils/regex.php');
-require_once(dirname(__FILE__) .'/../utils/regex.php');
-require_once(dirname(__FILE__) . '/../utils/smgCode.php');
 
 
 $user=null;$pseudo = '';$email = '';$password = '';$email2 = '';$password2 = '';$ip = '';$title = 'Inscription';
@@ -67,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
-    if(!empty($email) && !empty($email2))
+    if(!empty($password) && !empty($password2))
     {
         if($password!=$password2)
         {
@@ -91,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         if ($user) //si le compte n'existe pas, on enregistre en BDD // $user = 0 false ok
         {
-            $user->createUser();
+            $user->create();
             header('location:/../controllers/login-ctrl.php');
             die;
 

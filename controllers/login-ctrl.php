@@ -17,7 +17,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         if(!$testEmail)
         {    
             $errorsArray['email'] = 'L\'email n\'est pas valide';
-            header('Location:/../views/form/login.php?smgCode=30');
         }
 
     }else{
@@ -25,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
     // +++++++++++++++++++++Password++++++++++++++++++++++++++
-    $passwordPost = isset($_POST['password']) ? $_POST['password'] : '';
+    $passwordPost =  isset($_POST['password']) ? $_POST['password'] : '';
 
     $user = User::getByEmail($email);
 
@@ -34,7 +33,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $isPasswordOk = password_verify($passwordPost, $user->password); //On verifie si le mdp est le bon
         if($isPasswordOk)
         {
-            $_SESSION['user'] = $user; //On connecte le user
+            $_SESSION['user'] = $user; //Création de la session et connection de l'utilisateur
+            
             header('location: /../controllers/landing-ctrl.php');
         }
     }

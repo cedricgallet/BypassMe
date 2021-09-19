@@ -2,7 +2,7 @@ html,
 body {
     overflow-x: hidden;
     font-family: 'Spartan', 'sans-serif';
-    font-size: 13px;
+    font-size: 15px;
     height: 100vh;
     margin: 0;
 }
@@ -83,6 +83,7 @@ a:hover {
 #signInForm {
     background-image: url(/../assets/img/bgForm.jpg);
     background-size: cover;
+    height: 100%;
 }
 
 /* =========ESPACES ======== */
@@ -95,6 +96,11 @@ a:hover {
 /*CARD*/
 #cardHeight {
     margin-bottom: 10px;
+}
+
+/* =========INVALIDE FORMULAIRE========  */
+.invalid-feedback-2 {
+    color: red !important;
 }
 
 /* ========Boutton landspace====== */
@@ -164,4 +170,55 @@ a:hover {
     background-image: url(/../assets/img/bgLanding1.jpg);
 }
 
+/* ==========FORMULAIRE AVATAR========= */
 
+div.upload-wrapper {
+    color: white;
+    font-weight: bold;
+    display: flex;
+}
+
+input[type="file"] {
+    position: absolute;
+    left: -9999px;
+}
+
+input[type="submit"] {
+    border: 3px solid #555;
+    color: white;
+    background: #666;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #555;
+}
+
+label[for="file-upload"] {
+    padding: 0.7rem;
+    display: inline-block;
+    background: #fa5200;
+    cursor: pointer;
+    border: 3px solid #ca3103;
+    border-radius: 0 5px 5px 0;
+    border-left: 0;
+}
+
+label[for="file-upload"]:hover {
+    background: #ca3103;
+}
+
+span.file-name {
+    padding: 0.7rem 3rem 0.7rem 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #ffb543;
+    color: black;
+    border: 3px solid #f0980f;
+    border-radius: 5px 0 0 5px;
+    border-right: 0;
+}

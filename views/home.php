@@ -294,7 +294,7 @@
         </div>
         <?php
         // ======================RightMenu=================
-        include(dirname(__FILE__).'/../views/templates/rightMenu.php');
+        require_once dirname(__FILE__).'/../views/templates/rightMenu.php';
         ?>
     </div>
 </div>

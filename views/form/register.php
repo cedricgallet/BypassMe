@@ -1,22 +1,21 @@
 <!-- ==============================FORMULAIRE INSCRIPTION============================= -->
 
     <div id="signInForm" class="container-fluid h-100">
-        <div class="row justify-content-center h-100">
-            <div class="col-12 col-lg-4">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="d-flex flex-column col-12 col-lg-4">
                 <h2 class="mt-5"><?=$title ?? ''?></h2>
                 <div class="login-wrap p-0">
 
+                <!-- Affichage d'un message d'erreur personnalisé -->
                 <?php 
-                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
-                    {
-                        if(!array_key_exists($msgCode, $displayMsg))
-                        {
-                            $msgCode = 0;
-                        }
-                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
+                    if(!array_key_exists($msgCode, $displayMsg)){
+                        $msgCode = 0;
                     }
-                ?>
+                    echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                } 
 
+                ?>
                     <!-- =============================CHAMP PSEUDO=============================== -->
 
                     <form id="signUpForm" class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
@@ -27,7 +26,7 @@
                                     name="pseudo" 
                                     id="pseudo" 
                                     class="form-control"
-                                    title="Le pseudo n' est pas au format attendu"
+                                    title="Le pseudo n' est pas au format attendu-Caractère interdit: > <"
                                     placeholder="Entrez votre pseudo"
                                     autocomplete="given-name"
                                     value="<?= htmlentities($_POST['pseudo'] ?? '')?>"
@@ -125,5 +124,4 @@
         </div>
     </div>
 <!-- ===============================FIN INSCRIPTION============================= -->
-
 <script src="/assets/js/checkPass.js"></script>

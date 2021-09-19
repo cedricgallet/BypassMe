@@ -1,3 +1,4 @@
+<!-- ===========================HEADER========================== -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,7 +22,7 @@
 <body>
     <!-- =======================NAVBAR========================= -->
 
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 h-100">
         <?php require_once dirname(__FILE__).'/navbar.php';?>
 
     
