@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark border-bottom">
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom m-0">
     <div class="container-fluid">
         <a class="navbar-brand" href="/../index.php">
             <img src="/../assets/img/logo.png" alt="logo représentant le site LooKthis" width="70" height="70"
@@ -47,22 +47,17 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/../controllers/comment-ctrl.php">Contact</a>
-                </li><li class="nav-item">
                     <a class="nav-link" href="/../admin/controllers/list-user-ctrl.php">Admin</a>
                 </li>
+
                 <?php
-                            if(isset($_SESSION['user'])) {
-                                echo "<li class='nav-item'>
-                                        <a class='nav-link' href='/../views/bonus.php'>Bonus</a>
-                                    </li>";
-                            }
-                        ?>
+                    if(isset($_SESSION['user'])) {
+                        echo "<li class='nav-item'>
+                                <a class='nav-link' href='/../views/bonus.php'>Bonus</a>
+                            </li>";
+                    }
+                ?>
             </ul>
-        <!-- ==========================AVATAR============================= -->
-        <img width="70" height="70" src=<?php 
-            echo (file_exists("/../uploads/avatars/" . 1 . ".png")) ? "/../uploads/avatars/" . 1 . ".png" : "/../uploads/avatars/empty.png";
-            ?> alt="avatar-default">
             <!-- ======================================RECHERCHER========================================= -->
 
             <form class="d-flex">
@@ -76,33 +71,33 @@
                 <!-- ======================AFFICHAGE BOUTON SE DECONNECTER ET MON COMPTE================== -->
 
                 <?php
-                            // si la session n'existe pas
-                            if(!isset($_SESSION['user']))
-                            {
-                                echo " <li>
-                                        <a href='/../controllers/login-ctrl.php'
-                                            class='bottom text-decoration-none rounded-pill'>
-                                            Se connecter |</a>
-                                            
-                                        <a href='/../controllers/register-ctrl.php'
-                                            class='bottom text-decoration-none rounded-pill'>
-                                            S'inscrire
-                                        </a>
-                                    </li>";
-                                    
-                            } else {
-                                    // Si la session existe on affiche  
-                                echo "<li>
-                                        <a href='/../controllers/logout-ctrl.php'
-                                        class='bottom text-decoration-none rounded-pill'>
-                                        Deconnexion |</a>
-                                        
-                                        <a href='/../controllers/landing-ctrl.php'
-                                        class='bottom text-decoration-none rounded-pill'>
-                                        Mon compte</a>
-                                    </li>";
-                            }
-                            ?>
+                // si la session n'existe pas
+                if(!isset($_SESSION['user']))
+                {
+                    echo " <li>
+                            <a href='/../controllers/signIn-ctrl.php'
+                                class='bottom text-decoration-none rounded-pill'>
+                                Se connecter |</a>
+                                
+                            <a href='/../controllers/signUp-ctrl.php'
+                                class='bottom text-decoration-none rounded-pill'>
+                                S'inscrire
+                            </a>
+                        </li>";
+                        
+                } else {
+                        // Si la session existe on affiche  
+                    echo "<li>
+                            <a href='/../controllers/signOut-ctrl.php'
+                            class='bottom text-decoration-none rounded-pill'>
+                            Deconnexion |</a>
+                            
+                            <a href='/../controllers/landing-ctrl.php'
+                            class='bottom text-decoration-none rounded-pill'>
+                            Mon compte</a>
+                        </li>";
+                }
+                ?>
             </ul>
         </div>
     </div>

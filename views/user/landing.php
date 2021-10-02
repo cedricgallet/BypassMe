@@ -33,11 +33,13 @@
             
             <div class="col-12 col-lg-6 d-flex flex-column align-items-center mt-3 h-100">
                 <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
+
                 <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
                     mon mot de passe</a>
+                    
                 <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier
                     mon avatar</a>
-                    <a href="/../controllers/logout-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
+                    <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
             </div>        
         </div>
     </div>

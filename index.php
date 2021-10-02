@@ -1,7 +1,6 @@
 <?php
+session_start();
 
-// Génération du home:
-include(dirname(__FILE__) . '/controllers/home-ctrl.php');
-
+include dirname(__FILE__).'/controllers/home-page-ctrl.php';
 
 

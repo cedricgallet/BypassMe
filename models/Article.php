@@ -161,7 +161,13 @@ class Article{
     }
 
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    /**
+     * Méthode qui permet de lister tous les user existants en fonction d'un mot clé et selon pagination
+     * 
+     * @return array
+     */   
+    
     public static function searchAllArticle($search='', $limit=null, $offset=0)
     {
         

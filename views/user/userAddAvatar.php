@@ -1,18 +1,30 @@
 <!-- ===================================CHANGER AVATAR ================================= -->
     <div id="landingSpace" class="container-fluid h-100">
-        <div class="row justify-content-center h-100">
-            <h2 class="d-flex justify-content-center align-items-center">Choisir mon avatar</h2>
+        <div class="row justify-content-center">
+            <h2 class="d-flex justify-content-center align-items-center mt-5">Choisir mon avatar</h2>
+            
+                <!-- Affichage d'un message d'erreur personnalisé -->
+                <?php 
+                    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
+                        if(!array_key_exists($msgCode, $displayMsg)){
+                            $msgCode = 0;
+                        }
+                        echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    } 
+
+                ?>
+
                 <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
             <div class="d-flex justify-content-center" id= "avatar">
                 <img width="150" height="150" src =
                 <?php 
                 echo (file_exists("/../uploads/avatars/" . 1 . ".png")) ? "/../uploads/avatars/" . 1 . ".png" : "/../uploads/avatars/empty.png";
                 ?>
-                alt = "avatar de base du tabeau de bord">
+                alt="">
             </div> 
                 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-            <div class="col-lg-3 p-0">
+            <div class="d-flex justify-content-center col-lg-3 p-0">
 
 
                 <form method="POST" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" enctype="multipart/form-data">

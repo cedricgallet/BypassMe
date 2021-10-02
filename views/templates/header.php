@@ -1,4 +1,3 @@
-<!-- ===========================HEADER========================== -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,12 +18,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>LookThis</title>
 </head>
-<body>
-    <!-- =======================NAVBAR========================= -->
 
-    <div class="container-fluid p-0 h-100">
-        <?php require_once dirname(__FILE__).'/navbar.php';?>
+<body class="m-0">
 
-    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col p-0">
+            <?php require_once dirname(__FILE__).'/navbar.php';?>
+        </div>
+    </div>
+</div>
 
-
+<div class="container-fluid p-0 h-100">
