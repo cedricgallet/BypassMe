@@ -22,7 +22,7 @@ if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER
       <div class=""><h2 class="mt-5"><?=$title2 ?? ''?></h2><div>
 
       <table class="table">
-        <thead>
+        <caption>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Pseudo</th>
@@ -34,7 +34,7 @@ if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER
             <th scope="col">Mis a jour</th>
             <th scope="col">Supprimé</th>
           </tr>
-        </thead>
+        </caption>
         <tbody>
 
           <?php 
