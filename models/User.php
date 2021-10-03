@@ -35,7 +35,7 @@ class User{
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de récupérer le profil d'un Utilisateur
+     * Méthode qui permet de récupérer le rendez-vous d'un patient
      * 
      * @return object
      */
@@ -46,18 +46,21 @@ class User{
         try{
             $sql = 'SELECT * FROM `user` 
                     WHERE `id` = :id;';
-
             $sth = $pdo->prepare($sql);
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            if($sth->execute()){
-                return($sth->fetch());
+            $sth->execute();
+            $user = $sth->fetch();
+            if(!$user){
+                return '8';
             }
             
+            return $user;
         }
         catch(PDOException $e){
-            return $e;
+            return $e->getCode();
         }
+
     }
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -152,6 +155,33 @@ class User{
         }
 
     }
+    
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    /**
+     * Méthode qui permet de mettre à jour un utilisateur
+     * 
+     * @return boolean
+     */
+    public function update($id){
+
+        try{
+            $sql = 'UPDATE `user` 
+                    SET `pseudo` = :pseudo, 
+                        `email` = :email, 
+                    WHERE `id` = :id;';
+
+            $sth = $this->_pdo->prepare($sql);
+            
+            $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
+            $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+            return($sth->execute()); 
+        }
+        catch(PDOException $e){
+            return $e->getCode();
+        }
+
+    }
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
@@ -159,8 +189,7 @@ class User{
      * 
      * @return boolean
      */
-    public static function delete($id)
-    {
+    public static function delete($id){
 
         $pdo = Database::db_connect();
 
@@ -182,7 +211,6 @@ class User{
     }
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
     /**
      * Méthode qui permet de compter les user
      * 
@@ -208,7 +236,7 @@ class User{
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de lister tous les user existants en fonction d'un mot clé et selon pagination
+     * Méthode qui permet de lister tous les utilisateurs existants en fonction d'un mot clé et selon pagination
      * 
      * @return array
      */
@@ -241,6 +269,33 @@ class User{
         }
         catch(PDOException $e){
             return false;
+        }
+
+    }
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        /**
+     * Méthode qui permet de lister tous les commentaires d'un utilisateur
+     * 
+     * @return array
+     */
+    public static function getAllByIdUser($id){
+
+        $pdo = Database::db_connect();
+
+        try{
+            $sql = '    SELECT `comment`.`id` as `commentId`, `patients`.`id` as `user_id`, `user`.*, `comment`.* 
+                        FROM `comment` 
+                        INNER JOIN `user`
+                        ON `comment`.`iduser` = `user`.`id`
+                        WHERE `comment`.`iduser` = :id
+                        ORDER BY `comment` DESC;';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute(); 
+            return $stmt->fetchAll();
+        }
+        catch(PDOException $e){
+            return $e->getCode();
         }
 
     }

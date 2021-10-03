@@ -16,7 +16,7 @@
 
             <div class="col-lg-4 p-0">
                     
-                <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
+                <form id="signUpForm" class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
                     <div class="mb-3">
                         <label for='current_password' class="text-warning">Mot de passe actuel*</label>                       
                         <input type="password" 
@@ -24,29 +24,34 @@
                                 name="current_password"
                                 class="form-control" required>
                     </div>
+                    <div class="invalid-feedback-2"><?= htmlentities($errorsArray['current_password'] ?? '')?></div>
 
                     <div class="mb-3">
                         <label for='new_password' class="text-warning">Nouveau mot de passe*</label>
                         <input type="password" 
-                                id="new_password" 
+                                id='errPass1'    
                                 name="new_password" 
                                 class="form-control"
                                 required>
                     </div>
+                    <div class="invalid-feedback-2"><?= htmlentities($errorsArray['new_password'] ?? '')?></div>
 
                     <div class="mb-3">
                         <label for='new_password2' class="text-warning">Confirmer le nouveau mot de passe*</label>
                         <input type="password" 
-                                id="new_password2" 
+                                id='errPass2' 
                                 name="new_password2"
                                 class="form-control" 
                                 required>
+                    <div class="invalid-feedback-2"><?= htmlentities($errorsArray['new_password2'] ?? '')?></div>
 
                         <button type="submit" 
-                                class="btn btn-success mt-2">Sauvegarder</button>
+                                class="btn btn-success mt-2">Mettre a jour</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<script src="/../assets/js/checkPass.js"></script>
+<script src="/../assets/js/checkValidation.js"></script>

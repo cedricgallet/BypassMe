@@ -51,16 +51,17 @@
                 </li>
 
                 <?php
-                    if(isset($_SESSION['user'])) {
+                    if(isset($_SESSION['user']) || isset($_SESSION['admin'])) 
+                    {
                         echo "<li class='nav-item'>
-                                <a class='nav-link' href='/../views/bonus.php'>Bonus</a>
+                                <a class='nav-link' href='/../controllers/bonus-ctrl.php'>Bonus</a>
                             </li>";
                     }
                 ?>
             </ul>
             <!-- ======================================RECHERCHER========================================= -->
 
-            <form class="d-flex">
+            <form class="d-flex" action="" method="GET">
                 <input class="form-control rounded-pill me-2 mb-2" type="search" placeholder="xss,mitm,.."
                     aria-label="Search">
                 <button class="btn btn-outline-warning btn-sm me-2" type="submit">Chercher</button>
@@ -72,7 +73,7 @@
 
                 <?php
                 // si la session n'existe pas
-                if(!isset($_SESSION['user']))
+                if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
                 {
                     echo " <li>
                             <a href='/../controllers/signIn-ctrl.php'

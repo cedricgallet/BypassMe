@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if(isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Valider') 
     {
-        SaveImage('avatar_file', '../uploads/avatars/' . $_SESSION['user']->id . '.png');
+        SaveImage('avatar_file', '../uploads/users/' . $_SESSION['user']->id . '.png');
         header('Location: ../controllers/landing-ctrl.php?smgCode=36');
         die();
 

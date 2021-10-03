@@ -9,6 +9,9 @@
                                     pour anticiper et réagir aux problèmes de sécurité.Je vous propose une liste des
                                     principales failles de sécurité informatique, que se soit dans les
                                     technologies liées au web,au réseau,à la cryptographie.">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/../assets/img/logo.png">

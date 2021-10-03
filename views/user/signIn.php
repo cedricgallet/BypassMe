@@ -23,7 +23,7 @@
                 
                     <!-- ++++++++++++++++++++++++++++Email++++++++++++++++++++++++++++++++ -->
 
-                    <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                     
                         <label for="email" class="col-form-label text-warning">Adresse Email*</label>
                         <div class="form-outline">
@@ -75,3 +75,5 @@
             </div>
         </div>
     </div>
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<script src="/../assets/js/checkValidation.js"></script>

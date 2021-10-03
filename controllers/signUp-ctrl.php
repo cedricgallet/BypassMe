@@ -6,7 +6,6 @@ require_once(dirname(__FILE__).'/../models/User.php');//Models
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 $title = 'Inscription';
-
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
@@ -68,34 +67,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             $password = password_hash($password, PASSWORD_DEFAULT,$cost);
         }
 
-        // Si aucune erreur, on enregistre en BDD
-        if(empty($errorsArray))
-        {
-
-            $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
-
-            $user = new User($pseudo, $email, $password, $ip);//On récupère les infos pour savoir si user n'existe pas 
-            if($user)
-            {
-                $result = $user->create();//On ajoute en bdd
-
-                if($result===true){
-                    header('location: /controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
-                    die;
-
-                } else {
-                    // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-                    $msgCode = $result;
-                }
-            }else {
-                header('location: /controllers/signUp-ctrl.php?msgCode=13');//Si user existe on redirige av mess erreur
-                die;
-            }
-        }
-
     }else{
         $errorsArray['password'] = 'Le champ est obligatoire';
         $errorsArray['password2'] = 'Le champ est obligatoire';
+    }
+
+    // Si aucune erreur, on enregistre en BDD
+    if(empty($errorsArray))
+    {
+        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe si non ok (grâce a son email)
+        $checkUser = User::getByEmail($email);
+
+        $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
+
+
+        $user = new User($pseudo, $email, $password, $ip);//On instancie/On récupére les infos  
+        //var_dump($user);die;
+        if($checkUser == false)//Si l'utilisateur n'existe pas
+        {
+            $result = $user->create();//On ajoute en bdd
+
+            if($result===true){//Si l ajout s'est bien passé = 1
+                header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
+                die;
+
+            } else {
+                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
+                $msgCode = $result;
+            }
+        }else {
+            header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
+            die;
+        }
     }
 }
 

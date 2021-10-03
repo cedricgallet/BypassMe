@@ -1,8 +1,9 @@
 <?php
-include(dirname(__FILE__).'/../utils/database.php');
+require_once dirname(__FILE__).'/../utils/database.php';
 
 
-class Comment{
+class Comment
+{
 
     private $_categories;
     private $_title;

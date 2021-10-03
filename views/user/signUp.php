@@ -32,11 +32,11 @@
                                     title="Le pseudo ne doit pas contenir les caractères suivant: > <"
                                     placeholder="Entrez votre pseudo"
                                     autocomplete="given-name"
-                                    value="<?= htmlentities($_POST['pseudo'] ?? '')?>"
+                                    value="<?= htmlentities($pseudo ?? '')?>"
                                     pattern="<?=REGEX_PSEUDO?>" 'required>
 
                         </div>
-                        <div class="text-danger"><?=htmlentities($errorsArray['pseudo'] ?? '')?></div>
+                        <div class="invalid-feedback-2"><?=htmlentities($errorsArray['pseudo'] ?? '')?></div>
                     
 
                         <!-- ===========================CHAMP EMAIL============================== -->
@@ -51,9 +51,9 @@
                                     aria-describedby="emailHelp" 
                                     placeholder="Adresse e-mail" 
                                     autocomplete="email"
-                                    value="<?= htmlentities($_POST['email'] ?? '')?>" 'required>
+                                    value="<?= htmlentities($email ?? '')?>" 'required>
                         </div>
-                        <div class="text-danger"><?= htmlentities($errorsArray['email'] ?? '')?></div>
+                        <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
                         <!-- =============================CHAMP EMAIL CONFIRMATION=========================== -->
 
@@ -68,9 +68,9 @@
                                     class="form-control" 
                                     placeholder="Confirmez votre e-mail" 
                                     autocomplete="email2"
-                                    value="<?= htmlentities($_POST['email2'] ?? '')?>" 'required>
+                                    value="<?= htmlentities($email2 ?? '')?>" 'required>
                         </div>
-                        <div class="text-danger"><?= htmlentities($errorsArray['email2'] ?? '')?></div>
+                        <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email2'] ?? '')?></div>
                     
                         <!-- ==========================CHAMP MOT DE PASSE========================== -->
                     
@@ -85,10 +85,10 @@
                                     autocomplete="new-password" 
                                     minlength="8" 
                                     maxlength="20" 
-                                    value="<?= htmlentities($_POST['password'] ?? '')?>" 'required>
+                                    value="<?= htmlentities($password ?? '')?>" 'required>
                         </div>
 
-                        <div class='text-danger' id='errPass1'><?=htmlentities($errorsArray['password'] ?? '')?></div>
+                        <div class='invalid-feedback-2' id='errPass1'><?=htmlentities($errorsArray['password'] ?? '')?></div>
 
                         <!-- ============================CHAMP MOT DE PASSE CONFIRMATION======================= -->
 
@@ -103,9 +103,9 @@
                                     autocomplete="new-password" 
                                     minlength="8"
                                     maxlength="20"
-                                    value="<?= htmlentities($_POST['password2'] ?? '')?>" 'required>
+                                    value="<?= htmlentities($password2 ?? '')?>" 'required>
                         </div>
-                        <div class='text-danger' id='errPass2'><?=htmlentities($errorsArray['password2'] ?? '')?></div>
+                        <div class='invalid-feedback-2' id='errPass2'><?=htmlentities($errorsArray['password2'] ?? '')?></div>
                         
                         
                         <div class="form-outline mt-4 mb-5">
@@ -119,4 +119,5 @@
         </div>
     </div>
 <!-- ===============================FIN INSCRIPTION============================= -->
-<script src="/assets/js/checkPass.js"></script>
+<script src="/../assets/js/checkPass.js"></script>
+<script src="/../../assets/js/checkValidation.js"></script>
