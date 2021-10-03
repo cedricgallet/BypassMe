@@ -4,7 +4,7 @@ session_start(); // Démarrage de la session
 $title = 'Choisir mon avatar';
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']))
+if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
     header('Location:/../controllers/signIn-ctrl.php?smgCode=30');
     die();

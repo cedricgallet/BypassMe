@@ -2,7 +2,21 @@
         <div class="row h-100">
             <div class="col-12 col-lg-12">
                 <div class="text-center h-100">
-                    <div><h2 class="pt-5 mb-3"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
+                    <?php
+                    // si la session n'existe pas
+                    if(isset($_SESSION['admin']))
+                    {
+                        ?>
+
+                        <div><h2 class="pt-5 mb-3"><?='Bonjour'.' '. $_SESSION['admin']->pseudo ?> ! </h2></div>
+
+                <?php } else { ?>
+
+                        <div><h2 class="pt-5 mb-3"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
+                    
+                                
+                    <?php } ?>
+
                     <div class="mb-5"><h2><?=$title ?? ''?></h2></div>
                     <div><span id="horloge"></span></div>
                 </div>
@@ -10,23 +24,47 @@
         
             <div class="col-12 col-lg-6 d-flex justify-content-center mt-3 h-100">
                 <div class="card bg-transparent" style="width: 20rem; height:31rem;">
-                <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
+                    <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
                     <div id= "avatar">
                         <img width="150" height="150" src =
                             <?php 
                             echo (file_exists("/../uploads/users/" . 1 . ".png")) ? "/../uploads/users/" . 1 . ".png" : "/../uploads/users/empty.png";
                             ?>
-                            alt = "avatar-default">
+                            alt = "avatar par défault">
                     </div> 
-                <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-                <div class="card-body">
-                        <h4 class="card-title mb-0">Mes informations</h4>
-                        <!-- Boutton -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['user']->pseudo ?></li>
-                            <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['user']->email ?></li>
-                            <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['user']->ip ?></li>
-                        </ul>   
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                    <div class="card-body">
+                            <h4 class="card-title mb-0">Mes informations</h4>
+                            <!-- Boutton -->
+                            <?php
+                                // si la session n'existe pas
+                        
+                                if(isset($_SESSION['admin']))
+                                {
+                                    ?>
+
+                                    <div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['admin']->pseudo ?></li>
+                                            <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['admin']->email ?></li>
+                                            <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['admin']->ip ?></li>
+                                        </ul>  
+                                    <div>
+
+                                    <?php } else { ?>
+                                    <div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['user']->pseudo ?></li>
+                                            <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['user']->email ?></li>
+                                            <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['user']->ip ?></li>
+                                        </ul>  
+                                    <div>
+                                                        
+                                        
+                            <?php } ?>
+
+                            
+                        </div>
                     </div>
                 </div>        
             </div>

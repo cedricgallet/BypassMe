@@ -75,11 +75,11 @@
 
             <ul id='logoutLogin' class='nav navbar-nav navbar-right text-white h-100'>
 
-                <!-- ======================AFFICHAGE BOUTON SE DECONNECTER ET MON COMPTE================== -->
+                <!-- ======================Affichage des vues selon la session================== -->
 
                 <?php
                 // si la session n'existe pas
-                if(!isset($_SESSION['admin']) && !isset($_SESSION['user']))
+                if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
                 {
                     echo " <li>
                             <a href='/../controllers/signIn-ctrl.php'
@@ -91,9 +91,8 @@
                                 S'inscrire
                             </a>
                         </li>";
-                }
-                if (isset($_SESSION['user'])) 
-                {
+                }else{  
+
                     echo " <li>
                                 <a href='/../controllers/signOut-ctrl.php'
                                 class='bottom text-decoration-none rounded-pill'>
@@ -101,21 +100,11 @@
                                 
                             <a href='/../controllers/landing-ctrl.php'
                                 class='bottom text-decoration-none rounded-pill'>
-                                Mon compte
+                                | Mon compte
                             </a>
                         </li>";
+
                 }
-                if (isset($_SESSION['admin'])) 
-                {
-                    echo " <li>
-                                <a href='/../controllers/signOut-ctrl.php'
-                                class='bottom text-decoration-none rounded-pill'>
-                                Deconnexion </a>
-                                
-                        </li>";
-                }
-                        
-            
                 ?>
             </ul>
         </div>

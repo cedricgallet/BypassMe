@@ -5,7 +5,7 @@ require_once dirname(__FILE__) . '/../../models/User.php';
 $title1 = 'Gestion administration';
 $title2 = 'Liste des utilisateurs';
 
-if (!isset($_SESSION['password'])) {
+if (!isset($_SESSION['admin'])) {
     header('Location: /../index.php'); 
     die;
 }
