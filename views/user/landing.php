@@ -22,7 +22,7 @@
                 </div>
             </div>
         
-            <div class="col-12 col-lg-6 mt-3 h-100">
+            <div class="col-12 col-lg-6 mt-3">
                 <div class="card bg-transparent" style="width: 20rem; height:31rem;">
                     <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
                     <div id= "avatar">
