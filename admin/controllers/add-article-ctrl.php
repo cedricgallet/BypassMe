@@ -76,6 +76,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++
 require_once dirname(__FILE__).'/../views/templates/header.php';
-require_once dirname(__FILE__).'/../admin/views/addArticle.php';
+require_once dirname(__FILE__).'/../admin/views/add-article.php';
 require_once dirname(__FILE__).'/../views/templates/footer.php';
 

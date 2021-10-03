@@ -2,7 +2,7 @@
 session_start(); // Démarrage de la session
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']))
+if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
     header('Location:/../views/user/sigIn.php?msgCode=30');
     die();

@@ -46,9 +46,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/../admin/controllers/list-user-ctrl.php">Admin</a>
-                </li>
 
                 <?php
                     if(isset($_SESSION['user']) || isset($_SESSION['admin'])) 
@@ -58,11 +55,20 @@
                             </li>";
                     }
                 ?>
+
+                <?php
+                    if(isset($_SESSION['admin'])) 
+                    {
+                        echo "<li class='nav-item'>
+                                <a class='nav-link' href='/../admin/controllers/list-user-ctrl.php'>Administration</a>
+                            </li>";
+                    }
+                ?>
             </ul>
             <!-- ======================================RECHERCHER========================================= -->
 
             <form class="d-flex" action="" method="GET">
-                <input class="form-control rounded-pill me-2 mb-2" type="search" placeholder="xss,mitm,.."
+                <input class="form-control rounded-pill me-2 mb-2" type="text" placeholder="xss,mitm,.."
                     aria-label="Search">
                 <button class="btn btn-outline-warning btn-sm me-2" type="submit">Chercher</button>
             </form>
@@ -73,7 +79,7 @@
 
                 <?php
                 // si la session n'existe pas
-                if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+                if(!isset($_SESSION['admin']) && !isset($_SESSION['user']))
                 {
                     echo " <li>
                             <a href='/../controllers/signIn-ctrl.php'
@@ -85,19 +91,31 @@
                                 S'inscrire
                             </a>
                         </li>";
-                        
-                } else {
-                        // Si la session existe on affiche  
-                    echo "<li>
-                            <a href='/../controllers/signOut-ctrl.php'
-                            class='bottom text-decoration-none rounded-pill'>
-                            Deconnexion |</a>
-                            
+                }
+                if (isset($_SESSION['user'])) 
+                {
+                    echo " <li>
+                                <a href='/../controllers/signOut-ctrl.php'
+                                class='bottom text-decoration-none rounded-pill'>
+                                Deconnexion </a>
+                                
                             <a href='/../controllers/landing-ctrl.php'
-                            class='bottom text-decoration-none rounded-pill'>
-                            Mon compte</a>
+                                class='bottom text-decoration-none rounded-pill'>
+                                Mon compte
+                            </a>
                         </li>";
                 }
+                if (isset($_SESSION['admin'])) 
+                {
+                    echo " <li>
+                                <a href='/../controllers/signOut-ctrl.php'
+                                class='bottom text-decoration-none rounded-pill'>
+                                Deconnexion </a>
+                                
+                        </li>";
+                }
+                        
+            
                 ?>
             </ul>
         </div>

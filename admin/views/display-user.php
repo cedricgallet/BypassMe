@@ -4,7 +4,7 @@
 
     <div class="col-12 col-lg-6">
 
-      <div class="card rounded-pill">
+      <div class="card rounded-2">
         <div class="card-header">Pseudo - <?=htmlentities($user->pseudo)?></div>
         <div class="card-body">
 
