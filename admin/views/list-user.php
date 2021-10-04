@@ -8,60 +8,63 @@ if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER
 } ?>
 <!-- -------------------------------------------- -->
 
-<div class="container-fluid h-100">
+<div id="bgGestionAdmin" class="container-fluid h-100">
   <div class="row">
-  <h2 class="mt-5 text-center"><?=$title1 ?? ''?></h2>
+    <h2 class="mt-5 text-center"><?=$title1 ?? ''?></h2>
 
     <div class="col-12">
-      <form class="text-center" action="" method="GET">
 
+      <form class="text-center" action="" method="GET">
         <input type="text" name="s" id="s" value="<?=$s?>">
         <input type="submit" value="Rechercher">
-
       </form>
+
+
       <div class=""><h2 class="mt-5"><?=$title2 ?? ''?></h2><div>
 
-      <table class="table">
-        <caption>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Pseudo</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-            <th scope="col">Ip</th>
-            <th scope="col">Confirmation_token</th>
-            <th scope="col">Ajouté</th>
-            <th scope="col">Mis a jour</th>
-            <th scope="col">Supprimé</th>
-          </tr>
-        </caption>
-        <tbody>
+      <div class="col-12">
 
-          <?php 
-          $i=0;
-          foreach($allUsers as $user) {
-              $i++;
-              ?>
-              <tr>
-                <th scope="row"><?=htmlentities($user->id)?></th>
-                <td><?=htmlentities($user->pseudo)?></td>
-                <td><?=htmlentities($user->email)?></td>
-                <td><?=htmlentities($user->password)?></td>
-                <td><?=htmlentities($user->ip)?></td>
-                <td><?=htmlentities($user->confirmation_token)?></td>
-                <td><?=htmlentities($user->created_at)?></td>
-                <td><?=htmlentities($user->updated_at)?></td>
-                <td><?=htmlentities($user->deleted_at)?></td>
+        <table class="table">
+          <caption>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Pseudo</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+              <th scope="col">Ip</th>
+              <th scope="col">Ajouté</th>
+              <th scope="col">Mis a jour</th>
+              <th scope="col">Supprimé</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </caption>
+          <tbody>
 
-                <td>
-                <a href="/../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-success far fa-edit"></i></a>
-                <a href="/../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-danger fas fa-trash-alt"></i></a>
-                </td>
-              </tr>
-          <?php } ?>
+            <?php 
+            $i=0;
+            foreach($allUsers as $user) {
+                $i++;
+                ?>
+                <tr class="fs-4">
+                  <th scope="row"><?=htmlentities($user->id)?></th>
+                  <td><?=htmlentities($user->pseudo)?></td>
+                  <td><?=htmlentities($user->email)?></td>
+                  <td><?=htmlentities($user->password)?></td>
+                  <td><?=htmlentities($user->ip)?></td>
+                  <td><?=htmlentities($user->created_at)?></td>
+                  <td><?=htmlentities($user->updated_at)?></td>
+                  <td><?=htmlentities($user->deleted_at)?></td>
 
-        </tbody>
-      </table>
+                  <td>
+                  <a href="/../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-success far fa-edit"></i></a>
+                  <a href="/../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-danger fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+            <?php } ?>
+
+          </tbody>
+        </table>
+      </div>
 
       <nav aria-label="...">
         <ul class="pagination pagination-sm">

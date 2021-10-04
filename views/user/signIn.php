@@ -1,7 +1,7 @@
 <!-- ============================Formulaire connexion====================== -->
 
-<div id="signInForm" class="container-fluid">
-        <div class="row justify-content-center align-items-center h-100">
+    <div id="signInForm" class="container-fluid h-100">
+        <div class="row justify-content-end align-items-center h-100 me-5">
             <div class="d-flex flex-column col-12 col-lg-4">
                 <h2 class="mt-5"><?=$title ?? ''?></h2>
                 <div class="login-wrap">

@@ -18,7 +18,7 @@ class Article{
      * 
      * @return boolean
      */
-    public function __construct($categories=NULL, $title=NULL, $article=NULL, $confirmed_at=NULL, $created_at = NULL, $deleted_at =NULL)
+    public function __construct($categories=NULL, $title=NULL, $article=NULL, $confirmed_at=NULL,$deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
@@ -26,7 +26,6 @@ class Article{
         $this->_title = $title;
         $this->_article = $article;
         $this->_confirmed_at = $confirmed_at;
-        $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
     }
@@ -36,7 +35,7 @@ class Article{
      * 
      * @return boolean
      */
-    public function createArticle()
+    public function create()
     {
 
         try{
@@ -45,7 +44,7 @@ class Article{
             $stmt = $this->_pdo->prepare($sql);
 
             $stmt->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $stmt->bindValue(':title',$this->_title,PDO::PARAM_INT);
+            $stmt->bindValue(':title',$this->_title,PDO::PARAM_STR);
             $stmt->bindValue(':article',$this->_article,PDO::PARAM_STR);
             return $stmt->execute();
         }
@@ -62,8 +61,8 @@ class Article{
      * 
      * @return object
      */
-    public static function getArticle($id)
-    {
+    
+    public static function get($id){
         
         $pdo = Database::db_connect();
 
@@ -74,18 +73,19 @@ class Article{
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
-            $article = $sth->fetch();
-            if(!$article){
+            $user = $sth->fetch();
+            if(!$user){
                 return '23';
             }
             
-            return $article;
+            return $user;
         }
         catch(PDOException $e){
             return $e->getCode();
         }
 
     }
+    
 
 
      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -68,7 +68,7 @@
             <!-- ======================================RECHERCHER========================================= -->
 
             <form class="d-flex" action="" method="GET">
-                <input class="form-control rounded-pill me-2 mb-2" type="text" placeholder="xss,mitm,.."
+                <input class="form-control rounded-pill me-2 mb-2" type="text" id="s" name="s" placeholder="xss,mitm,.."
                     aria-label="Search">
                 <button class="btn btn-outline-warning btn-sm me-2" type="submit">Chercher</button>
             </form>

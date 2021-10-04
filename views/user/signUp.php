@@ -1,14 +1,13 @@
     <!-- ==============================FORMULAIRE INSCRIPTION============================= -->
 
-    <div id="signInForm" class="container-fluid h-100">
+    <div id="signUpForm" class="container-fluid h-100">
         <div class="row h-100">
-        <h2 class="d-flex justify-content-center mt-5"><?=$title ?? ''?></h2>
 
-            <div class="col-12 d-flex justify-content-center login-wrap p-0 h-100">
+            <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
 
                 <!-- Affichage d'un message d'erreur personnalisé -->
                 <?php 
-                require_once(dirname(__FILE__).'/../../config/config.php');
+                    require_once(dirname(__FILE__).'/../../config/config.php');
 
                     if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
                         if(!array_key_exists($msgCode, $displayMsg)){
@@ -18,11 +17,13 @@
                     } 
 
                 ?>
-                
-                <!-- =============================CHAMP PSEUDO=============================== -->
-                <div class="d-flex align-items-center justify-content-center col-12 col-lg-6 h-100">                            
 
-                    <form id="signUpForm" class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+
+                <!-- =============================CHAMP PSEUDO=============================== -->
+                <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6 h-100">                            
+                
+                    <div class="d-flex"><h2 class=""><?=$title ?? ''?></h2></div>
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
                         <input type="hidden" value="<?= $id ?? '' ?>" class="form-control" id="id" name="id">
 

@@ -5,8 +5,8 @@ if (!isset($_SESSION['admin'])) {
 }
 ?>
 <!-- ==============================FORMULAIRE INSCRIPTION============================= -->
-    <div id="signInForm" class="container-fluid h-100">
-        <div class="row justify-content-center align-items-center h-100">
+    <div id="editUserForm" class="container-fluid h-100">
+        <div class="row justify-content-end align-items-center h-100 me-5">
             <div class="d-flex flex-column col-12 col-lg-4">
                 <h2 class="mt-5"><?=$title ?? ''?></h2>
                 <div class="login-wrap p-0">
@@ -26,11 +26,11 @@ if (!isset($_SESSION['admin'])) {
                     ?>
                     <!-- =============================CHAMP PSEUDO=============================== -->
 
-                    <form id="signUpForm" class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <input type="hidden" value="<?= $id ?? '' ?>" class="form-control" id="id" name="id">
 
                         <div class="form-outline">
-                        <label for="pseudo" class="col-form-label text-warning">Pseudo*</label>
+                        <label for="pseudo" class="col-form-label text-info">Pseudo*</label>
 
                             <input type="text" 
                                     name="pseudo" 
@@ -49,7 +49,7 @@ if (!isset($_SESSION['admin'])) {
                         <!-- ===========================CHAMP EMAIL============================== -->
 
                         <div class="form-outline">
-                        <label for="email" class="col-form-label text-warning">Adresse Email*</label>
+                        <label for="email" class="col-form-label text-info">Adresse Email*</label>
 
                             <input type="email" 
                                     name="email" 
@@ -65,7 +65,7 @@ if (!isset($_SESSION['admin'])) {
                         <div class="form-outline mt-4 mb-5">
                             <button id="btnSubmit" 
                                     type="submit" 
-                                    class="form-control btn btn-outline-warning submit px-3 rounded-pill">Mettre a jour</button>
+                                    class="form-control btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
                         </div>
                     </form>
                 </div>

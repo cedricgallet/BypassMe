@@ -1,81 +1,68 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../models/Article.php');//models
+require_once(dirname(__FILE__).'/../../models/Article.php');//models
 
 if (!isset($_SESSION['admin'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$title = 'Ajouter un article';
-$categories ='';$title = '';$article = ''; $arrayCategories = ['applicative','web','reseau','humaine'];//tabeau pour la boucle front
+$title1 = 'Ajouter un article';
+$arrayCategories = ['applicative','web','reseau','humaine'];//tabeau pour la boucle dans front
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    if(!empty($title) && !empty($article) && !empty($article)) 
+// ================================================================================
+if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
+{ 
+
+    // On verifie l'existance et on nettoie
+    $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING));
+    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
+    $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
+
+    //On test si le champ n'est pas vide
+    if(!empty($_POST['categories']) && !empty($_POST['title']) && !empty($_POST['article']))
     {
-        //  On vérifie si c'est le format attendu 
-        $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING));
-        $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
-        $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
 
+echo 'bonjour';
+var_dump($article);die;
 
-        // On vérifie si l'article existe
-        // ON invoque la méthode statique permettant de vérifier si l'article existe  si non ok (grâce a son id)
-        $checkArticle = Article::getArticle($id);
-    
-    // var_dump($checkArticle);
-    // die;
+        // ON invoque la méthode statique permettant de récupérer tous les articles
+        $checkArticle = Article::getAllArticle();
 
+        $newArticle = new Article($categories, $title, $article);//On instancie/On récupére les infos  
 
-        if($checkArticle == 0) //Si l'article n'existe pas = false 0
+        if($checkArticle == false)//Si l'article n'existe pas
         {
-            if($categories) //Si le format est correct(= vrai)
-            {
-                if($title) //Si le format est correct(= vrai)
-                {
-                    if($article) //Si le format est correct(= vrai)
-                    {
 
 
-                        $article = new Article($categories, $title, $article);// On récupère les infos/On instancie
-                        $article->createArticle();
-
-                    // var_dump($article);
-                    // die;
-        
+            $result = $newArticle->create();//On ajoute en bdd
+            if($result===true){//Si l ajout s'est bien passé = 1
 
 
-                    } else {
-                        header('Location: /../views/form/addArticle?msgCode=29'); 
-                        die;
-                    }   
-            
-                } else {
-                    header('Location: /../views/form/addArticle?msgCode=28'); 
-                    die;
-                }        
-            
-            } else {
-                header('Location: /../views/form/addArticle?msgCode=27'); 
+                header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=21');//On redirige av mess succés
                 die;
-            } 
 
-        } else {
-            header('Location: /../views/form/addArticle?msgCode=23'); 
+
+            } else {
+                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
+                $msgCode = $result;
+            }
+        }else {
+            header('location: /../../admin/controllers/add-article-ctrl.php?msgCode=37');//Si l'article existe on redirige av mess erreur
             die;
-        } 
+        }
 
-    } else {
-        header('Location: /../views/form/addArticle?msgCode=18'); 
+    }else {
+        header('Location: /../../admin/controllers/add-article-ctrl.php?msgCode=18'); 
         die;
-    } 
+    }
 
-} 
+}
+
 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++
-require_once dirname(__FILE__).'/../views/templates/header.php';
-require_once dirname(__FILE__).'/../admin/views/add-article.php';
-require_once dirname(__FILE__).'/../views/templates/footer.php';
+require_once dirname(__FILE__).'/../../views/templates/header.php';
+require_once dirname(__FILE__).'/../../admin/views/add-article.php';
+?>
 

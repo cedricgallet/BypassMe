@@ -1,11 +1,11 @@
-<div class="container-fluid h-100">
-  <div class="row justify-content-center align-items-center h-100">
-  <h2 class="mt-5 text-center"><?=$title ?? ''?></h2>
+<div id="bgGestionAdmin" class="container-fluid h-100">
+  <div class="row justify-content-center h-100">
 
     <div class="col-12 col-lg-6">
+    <h2 class="mt-5 text-center"><?=$title ?? ''?></h2>
 
       <div class="card rounded-2">
-        <div class="card-header">Pseudo - <?=htmlentities($user->pseudo)?></div>
+        <div class="card-header text-center"><strong><?=htmlentities($user->pseudo)?></strong></div>
         <div class="card-body">
 
           <p class="card-text"><strong>Email - </strong>

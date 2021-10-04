@@ -52,7 +52,7 @@ class User{
             $sth->execute();
             $user = $sth->fetch();
             if(!$user){
-                return '8';
+                return '3';
             }
             
             return $user;

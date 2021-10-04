@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin'])) {
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
-$title = 'Modification des informations d\'un utilisateur en cours ...';
+$title = 'Modification d\'un utilisateur en cours ...';
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));

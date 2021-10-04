@@ -1,5 +1,5 @@
     <div id="landingSpace" class="container-fluid h-100 p-0">
-        <div class="row justify-content-center align-items-center h-100">
+        <div class="row justify-content-center h-100">
             <div class="col-12 col-lg-12">
                 <div class="text-center h-100">
                     <?php
@@ -22,7 +22,7 @@
                 </div>
             </div>
         
-            <div class="col-12 col-lg-6 mt-3">
+            <div class="d-flex col-12 col-lg-6 mt-3">
                 <div class="card bg-transparent" style="width: 20rem; height:31rem;">
                     <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
                     <div id= "avatar">
@@ -68,47 +68,48 @@
                     </div>
                 </div>        
             </div>
-                <?php
+        
+            <?php
                 // si la session n'existe pas
         
                 if(isset($_SESSION['admin']))
                 {
-                    ?>
+            ?>
 
-                        <div class="col-12 col-lg-6 mt-3 h-100">
-                            <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
+            <div class="col-12 col-lg-6 mt-3 h-100">
+                <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
 
-                            <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
-                                mon mot de passe</a>
-                                
-                            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
-                                mon avatar</a>
+                <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
+                    mon mot de passe</a>
+                    
+                <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
+                    mon avatar</a>
 
-                            <a href="/../admin/controllers/list-user-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
-                            un utilisateur</a>
+                <a href="/../admin/controllers/list-user-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
+                un utilisateur</a>
 
-                            <a href="/../admin/controllers/add-article-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
-                            un article</a>
+                <a href="/../admin/controllers/add-article-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
+                un article</a>
 
-                            <a href="/../admin/controllers/add-comment-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier
-                            un commentaire</a>
+                <a href="/../admin/controllers/add-comment-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
+                un commentaire</a>
 
-                            <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
-                        </div>   
+                <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
+            </div>   
 
-                    <?php } else { ?>
+        <?php } else { ?>
 
-                        <div class="col-12 mt-3 h-100">
-                            <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
+            <div class="col-12 mt-3 h-100">
+                <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
 
-                            <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
-                                mon mot de passe</a>
-                                
-                            <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier
-                                mon avatar</a>
-                                <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
-                        </div>   
-                                        
+                <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
+                    mon mot de passe</a>
+                    
+                <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
+                    mon avatar</a>
+                    <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
+            </div>   
+                            
                         
             <?php } ?>
 

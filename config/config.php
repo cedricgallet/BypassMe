@@ -58,4 +58,6 @@ $displayMsg = array(
     '35' => ['type' => 'alert-success', 'msg' => 'Votre mot de passe a été mis a jour'],
     '36' => ['type' => 'alert-success', 'msg' => 'Votre avatar a été mis a jour'],
 
+    '37' => ['type' => 'alert-danger', 'msg' => 'L\'article existe déjà'],
+
 );
