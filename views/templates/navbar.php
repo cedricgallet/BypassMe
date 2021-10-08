@@ -48,19 +48,10 @@
                 </li>
 
                 <?php
-                    if(isset($_SESSION['user']) || isset($_SESSION['admin'])) 
+                    if(isset($_SESSION['user']))
                     {
                         echo "<li class='nav-item'>
                                 <a class='nav-link' href='/../controllers/bonus-ctrl.php'>Bonus</a>
-                            </li>";
-                    }
-                ?>
-
-                <?php
-                    if(isset($_SESSION['admin'])) 
-                    {
-                        echo "<li class='nav-item'>
-                                <a class='nav-link' href='/../admin/controllers/list-user-ctrl.php'>Administration</a>
                             </li>";
                     }
                 ?>
@@ -79,7 +70,7 @@
 
                 <?php
                 // si la session n'existe pas
-                if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+                if(!isset($_SESSION['user']))
                 {
                     echo " <li>
                             <a href='/../controllers/signIn-ctrl.php'

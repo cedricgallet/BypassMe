@@ -2,7 +2,7 @@
 session_start(); // Démarrage de la session  
 require_once dirname(__FILE__).'/../models/Article.php';
 
-if (!isset($_SESSION['admin'])) 
+if (!isset($_SESSION['user'])) 
 {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;

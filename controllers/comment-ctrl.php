@@ -3,13 +3,11 @@ session_start(); // Démarrage de la session
 require_once(dirname(__FILE__).'/../models/Comment.php');//models
 
 
-// Si la session n'existe pas 
-//if(!isset($_SESSION['user']))
-//{
-  //  header('Location:/../views/form/login.php?msgCode=30');
-    //die();
-//}
-
+// si la session n'existe pas ou si l'utilisateur n'est pas connecté on redirige
+if(!isset($_SESSION['user'])){
+    header('Location:/../views/user/sigIn.php?msgCode=30');
+    die();
+}
 
 // Tableau des catégories disponibles //
 $arrayCategories = ['autre','applicative','web','réseau','humaine',];

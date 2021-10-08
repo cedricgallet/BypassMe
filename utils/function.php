@@ -1,5 +1,12 @@
 <?php
 
+// ++++++++++++++++++++++++++Convertion date++++++++++++++++++++++++
+function convertDate()
+{
+    return strftime('%d/%m/%Y à %H:%M', strtotime());
+}
+
+// ++++++++++++++++++++Affichage avatar++++++++++++++++++++++++++++=
 function SaveImage($name, $path)
 {
     $width = 300;
@@ -24,4 +31,3 @@ function SaveImage($name, $path)
         }
     }
 }
-

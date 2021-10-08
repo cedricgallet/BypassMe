@@ -52,9 +52,10 @@
 
                                     <!-- ============================Article============================== -->
                                 <div class="mb-3">
-                                    <label for="article" class="col-form-label card-header">Contenu de l' article</label> 
+                                    <label for="article" class="col-form-label card-header">Contenu de l' article</label>
+                                    
                                     <textarea
-                                        name ="article "class="form-control card-header" id="article" rows="9" placeholder="Tapez votre article">
+                                        name ="article" class="form-control card-header" id="article" rows="9" placeholder="Tapez votre article">
                                     </textarea>
                                 </div>
                                 <div class="valid-feedback">Parfait!</div>

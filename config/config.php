@@ -5,6 +5,9 @@ define('LOGIN', 'cedric');
 define('PASSWORD', 'Omnivore1#');
 define('NB_ELEMENTS_BY_PAGE', 5);
 
+define('DEFAULT_EMAIL' , 'galletcedric@protonmail.com');
+define('DEFAULT_PASSWORD' , 'cccccccc');
+
 $displayMsg = array(
     
     '0' => ['type' => 'alert-danger', 'msg' => 'Une erreur inconnue s\'est produite'],

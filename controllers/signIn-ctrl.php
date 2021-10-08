@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once dirname(__FILE__).'/../models/User.php';
+require_once dirname(__FILE__).'/../config/config.php';
 
 $errorsArray = array();
 $title = 'Connexion';
@@ -38,22 +39,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                 $isPasswordOk = password_verify($password, $user->password);
                 if($isPasswordOk)//Si mdp est le meme que celui en bdd
                 {
-
+                    $_SESSION['user'] = $user;//On crée la session
                     // +++++++++++++++++++++++Connection administration+++++++++++++++++++++++
-                    $defaultEmail = 'galletcedric@protonmail.com';
-                    $defaultPassword = 'cccccccc';
 
-
-                    if($email == $defaultEmail && $password == $defaultPassword) 
+                    if($email == DEFAULT_EMAIL && $password == DEFAULT_PASSWORD) 
                     {
-                        //On connecte l'administrateur
-                        $_SESSION['admin'] = $user;
-                        header('location: /../admin/controllers/list-user-ctrl.php');//On redirige vers le tableau de bord
+                                    
+                        header('location: /../admin/controllers/list-user-ctrl.php');//On redirige vers la liste des utilisateurs
                         die;
 
                     }else {
-                        //On connecte le user
-                        $_SESSION['user'] = $user;
+                        //On connecte l'utilisateur
                         header('location: /../controllers/landing-ctrl.php');//On redirige vers le tableau de bord
                         die;
                     }

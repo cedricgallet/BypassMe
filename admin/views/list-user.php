@@ -1,14 +1,16 @@
-<!-- Affichage d'un message d'erreur personnalisé -->
-<?php 
-if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
-    if(!array_key_exists($msgCode, $displayMsg)){
-        $msgCode = 0;
-    }
-    echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
-} ?>
-<!-- -------------------------------------------- -->
 
-<div id="bgGestionAdmin" class="container-fluid h-100">
+<div id="bgGestionAdmin" class="container-fluid h-100 p-0">
+  
+  <!-- Affichage d'un message d'erreur personnalisé -->
+  <?php 
+  if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
+      if(!array_key_exists($msgCode, $displayMsg)){
+          $msgCode = 0;
+      }
+      echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+  } ?>
+  <!-- -------------------------------------------- -->
+
   <div class="row">
     <h2 class="mt-5 text-center"><?=$title1 ?? ''?></h2>
 
@@ -24,9 +26,9 @@ if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER
 
       <div class="col-12">
 
-        <table class="table">
+        <table class="table table-hover table-bordered">
           <caption>
-            <tr>
+            <tr class="fs-4">
               <th scope="col">#</th>
               <th scope="col">Pseudo</th>
               <th scope="col">Email</th>
@@ -51,13 +53,14 @@ if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER
                   <td><?=htmlentities($user->email)?></td>
                   <td><?=htmlentities($user->password)?></td>
                   <td><?=htmlentities($user->ip)?></td>
-                  <td><?=htmlentities($user->created_at)?></td>
-                  <td><?=htmlentities($user->updated_at)?></td>
-                  <td><?=htmlentities($user->deleted_at)?></td>
+                  <td ><?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?></td>    
+                  <td><?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?></td>
+                  <td><?=htmlentities(date('d-m-Y', strtotime($user->deleted_at)))?></td>
 
                   <td>
-                  <a href="/../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-success far fa-edit"></i></a>
-                  <a href="/../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-danger fas fa-trash-alt"></i></a>
+                  <a href="/../../controllers/signUp-ctrl.php"><i class="text-success fas fa-plus"></i></a>
+                  <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
+                  <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-danger fas fa-trash-alt"></i></a>
                   </td>
                 </tr>
             <?php } ?>
@@ -74,7 +77,7 @@ if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER
             for($i=1;$i<=$nbPages;$i++){
               if($i==$currentPage){ ?>    
                 <li class="page-item active" aria-current="page">
-                  <span class="page-link">
+                  <span class="page-link text-info">
                     <?=$i?> 
                     <span class="visually-hidden">(current)</span>
                   </span>

@@ -33,7 +33,7 @@
                                     id="email" 
                                     placeholder="Adresse e-mail" 
                                     autocomplete="email"
-                                    value="<?= htmlentities($_POST['email'] ?? '')?>" 'required>
+                                    value="<?= htmlentities($_POST['email'] ?? '')?>" required>
                         </div>
                         <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
@@ -48,7 +48,7 @@
                                     autocomplete="off" 
                                     minlength="8" 
                                     maxlength="20" 
-                                    value="<?= htmlentities($_POST['password'] ?? '')?>" 'required>
+                                    value="<?= htmlentities($_POST['password'] ?? '')?>" required>
                         </div>
                         <div class='invalid-feedback-2' id='pass'><?=htmlentities($errorsArray['password'] ?? '')?></div>
                         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -67,7 +67,7 @@
 
                         <div class="form-outline d-md-flex mt-2">
                             <div class="">
-                                <a class="text-decoration-none text-warning" href="/../controllers/register-ctrl.php" >S'inscrire?</a>
+                                <a class="text-decoration-none text-warning" href="/../controllers/signUp-ctrl.php" >S'inscrire?</a>
                             </div>
                         </div>
                     </form>

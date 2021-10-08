@@ -6,9 +6,8 @@ class Comment
 {
 
     private $_categories;
-    private $_title;
-    private $_article;
-    private $_confirmed_at;
+    private $_subject;
+    private $_comment;
     private $_created_at;
     private $_deleted_at;
 
@@ -20,21 +19,20 @@ class Comment
      * 
      * @return boolean
      */
-    public function __construct($categories=NULL, $title=NULL, $article=NULL,$confirmed_at=NULL, $created_at = NULL, $deleted_at =NULL)
+    public function __construct($categories=NULL, $subject=NULL, $comment=NULL, $created_at = NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
         $this->_categories = $categories;
-        $this->_title = $title;
-        $this->_article = $article;
-        $this->_confirmed_at = $confirmed_at;
+        $this->_subject = $subject;
+        $this->_comment = $comment;
         $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
     }
 
     /**
-     * Méthode qui permet de créer un article
+     * Méthode qui permet de créer un comment
      * 
      * @return boolean
      */
@@ -42,13 +40,13 @@ class Comment
     {
 
         try{
-            $sql = 'INSERT INTO `comment` (`categories`, `title`, `article`) 
-                    VALUES (:categories, :title, :article);';
+            $sql = 'INSERT INTO `comment` (`categories`, `subject`, `comment`) 
+                    VALUES (:categories, :subject, :comment);';
             $stmt = $this->_pdo->prepare($sql);
 
             $stmt->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $stmt->bindValue(':title',$this->_title,PDO::PARAM_INT);
-            $stmt->bindValue(':article',$this->_article,PDO::PARAM_STR);
+            $stmt->bindValue(':subject',$this->_subject,PDO::PARAM_INT);
+            $stmt->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
             return $stmt->execute();
         }
         catch(PDOException $e){
@@ -60,7 +58,7 @@ class Comment
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de récupérer un article
+     * Méthode qui permet de récupérer un comment
      * 
      * @return object
      */
@@ -76,12 +74,12 @@ class Comment
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
-            $article = $sth->fetch();
-            if(!$article){
+            $comment = $sth->fetch();
+            if(!$comment){
                 return '23';
             }
             
-            return $article;
+            return $comment;
         }
         catch(PDOException $e){
             return $e->getCode();
@@ -92,7 +90,7 @@ class Comment
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de modifier un article
+     * Méthode qui permet de modifier un comment
      * 
      * @return boolean
      */
@@ -100,12 +98,12 @@ class Comment
     {
 
         try{
-            $sql = 'UPDATE `comment` SET `categories` = :categories, `title` = :title, `article` = :article,
+            $sql = 'UPDATE `comment` SET `categories` = :categories, `subject` = :subject, `comment` = :comment,
                     WHERE `id` = :id;';
             $sth = $this->_pdo->prepare($sql);
             $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $sth->bindValue(':title',$this->_title,PDO::PARAM_STR);
-            $sth->bindValue(':article',$this->_article,PDO::PARAM_STR);
+            $sth->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
+            $sth->bindValue(':comment',$this->_article,PDO::PARAM_STR);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             return($sth->execute()); 
         }
@@ -173,12 +171,12 @@ class Comment
             if(!is_null($limit)){ // Si une limite est fixée, il faut tout lister
                 $sql = 'SELECT * FROM `comment` 
                 WHERE `categories` LIKE :search 
-                OR `title` LIKE :search 
+                OR `subject` LIKE :search 
                 LIMIT :limit OFFSET :offset;';
             } else {
                 $sql = 'SELECT * FROM `comment` 
                 WHERE `categories` LIKE :search 
-                OR `title` LIKE :search;';
+                OR `subject` LIKE :search;';
             }
 
             $pdo = Database::db_connect();

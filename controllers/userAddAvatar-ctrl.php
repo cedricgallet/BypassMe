@@ -1,30 +1,28 @@
 <?php
 session_start(); // Démarrage de la session  
 
-$title = 'Choisir mon avatar';
+$title = 'Modifier mon avatar';
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+if(!isset($_SESSION['user']))
 {
     header('Location:/../controllers/signIn-ctrl.php?smgCode=30');
     die();
 }
 
-require_once(dirname(__FILE__).'/../utils/addImage.php');
+require_once(dirname(__FILE__).'/../utils/function.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-    if(isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Valider') 
-    {
-        SaveImage('avatar_file', '../uploads/users/' . $_SESSION['user']->id . '.png');
+        SaveImage('avatar_file', '../uploads/users/' . $_SESSION['user']->id && $_SESSION['admin']->id . '.png');
         header('Location: ../controllers/landing-ctrl.php?smgCode=36');
         die();
 
-    }else {
-        header('Location: /../controllers/landing-ctrl.php?smgCode=37');
-        die;
-    }
+}else {
+    header('Location: /../controllers/landing-ctrl.php?smgCode=37');
+    die;
 }
+
 
 
 

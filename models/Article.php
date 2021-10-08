@@ -18,10 +18,11 @@ class Article{
      * 
      * @return boolean
      */
-    public function __construct($categories=NULL, $title=NULL, $article=NULL, $confirmed_at=NULL,$deleted_at =NULL)
+    public function __construct($categories, $title, $article, $confirmed_at=NULL,$deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
+
         $this->_categories = $categories;
         $this->_title = $title;
         $this->_article = $article;
@@ -37,23 +38,29 @@ class Article{
      */
     public function create()
     {
-
         try{
             $sql = 'INSERT INTO `article` (`categories`, `title`, `article`) 
                     VALUES (:categories, :title, :article);';
-            $stmt = $this->_pdo->prepare($sql);
+            
+            $sth = $this->_pdo->prepare($sql);
 
-            $stmt->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $stmt->bindValue(':title',$this->_title,PDO::PARAM_STR);
-            $stmt->bindValue(':article',$this->_article,PDO::PARAM_STR);
-            return $stmt->execute();
+
+            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
+            $sth->bindValue(':title',$this->_title,PDO::PARAM_STR);
+            $sth->bindValue(':article',$this->_article,PDO::PARAM_STR);
+            
+            if($sth->execute()){
+                return true;
+            } else {
+                return false;
+            }
+            
+
         }
         catch(PDOException $e){
-            return $e->getCode();
+            echo'Error';
         }
-
     }
-
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**

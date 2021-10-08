@@ -1,36 +1,33 @@
-<?php
-if (!isset($_SESSION['admin'])) {
-    header("Location: /../../index.php");
-    die;
-}
-?>
-<!-- ==============================FORMULAIRE INSCRIPTION============================= -->
-    <div id="editUserForm" class="container-fluid h-100">
-        <div class="row justify-content-end align-items-center h-100 me-5">
-            <div class="d-flex flex-column col-12 col-lg-4">
-                <h2 class="mt-5"><?=$title ?? ''?></h2>
-                <div class="login-wrap p-0">
+    <!-- ==============================FORMULAIRE MAJ============================= -->
 
+    <div id="editUserForm" class="container-fluid h-100 p-0">
+        <div class="row h-100">         
+            <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
+                
+                
+                <!-- =============================CHAMP PSEUDO=============================== -->
+                <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6 h-100"> 
+                <div class="d-flex"><h2 class=""><?=$title ?? ''?></h2></div>
 
                     <!-- Affichage d'un message d'erreur personnalisé -->
-                    <?php 
-                    require_once(dirname(__FILE__).'/../../config/config.php');
+                        <?php 
+                            require_once(dirname(__FILE__).'/../../config/config.php');
 
-                        if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
-                            if(!array_key_exists($msgCode, $displayMsg)){
-                                $msgCode = 0;
-                            }
-                            echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
-                        } 
+                            if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
+                                if(!array_key_exists($msgCode, $displayMsg)){
+                                    $msgCode = 0;
+                                }
+                                echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                            } 
 
-                    ?>
-                    <!-- =============================CHAMP PSEUDO=============================== -->
-
+                        ?>
+                        
                     <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
-                        <input type="hidden" value="<?= $id ?? '' ?>" class="form-control" id="id" name="id">
+
+                        <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
 
                         <div class="form-outline">
-                        <label for="pseudo" class="col-form-label text-info">Pseudo*</label>
+                        <label for="pseudo" class="col-form-label text-warning">Pseudo*</label>
 
                             <input type="text" 
                                     name="pseudo" 
@@ -40,16 +37,16 @@ if (!isset($_SESSION['admin'])) {
                                     placeholder="Entrez votre pseudo"
                                     autocomplete="given-name"
                                     value="<?= htmlentities($pseudo ?? '')?>"
-                                    pattern="<?=REGEX_PSEUDO?>" 'required>
+                                    pattern="<?=REGEX_PSEUDO?>" required>
 
                         </div>
-                        <div class="text-danger"><?=htmlentities($errorsArray['pseudo'] ?? '')?></div>
+                        <div class="invalid-feedback-2"><?=htmlentities($errorsArray['pseudo'] ?? '')?></div>
                     
 
                         <!-- ===========================CHAMP EMAIL============================== -->
 
                         <div class="form-outline">
-                        <label for="email" class="col-form-label text-info">Adresse Email*</label>
+                        <label for="email" class="col-form-label text-warning">Adresse Email*</label>
 
                             <input type="email" 
                                     name="email" 
@@ -58,22 +55,20 @@ if (!isset($_SESSION['admin'])) {
                                     aria-describedby="emailHelp" 
                                     placeholder="Adresse e-mail" 
                                     autocomplete="email"
-                                    value="<?= htmlentities($email ?? '')?>" 'required>
+                                    value="<?= htmlentities($email ?? '')?>" required>
                         </div>
-                        <div class="text-danger"><?= htmlentities($errorsArray['email'] ?? '')?></div>
-                        
+                        <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
+
                         <div class="form-outline mt-4 mb-5">
                             <button id="btnSubmit" 
                                     type="submit" 
                                     class="form-control btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
                         </div>
                     </form>
+                    <a class="btn btn-success" href="/../../admin/controllers/list-user-ctrl.php">Retour à la liste utilisateur</a>
                 </div>
-
-                <a class="btn btn-success" href="/../../admin/controllers/list-user-ctrl.php">Retour à la liste utilisateur</a>
-
             </div>
         </div>
     </div>
 <!-- ===============================FIN INSCRIPTION============================= -->
-<script src="/../../assets/js/checkValidation.js"></script>
+<script src="/../../assets/js/checkValidation.js"></script>                

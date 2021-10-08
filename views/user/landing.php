@@ -1,82 +1,51 @@
-    <div id="landingSpace" class="container-fluid h-100 p-0">
-        <div class="row justify-content-center h-100">
-            <div class="col-12 col-lg-12">
-                <div class="text-center h-100">
-                    <?php
-                    // si la session n'existe pas
-                    if(isset($_SESSION['admin']))
-                    {
+<div id="landingSpace" class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+
+        <div><h2 class="text-center mt-5"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
+            <div class="text-center"><h2><?=$title ?? ''?></h2></div>
+
+        <div class="col-12 col-lg-6">
+
+            <div class="card rounded-2">
+                <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
+                <div id= "avatar">
+                    <img width="150" height="150" src =
+                        <?php 
+                        echo (file_exists("/../uploads/users/" . 1 . ".png")) ? "/../uploads/users/" . 1 . ".png" : "/../uploads/users/empty.png";
                         ?>
+                        alt = "avatar par défault">
+                </div>
+            
+                <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    
+                <div class="card-body">
+                    <div class="card-header text-center"><strong><?=$_SESSION['user']->pseudo?></strong></div>
 
-                        <div><h2 class="pt-5 mb-3"><?='Bonjour'.' '. $_SESSION['admin']->pseudo ?> ! </h2></div>
+                        <p class="card-text"><strong>Email - </strong>
+                            <?=htmlentities($_SESSION['user']->email)?>
+                        </p>
 
-                <?php } else { ?>
+                        <p class="card-text"><strong>Ip - </strong>
+                            <?=htmlentities($_SESSION['user']->ip)?>
+                        </p>
 
-                        <div><h2 class="pt-5 mb-3"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
-                    
-                                
-                    <?php } ?>
+                        <p class="card-text"><strong>Ajouté -</strong>
+                        <?=htmlentities(date('d-m-Y', strtotime($_SESSION['user']->created_at)))?>
+                        </p> 
 
-                    <div class="mb-5"><h2><?=$title ?? ''?></h2></div>
-                    <div><span id="horloge"></span></div>
+                    </div>    
                 </div>
             </div>
+        </div>
         
-            <div class="d-flex col-12 col-lg-6 mt-3">
-                <div class="card bg-transparent" style="width: 20rem; height:31rem;">
-                    <!-- +++++++++++++++++++++Affichage avatar+++++++++++++++++++++++++ -->
-                    <div id= "avatar">
-                        <img width="150" height="150" src =
-                            <?php 
-                            echo (file_exists("/../uploads/users/" . 1 . ".png")) ? "/../uploads/users/" . 1 . ".png" : "/../uploads/users/empty.png";
-                            ?>
-                            alt = "avatar par défault">
-                    </div> 
-                    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-                    <div class="card-body">
-                            <h4 class="card-title mb-0">Mes informations</h4>
-                            <!-- Boutton -->
-                            <?php
-                                // si la session n'existe pas
-                        
-                                if(isset($_SESSION['admin']))
-                                {
-                                    ?>
+        <div class="col-12 col-lg-6">
 
-                                    <div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['admin']->pseudo ?></li>
-                                            <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['admin']->email ?></li>
-                                            <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['admin']->ip ?></li>
-                                        </ul>  
-                                    <div>
-
-                                    <?php } else { ?>
-                                    <div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item text-info bg-transparent p-0">Pseudo: <?=$_SESSION['user']->pseudo ?></li>
-                                            <li class="list-group-item text-info bg-transparent p-0">Email: <?=$_SESSION['user']->email ?></li>
-                                            <li class="list-group-item text-info bg-transparent p-0">IP: <?=$_SESSION['user']->ip ?></li>
-                                        </ul>  
-                                    <div>
-                                                        
-                                        
-                            <?php } ?>
-
-                            
-                        </div>
-                    </div>
-                </div>        
-            </div>
-        
             <?php
                 // si la session n'existe pas
-        
-                if(isset($_SESSION['admin']))
+                if(isset($_SESSION['user']->email) == DEFAULT_EMAIL && isset($_SESSION['user']->password) == DEFAULT_PASSWORD)
                 {
             ?>
 
-            <div class="col-12 col-lg-6 mt-3 h-100">
                 <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
 
                 <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
@@ -95,11 +64,9 @@
                 un commentaire</a>
 
                 <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
-            </div>   
 
-        <?php } else { ?>
+            <?php } else { ?>
 
-            <div class="col-12 mt-3 h-100">
                 <a href="/../index.php" class="boutton btn btn-danger mb-2">Accueil</a>
 
                 <a href="/../controllers/userUpdatePassword-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
@@ -108,13 +75,16 @@
                 <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
                     mon avatar</a>
                     <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
-            </div>   
                             
                         
             <?php } ?>
-
         </div>
     </div>
+</div>
 
 
 
+
+
+        
+        

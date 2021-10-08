@@ -3,7 +3,7 @@ session_start();
 require_once dirname(__FILE__) . '/../../models/User.php';
 require_once dirname(__FILE__) . '/../../models/Comment.php';
 
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
@@ -17,8 +17,6 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 // Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur
 $user = User::get($id);
 
-// Appel à la méthode statique permettant de récupérer tous les infos d'un utilisateur
-$allUsers = User::getAllByIdUser($id);
 
 // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
 if(!$user){

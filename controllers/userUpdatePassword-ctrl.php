@@ -3,7 +3,7 @@ session_start(); // Démarrage de la session
 require_once dirname(__FILE__).'/../models/User.php';//models
 
 // Si la session n'existe pas 
-if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+if(!isset($_SESSION['user']))
 {
     header('Location:/../views/user/signUp.php?msgCode=30');
     die();

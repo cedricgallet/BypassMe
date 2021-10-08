@@ -1,7 +1,7 @@
 <!-- ===================================CHANGER AVATAR ================================= -->
     <div id="landingSpace" class="container-fluid h-100">
         <div class="row justify-content-center">
-            <h2 class="d-flex justify-content-center align-items-center mt-5">Choisir mon avatar</h2>
+            <h2 class="d-flex justify-content-center align-items-center mt-5"><?=$title ?? ''?></h2>
             
                 <!-- Affichage d'un message d'erreur personnalisé -->
                 <?php 
@@ -20,7 +20,7 @@
                 <?php 
                 echo (file_exists("/../uploads/users/" . 1 . ".png")) ? "/../uploads/users/" . 1 . ".png" : "/../uploads/users/empty.png";
                 ?>
-                alt="">
+                alt="avatar par défault">
             </div> 
                 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 

@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         //var_dump($user);die;
         if($checkUser == false)//Si l'utilisateur n'existe pas
         {
-            $result = $user->create();//On ajoute en bdd
+            $result = $user->createUser();//On ajoute en bdd
 
             if($result===true){//Si l ajout s'est bien passé = 1
                 header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés

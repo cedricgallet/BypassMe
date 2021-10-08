@@ -3,21 +3,22 @@
 require_once dirname(__FILE__).'/../utils/database.php';
 require_once dirname(__FILE__).'/../utils/sendMail.php';
 
-class User{
+class User
+{
 
     use sendMail;
 
-    private $_ip;
     private $_pseudo;
     private $_email;
     private $_password;
-    private $_confirmed_at;
+    private $_ip;
+    private $_created_at;
     private $_deleted_at;
 
     private $_pdo;
 
 
-    public function __construct($pseudo, $email, $password, $ip, $confirmed_at = NULL, $deleted_at = NULL)
+    public function __construct($pseudo, $email, $password, $ip = NULL, $created_at = NULL, $deleted_at = NULL)
     {
         
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -25,7 +26,7 @@ class User{
         $this->_email = $email;
         $this->_password = $password;
         $this->_ip = $ip;                           
-        $this->_confirmed_at = $confirmed_at;
+        $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
         $this->_pdo = Database::db_connect();
@@ -39,7 +40,8 @@ class User{
      * 
      * @return object
      */
-    public static function get($id){
+    public static function get($id)
+    {
         
         $pdo = Database::db_connect();
 
@@ -63,6 +65,7 @@ class User{
 
     }
     
+    
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public static function getByEmail($email)
     {
@@ -75,7 +78,7 @@ class User{
 
             $sth = $pdo->prepare($sql);
 
-            $sth->bindValue(':email',$email);
+            $sth->bindValue(':email',$email,PDO::PARAM_STR);
 
             if($sth->execute()){
                 return($sth->fetch());
@@ -89,7 +92,7 @@ class User{
     }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public function create()
+    public function createUser()
     {
         try{
             $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `confirmation_token`) 
@@ -106,11 +109,13 @@ class User{
             $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
 
             
-            if($sth->execute()){
+            if($sth->execute())
+            {
                 //envoi d'un mail
                 $id = $this->_pdo->lastInsertId();
                 $this->sendMailConfirm($id, $this->_email, $token);
                 return true;
+
             } else {
                 return false;
             }
@@ -134,13 +139,12 @@ class User{
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public static function validateSignUp($id)
     {
-
         
         try{
 
             $pdo = Database::db_connect();
             $sql = 'UPDATE `user` 
-                    SET `confirmed_at` = NOW()
+                    SET `created_at` = NOW()
                     WHERE `id` = :id;';
             $sth = $pdo->prepare($sql);
 
@@ -158,24 +162,25 @@ class User{
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de mettre à jour un utilisateur
+     * Méthode qui permet de mettre à jour un patient
      * 
      * @return boolean
      */
-    public function update($id){
+    public function update($id)
+    {
 
         try{
-            $sql = 'UPDATE `user` 
-                    SET `pseudo` = :pseudo, 
-                        `email` = :email, 
-                    WHERE `id` = :id;';
+            $sql = "UPDATE `user` SET `id`=:id,`pseudo`=:pseudo,`email`=:email WHERE 1;";
 
             $sth = $this->_pdo->prepare($sql);
             
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
+
+
             return($sth->execute()); 
+            var_dump($sth->execute());
         }
         catch(PDOException $e){
             return $e->getCode();
@@ -189,7 +194,8 @@ class User{
      * 
      * @return boolean
      */
-    public static function delete($id){
+    public static function delete($id)
+    {
 
         $pdo = Database::db_connect();
 
@@ -216,7 +222,8 @@ class User{
      * 
      * @return int
      */
-    public static function count($s){
+    public static function count($s)
+    {
         $pdo = Database::db_connect();
         try{
             $sql = 'SELECT * FROM `user`
@@ -240,7 +247,8 @@ class User{
      * 
      * @return array
      */
-    public static function getAll($search='', $limit=null, $offset=0){
+    public static function getAll($search='', $limit=null, $offset=0)
+    {
         
         try{
             if(!is_null($limit)){ // Si une limite est fixée, il faut tout lister
@@ -278,7 +286,8 @@ class User{
      * 
      * @return array
      */
-    public static function getAllByIdUser($id){
+    public static function getAllByIdUser($id)
+    {
 
         $pdo = Database::db_connect();
 
