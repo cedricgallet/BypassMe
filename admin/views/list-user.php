@@ -55,7 +55,7 @@
                   <td><?=htmlentities($user->ip)?></td>
                   <td ><?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?></td>    
                   <td><?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?></td>
-                  <td><?=htmlentities(date('d-m-Y', strtotime($user->deleted_at)))?></td>
+                  <td><?=htmlentities($user->deleted_at)?></td>
 
                   <td>
                   <a href="/../../controllers/signUp-ctrl.php"><i class="text-success fas fa-plus"></i></a>

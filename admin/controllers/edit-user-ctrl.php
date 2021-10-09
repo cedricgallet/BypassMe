@@ -55,31 +55,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
     // **********************************************
 
+    
     // Si il n'y a pas d'erreurs, on met à jour le patient.
     if(empty($errorsArray))
     {
-        // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe si non ok (grâce a son email)
-        $checkUser = User::getByEmail($email);
+        $user = new User($pseudo, $email, "", "");//On instancie/On récupére les infos  
 
-        //var_dump($user);die;
-        if($checkUser == true)//Si l'utilisateur existe 
-        {
-            $user = new User($pseudo, $email, "", "");//On instancie/On récupére les infos  
+        $result = $user->update($id);//On ajoute en bdd
 
-            $result = $user->update($id);//On ajoute en bdd
-
-            if($result===true){//Si l ajout s'est bien passé = 1
-                header('location: /../../controllers/signIn-ctrl.php?msgCode=2');//On redirige av mess succés
-                die;
-
-            } else {
-                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-                $msgCode = $result;
-            }
-        }else {
-            header('location: /../../controllers/signUp-ctrl.php?msgCode=3');//Si l'utilisateur existe on redirige av mess erreur
+        if($result===true){//Si l ajout s'est bien passé = 1
+            header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=2');//On redirige av mess succés
             die;
+
+        } else {
+            // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
+            $msgCode = $result;
         }
+    
     }
 
 }else{

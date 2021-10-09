@@ -170,7 +170,7 @@ class User
     {
 
         try{
-            $sql = "UPDATE `user` SET `id`=:id,`pseudo`=:pseudo,`email`=:email WHERE 1;";
+            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email WHERE `id` = :id;";
 
             $sth = $this->_pdo->prepare($sql);
             

@@ -5,8 +5,8 @@ if($isRegistered){
     echo 'Féliciations!!';
 } else {
 
-    echo 'Pirate!!!';
+    echo 'ATTENTION Pirate!!!';
 }
 ?>
 <br>
-<a href="/">Accueil</a>
+<a href="/../index.php">Accueil</a>

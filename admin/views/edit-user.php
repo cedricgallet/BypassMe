@@ -27,7 +27,7 @@
                         <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
 
                         <div class="form-outline">
-                        <label for="pseudo" class="col-form-label text-warning">Pseudo*</label>
+                        <label for="pseudo" class="col-form-label text-info">Pseudo*</label>
 
                             <input type="text" 
                                     name="pseudo" 
@@ -46,7 +46,7 @@
                         <!-- ===========================CHAMP EMAIL============================== -->
 
                         <div class="form-outline">
-                        <label for="email" class="col-form-label text-warning">Adresse Email*</label>
+                        <label for="email" class="col-form-label text-info">Adresse Email*</label>
 
                             <input type="email" 
                                     name="email" 

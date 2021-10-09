@@ -1,12 +1,21 @@
 <?php
-
+// Constante connexion
 define('DSN', 'mysql:host=localhost;dbname=LookThis');
 define('LOGIN', 'cedric');
 define('PASSWORD', 'Omnivore1#');
+
+// Constante search
 define('NB_ELEMENTS_BY_PAGE', 5);
 
+// Constante connexion admin
 define('DEFAULT_EMAIL' , 'galletcedric@protonmail.com');
 define('DEFAULT_PASSWORD' , 'cccccccc');
+
+// Constante limite de taille upload
+define('LIMIT_WEIGHT', 2*1024*1024);
+define('SUPPORTED_FORMAT', array('image/jpeg', 'image/png'));
+define('MIN_WIDTH', 200);
+define('MIN_HEIGHT', 200);
 
 $displayMsg = array(
     

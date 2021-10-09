@@ -1,7 +1,6 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../models/Comment.php');//models
-
+require_once(dirname(__FILE__).'/../models/Comment.php');//Models
 
 // si la session n'existe pas ou si l'utilisateur n'est pas connecté on redirige
 if(!isset($_SESSION['user'])){
