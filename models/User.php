@@ -12,13 +12,14 @@ class User
     private $_email;
     private $_password;
     private $_ip;
+    private $_state;
     private $_created_at;
     private $_deleted_at;
 
     private $_pdo;
 
 
-    public function __construct($pseudo, $email, $password, $ip = NULL, $created_at = NULL, $deleted_at = NULL)
+    public function __construct($pseudo, $email, $password, $ip = NULL, $state = 1, $created_at = NULL, $deleted_at = NULL)
     {
         
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -26,6 +27,7 @@ class User
         $this->_email = $email;
         $this->_password = $password;
         $this->_ip = $ip;                           
+        $this->_state = $state;                           
         $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
@@ -95,8 +97,8 @@ class User
     public function createUser()
     {
         try{
-            $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `confirmation_token`) 
-                    VALUES (:pseudo, :email, :password, :ip, :confirmation_token);';
+            $sql = 'INSERT INTO `user` (`pseudo`, `email`, `password`, `ip`, `state`, `confirmation_token`) 
+                    VALUES (:pseudo, :email, :password, :ip, :state, :confirmation_token);';
             
             $sth = $this->_pdo->prepare($sql);
 
@@ -106,6 +108,7 @@ class User
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
+            $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
             $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
 
             
@@ -171,13 +174,14 @@ class User
 
         try{
 
-            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email WHERE id = :id";
+            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email, `state`=:state WHERE id = :id;";
 
             $sth = $this->_pdo->prepare($sql);
             
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
+            $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
 
             return($sth->execute()); 
         }
@@ -204,10 +208,12 @@ class User
             $sth = $pdo->prepare($sql);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
-            if($sth->rowCount()==0)
+            if($sth->rowCount()==0){
                 return 3;
-            else
+
+            }else{
                 return 10;
+            }
         }
         catch(PDOException $e){
             return $e->getCode();
@@ -291,7 +297,7 @@ class User
         $pdo = Database::db_connect();
 
         try{
-            $sql = '    SELECT `comment`.`id` as `commentId`, `patients`.`id` as `user_id`, `user`.*, `comment`.* 
+            $sql = '    SELECT `comment`.`id` as `commentId`, `user`.`id` as `user_id`, `user`.*, `comment`.* 
                         FROM `comment` 
                         INNER JOIN `user`
                         ON `comment`.`iduser` = `user`.`id`

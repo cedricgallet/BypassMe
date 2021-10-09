@@ -58,12 +58,25 @@
                                     value="<?= htmlentities($email ?? '')?>" required>
                         </div>
                         <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
+                        <!-- +++++++++++++++++++++++++Status utilisateur++++++++++++++++++++++++ -->
+                        <div class="form-group mt-3">
+                            <label for="state" class="col-form-label text-info">Désactiver l'tulisateur?</label>
+
+                            <select class="form-outline" required>
+                            <option selected value="<?= htmlentities($user->state) ?>">Désactiver l'utilisateur ?</option>
+
+                                <option value="1">Oui</option>
+                                <option  value="0">Non</option>
+                            </select>
+                        </div>
+                        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
                         <div class="form-outline mt-4 mb-5">
-                            <button id="btnSubmit" 
-                                    type="submit" 
-                                    class="form-control btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
+                        <button id="btnSubmit" 
+                                type="submit" 
+                                class="form-control btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
                         </div>
+                        
                     </form>
                     <a class="btn btn-success" href="/../../admin/controllers/list-user-ctrl.php">Retour à la liste utilisateur</a>
                 </div>

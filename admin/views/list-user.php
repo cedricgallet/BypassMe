@@ -22,9 +22,9 @@
       </form>
 
 
-      <div class=""><h2 class="mt-5"><?=$title2 ?? ''?></h2><div>
+      <div class=""><h2 class="p-4"><?=$title2 ?? ''?></h2><div>
 
-      <div class="col-12">
+      <div class="col-12 p-4">
 
         <table class="table table-hover table-bordered">
           <caption>
@@ -32,11 +32,11 @@
               <th scope="col">#</th>
               <th scope="col">Pseudo</th>
               <th scope="col">Email</th>
-              <th scope="col">Password</th>
               <th scope="col">Ip</th>
-              <th scope="col">Ajouté</th>
-              <th scope="col">Mis a jour</th>
-              <th scope="col">Supprimé</th>
+              <th scope="col">Status</th>
+              <th scope="col">Ajouté le</th>
+              <th scope="col">Mis a jour le</th>
+              <th scope="col">Désactivé le</th>
               <th scope="col">Actions</th>
             </tr>
           </caption>
@@ -47,18 +47,17 @@
             foreach($allUsers as $user) {
                 $i++;
                 ?>
-                <tr class="fs-4">
+                <tr class="text-white fs-4">
                   <th scope="row"><?=htmlentities($user->id)?></th>
                   <td><?=htmlentities($user->pseudo)?></td>
                   <td><?=htmlentities($user->email)?></td>
-                  <td><?=htmlentities($user->password)?></td>
                   <td><?=htmlentities($user->ip)?></td>
+                  <td><?=htmlentities($user->state)?></td>
                   <td ><?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?></td>    
                   <td><?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?></td>
-                  <td><?=htmlentities($user->deleted_at)?></td>
+                  <td><?=htmlentities(date('d-m-Y', strtotime($user->deleted_at)))?></td>
 
                   <td>
-                  <a href="/../../controllers/signUp-ctrl.php"><i class="text-success fas fa-plus"></i></a>
                   <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
                   <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-danger fas fa-trash-alt"></i></a>
                   </td>
@@ -76,14 +75,14 @@
             <?php
             for($i=1;$i<=$nbPages;$i++){
               if($i==$currentPage){ ?>    
-                <li class="page-item active" aria-current="page">
-                  <span class="page-link text-info">
+                <li class=" page-item active" aria-current="page">
+                  <span class="ms-4 page-link text-info">
                     <?=$i?> 
                     <span class="visually-hidden">(current)</span>
                   </span>
                 </li>
           <?php } else { ?>
-            <li class="page-item"><a class="page-link" href="?currentPage=<?=$i?>&s=<?=$s?>"><?=$i?></a></li>
+            <li class="page-item"><a class="ms-4 page-link text-info" href="?currentPage=<?=$i?>&s=<?=$s?>"><?=$i?></a></li>
           <?php } 
           }?>
         </ul>

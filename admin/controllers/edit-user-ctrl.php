@@ -61,8 +61,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     // Si il n'y a pas d'erreurs, on met à jour le patient.
     if(empty($errorsArray))
     {
-        $user = new User($pseudo, $email, "", "");//On instancie/On récupére les infos  
 
+        $user = new User($pseudo, $email, "", "");//On instancie/On récupére les infos 
         $result = $user->update($id);//On ajoute en bdd
 
         if($result===true){//Si l ajout s'est bien passé = 1
@@ -83,6 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $id = $user->id;
         $pseudo = $user->pseudo;
         $email =$user->email;
+        $state =$user->state;
     } else {
         header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=3');
         die;

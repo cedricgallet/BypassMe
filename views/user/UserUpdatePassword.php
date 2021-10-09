@@ -45,8 +45,8 @@
                                 required>
                     <div class="invalid-feedback-2"><?= htmlentities($errorsArray['new_password2'] ?? '')?></div>
 
-                        <button type="submit" 
-                                class="btn btn-success mt-2">Mettre a jour</button>
+                        <input type="submit" 
+                                class="btn btn-success mt-2">Mettre a jour</input>
                     </div>
                 </form>
             </div>
