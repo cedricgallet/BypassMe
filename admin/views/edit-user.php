@@ -21,8 +21,8 @@
                             } 
 
                         ?>
-                        
-                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $id?>" method="post">
 
                         <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
 

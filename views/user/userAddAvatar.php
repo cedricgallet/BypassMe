@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-center" id= "avatar">
                 <img width="150" height="150" src =
                 <?php 
-                echo (file_exists("/../uploads/users/" . 1 . ".png")) ? "/../uploads/users/" . 1 . ".png" : "/../uploads/users/empty.png";
+                echo (file_exists("/../uploads/users/" . 1 . ".jpeg")) ? "/../uploads/users/" . 1 . ".jpeg" : "/../uploads/users/empty.jpeg";
                 ?>
                 alt="avatar par défault">
             </div> 
@@ -30,7 +30,7 @@
                 <form method="POST" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" enctype="multipart/form-data">
                     <div class="upload-wrapper">
                         <span class="file-name">Images autorisées :<hr> png, jpeg - 2Mo Max</span>
-                        <label for="file-upload">Choisir un avatar<input type="file" id="file-upload" name="uploadedFile"></label>
+                        <label for="file-upload">Choisir un avatar<input type="file" id="file-upload" name="profile"></label>
                     </div>
 
                     <input type="submit" name="uploadBtn" value="Valider">

@@ -11,7 +11,7 @@
                 <div id= "avatar">
                     <img width="150" height="150" src =
                         <?php 
-                        echo (file_exists("/../uploads/users/" . 1 . ".png")) ? "/../uploads/users/" . 1 . ".png" : "/../uploads/users/empty.png";
+                        echo (file_exists("/../uploads/users/" . 1 . ".jpeg")) ? "/../uploads/users/" . 1 . ".jpeg" : "/../uploads/users/empty.jpeg";
                         ?>
                         alt = "avatar par défault">
                 </div>

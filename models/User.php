@@ -170,7 +170,8 @@ class User
     {
 
         try{
-            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email WHERE `id` = :id;";
+
+            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email WHERE id = :id";
 
             $sth = $this->_pdo->prepare($sql);
             
@@ -178,9 +179,7 @@ class User
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
 
-
             return($sth->execute()); 
-            var_dump($sth->execute());
         }
         catch(PDOException $e){
             return $e->getCode();

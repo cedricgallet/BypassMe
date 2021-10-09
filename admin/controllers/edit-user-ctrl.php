@@ -18,7 +18,7 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
-
+    
      // pseudo
     // On verifie l'existance et on nettoie
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
@@ -36,6 +36,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
     // **********************Email******************************
+
+ 
     
     // On verifie l'existance et on nettoie
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
@@ -65,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         if($result===true){//Si l ajout s'est bien passé = 1
             header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=2');//On redirige av mess succés
-            die;
+            
 
         } else {
             // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
