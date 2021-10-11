@@ -11,9 +11,13 @@ if (!isset($_SESSION['user'])) {
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 $title = 'Modification d\'un utilisateur en cours ...';
+$show_modal = false;
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
+
+// Nettoyage du status 
+$state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
@@ -37,8 +41,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
     // **********************Email******************************
 
- 
-    
     // On verifie l'existance et on nettoie
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 
@@ -57,22 +59,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
     // **********************************************
 
-    
+
     // Si il n'y a pas d'erreurs, on met à jour le patient.
     if(empty($errorsArray))
     {
 
-        $user = new User($pseudo, $email, "", "");//On instancie/On récupére les infos 
-        $result = $user->update($id);//On ajoute en bdd
+        $user = new User($pseudo, $email, "", "",$state);//On instancie/On récupére les infos 
+
+        $result = $user->update($id);//On ajoute en bdd        
 
         if($result===true){//Si l ajout s'est bien passé = 1
-            header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=2');//On redirige av mess succés
             
+            header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=2');//On redirige av mess succés
 
         } else {
             // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
             $msgCode = $result;
         }
+        
     
     }
 

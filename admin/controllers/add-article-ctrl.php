@@ -58,5 +58,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++
 require_once dirname(__FILE__).'/../../views/templates/header.php';
 require_once dirname(__FILE__).'/../../admin/views/add-article.php';
-?>
+
 

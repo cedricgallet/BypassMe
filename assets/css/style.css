@@ -239,3 +239,39 @@ span.file-name {
     border-right: 0;
 }
 
+/* ++++++++++++++++++++++++++++ */
+.page-section {
+    padding: 8rem 0;
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.btn-xl {
+    padding: 1.25rem 2.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10rem;
+}
+
+hr.divider {
+    height: 0.2rem;
+    max-width: 3.25rem;
+    margin: 1.5rem auto;
+    background-color: #f4623a;
+    opacity: 1;
+}
+
+hr.divider-light {
+    background-color: #fff;
+}
+
+#portfolio {
+
+    opacity: 1;
+    background: rgba(244, 98, 58, 0.9);
+    transition: opacity 0.25s ease;
+}

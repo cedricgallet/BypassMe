@@ -26,7 +26,7 @@
 
       <div class="col-12 p-4">
 
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-responsive table-bordered">
           <caption>
             <tr class="fs-4">
               <th scope="col">#</th>
@@ -58,8 +58,8 @@
                   <td><?=htmlentities(date('d-m-Y', strtotime($user->deleted_at)))?></td>
 
                   <td>
-                  <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
-                  <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-danger fas fa-trash-alt"></i></a>
+                  <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>;"><i class="text-info far fa-edit"></i></a>
+                  <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>;" onclick="return confirmDelete();"><i class=" text-danger fas fa-trash-alt"></i></a>
                   </td>
                 </tr>
             <?php } ?>
@@ -90,3 +90,5 @@
     </div>
   </div>
 </div>
+
+<script src="/../../assets/js/checkChoice.js"></script>

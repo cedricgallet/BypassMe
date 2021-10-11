@@ -14,12 +14,12 @@ class User
     private $_ip;
     private $_state;
     private $_created_at;
-    private $_deleted_at;
+    private $_deleted_at; 
 
     private $_pdo;
 
 
-    public function __construct($pseudo, $email, $password, $ip = NULL, $state = 1, $created_at = NULL, $deleted_at = NULL)
+    public function __construct($pseudo, $email, $password, $ip = NULL, $state = 1 , $created_at = NULL, $deleted_at = NULL)
     {
         
         // Hydratation de l'objet contenant la connexion à la BDD
