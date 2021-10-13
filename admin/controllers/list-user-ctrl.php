@@ -2,8 +2,10 @@
 session_start();
 require_once dirname(__FILE__) . '/../../models/User.php';
 
-$title1 = 'Gestion administration';
+$title1 = 'Gestion membres';
 $title2 = 'Liste des membres';
+$title3 = 'Liste des articles';
+$title4 = 'Liste des commentaires';
 
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 

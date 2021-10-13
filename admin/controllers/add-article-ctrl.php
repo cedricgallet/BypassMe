@@ -10,35 +10,27 @@ if (!isset($_SESSION['user'])) {
 $title1 = 'Ajouter un article';
 $arrayCategories = ['applicative','web','reseau','humaine'];//tabeau pour la boucle dans front
 
+// On verifie l'existance et on nettoie
+$categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING));
+$title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
+$article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
 
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
-    // On verifie l'existance et on nettoie
-    $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING));
-    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
-    $cleanArticle = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
-    $article = nl2br($cleanArticle);
-
     //On test si le champ n'est pas vide
-    if(!empty($_POST['categories']) && !empty($_POST['title']) && !empty($_POST['article']))
+    if(!empty($categories) && !empty($title) && !empty($article))
     {
 
-        // var_dump($categories);
-        // var_dump($title);
-        // var_dump($article);die;
-
-        $newArticle = new Article($categories, $title, $article);//On instancie/On récupére les infos  
+        $newArticle = new Article($categories, $title, $article,"","","","");//On instancie/On récupére les infos  
 
 
-            $result = $newArticle->create();//On ajoute en bdd
-            var_dump( $result);die;
-
+            $result = $newArticle->createArticle();//On ajoute en bdd
             if($result===true){//Si l ajout s'est bien passé = 1
 
 
-                header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=21');//On redirige av mess succés
+                header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=21');//On redirige av mess succés
                 die;
 
 

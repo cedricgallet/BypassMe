@@ -58,66 +58,45 @@
                     </div>
                 </section>
                 <!-- Portfolio-->
-                <div id="portfolio">
-                    <div class="container-fluid p-0">
-                        <div class="row g-0">
-                            <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="/../assets/img/portfolio/fullsize/1.jpg"
-                                    title="Project Name">
-                                    <div class="portfolio-box-caption">
-                                        <div class="project-category text-white-50">Category</div>
-                                        <div class="project-name">Project Name</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="/../assets/img/portfolio/fullsize/2.jpg"
-                                    title="Project Name">
-                                    <div class="portfolio-box-caption">
-                                        <div class="project-category text-white-50">Category</div>
-                                        <div class="project-name">Project Name</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="/../assets/img/portfolio/fullsize/3.jpg"
-                                    title="Project Name">
-                                    <div class="portfolio-box-caption">
-                                        <div class="project-category text-white-50">Category</div>
-                                        <div class="project-name">Project Name</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="/../assets/img/portfolio/fullsize/4.jpg"
-                                    title="Project Name">
-                                    <div class="portfolio-box-caption">
-                                        <div class="project-category text-white-50">Category</div>
-                                        <div class="project-name">Project Name</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="/../../assets/img/portfolio/fullsize/5.jpg"
-                                    title="Project Name">
-                                    <div class="portfolio-box-caption">
-                                        <div class="project-category text-white-50">Category</div>
-                                        <div class="project-name">Project Name</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="/../../assets/img/portfolio/fullsize/6.jpg"
-                                    title="Project Name">
-                                    <div class="portfolio-box-caption p-3">
-                                        <div class="project-category text-white-50">Category</div>
-                                        <div class="project-name">Project Name</div>
-                                    </div>
-                                </a>
-                            </div>
+                <div class="container" id="portfolio">
+
+                    <div>
+                        <h2 class="text-end text-white mt-3 mb-3">PORTFOLIO</h2>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-12 col-lg-4 mb-1 mb-lg-0">
+                            <a href="http://saveurantan.manusien-ecolelamanu.fr/"><img
+                                    src="assets/img/portfolio/saveurDantan.png"
+                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3"
+                                    alt="site saveur d'antan"></a>
+
+                            <a href="http://maconnerieocordo.localhost/"><img
+                                    src="assets/img/portfolio/maconnerieOcordo.png"
+                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3"
+                                    alt="site maconnerieOcordo"></a> </div>
+
+                        <div class="col-12 col-lg-4 mb-1 mb-lg-0">
+                            <a href="https://cedricgallet.github.io/Vitrine_Quattro_Stagioni/"><img
+                                    src="assets/img/portfolio/Vitrine_Quattro_Stagioni.png"
+                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3"
+                                    alt="site vitrine_Quattro_Stagioni"></a>
+
+                            <a href="http://hanoi.localhost/"><img src="assets/img/portfolio/restauranHanoi.png"
+                                    class="img  img-fluid w-100 shadow-1-strong rounded mb-3" alt="site hanoi"></a>
+                        </div>
+
+                        <div class="col-12 col-lg-4 mb-1 mb-lg-0">
+                            <a href="http://e-chair.localhost/"><img src="assets/img/portfolio/restaurantEchair.png"
+                                    class="img  img-fluid w-100 shadow-1-strong rounded mb-3" alt="site e-chair"></a>
+
+                            <a href="http://lookthis.localhost/"><img src="assets/img/portfolio/siteLookThis.png"
+                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3" alt="site LookThis"></a>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Call to action-->
                 <section class="page-section bg-dark text-white">
                     <div class="container px-4 px-lg-5 text-center">

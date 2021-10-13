@@ -269,9 +269,17 @@ hr.divider-light {
     background-color: #fff;
 }
 
-#portfolio {
+/* =================PORTFOLIO============== */
 
-    opacity: 1;
-    background: rgba(244, 98, 58, 0.9);
-    transition: opacity 0.25s ease;
+.img {
+    width: 200px;
+    height: 300px;
+    transition: transform .1s;
 }
+
+.img:hover {
+-ms-transform: scale(1.5);
+-webkit-transform: scale(1.5);
+transform: scale(1.5);
+}
+/* ========================================= */

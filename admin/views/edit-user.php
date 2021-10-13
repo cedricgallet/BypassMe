@@ -2,6 +2,7 @@
     <div id="editUserForm" class="container-fluid h-100 p-0">
         <div class="row h-100">
             <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
+            
 
                 <!-- =============================CHAMP PSEUDO=============================== -->
                 <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6 h-100">
@@ -17,7 +18,7 @@
                                 if(!array_key_exists($msgCode, $displayMsg)){
                                     $msgCode = 0;
                                 }
-                                echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                                echo '<div class="d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                             } 
 
                         ?>
@@ -53,6 +54,7 @@
                         <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
                         <!-- ===========================Status utilisateur========================== -->
+
                         <div class="form-group mt-3">
                             <label for="state" class="col-form-label text-info">Désactiver l'utilisateur ?</label>
 
@@ -63,10 +65,11 @@
                                 <option value="1">Activer</option>
                             </select>
                         </div>
+
                         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
                         <div class="form-outline mt-4 mb-5">
-                            <button onclick="return confirmDisable()"
+                            <button 
                                     id="btnSubmit" 
                                     type="submit"
                                     class="form-control btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
@@ -80,5 +83,4 @@
         </div>
     </div>
     <!-- ===============================FIN INSCRIPTION============================= -->
-    <script src="/../../assets/js/checkValidation.js"></script>
-    <script src="/../../assets/js/checkChoice.js"></script>
+    <script src="/../../assets/js/checkConfirm.js"></script>

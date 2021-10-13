@@ -28,6 +28,10 @@
               <?=htmlentities($user->created_at)?>
           </p> 
 
+          </p><p class="card-text"><strong>Ajouté le -</strong>
+              <?=htmlentities($user->updated_at)?>
+          </p>
+
           <a href="/../admin/controllers/edit-user-ctrl.php?id=<?=htmlentities($user->id)?>" class="btn btn-primary">Modifier</a>
           <a href="/../admin/controllers/list-user-ctrl.php" class="btn btn-primary">Retour à la liste utilisateur</a>
         </div>

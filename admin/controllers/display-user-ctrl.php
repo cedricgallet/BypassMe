@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once dirname(__FILE__) . '/../../models/User.php';
-require_once dirname(__FILE__) . '/../../models/Comment.php';
 
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 

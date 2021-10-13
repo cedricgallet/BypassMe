@@ -62,6 +62,11 @@
                                 <div class="invalid-feedback">Merci de vérifier les caractéres utilisés.</div>
 
                                 <button type="submit" class="btn btn-warning rounded-pill w-100">Enregistrer</button>
+                                <div class="w-100">
+                                <a class="btn btn-success" href="/../../admin/controllers/list-article-ctrl.php">Retour à la liste
+                                des articles</a>
+                                </div>
+
                             </form>
                         </div>
                     </div>

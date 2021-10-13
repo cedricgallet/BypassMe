@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         $user = new User($pseudo, $email, $password, $ip);//On instancie/On récupére les infos  
         //var_dump($user);die;
-        if($checkUser == false)//Si l'utilisateur n'existe pas
+        if(!$checkUser)//Si l'utilisateur n'existe pas
         {
             $result = $user->createUser();//On ajoute en bdd
 
@@ -95,6 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                 // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
                 $msgCode = $result;
             }
+
         }else {
             header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
             die;

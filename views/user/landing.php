@@ -1,5 +1,21 @@
 <div id="landingSpace" class="container-fluid h-100">
     <div class="row justify-content-center h-100">
+        <!-- +++++++++++++++++++++++++MODALE CONFIRMATION DESACTIVATION+++++++++++++++ -->
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+
+            <form class="modal-content" action="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>;">
+                <div class="container">
+                    <h1>Désactiver le compte ?</h1>
+                        <p>Etes-vous sûr de vouloir désactiver ce compte?</p>
+                
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Abandonner</button>
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Désactiver</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <div><h2 class="text-center mt-5"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
             <div class="text-center"><h2><?=$title ?? ''?></h2></div>
@@ -57,13 +73,15 @@
                 <a href="/../admin/controllers/list-user-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
                 un utilisateur</a>
 
-                <a href="/../admin/controllers/add-article-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
+                <a href="/../admin/controllers/list-article-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
                 un article</a>
 
                 <a href="/../admin/controllers/add-comment-ctrl.php" class="boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
                 un commentaire</a>
 
                 <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
+                <button onclick="document.getElementById('id01').style.display='block'">Open Modal</button>
+
 
             <?php } else { ?>
 
@@ -75,6 +93,9 @@
                 <a href="/../controllers/userAddAvatar-ctrl.php" class="boutton btn btn-danger text-white mb-2">Modifier
                     mon avatar</a>
                     <a href="/../controllers/signOut-ctrl.php" class="boutton btn btn-danger mb-2">Déconnexion</a>
+
+                    <button onclick="return confirmDisable();">Open Modal</button>
+
                             
                         
             <?php } ?>
