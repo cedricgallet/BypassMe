@@ -1,6 +1,8 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . '/../../models/User.php';
+require_once dirname(__FILE__) . '/../../models/User.php';//Models
+require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+
 
 $title1 = 'Gestion membres';
 $title2 = 'Liste des membres';
@@ -11,6 +13,12 @@ if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
+
+if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
+}
+
 
 // Récupération de la valeur recherchée et on nettoie
 $s = trim(filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING));

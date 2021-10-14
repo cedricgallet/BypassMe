@@ -18,14 +18,14 @@ class Comment{
      * 
      * @return boolean
      */
-    public function __construct($categories, $subject, $co_comment, $state = 1, $created_at = NULL,$deleted_at =NULL)
+    public function __construct($categories, $subject, $comment, $state = 1, $created_at = NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
 
         $this->_categories = $categories;
         $this->_subject = $subject;
-        $this->_comment = $co_comment;
+        $this->_comment = $comment;
         $this->_state = $state;                           
         $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;

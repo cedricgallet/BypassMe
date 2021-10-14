@@ -80,16 +80,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
-
         $user = new User($pseudo, $email, $password, $ip);//On instancie/On récupére les infos  
-        //var_dump($user);die;
+
         if(!$checkUser)//Si l'utilisateur n'existe pas
         {
             $result = $user->createUser();//On ajoute en bdd
 
             if($result===true){//Si l ajout s'est bien passé = 1
-                header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
-                die;
+
+                $_SESSION['user'] = $user;
+
+                if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) 
+                {
+                    header('location: /../admin/controllers/list-user-ctrl.php?msgCode=12');//On redirige av mess succés
+                    die;
+            
+                }else {
+                    header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
+                    die;
+                }
 
             } else {
                 // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.

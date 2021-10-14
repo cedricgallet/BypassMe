@@ -63,7 +63,7 @@
 
                                 <button type="submit" class="btn btn-warning rounded-pill w-100">Enregistrer</button>
                                 <div class="w-100">
-                                <a class="btn btn-success" href="/../../admin/controllers/list-article-ctrl.php">Retour à la liste
+                                <a class="btn btn-success mt-2" href="/../../admin/controllers/list-article-ctrl.php">Retour à la liste
                                 des articles</a>
                                 </div>
 

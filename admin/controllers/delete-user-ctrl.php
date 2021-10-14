@@ -1,9 +1,15 @@
 <?php
 session_start();// Démarrage de la session
-require_once(dirname(__FILE__) . '/../../models/User.php');
+require_once(dirname(__FILE__) . '/../../models/User.php');//Models
+require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 if (!isset($_SESSION['user'])) 
 {
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
+}
+
+if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }

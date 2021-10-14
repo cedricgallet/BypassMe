@@ -60,35 +60,37 @@
                 <td><?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?></td>
 
                 <td>
-                <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
-                <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>" onclick="return confirmDeleteUser();"><i class=" text-danger fas fa-trash-alt"></i></a>
+                  <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
+                  <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
+                  <a href="/../../controllers/signUp-ctrl.php"><i class=" text-success fas fa-user-plus"></i></a>
+
                 </td>
               </tr>
           <?php } ?>
 
         </tbody>
+        <!-- =============================Pagination================== -->
+        <nav aria-label="...">
+          <ul class="pagination pagination-sm">
+            
+
+              <?php
+              for($i=1;$i<=$nbPages;$i++){
+                if($i==$currentPage){ ?>    
+                  <li class=" page-item active" aria-current="page">
+                    <span class="ms-4 page-link text-info">
+                      <?=$i?> 
+                      <span class="visually-hidden">(current)</span>
+                    </span>
+                  </li>
+            <?php } else { ?>
+              <li class="page-item"><a class="ms-4 page-link text-info" href="?currentPage=<?=$i?>&s=<?=$s?>"><?=$i?></a></li>
+            <?php } 
+            }?>
+          </ul>
+        </nav>
+
       </table>
-    </div>
-
-      <nav aria-label="...">
-        <ul class="pagination pagination-sm">
-          
-
-            <?php
-            for($i=1;$i<=$nbPages;$i++){
-              if($i==$currentPage){ ?>    
-                <li class=" page-item active" aria-current="page">
-                  <span class="ms-4 page-link text-info">
-                    <?=$i?> 
-                    <span class="visually-hidden">(current)</span>
-                  </span>
-                </li>
-          <?php } else { ?>
-            <li class="page-item"><a class="ms-4 page-link text-info" href="?currentPage=<?=$i?>&s=<?=$s?>"><?=$i?></a></li>
-          <?php } 
-          }?>
-        </ul>
-      </nav>
     </div>
   </div>
 </div>

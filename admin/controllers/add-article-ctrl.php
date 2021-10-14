@@ -1,8 +1,14 @@
 <?php
 session_start(); // Démarrage de la session  
 require_once(dirname(__FILE__).'/../../models/Article.php');//models
+require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 if (!isset($_SESSION['user'])) {
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
+}
+
+if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
@@ -11,9 +17,9 @@ $title1 = 'Ajouter un article';
 $arrayCategories = ['applicative','web','reseau','humaine'];//tabeau pour la boucle dans front
 
 // On verifie l'existance et on nettoie
-$categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING));
-$title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
-$article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING));
+$categories = trim(filter_input(INPUT_POST, 'categories'));
+$title = trim(filter_input(INPUT_POST, 'title'));
+$article = trim(filter_input(INPUT_POST, 'article'));
 
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 

@@ -72,7 +72,8 @@ class Article{
      * @return object
      */
     
-    public static function getArticle($id){
+    public static function getArticle($id)
+    {
         
         $pdo = Database::db_connect();
 

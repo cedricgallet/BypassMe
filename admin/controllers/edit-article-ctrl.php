@@ -1,17 +1,22 @@
 <?php
 session_start();
-require_once(dirname(__FILE__).'/../../config/regex.php');
 require_once(dirname(__FILE__).'/../../models/Article.php');//Models
+require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
+if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
+}
+
+
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 $title1 = 'Modification d\'un article en cours ...';
-$show_modal = false;
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
@@ -24,30 +29,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 { 
     
      // ===========================categories=================
-    if(!empty($categories)){
-        // On verifie l'existance et on nettoie
-        $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
+    // On verifie l'existance et on nettoie
+    $categories = trim(filter_input(INPUT_POST, 'categories'));
 
-    }else {
+    if(empty($categories)){
         $errorsArray['categories'] = 'Le champ est obligatoire';
     }
 
     // ===========================Titre===========================
+    // On verifie l'existance et on nettoie
+    $title = trim(filter_input(INPUT_POST, 'title'));
 
-    if(!empty($title)){
-        // On verifie l'existance et on nettoie
-        $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
-
-    }else {
+    if(empty($title)){
         $errorsArray['title'] = 'Le champ est obligatoire';
     }
 
     // ===========================article=================
-    if(!empty($article)){
-        // On verifie l'existance et on nettoie
-        $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
+    // On verifie l'existance et on nettoie
 
-    }else {
+    $article = trim(filter_input(INPUT_POST, 'article'));
+
+    if(empty($article)){
         $errorsArray['article'] = 'Le champ est obligatoire';
     }
 
@@ -74,7 +76,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 }else{
     $articleInfo = Article::getArticle($id);
-    // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
+
+    // Si l'article n'existe pas, on redirige vers la liste complète avec un code erreur
     if($articleInfo)
     {
         $id = $articleInfo->id;
@@ -84,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $state = $articleInfo->state;
 
     } else {
-        header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=3');
+        header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=23');
         die;
     }
 }

@@ -6,8 +6,9 @@
                     <h2 class=""><?=$title ?? ''?></h2>
                 </div>
 
-                <!-- Affichage d'un message d'erreur personnalisé -->
-                <?php 
+                <div class="col-12 col-lg-6">
+                    <!-- Affichage d'un message d'erreur personnalisé -->
+                    <?php 
 
                         if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
                             if(!array_key_exists($msgCode, $displayMsg)){
@@ -17,23 +18,8 @@
                         } 
 
                     ?>
-
-                    
                     <!-- +++++++++++++++++++++++++++++++++++++SUBJECT+++++++++++++++++++++++++++++++++++++++++++++++= -->
-                    <form id="" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
-                        <!-- ===========================Status utilisateur========================== -->
-
-                        <div class="form-group mt-3">
-                            <label for="state" class="col-form-label text-info">Désactiver le commentaire ?</label>
-
-                            <select name="state" class="form-outline" required>
-                                <option selected value="<?= htmlentities($state ?? '') ?>">Options</option>
-
-                                <option value="0">Désactiver</option>
-                                <option value="1">Activer</option>
-                            </select>
-                        </div>
-
+                    <form id="" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <div class="form-group mt-3">
                             <div class="mb-3">
 
@@ -43,10 +29,10 @@
                                         value="<?= htmlentities($subject ?? '')?>" required>
 
                                     <option>Choix du sujet</option>
-                        <!-- ============================boucle pour choix du sujet================================ -->
+                                    <!-- ============================boucle pour choix du sujet================================ -->
                                     <?php foreach ($arraySubject as $subjectInSelect) {
-                                $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
-                                echo "<option value=\"$subjectInSelect\" $isSelected>$subjectInSelect</option>";}?>
+                                    $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
+                                    echo "<option value=\"$subjectInSelect\" $isSelected>$subjectInSelect</option>";}?>
                                 </select>
                                 <div class="invalid-feedback-2"><?=htmlentities($errorsArray['subject'] ?? '')?></div>
                             </div>
@@ -84,13 +70,10 @@
                         </div>
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['comment'] ?? '')?></div>
 
-                        <button type="submit" class="btn btn-outline-warning rounded-pill w-100 mb-5">Envoyer</button>
-                        <a class="btn btn-success mt-2 rounded-pill text-end" href="/../../admin/controllers/list-comment-ctrl.php">Retour à la liste
-                            des commentaires</a>
-
-                        </div>
+                        <button type="submit" class="btn btn-outline-warning rounded-pill w-100 mb-5">Envoyer</button>               
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>

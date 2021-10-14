@@ -1,6 +1,6 @@
 <?php
 session_start(); // Démarrage de la session
-require_once dirname(__FILE__) .'/../config/config.php';
+require_once dirname(__FILE__) .'/../config/config.php';//Constante + Gestion erreur
 
 // Si la session n'existe pas 
 if(!isset($_SESSION['user']))

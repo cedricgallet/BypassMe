@@ -1,10 +1,8 @@
 html,
 body {
     overflow-x: hidden;
-    font-family: 'Spartan', 'sans-serif';
     font-size: 15px;
-    height: 100vh;
-    margin: 0;
+    height: 100%;
 }
 
 /* =========TITRE========= */
@@ -79,25 +77,25 @@ a:hover {
 #signInForm {
     background-image: url(/../assets/img/bgInForm.jpg);
     background-size: cover;
-    height: 100%;
+    height: 100%!important;
 }
 
 #addArticleForm {
     background-image: url(/../assets/img/bgAddArticle.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 100%!important;
 }
 
 #editUserForm {
     background-image: url(/../assets/img/bgEditUser.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 100%!important;
 }
 
 #bgGestionAdmin {
     background-image: url(/../assets/img/bgGestionAdmin.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 100%!important;
 }
 
 
@@ -281,5 +279,13 @@ hr.divider-light {
 -ms-transform: scale(1.5);
 -webkit-transform: scale(1.5);
 transform: scale(1.5);
+}
+/* =============TEXTAREA COMMENTAIRE + ARTICLE============= */
+.textarea1:invalid {
+border: 2px dashed red;
+}
+
+.textarea1:valid {
+    border: 2px solid lime;
 }
 /* ========================================= */

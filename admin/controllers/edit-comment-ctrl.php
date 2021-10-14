@@ -1,11 +1,18 @@
 <?php
 session_start();
 require_once(dirname(__FILE__).'/../../models/Comment.php');//Models
+require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
+
+if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
+}
+
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array(); //ou $errorsArray = []; //déclaration d'un tableau vide
@@ -26,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     //On test si le champ n'est pas vide
     if(!empty($subject)){
         // On verifie l'existance et on nettoie
-        $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
+        $subject = trim(filter_input(INPUT_POST, 'subject'));
 
     }else {
         $errorsArray['subject'] = 'Le champ est obligatoire';
@@ -36,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
     if(!empty($categories)){
         // On verifie l'existance et on nettoie
-        $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
+        $categories = trim(filter_input(INPUT_POST, 'categories'));
 
     }else {
         $errorsArray['categories'] = 'Le champ est obligatoire';
@@ -45,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     // ===========================Commentaire=================
     if(!empty($comment)){
         // On verifie l'existance et on nettoie
-        $comment = trim(filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
+        $comment = trim(filter_input(INPUT_POST, 'comment'));
 
     }else {
         $errorsArray['comment'] = 'Le champ est obligatoire';
