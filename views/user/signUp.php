@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center justify-content-center col-12 login-wrap h-100">
 
             <!-- =============================CHAMP PSEUDO=============================== -->
-            <div class="col-12 col-lg-4">                            
+            <div class="col-12 col-lg-3">                            
             
                 <div class=""><h2 class=""><?=$title ?? ''?></h2>
                 </div>
@@ -23,9 +23,9 @@
 
                 ?>
 
-                <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
-                    <input type="hidden" value="<?= $id ?? '' ?>" class="form-control" id="id" name="id">
+                    <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
 
                     <div class="form-outline">
                     <label for="pseudo" class="col-form-label text-warning">Pseudo*</label>
@@ -114,15 +114,15 @@
                 
                     <!-- ++++++++++++++++++++++Ajout avatar+++++++++++++++++++++++++++ -->
                     <div class="mt-2 upload-wrapper">
-                        <span class="file-name">Images autorisées :<hr> png, jpeg - 2Mo Max</span>
-                        <label for="file-upload">Choisir un avatar<input type="file" id="file-upload" name="uploadedFile"></label>
+                        <span class="w-50 file-name">Images autorisées :<hr> png, jpeg - 2Mo Max</span>
+                        <label class="d-flex justify-content-center align-items-center w-50" for="file-upload">Choisir un avatar<input type="file" id="file-upload" name="uploadedFile"></label>
                     </div>
                     
 
                     <div class="form-outline mt-4 mb-5">
                         <button id="btnSubmit" 
                                 type="submit" 
-                                class="form-control btn btn-outline-warning submit px-3 rounded-pill">Créer mon compte</button>
+                                class="form-control btn card-header border submit px-3 rounded-pill">Créer mon compte</button>
                     </div>
                 </form>
             </div>

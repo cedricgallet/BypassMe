@@ -61,7 +61,7 @@
 
                             <td>
                                 <a href="/../../admin/controllers/display-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>"><i class="text-info far fa-edit"></i></a>
-                                <a href="/../../admin/controllers/delete-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
+                                <a href="/../../admin/controllers/delete-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>" onclick="return confirmDeleteArticle();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
                                 <a href="/../../admin/controllers/add-article-ctrl.php"><i class="text-success fas fa-user-plus"></i></a>
 
                             </td>

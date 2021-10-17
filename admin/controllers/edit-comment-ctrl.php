@@ -8,9 +8,12 @@ if (!isset($_SESSION['user'])) {
     die;
 }
 
-if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+
+if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
+        
 }
 
 
@@ -80,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
 }else{
-    $commentInfo = Comment::getArticle($id);
+    $commentInfo = Comment::getComment($id);
     // Si le commentaire n'existe pas, on redirige vers la liste complète avec un code erreur
     if($commentInfo)
     {

@@ -20,11 +20,9 @@
                     ?>
 
             <!-- =============================CHAMP PSEUDO=============================== -->
-            <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $id?>"
+            <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $id?>"
                     method="post">
 
-                    <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id"
-                        name="id">
 
                     <div class="form-outline">
                         <label for="pseudo" class="col-form-label text-info">Pseudo*</label>

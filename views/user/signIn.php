@@ -23,8 +23,10 @@
                 
                     <!-- ++++++++++++++++++++++++++++Email++++++++++++++++++++++++++++++++ -->
 
-                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                    <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                     
+                    <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
+
                         <label for="email" class="col-form-label text-warning">Adresse Email*</label>
                         <div class="form-outline">
                             <input type="email" 
@@ -56,7 +58,7 @@
                         <div class="form-outline mt-3">
                             <button id="btnSubmit" 
                                     type="submit" 
-                                    class="form-control btn btn-outline-warning submit px-3 rounded-pill">Se connecter</button>
+                                    class="form-control btn card-header border submit px-3 rounded-pill">Se connecter</button>
                         </div>
 
                         <div class="form-outline d-md-flex mt-2">

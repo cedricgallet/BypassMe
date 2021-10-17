@@ -19,7 +19,7 @@
 
                     ?>
                     <!-- +++++++++++++++++++++++++++++++++++++SUBJECT+++++++++++++++++++++++++++++++++++++++++++++++= -->
-                    <form id="" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                    <form class="border" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <div class="form-group mt-3">
                             <div class="mb-3">
 
@@ -70,7 +70,7 @@
                         </div>
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['comment'] ?? '')?></div>
 
-                        <button type="submit" class="btn btn-outline-warning rounded-pill w-100 mb-5">Envoyer</button>               
+                        <button type="submit" class="btn card-header border rounded-pill w-100 mb-5">Envoyer</button>               
                     </form>
                 </div>
             </div>

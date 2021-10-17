@@ -6,6 +6,7 @@ require_once dirname(__FILE__).'/../config/config.php';
 $errorsArray = array();
 $title = 'Connexion';
 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
@@ -27,22 +28,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
     // +++++++++++++++++++++Password++++++++++++++++++++++++++
     $password =  $_POST['password'];
+    
     if(!empty($password)) // On test si le champ n'est pas vide
     {
             // Si aucune erreur, on enregistre en BDD
         if(empty($errorsArray))
         {
             $user = User::getByEmail($email);//On check si user exite
+            
             if($user)//Si vrai = true 1
             {
-
                 $isPasswordOk = password_verify($password, $user->password);
                 if($isPasswordOk)//Si mdp est le meme que celui en bdd
                 {
                     $_SESSION['user'] = $user;//On crée la session
                     // +++++++++++++++++++++++Connection administration+++++++++++++++++++++++
 
-                    if($email == DEFAULT_EMAIL && $password == DEFAULT_PASSWORD) 
+                    if($email == DEFAULT_EMAIL && $password == DEFAULT_PASS) 
                     {
                                     
                         header('location: /../admin/controllers/list-user-ctrl.php');//On redirige vers la liste des utilisateurs

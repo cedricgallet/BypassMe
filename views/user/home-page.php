@@ -58,42 +58,40 @@
                     </div>
                 </section>
                 <!-- Portfolio-->
-                <div class="container" id="portfolio">
 
-                    <div>
-                        <h2 class="text-end text-white mt-3 mb-3">PORTFOLIO</h2>
+                <div>
+                    <h2 class="text-end text-white mt-3 mb-3">PORTFOLIO</h2>
+                </div>
+
+                <div id="portfolio" class="row">
+
+                    <div class="col-12 col-lg-4 mb-1 mb-lg-0">
+                        <a href="http://saveurantan.manusien-ecolelamanu.fr/"><img
+                                src="/../assets/img/portfolio/saveurDantan.png"
+                                class="img img-fluid w-100 shadow-1-strong rounded mb-3"
+                                alt="site saveur d'antan"></a>
+
+                        <a href="http://maconnerieocordo.localhost/"><img
+                                src="/../assets/img/portfolio/maconnerieOcordo.png"
+                                class="img img-fluid w-100 shadow-1-strong rounded mb-3"
+                                alt="site maconnerieOcordo"></a> </div>
+
+                    <div class="col-12 col-lg-4 mb-1 mb-lg-0">
+                        <a href="https://cedricgallet.github.io/Vitrine_Quattro_Stagioni/"><img
+                                src="/../assets/img/portfolio/Vitrine_Quattro_Stagioni.png"
+                                class="img img-fluid w-100 shadow-1-strong rounded mb-3"
+                                alt="site vitrine_Quattro_Stagioni"></a>
+
+                        <a href="http://hanoi.localhost/"><img src="/../assets/img/portfolio/restauranHanoi.png"
+                                class="img  img-fluid w-100 shadow-1-strong rounded mb-3" alt="site hanoi"></a>
                     </div>
 
-                    <div class="row">
+                    <div class="col-12 col-lg-4 mb-1 mb-lg-0">
+                        <a href="http://e-chair.localhost/"><img src="/../assets/img/portfolio/restaurantEchair.png"
+                                class="img  img-fluid w-100 shadow-1-strong rounded mb-3" alt="site e-chair"></a>
 
-                        <div class="col-12 col-lg-4 mb-1 mb-lg-0">
-                            <a href="http://saveurantan.manusien-ecolelamanu.fr/"><img
-                                    src="assets/img/portfolio/saveurDantan.png"
-                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3"
-                                    alt="site saveur d'antan"></a>
-
-                            <a href="http://maconnerieocordo.localhost/"><img
-                                    src="assets/img/portfolio/maconnerieOcordo.png"
-                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3"
-                                    alt="site maconnerieOcordo"></a> </div>
-
-                        <div class="col-12 col-lg-4 mb-1 mb-lg-0">
-                            <a href="https://cedricgallet.github.io/Vitrine_Quattro_Stagioni/"><img
-                                    src="assets/img/portfolio/Vitrine_Quattro_Stagioni.png"
-                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3"
-                                    alt="site vitrine_Quattro_Stagioni"></a>
-
-                            <a href="http://hanoi.localhost/"><img src="assets/img/portfolio/restauranHanoi.png"
-                                    class="img  img-fluid w-100 shadow-1-strong rounded mb-3" alt="site hanoi"></a>
-                        </div>
-
-                        <div class="col-12 col-lg-4 mb-1 mb-lg-0">
-                            <a href="http://e-chair.localhost/"><img src="assets/img/portfolio/restaurantEchair.png"
-                                    class="img  img-fluid w-100 shadow-1-strong rounded mb-3" alt="site e-chair"></a>
-
-                            <a href="http://lookthis.localhost/"><img src="assets/img/portfolio/siteLookThis.png"
-                                    class="img img-fluid w-100 shadow-1-strong rounded mb-3" alt="site LookThis"></a>
-                        </div>
+                        <a href="http://lookthis.localhost/"><img src="/../assets/img/portfolio/siteLookThis.png"
+                                class="img img-fluid w-100 shadow-1-strong rounded mb-3" alt="site LookThis"></a>
                     </div>
                 </div>
                 

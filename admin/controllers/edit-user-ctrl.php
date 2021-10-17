@@ -9,15 +9,17 @@ if (!isset($_SESSION['user'])) {
     die;
 }
 
-if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//ON vérifie le mdp en cours avec le mdp par défault
+
+if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
+        
 }
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 $title = 'Modification d\'un utilisateur en cours ...';
-$show_modal = false;
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
@@ -66,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     // **********************************************
 
 
-    // Si il n'y a pas d'erreurs, on met à jour le patient.
+    // Si il n'y a pas d'erreurs, on met à jour l'utilisateur.
     if(empty($errorsArray))
     {
 

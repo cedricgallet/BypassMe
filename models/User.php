@@ -15,11 +15,12 @@ class User
     private $_state;
     private $_created_at;
     private $_deleted_at; 
+    private $_confirmation_token;
 
     private $_pdo;
 
 
-    public function __construct($pseudo, $email, $password, $ip = NULL, $state = 1 , $created_at = NULL, $deleted_at = NULL)
+    public function __construct($pseudo, $email, $password, $ip = NULL, $state = 1 , $created_at = NULL, $deleted_at = NULL,  $confirmation_token = NULL)
     {
         
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -30,6 +31,7 @@ class User
         $this->_state = $state;                           
         $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
+        $this->_confirmation_token = $confirmation_token;
 
         $this->_pdo = Database::db_connect();
 
@@ -38,7 +40,7 @@ class User
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de récupérer le rendez-vous d'un patient
+     * Méthode qui permet de récupérer les infos utilisateur par l'id
      * 
      * @return object
      */
@@ -109,7 +111,6 @@ class User
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
-            $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
 
             
             if($sth->execute())
@@ -165,7 +166,7 @@ class User
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de mettre à jour un patient
+     * Méthode qui permet de mettre à jour un utilisateur
      * 
      * @return boolean
      */
@@ -174,13 +175,14 @@ class User
 
         try{
 
-            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email, `state`=:state WHERE id = :id;";
+            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email ,`password`=:password, `state`=:state WHERE id = :id;";
 
             $sth = $this->_pdo->prepare($sql);
             
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
+            $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
 
             return($sth->execute()); 
@@ -190,6 +192,7 @@ class User
         }
 
     }
+
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**

@@ -3,7 +3,7 @@ session_start(); // Démarrage de la session
 
 // si la session n'existe pas ou si l'utilisateur n'est pas connecté on redirige
 if(!isset($_SESSION['user'])){
-    header('Location:/../views/user/sigIn.php?msgCode=30');
+    header('Location:/../views/user/sigIn.php?msgCode=38');
     die();
 }
 

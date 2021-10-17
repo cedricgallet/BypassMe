@@ -8,49 +8,73 @@ if (!isset($_SESSION['user'])) {
     die;
 }
 
-if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+
+if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
+        
 }
+
+// Initialisation du tableau d'erreurs
+$errorsArray = array();
 
 $title1 = 'Ajouter un article';
 $arrayCategories = ['applicative','web','reseau','humaine'];//tabeau pour la boucle dans front
 
 // On verifie l'existance et on nettoie
-$categories = trim(filter_input(INPUT_POST, 'categories'));
-$title = trim(filter_input(INPUT_POST, 'title'));
-$article = trim(filter_input(INPUT_POST, 'article'));
+$categories = trim(htmlentities($_POST ['categories']));
+$title = trim(htmlentities($_POST ['title']));
+$article = trim(htmlentities($_POST ['article']));
 
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
     //On test si le champ n'est pas vide
-    if(!empty($categories) && !empty($title) && !empty($article))
+    if(empty($categories)){
+
+        $errorsArray['categories'] = 'Le champ est obligatoire';
+        
+    }
+
+    //On test si le champ n'est pas vide
+    if(empty($title)){
+        
+        $errorsArray['title'] = 'Le champ est obligatoire';
+        
+    }
+
+    //On test si le champ n'est pas vide
+    if(empty($article)){
+        
+        $errorsArray['article'] = 'Le champ est obligatoire';
+        
+    }
+
+    if(empty($errorsArray))
     {
 
-        $newArticle = new Article($categories, $title, $article,"","","","");//On instancie/On récupére les infos  
+        $newArticle = new Article($categories, $title, $article);//On instancie/On récupére les infos  
+
+        $result = $newArticle->createArticle();//On ajoute en bdd
+        if($result===true){//Si l ajout s'est bien passé = 1
 
 
-            $result = $newArticle->createArticle();//On ajoute en bdd
-            if($result===true){//Si l ajout s'est bien passé = 1
+            header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=21');//On redirige av mess succés
+            die;
 
 
-                header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=21');//On redirige av mess succés
-                die;
+        } else {
+            // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
+            $msgCode = $result;
+        }
 
-
-            } else {
-                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-                $msgCode = $result;
-            }
-
-    }else {
-        header('Location: /../../admin/controllers/add-article-ctrl.php?msgCode=18'); 
-        die;
     }
 
 }
+
+
 
 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++

@@ -4,7 +4,7 @@
         <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
             <div class="d-flex flex-column align-items-center justify-content-center col-12 h-100">
                 <div class="d-flex">
-                    <h2 class=""><?=$title ?? ''?></h2>
+                    <h2 class=""><?=$title1 ?? ''?></h2>
                 </div>
                         <!-- Affichage d'un message d'erreur personnalisé -->
                         <?php 
@@ -19,7 +19,7 @@
                         ?>
 
                     <div class="col-12 col-lg-6">
-                        <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
+                        <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
 
                             <!-- ===========================Status utilisateur========================== -->
 

@@ -1,7 +1,7 @@
 <div id="bgGestionAdmin" class="container-fluid h-100">
   <div class="row justify-content-center h-100">
 
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-3">
     <h2 class="mt-5 text-center"><?=$title ?? ''?></h2>
 
       <div class="card rounded-2">

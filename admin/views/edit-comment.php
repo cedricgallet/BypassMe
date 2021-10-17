@@ -20,7 +20,7 @@
 
                     
                     <!-- +++++++++++++++++++++++++++++++++++++SUBJECT+++++++++++++++++++++++++++++++++++++++++++++++= -->
-                    <form id="" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
+                    <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
                         <!-- ===========================Status utilisateur========================== -->
 
                         <div class="form-group mt-3">

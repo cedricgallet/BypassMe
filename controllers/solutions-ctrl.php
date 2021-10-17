@@ -3,7 +3,7 @@ session_start(); // Démarrage de la session
 
 if(!isset($_SESSION['user']))
 {
-    header('Location:/../views/user/sigIn.php?msgCode=30');
+    header('Location:/../views/user/sigIn.php?msgCode=38');
     die();
 }
 

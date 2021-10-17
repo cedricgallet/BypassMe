@@ -84,12 +84,12 @@ class Article{
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
-            $user = $sth->fetch();
-            if(!$user){
+            $article = $sth->fetch();
+            if(!$article){
                 return '23';
             }
             
-            return $user;
+            return $article;
         }
         catch(PDOException $e){
             return $e->getCode();

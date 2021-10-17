@@ -3,12 +3,12 @@
         <div><h2 class="text-center mt-5"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
             <div class="text-center"><h2><?=$title ?? ''?></h2></div>
 
-        <div class="col-12 col-lg-6 h-100">
+        <div class="col-12 col-lg-3 h-100">
             <div class="card rounded-2">    
                 <div class="card-body">
-                    <div class="card-header text-center"><strong><?=$_SESSION['user']->pseudo?></strong></div>
+                    <div class="text-center card-header"><strong><?=$_SESSION['user']->pseudo?></strong></div>
 
-                        <p class="card-text"><strong>Email - </strong>
+                        <p class="mt-2 card-text"><strong>Email - </strong>
                             <?=htmlentities($_SESSION['user']->email)?>
                         </p>
 
@@ -16,7 +16,11 @@
                             <?=htmlentities($_SESSION['user']->ip)?>
                         </p>
 
-                        <p class="card-text"><strong>Ajouté -</strong>
+                        <p class="card-text"><strong>Status - </strong>
+                            <strong><?=htmlentities($_SESSION['user']->state)?></strong> (activé = 1/désactivé = 0)
+                        </p>
+
+                        <p class="card-text"><strong>Ajouté le </strong>
                         <?=htmlentities(date('d-m-Y', strtotime($_SESSION['user']->created_at)))?>
                         </p> 
 
@@ -31,45 +35,47 @@
                 // si l'admin est connecté
                 if(isset($_SESSION['user']))
                 {
-                    if ($_SESSION['user']->email == DEFAULT_EMAIL && isset($_SESSION['user']->password) == DEFAULT_PASSWORD) {
-                
-                
-                ?>
+                    $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On vérifie le mdp en cours avec le mdp par défault si oui ok
 
-                    <a href="/../index.php" class="m-2 boutton btn btn-danger mb-2">Accueil</a>
+                    if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS)//Si la vérif est == aux constantes
+                    {
+                                            
+                    ?>
+                        <div>
+                            <a href="/../index.php" class="m-2 boutton btn card-header border mb-2">Accueil</a>
 
-                    <a href="/../controllers/userUpdatePassword-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Modifier
-                        mon mot de passe</a>
-                        
-                    <a href="/../controllers/userAddAvatar-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Modifier
-                        mon avatar</a>
+                            <a href="/../controllers/userUpdateProfil-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Modifier
+                                mon mot de passe</a>
+                                
+                            <a href="/../admin/controllers/list-user-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Ajouter/Modifier/supprimer
+                            un utilisateur</a>
 
-                    <a href="/../admin/controllers/list-user-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
-                    un utilisateur</a>
+                            <a href="/../admin/controllers/list-article-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Ajouter/Modifier/supprimer
+                            un article</a>
 
-                    <a href="/../admin/controllers/list-article-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
-                    un article</a>
+                            <a href="/../admin/controllers/list-comment-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Ajouter/Modifier/supprimer
+                            un commentaire</a>
 
-                    <a href="/../admin/controllers/list-comment-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Ajouter/Modifier/supprimer
-                    un commentaire</a>
-
-                    <a href="/../controllers/signOut-ctrl.php" class="m-2 boutton btn btn-danger mb-2">Déconnexion</a>
-
+                            <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn card-header border mb-2">Déconnexion</a>
+                        </div>
 
                 <?php } else { ?>
 
-                    <a href="/../index.php" class="m-2 boutton btn btn-danger mb-2">Accueil</a>
+                    <div>
+                        <a href="/../index.php" class="bg-dark m-2 boutton btn card-header border mb-2">Accueil</a>
 
-                    <a href="/../controllers/userUpdatePassword-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Modifier
-                        mon mot de passe</a>
-                        
-                    <a href="/../controllers/userAddAvatar-ctrl.php" class="m-2 boutton btn btn-danger text-white mb-2">Modifier
-                    mon avatar</a>
-
-                    <a href="/../controllers/commentForm-ctrl.php" class="m-2 boutton btn btn-danger mb-2">Commenter</a>
-
-                    <a href="/../controllers/signOut-ctrl.php" class="m-2 boutton btn btn-danger mb-2">Déconnexion</a>
+                        <a href="/../controllers/userUpdateProfil-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Modifier
+                            mes informations</a>
                             
+                        <a href="/../controllers/commentForm-ctrl.php" class="bg-dark m-2 boutton btn card-header border mb-2">Commenter</a>
+
+                        <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn card-header border mb-2">Déconnexion</a>
+
+                        <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn card-header border mb-2" onclick="return confirmDeleteYourAccount();">Désactiver mon compte</a>
+
+                        <a href="/../controllers/commentForm-ctrl.php" class=" bg-dark m-2 boutton btn card-header border mb-2" onclick="return confirmDisableYourAccount();">Supprimer mon compte</a>
+                    </div>
+                        
                 <?php } ?>
             <?php } ?>
         </div>

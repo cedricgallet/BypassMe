@@ -9,7 +9,7 @@ define('NB_ELEMENTS_BY_PAGE', 5);
 
 // Constante connexion admin
 define('DEFAULT_EMAIL' , 'galletcedric@protonmail.com');
-define('DEFAULT_PASSWORD' , 'cccccccc');
+define('DEFAULT_PASS' , 'cccccccc');
 
 // Constante limite de taille upload
 define('LIMIT_WEIGHT', 2*1024*1024);
@@ -71,5 +71,6 @@ $displayMsg = array(
     '36' => ['type' => 'alert-success', 'msg' => 'Votre avatar a été mis a jour'],
 
     '37' => ['type' => 'alert-danger', 'msg' => 'L\'article existe déjà'],
+    '38' => ['type' => 'alert-danger', 'msg' => 'Vous devez avoir un compte pour accéder a cette page'],
 
 );

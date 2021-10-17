@@ -2,10 +2,12 @@
 session_start();
 require_once(dirname(__FILE__).'/../config/regex.php');
 require_once(dirname(__FILE__).'/../models/User.php');//Models
+require_once(dirname(__FILE__).'/../config/config.php');//Constante + Gestion erreur
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 $title = 'Inscription';
+
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
@@ -85,31 +87,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         if(!$checkUser)//Si l'utilisateur n'existe pas
         {
             $result = $user->createUser();//On ajoute en bdd
-
             if($result===true){//Si l ajout s'est bien passé = 1
 
-                $_SESSION['user'] = $user;
-
-                if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) 
-                {
-                    header('location: /../admin/controllers/list-user-ctrl.php?msgCode=12');//On redirige av mess succés
-                    die;
             
-                }else {
-                    header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
-                    die;
-                }
-
-            } else {
-                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-                $msgCode = $result;
+            }else {
+                header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
+                die;
             }
 
-        }else {
-            header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
-            die;
+        } else {
+            // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
+            $msgCode = $result;
         }
+
+    }else {
+        header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
+        die;
     }
+    
 }
 
 // **********************VUES******************************

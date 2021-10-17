@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         if($result===true){//Si l ajout s'est bien passé = 1
 
-            if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) 
+            if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASS) 
             {
                 header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=11');//On redirige av mess succés
                 die;

@@ -14,9 +14,12 @@ if (!isset($_SESSION['user'])) {
     die;
 }
 
-if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASSWORD) {
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+
+if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
+        
 }
 
 // Récupération de la valeur recherchée et on nettoie

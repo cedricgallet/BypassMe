@@ -62,7 +62,7 @@
                 <td>
                   <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
                   <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                  <a href="/../../controllers/signUp-ctrl.php"><i class=" text-success fas fa-user-plus"></i></a>
+                  <a href="/../../controllers/signUp-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-success fas fa-plus"></i></a>
 
                 </td>
               </tr>
