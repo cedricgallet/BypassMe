@@ -20,7 +20,7 @@
                     ?>
 
             <!-- =============================CHAMP PSEUDO=============================== -->
-            <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $id?>"
+            <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $id?>"
                     method="post">
 
 
@@ -49,11 +49,33 @@
 
                     <!-- ===========================Status utilisateur========================== -->
 
+                    <div class="form-outline">
+                        <label for="pseudo" class="col-form-label text-info">Status</label>
+
+                        <?php
+                            if ($user->state == 0) {                    
+                            ?>
+
+                                <div class='card-text text-danger'>Status compte ----> <strong>DÉSACTIVÉ</strong>
+                                </div>
+
+                            <?php } else { ?>
+
+                                <div class='card-text text-success'>Status compte ----> <strong>ACTIVÉ</strong>
+                                </div>
+                            
+                        <?php } ?>
+                        
+
+                        <input type="text" name="" id="pseudo" class="form-control"
+                            value="<?= $user->state?>">
+
+                    </div>
                     <div class="form-group mt-3">
-                        <label for="state" class="col-form-label text-info">Désactiver l'utilisateur ?</label>
+                        <label for="state" class="col-form-label text-info">Désactiver/Activer l'utilisateur ?</label>
 
                         <select name="state" class="form-outline" required>
-                            <option selected value="<?= htmlentities($state ?? '') ?>">Options</option>
+                            <option selected value="<?= $_SESSION['user']->state ?>">Options</option>
 
                             <option value="0">Désactiver</option>
                             <option value="1">Activer</option>

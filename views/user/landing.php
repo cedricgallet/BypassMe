@@ -9,7 +9,7 @@
 
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-        <div class="col-12 col-lg-4 bg-success">
+        <div class="col-12 col-lg-4">
 
             <?php
                 // si l'admin est connecté
@@ -22,7 +22,10 @@
                                             
                 ?>
                     <div class="text-center">
-                        <a href="/../index.php" class="m-2 boutton btn card-header border mb-2">Accueil</a>
+                        <a href="/../index.php" class="m-2 boutton btn btnLanding border mb-2">Accueil</a>
+
+                        <a href="/../controllers/userUpdateProfil-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Modifier
+                                mes informations</a>
 
                         <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2">Déconnexion</a>
                     </div>
@@ -30,9 +33,9 @@
                 <?php } else { ?>
 
                     <div class="text-center">
-                        <a href="/../index.php" class="bg-dark m-2 boutton btn card-header border mb-2">Accueil</a>
+                        <a href="/../index.php" class="bg-dark m-2 boutton btn btnLanding border mb-2">Accueil</a>
                             
-                        <a href="/../controllers/commentForm-ctrl.php" class="bg-dark m-2 boutton btn card-header border mb-2">Commenter</a>
+                        <a href="/../controllers/commentForm-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border mb-2">Commenter</a>
 
                     </div>
                         
@@ -55,21 +58,21 @@
                         </p>
 
                         <p class="card-text"><strong>Status - </strong>
-                            <strong><?=htmlentities($_SESSION['user']->state)?></strong> (activé = 1/désactivé = 0)
+                            <strong><?=htmlentities($_SESSION['user']->state)?></strong> (compte activé = 1/désactivé = 0)
                         </p>
 
                         <p class="card-text"><strong>Ajouté le </strong>
                             <?=htmlentities(date('d-m-Y', strtotime($_SESSION['user']->created_at)))?>
                         </p> 
 
-                        <p class="card-text"><strong>Dernière modification le </strong>
+                        <p class="card-text"><strong>Dernière MAJ le </strong>
                             <?=htmlentities(date('d-m-Y', strtotime($_SESSION['user']->updated_at)))?>
                         </p> 
 
                     </div>    
                 </div>
             </div>
-            <div class="col-12 col-lg-4 bg-success">
+            <div class="col-12 col-lg-4">
             <?php
                 // si l'admin est connecté
                 if(isset($_SESSION['user']))
@@ -81,17 +84,14 @@
                                             
                     ?>
                         <div class="text-center">
-
-                            <a href="/../controllers/userUpdateProfil-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Modifier
-                                mes informations</a>
                                 
-                            <a href="/../admin/controllers/list-user-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Ajouter/Modifier/supprimer
+                            <a href="/../admin/controllers/list-user-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Ajouter/Modifier/supprimer
                             un utilisateur</a>
 
-                            <a href="/../admin/controllers/list-article-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Ajouter/Modifier/supprimer
+                            <a href="/../admin/controllers/list-article-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Ajouter/Modifier/supprimer
                             un article</a>
 
-                            <a href="/../admin/controllers/list-comment-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Ajouter/Modifier/supprimer
+                            <a href="/../admin/controllers/list-comment-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Ajouter/Modifier/supprimer
                             un commentaire</a>
 
                         </div>
@@ -100,7 +100,7 @@
 
                         <div class="text-center">
 
-                            <a href="/../controllers/userUpdateProfil-ctrl.php" class="bg-dark m-2 boutton btn card-header border text-white mb-2">Modifier
+                            <a href="/../controllers/userUpdateProfil-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Modifier
                                 mes informations</a>
                                 
                             <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2">Déconnexion</a>
@@ -111,7 +111,7 @@
                 <?php } ?>
             </div>
 
-            <div class="col-12 bg-success text-center">
+            <div class="col-12 text-center">
                 <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDeleteYourAccount();">Désactiver mon compte</a>
 
                 <a href="/../controllers/commentForm-ctrl.php" class=" bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDisableYourAccount();">Supprimer mon compte</a>
