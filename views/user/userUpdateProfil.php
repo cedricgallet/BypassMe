@@ -1,5 +1,5 @@
 <!-- ======================================UPDATE MOT DE PASSE USER=================================== -->
-    <div id="landingSpace" class="container-fluid h-100 p-0">
+    <div id="bgLanding" class="container-fluid h-100 p-0">
         <div class="row justify-content-center">
 
             <!-- Affichage d'un message d'erreur personnalisé -->

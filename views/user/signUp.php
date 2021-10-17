@@ -2,11 +2,10 @@
 
 <div id="signUpForm" class="container-fluid h-100 p-0">
     <div class="row h-100">
-
-        <div class="d-flex align-items-center justify-content-center col-12 login-wrap h-100">
+        <div class="d-flex justify-content-end align-items-center  col-12 login-wrap h-100">        
 
             <!-- =============================CHAMP PSEUDO=============================== -->
-            <div class="col-12 col-lg-3">                            
+            <div class="signUpForm col-12 col-lg-3">                            
             
                 <div class=""><h2 class=""><?=$title ?? ''?></h2>
                 </div>
@@ -23,7 +22,7 @@
 
                 ?>
 
-                <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
                     <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
 

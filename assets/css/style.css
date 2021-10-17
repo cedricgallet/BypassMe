@@ -74,11 +74,22 @@ a:hover {
     height: 100%;
 }
 
+/* ++++++++position formulaire signup++++++++++ */
+.signUpForm {
+    margin-right: 170px!important;
+}
+
 #signInForm {
     background-image: url(/../assets/img/bgInForm.jpg);
     background-size: cover;
     height: 100%!important;
 }
+
+/* ++++++++position formulaire signin++++++++++ */
+.signInForm {
+    margin-right: 170px!important;
+}
+
 
 #addArticleForm {
     background-image: url(/../assets/img/bgAddArticle.jpg);
@@ -98,15 +109,19 @@ a:hover {
     height: 100%!important;
 }
 
+#bgLanding {
+    background-size: cover;
+    background-image: url(/../assets/img/bgLanding.jpg);
+}
 
 
-/* =========ESPACES ======== */
+/* =========ESPACES======== */
 #space {
     background-color: #c5f5e594;
     height: 20px;
 }
 
-/*==========HOME ======== */
+/*==========HOME======== */
 /*CARD*/
 #cardHeight {
     margin-bottom: 10px;
@@ -116,11 +131,6 @@ a:hover {
 .invalid-feedback-2 {
     color: red !important;
 }
-
-/* ========Boutton landspace====== */
-/* .boutton {
-    width: 20rem !important;
-} */
 
 /*===========NAVBAR========== */
 .navbar-toggler {
@@ -176,12 +186,6 @@ a:hover {
     height: 230px;
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
     font-size: 18px;
-}
-
-/* ========LANDING BACKGROUND============ */
-#landingSpace {
-    background-size: cover;
-    background-image: url(/../assets/img/bgLanding1.jpg);
 }
 
 /* ==========FORMULAIRE AVATAR========= */
