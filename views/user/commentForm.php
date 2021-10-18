@@ -2,7 +2,7 @@
     <div class="row h-100">
         <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
             <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6 h-100">
-                <div class="d-flex">
+                <div class="d-flex mb-5">
                     <h2 class=""><?=$title ?? ''?></h2>
                 </div>
 
@@ -19,13 +19,13 @@
 
                     ?>
                     <!-- +++++++++++++++++++++++++++++++++++++SUBJECT+++++++++++++++++++++++++++++++++++++++++++++++= -->
-                    <form class="border" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <div class="form-group mt-3">
                             <div class="mb-3">
 
                                 <select name="subject" 
                                         id="subject" 
-                                        class="form-control" 
+                                        class="card-header bg-transparent form-control" 
                                         value="<?= htmlentities($subject ?? '')?>" required>
 
                                     <option>Choix du sujet</option>
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <select name="categories" 
                                     id="categories" 
-                                    class="form-control" 
+                                    class="card-header bg-transparent form-control" 
                                     value="<?= htmlentities($categories ?? '')?>" required>
 
                                 <option>Choix de la catégorie</option>
@@ -61,7 +61,7 @@
                                 <label for="comment" class="col-form-label"></label> 
                                 <textarea
                                     name ="comment" 
-                                    class="form-control" 
+                                    class="card-header bg-transparent form-control" 
                                     id="comment" 
                                     rows="9" 
                                     placeholder="Votre message" 
@@ -70,10 +70,13 @@
                         </div>
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['comment'] ?? '')?></div>
 
-                        <button type="submit" class="btn card-header border rounded-pill w-100 mb-5">Envoyer</button>               
+                        <button type="submit" class="card-header btn btn-warning rounded-pill w-100 mb-5">Envoyer</button>               
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- ===============================FIN INSCRIPTION============================= -->
+<script src="/../../assets/js/checkConfirm.js"></script>

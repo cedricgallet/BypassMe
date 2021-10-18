@@ -3,19 +3,20 @@ session_start();// Démarrage de la session
 require_once(dirname(__FILE__) . '/../../models/User.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-if (!isset($_SESSION['user'])) 
-{
+// *****************************************SECURISER ACCES PAGE******************************************
+if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
+// *******************************************************************************************************
 
 // Nettoyage de l'id de l'utilisateur passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));

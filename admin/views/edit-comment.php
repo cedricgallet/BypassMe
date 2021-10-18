@@ -20,13 +20,46 @@
 
                     
                     <!-- +++++++++++++++++++++++++++++++++++++SUBJECT+++++++++++++++++++++++++++++++++++++++++++++++= -->
-                    <form class="border needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
                         <!-- ===========================Status utilisateur========================== -->
 
                         <div class="form-group mt-3">
+
+                            <!-- ===========================Status utilisateur========================== -->
+
+                            <div class="form-outline">
+
+                                <?php
+                                if ($commentInfo->state == 0) {                    
+                                ?>
+
+                                    <div class="d-flex">
+                                        <div class='card-text text-danger me-1'>Status du commentaire > 
+                                        </div>
+
+                                        <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
+                                        </div>
+                                    </div>
+
+                                <?php } else { ?>
+
+                                    <div class="d-flex">
+                                        <div class='card-text text-success me-2'>Status du commentaire > 
+                                        </div>
+
+                                        <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
+                                        </div>
+                                    </div>
+                        
+                                <?php } ?>
+
+                            </div>
+
+                            <div class="form-group mt-3 mb-3 text-center bg-transparent">
                             <label for="state" class="col-form-label text-info">Désactiver le commentaire ?</label>
 
-                            <select name="state" class="form-outline" required>
+                            <select name="state" 
+                                    class="form-outline" required>
                                 <option selected value="<?= htmlentities($state ?? '') ?>">Options</option>
 
                                 <option value="0">Désactiver</option>
@@ -34,58 +67,61 @@
                             </select>
                         </div>
 
-                        <div class="form-group mt-3">
-                            <div class="mb-3">
+                        <!-- ============================boucle pour choix du sujet======================= -->
+                        <div class="mb-3">
 
-                                <select name="subject" 
-                                        id="subject" 
-                                        class="form-control" 
-                                        value="<?= htmlentities($subject ?? '')?>" required>
+                            <select name="subject" 
+                                    id="subject" 
+                                    class="card-header bg-transparent form-control" 
+                                    value="<?= htmlentities($commentInfo->subject ?? '')?>" required>
 
-                                    <option>Choix du sujet</option>
-                        <!-- ============================boucle pour choix du sujet================================ -->
+                                    <option><?= 'Sujet'.' '.'>'.' '. ($commentInfo->subject ?? '')?></option>
+
                                     <?php foreach ($arraySubject as $subjectInSelect) {
                                 $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
                                 echo "<option value=\"$subjectInSelect\" $isSelected>$subjectInSelect</option>";}?>
-                                </select>
-                                <div class="invalid-feedback-2"><?=htmlentities($errorsArray['subject'] ?? '')?></div>
-                            </div>
+                            </select>
                         </div>
+
+                        <div class="invalid-feedback-2"><?=htmlentities($errorsArray['subject'] ?? '')?></div>
+                        
                         <!-- +++++++++++++++++++++++++++++++++++++CATEGORIES++++++++++++++++++++++++++++++++++++++++ -->
                         <!-- ============================boucle pour choix catégories=============================== -->
                         <div class="form-group">
                             <select name="categories" 
                                     id="categories" 
-                                    class="form-control" 
-                                    value="<?= htmlentities($categories ?? '')?>" required>
+                                    class="card-header bg-transparent form-control" 
+                                    value="" required>
 
-                                <option>Choix de la catégorie</option>
+                                <option><?= 'Categoies'.' '.'>'.' '. ($commentInfo->categories ?? '')?></option>
 
                                 <?php foreach ($arrayCategories as $categoriesInSelect) {
                                 $isSelected = ($categoriesInSelect==$categories) ? 'selected': '';
 
                                 echo "<option value=\"$categoriesInSelect\" $isSelected>$categoriesInSelect</option>";}?>
                             </select>
-                            <div class="invalid-feedback-2"><?=htmlentities($errorsArray['categories'] ?? '')?></div>
                         </div>
 
+                        <div class="invalid-feedback-2"><?=htmlentities($errorsArray['categories'] ?? '')?></div>
+                        
                         <!-- ===================================COMMENT=============================================== -->
                         <div class="form-group">
                             <div class="mb-3">
                                 <label for="comment" class="col-form-label"></label> 
                                 <textarea
                                     name ="comment" 
-                                    class="form-control" 
+                                    class="card-header bg-transparent form-control" 
                                     id="comment" 
                                     rows="9" 
                                     placeholder="Votre message" 
-                                    value="<?= htmlentities($comment ?? '')?>" required>
+                                    value="<?= ($comment ?? '')?>"><?= htmlentities($commentInfo->comment ?? '')?>
                                 </textarea>
                         </div>
+                        
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['comment'] ?? '')?></div>
 
-                        <button type="submit" class="btn btn-outline-warning rounded-pill w-100 mb-5">Envoyer</button>
-                        <a class="btn btn-success mt-2 rounded-pill text-end" href="/../../admin/controllers/list-comment-ctrl.php">Retour à la liste
+                        <button type="submit" class="text-info bg-transparent btn btn-outline-warning rounded-pill w-100 mb-2">Mettre à jour le commentaire ?</button>
+                        <a class="btn btn-success mt-2 rounded-pill w-100" href="/../../admin/controllers/list-comment-ctrl.php">Retour à la liste
                             des commentaires</a>
 
                         </div>

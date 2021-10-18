@@ -9,40 +9,42 @@
         <div class="card-body">
 
           <?php
-            if ($user->state == 0) {                    
-            ?>
+              if ($user->state == 0) {                    
+          ?>
 
-                <div class='card-text text-danger mb-2'>Status compte ----> <strong class="fs-1">DÉSACTIVÉ</strong>
-                </div>
+              <div class="d-flex mb-4">
+                  <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > 
+                  </div>
 
-            <?php } else { ?>
+                  <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
+                  </div>
+              </div>
 
-                <div class='card-text text-success mb-2'>Status compte ----> <strong class="fs-1">ACTIVÉ</strong>
-                </div>
-            
+          <?php } else { ?>
+
+              <div class="d-flex">
+                  <div class='card-text text-success text-start me-1'>Status de l'utilisateur > 
+                  </div>
+
+                  <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
+                  </div>
+              </div>
+      
           <?php } ?>
 
           <p class="card-text"><strong>Email - </strong>
               <?=htmlentities($user->email)?>
           </p>
 
-          <p class="card-text"><strong>Mot de passe -</strong>
-              <?=htmlentities($user->password)?>
-          </p>
-
           <p class="card-text"><strong>Ip - </strong>
               <?=htmlentities($user->ip)?>
-          </p>
-
-          <p class="card-text"><strong>Token -</strong>
-              <?=htmlentities($user->confirmation_token)?>
           </p>
 
           <p class="card-text"><strong>Ajouté le </strong>
             <?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?>
           </p>
 
-          <p class="card-text"><strong>Dernière MAJ le </strong>
+          <p class="card-text"><strong>Dernière modification le </strong>
             <?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?>          
           </p>
 

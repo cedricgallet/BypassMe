@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-end align-items-center  col-12 login-wrap h-100">        
 
             <!-- =============================CHAMP PSEUDO=============================== -->
-            <div class="signUpForm col-12 col-lg-3">                            
+            <div class="signUpForm card bg-transparent col-12 col-lg-3">                            
             
                 <div class=""><h2 class=""><?=$title ?? ''?></h2>
                 </div>
@@ -32,7 +32,7 @@
                         <input type="text" 
                                 name="pseudo" 
                                 id="pseudo" 
-                                class="form-control"
+                                class="form-control card-header"
                                 title="Le pseudo ne doit pas contenir les caractères suivant: > <"
                                 placeholder="Entrez votre pseudo"
                                 autocomplete="given-name"
@@ -50,7 +50,7 @@
 
                         <input type="email" 
                                 name="email" 
-                                class="form-control" 
+                                class="form-control card-header" 
                                 id="email" 
                                 aria-describedby="emailHelp" 
                                 placeholder="Adresse e-mail" 
@@ -66,10 +66,9 @@
 
                         <input type="email" 
                                 name="email2" 
-                                class="form-control" 
+                                class="form-control card-header" 
                                 id="email2"
                                 aria-describedby="emailHelp" 
-                                class="form-control" 
                                 placeholder="Confirmez votre e-mail" 
                                 autocomplete="email2"
                                 value="<?= htmlentities($email2 ?? '')?>" required>
@@ -83,7 +82,7 @@
 
                         <input type="password" 
                                 name="password" 
-                                class="form-control" 
+                                class="form-control card-header" 
                                 id="password"
                                 placeholder="Votre mot de passe" 
                                 autocomplete="new-password" 
@@ -101,7 +100,7 @@
 
                         <input type="password" 
                                 name="password2" 
-                                class="form-control" 
+                                class="form-control card-header" 
                                 id="password2"
                                 placeholder="Confirmez votre mot de passe" 
                                 autocomplete="new-password" 

@@ -40,14 +40,14 @@ class Comment{
     public function createComment()
     {
         try{
-            $sql = 'INSERT INTO `comment` (`categories`, `subject`, `comment`, `state`) 
-                    VALUES (:categories, :subject, :comment, :state);';
+            $sql = 'INSERT INTO `comment` (`subject`, `categories`, `comment`, `state`) 
+                    VALUES (:subject, :categories, :comment, :state);';
             
             $sth = $this->_pdo->prepare($sql);
 
 
-            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
             $sth->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
+            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
             $sth->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
 
@@ -67,12 +67,13 @@ class Comment{
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de récupérer un article
+     * Méthode qui permet de récupérer un commentaire
      * 
      * @return object
      */
     
-    public static function getComment($id){
+    public static function getComment($id)
+    {
         
         $pdo = Database::db_connect();
 
@@ -82,19 +83,23 @@ class Comment{
             $sth = $pdo->prepare($sql);
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
+
             $sth->execute();
-            $user = $sth->fetch();
-            if(!$user){
-                return '23';
+
+            $commentInfo = $sth->fetch();
+            
+            if(!$commentInfo){
+                return '8';
             }
             
-            return $user;
+            return $commentInfo;
         }
         catch(PDOException $e){
             return $e->getCode();
         }
 
     }
+    
     
 
 
@@ -114,8 +119,8 @@ class Comment{
                 // on return les données récupérées
                 return $req->fetchAll(PDO::FETCH_OBJ);
             }
-        } catch (PDOException $ex) {
-            return $ex;
+        } catch (PDOException $e) {
+            return $e;
         }
         
     }
@@ -170,10 +175,10 @@ class Comment{
             $sth->execute();
             
             if($sth->rowCount()==0){
-                return 23;
+                return 8;
 
             }else{
-                return 31;
+                return 9;
             }
         }
         catch(PDOException $e){

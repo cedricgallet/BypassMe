@@ -18,7 +18,7 @@ class Article{
      * 
      * @return boolean
      */
-    public function __construct($categories, $title, $article, $state = 1, $created_at = NULL,$deleted_at =NULL)
+    public function __construct($categories, $title, $article, $state = 1, $created_at = NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
@@ -84,12 +84,12 @@ class Article{
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
-            $article = $sth->fetch();
-            if(!$article){
+            $articleInfo = $sth->fetch();
+            if(!$articleInfo){
                 return '23';
             }
             
-            return $article;
+            return $articleInfo;
         }
         catch(PDOException $e){
             return $e->getCode();

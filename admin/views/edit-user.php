@@ -7,14 +7,16 @@
                     <h2 class=""><?=$title ?? ''?></h2>
                 </div>
 
-                <!-- Affichage d'un message d'erreur personnalisé -->
-                <?php 
+                
+
+                    <!-- Affichage d'un message d'erreur personnalisé -->
+                    <?php 
 
                         if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
                             if(!array_key_exists($msgCode, $displayMsg)){
                                 $msgCode = 0;
                             }
-                            echo '<div class="d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                            echo '<div class="info-banner d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                         } 
 
                     ?>
@@ -27,7 +29,7 @@
                     <div class="form-outline">
                         <label for="pseudo" class="col-form-label text-info">Pseudo*</label>
 
-                        <input type="text" name="pseudo" id="pseudo" class="form-control"
+                        <input type="text" name="pseudo" id="pseudo" class="form-control card-header"
                             title="Le pseudo ne doit pas contenir les caractères suivant: > <"
                             placeholder="Entrez votre pseudo" autocomplete="given-name"
                             value="<?= htmlentities($pseudo ?? '')?>" pattern="<?=REGEX_PSEUDO?>" required>
@@ -41,41 +43,66 @@
                     <div class="form-outline">
                         <label for="email" class="col-form-label text-info">Adresse Email*</label>
 
-                        <input type="email" name="email" class="form-control" id="email"
-                            aria-describedby="emailHelp" placeholder="Adresse e-mail" autocomplete="email"
-                            value="<?= htmlentities($email ?? '')?>" required>
+                        <input type="email" 
+                                name="email" 
+                                class="form-control card-header" 
+                                id="email"
+                                aria-describedby="emailHelp" 
+                                placeholder="Adresse e-mail" 
+                                autocomplete="email"
+                                value="<?= htmlentities($email ?? '')?>" required>
                     </div>
                     <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
+
+                    <!-- =============================CHAMP MOT DE PASSE ACTUEL=========================== -->
+
+                    <div class="form-outline">
+                        <label for='password' class="col-form-label text-info">Nouveau mot de passe</label> 
+                                            
+                        <input type="password" 
+                                id="password" 
+                                name="password"
+                                class="form-control card-header">
+                        </div>
+                    <div class="invalid-feedback-2"><?= htmlentities($errorsArray['password'] ?? '')?></div>
+
 
                     <!-- ===========================Status utilisateur========================== -->
 
                     <div class="form-outline">
-                        <label for="pseudo" class="col-form-label text-info">Status</label>
+                        <label for="pseudo" class="col-form-label text-info"></label>
 
-                        <?php
-                            if ($user->state == 0) {                    
+                            <?php
+                                if ($user->state == 0) {                    
                             ?>
 
-                                <div class='card-text text-danger'>Status compte ----> <strong>DÉSACTIVÉ</strong>
+                                <div class="d-flex">
+                                    <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > 
+                                    </div>
+
+                                    <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
+                                    </div>
                                 </div>
 
                             <?php } else { ?>
 
-                                <div class='card-text text-success'>Status compte ----> <strong>ACTIVÉ</strong>
+                                <div class="d-flex">
+                                    <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > 
+                                    </div>
+
+                                    <div class='card-text text-danger text-center'><strong>ACTIVÉ</strong>
+                                    </div>
                                 </div>
-                            
-                        <?php } ?>
                         
-
-                        <input type="text" name="" id="pseudo" class="form-control"
-                            value="<?= $user->state?>">
-
+                            <?php } ?>
+                            
                     </div>
+
                     <div class="form-group mt-3">
                         <label for="state" class="col-form-label text-info">Désactiver/Activer l'utilisateur ?</label>
 
                         <select name="state" class="form-outline" required>
-                            <option selected value="<?= $_SESSION['user']->state ?>">Options</option>
+                            <option selected value="<?= htmlentities($user->state) ?>">Options</option>
 
                             <option value="0">Désactiver</option>
                             <option value="1">Activer</option>
@@ -88,7 +115,7 @@
                         <button 
                                 id="btnSubmit" 
                                 type="submit"
-                                class="form-control btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
+                                class="form-control card-header btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
                     </div>
 
                 </form>

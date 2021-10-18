@@ -12,6 +12,11 @@ if(!isset($_SESSION['user']))
 
 $title = 'Bienvenue sur ton espace personnel';
 
+$id = $_SESSION['user']->id;
+
+//On récupère les infos
+$user = User::get($id);
+
 // +++++++++++++++++++++++VUES+++++++++++++++++++++++++++++++++
 require_once dirname(__FILE__) .'/../views/templates/header.php';
 require_once dirname(__FILE__) .'/../views/user/landing.php';

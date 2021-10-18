@@ -7,7 +7,7 @@
                 <div class="d-flex align-items-center justify-content-center col-12 h-100">
 
                     <div class="card bg-transparent w-50 h-100">
-                        <div class="fw-bold fs-5 mt-5 mb-5">
+                        <div class="fw-bold mt-5 mb-5">
                             <h2><?=$title1 ?? ''?></h2>
 
                             <!-- ++++++++++++++++++++Message personnalisé+++++++++++++++++++++++++++++ -->
@@ -19,7 +19,7 @@
                                     {
                                         $msgCode = 0;
                                     }
-                                    echo '<div class="alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                                    echo '<div class="fs-2 alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                                 }
                             ?>
                         </div>
@@ -30,7 +30,7 @@
 
                                 <!-- =============================boucle choix catégories====================== -->
 
-                                <select name="categories" id="categories" class="text-end form-control card-header">
+                                <select name="categories" id="categories" class="bg-transparent text-center form-control card-header">
                                     <option value="">Choix de la catégorie</option>
 
                                     <?php foreach ($arrayCategories as $categoriesInSelect) {
@@ -39,31 +39,32 @@
                                     }?>
 
                                 </select>
-                                <div class="valid-feedback">Parfait!</div>
-                                <div class="invalid-feedback">Merci de choisir une catégorie valide.</div>
                                 <!-- ==============================Titre=============================== -->
 
                                 <div class="mb-3 mt-3">
-                                    <input type="text" name="title" id="title" class="text-end form-control card-header"
-                                        value="titre de l'article">
+                                    <input type="text" 
+                                            name="title" 
+                                            id="title" 
+                                            class="bg-transparent text-center form-control card-header"
+                                            placeholder="Saisir le titre de l'article">
                                 </div>
-                                <div class="valid-feedback">Parfait!</div>
-                                <div class="invalid-feedback">Merci de choisir un tire valide.</div>
 
                                     <!-- ============================Article============================== -->
                                 <div class="mb-3">
-                                    <label for="article" class="col-form-label card-header">Contenu de l' article</label>
+                                    <label for="article" class="col-form-label card-header">Ecrire l' article</label>
                                     
                                     <textarea
-                                        name ="article" class="form-control card-header" id="article" rows="9" placeholder="Tapez votre article">
+                                        name ="article" 
+                                        class="bg-transparent form-control card-header" 
+                                        id="article" 
+                                        rows="9" 
+                                        placeholder="Votre article">
                                     </textarea>
                                 </div>
-                                <div class="valid-feedback">Parfait!</div>
-                                <div class="invalid-feedback">Merci de vérifier les caractéres utilisés.</div>
 
-                                <button type="submit" class="btn btn-warning rounded-pill w-100">Enregistrer</button>
+                                <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Enregistrer l'article</button>
                                 <div class="w-100">
-                                <a class="btn btn-success mt-2" href="/../../admin/controllers/list-article-ctrl.php">Retour à la liste
+                                <a class="border text-info btn btn-success mt-2" href="/../../admin/controllers/list-article-ctrl.php">Retour à la liste
                                 des articles</a>
                                 </div>
 

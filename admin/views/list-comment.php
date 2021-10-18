@@ -54,15 +54,15 @@
                             <th scope="row"><?=htmlentities($AllComment->id)?></th>
                             <td><?=htmlentities($AllComment->subject)?></td>
                             <td><?=htmlentities($AllComment->categories)?></td>
-                            <td><?=htmlentities($AllComment->comment)?></td>
+                            <td><?=($AllComment->comment)?></td>
                             <td><?=htmlentities($AllComment->state)?></td>
                             <td ><?=htmlentities(date('d-m-Y', strtotime($AllComment->created_at)))?></td>    
                             <td><?=htmlentities(date('d-m-Y', strtotime($AllComment->updated_at)))?></td>
 
                             <td>
                             <a href="/../../admin/controllers/display-comment-ctrl.php?id=<?=htmlentities($AllComment->id)?>"><i class="text-info far fa-edit"></i></a>
-                            <a href="/../../admin/controllers/delete-comment-ctrl.php?id=<?=htmlentities($AllComment->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                            <a href="/../../controllers/commentForm-ctrl.php"><i class=" text-success fas fa-user-plus"></i></a>
+                            <a href="/../../admin/controllers/delete-comment-ctrl.php?id=<?=htmlentities($AllComment->id)?>" onclick="return confirmDeleteComment();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
+                            <a href="/../../controllers/commentForm-ctrl.php"><i class=" text-success fas fa-plus"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

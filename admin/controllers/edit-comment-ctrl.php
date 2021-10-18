@@ -3,22 +3,31 @@ session_start();
 require_once(dirname(__FILE__).'/../../models/Comment.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
+// *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
+// *******************************************************************************************************
 
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array(); //ou $errorsArray = []; //déclaration d'un tableau vide
+
+// Tableau des sujets disponible //
+$arraySubject = ['commenter un article','soummettre une idée','signaler un bug sur le site','signaler un lien mort','supprimer mon compte'];
+
+// Tableau des catégories disponibles //
+$arrayCategories = ['autre','web','réseau','humaine','applicative'];
+
 $title = 'Modification d\'un commentaire en cours ...';
 
 // Nettoyage de l'id passé en GET dans l'url
@@ -32,47 +41,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 { 
     
      // ===========================Sujet=================
-
-    //On test si le champ n'est pas vide
-    if(!empty($subject)){
-        // On verifie l'existance et on nettoie
-        $subject = trim(filter_input(INPUT_POST, 'subject'));
-
-    }else {
-        $errorsArray['subject'] = 'Le champ est obligatoire';
-    }
+    $subject = trim($_POST['subject']);
 
     // ===========================Categories===========================
 
-    if(!empty($categories)){
-        // On verifie l'existance et on nettoie
-        $categories = trim(filter_input(INPUT_POST, 'categories'));
-
-    }else {
-        $errorsArray['categories'] = 'Le champ est obligatoire';
-    }
+    $categories = trim($_POST['categories']);
 
     // ===========================Commentaire=================
-    if(!empty($comment)){
-        // On verifie l'existance et on nettoie
-        $comment = trim(filter_input(INPUT_POST, 'comment'));
 
-    }else {
-        $errorsArray['comment'] = 'Le champ est obligatoire';
-    }
-
+    $comment = trim($_POST['comment']);
 
     // Si il n'y a pas d'erreurs, on met à jour l'article.
     if(empty($errorsArray))
     {
 
-        $updateComment = new Comment($subject, $categories, $comment, $state);//On instancie/On récupére les infos 
+        $commentInfo = new Comment($subject, $categories, $comment, $state);//On instancie/On récupére les infos 
 
-        $result = $updateComment->updateComment($id);//On met a jour et on ajoute en bdd        
+        $result = $commentInfo->updateComment($id);//On met a jour et on ajoute en bdd        
 
         if($result===true){//Si l ajout s'est bien passé = 1
             
-            header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=22');//On redirige av mess succés
+            header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=6');//On redirige av mess succés
             die;
 
         } else {
@@ -91,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $subject = $commentInfo->subject;
         $categories = $commentInfo->categories;
         $comment = $commentInfo->comment;
-        $state = $articleInfo->state;
+        $state = $commentInfo->state;
 
     } else {
         header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=8');

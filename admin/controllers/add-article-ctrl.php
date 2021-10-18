@@ -20,16 +20,17 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 $errorsArray = array();
 
 $title1 = 'Ajouter un article';
-$arrayCategories = ['applicative','web','reseau','humaine'];//tabeau pour la boucle dans front
+$arrayCategories = ['web','reseau','humaine','applicative'];//tabeau pour la boucle dans front
 
-// On verifie l'existance et on nettoie
-$categories = trim(htmlentities($_POST ['categories']));
-$title = trim(htmlentities($_POST ['title']));
-$article = trim(htmlentities($_POST ['article']));
 
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
+    // On verifie l'existance et on nettoie
+    $categories = trim($_POST ['categories']);
+    $title = trim($_POST ['title']);
+    $article = trim($_POST ['article']);
+
 
     //On test si le champ n'est pas vide
     if(empty($categories)){

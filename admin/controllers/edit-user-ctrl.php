@@ -4,18 +4,20 @@ require_once(dirname(__FILE__).'/../../config/regex.php');
 require_once(dirname(__FILE__).'/../../models/User.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
+// *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//ON vérifie le mdp en cours avec le mdp par défault
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
+// *******************************************************************************************************
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
@@ -65,16 +67,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }else{
         $errorsArray['email'] = 'Le champ est obligatoire';
     }
-    // **********************************************
+    // ***************Mot de passe******************
+    $password = $_POST['password'];
 
+    //On test les autre champs si seulement le mdp actuel est le bon 
+    if(!empty($password))
+    {
+
+        $cost =['cost' => 12]; // On hash le mot de passe avec Bcrypt, via un coût de 12
+        $password = password_hash($password, PASSWORD_DEFAULT,$cost);
+
+
+    }
 
     // Si il n'y a pas d'erreurs, on met à jour l'utilisateur.
     if(empty($errorsArray))
     {
 
-        $user = new User($pseudo, $email, "", "",$state);//On instancie/On récupére les infos 
+        $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos 
 
-        $result = $user->update($id);//On ajoute en bdd        
+        $result = $user->update($id);//On met a jour        
 
         if($result===true){//Si l ajout s'est bien passé = 1
             

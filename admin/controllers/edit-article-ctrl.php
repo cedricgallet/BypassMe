@@ -3,21 +3,26 @@ session_start();
 require_once(dirname(__FILE__).'/../../models/Article.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
+// *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
+// *******************************************************************************************************
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
+
+$arrayCategories = ['web','reseau','humaine','applicative'];//tabeau pour la boucle dans front
+
 
 $title1 = 'Modification d\'un article en cours ...';
 
@@ -33,37 +38,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     
      // ===========================categories=================
     // On verifie l'existance et on nettoie
-    $categories = trim(filter_input(INPUT_POST, 'categories'));
+    $categories = trim($_POST['categories']);
 
-    if(empty($categories)){
-        $errorsArray['categories'] = 'Le champ est obligatoire';
-    }
 
     // ===========================Titre===========================
     // On verifie l'existance et on nettoie
-    $title = trim(filter_input(INPUT_POST, 'title'));
+    $title = trim($_POST['title']);
 
-    if(empty($title)){
-        $errorsArray['title'] = 'Le champ est obligatoire';
-    }
 
     // ===========================article=================
     // On verifie l'existance et on nettoie
 
-    $article = trim(filter_input(INPUT_POST, 'article'));
+    $article = trim($_POST['article']);
 
-    if(empty($article)){
-        $errorsArray['article'] = 'Le champ est obligatoire';
-    }
 
 
     // Si il n'y a pas d'erreurs, on met à jour l'article.
     if(empty($errorsArray))
     {
 
-        $updateArticle = new Article($categories, $title, $article, $state);//On instancie/On récupére les infos 
+        $articleInfo = new Article($categories, $title, $article, $state);//On instancie/On récupére les infos 
 
-        $result = $updateArticle->updateArticle($id);//On met a jour et on ajoute en bdd        
+        $result = $articleInfo->updateArticle($id);//On met a jour et on ajoute en bdd        
 
         if($result===true){//Si l ajout s'est bien passé = 1
             
@@ -79,7 +75,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 }else{
     $articleInfo = Article::getArticle($id);
-
     // Si l'article n'existe pas, on redirige vers la liste complète avec un code erreur
     if($articleInfo)
     {

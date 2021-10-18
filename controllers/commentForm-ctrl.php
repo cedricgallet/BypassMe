@@ -9,9 +9,11 @@ if(!isset($_SESSION['user'])){
 }
 
 // Tableau des catégories disponibles //
-$arrayCategories = ['autre','applicative','web','réseau','humaine',];
+$arrayCategories = ['autre','web','réseau','humaine','applicative'];
+
 // Tableau des sujets disponible //
 $arraySubject = ['commenter un article','soummettre une idée','signaler un bug sur le site','signaler un lien mort','supprimer mon compte'];
+
 $title = 'Déposer un commentaire ?';
 
 //On ne controle que s'il y a des données envoyées 

@@ -22,8 +22,8 @@
                     ?>
                 
                     <!-- ++++++++++++++++++++++++++++Email++++++++++++++++++++++++++++++++ -->
-                    <div class="card bg-transparent
-">
+                    <div class="card bg-transparent">
+                        
                         <div class="card-body h-100">
 
                             <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">

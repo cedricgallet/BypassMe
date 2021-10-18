@@ -3,19 +3,6 @@ session_start();
 require_once dirname(__FILE__) . '/../../models/Article.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
-    die;
-}
-
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
-
-if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
-    die;
-        
-}
-
 
 $title = 'Consultation d\'un article en cours ...';
 
@@ -25,7 +12,6 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
 // Appel à la méthode statique permettant de récupérer tous les infos d'un seul article
 $articleInfo = Article::getArticle($id);
-
 
 // Si l'article n'existe pas, on redirige vers la liste complète avec un code erreur
 if(!$articleInfo){

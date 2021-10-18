@@ -28,7 +28,7 @@
             <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
         </div>
 
-        <div class="col-12mt-4 pe-4 ps-4">
+        <div class="col-12 mt-4 pe-4 ps-4">
 
             <table class="table table-hover table-responsive table-bordered">
                 <caption>
@@ -53,8 +53,8 @@
                         <tr class="text-white fs-3">
                             <th scope="row"><?=htmlentities($getArticle->id)?></th>
                             <td><?=htmlentities($getArticle->categories)?></td>
-                            <td><?=htmlentities($getArticle->title)?></td>
-                            <td><?=htmlentities($getArticle->article)?></td>
+                            <td><?=($getArticle->title)?></td>
+                            <td><?=($getArticle->article)?></td>
                             <td><?=htmlentities($getArticle->state)?></td>
                             <td ><?=htmlentities(date('d-m-Y', strtotime($getArticle->created_at)))?></td>    
                             <td><?=htmlentities(date('d-m-Y', strtotime($getArticle->updated_at)))?></td>
@@ -62,7 +62,7 @@
                             <td>
                                 <a href="/../../admin/controllers/display-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>"><i class="text-info far fa-edit"></i></a>
                                 <a href="/../../admin/controllers/delete-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>" onclick="return confirmDeleteArticle();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                                <a href="/../../admin/controllers/add-article-ctrl.php"><i class="text-success fas fa-user-plus"></i></a>
+                                <a href="/../../admin/controllers/add-article-ctrl.php"><i class="text-success fas fa-plus"></i></a>
 
                             </td>
                         </tr>
@@ -77,7 +77,7 @@
                         <?php
                         for($i=1;$i<=$nbPages;$i++){
                         if($i==$currentPage){ ?>    
-                            <li class=" page-item active" aria-current="page">
+                            <li class="page-item active" aria-current="page">
                             <span class="ms-4 page-link text-info">
                                 <?=$i?> 
                                 <span class="visually-hidden">(current)</span>

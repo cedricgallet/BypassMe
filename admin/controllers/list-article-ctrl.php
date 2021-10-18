@@ -8,18 +8,20 @@ $title2 = 'Liste des articles';
 $title3 = 'Liste des commentaires';
 $title4 = 'Liste des membres';
 
+// *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
+// *******************************************************************************************************
 
 
 // Récupération de la valeur recherchée et on nettoie

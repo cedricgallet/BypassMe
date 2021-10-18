@@ -49,6 +49,30 @@
                 <div class="card-body">
                     <div class="text-center card-header"><strong><?=$_SESSION['user']->pseudo?></strong></div>
 
+                        <?php
+                            if ($user->state == 0) {                    
+                        ?>
+
+                            <div class="d-flex mb-4">
+                                <div class='card-text text-danger text-start me-1'>Status du compte > 
+                                </div>
+
+                                <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
+                                </div>
+                            </div>
+
+                        <?php } else { ?>
+
+                            <div class="d-flex mb-4">
+                                <div class='card-text text-danger text-start me-1'>Status du compte > 
+                                </div>
+
+                                <div class='card-text text-danger text-center'><strong>ACTIVÉ</strong>
+                                </div>
+                            </div>
+                    
+                        <?php } ?>
+
                         <p class="mt-2 card-text"><strong>Email - </strong>
                             <?=htmlentities($_SESSION['user']->email)?>
                         </p>
@@ -57,15 +81,11 @@
                             <?=htmlentities($_SESSION['user']->ip)?>
                         </p>
 
-                        <p class="card-text"><strong>Status - </strong>
-                            <strong><?=htmlentities($_SESSION['user']->state)?></strong> (compte activé = 1/désactivé = 0)
-                        </p>
-
                         <p class="card-text"><strong>Ajouté le </strong>
                             <?=htmlentities(date('d-m-Y', strtotime($_SESSION['user']->created_at)))?>
                         </p> 
 
-                        <p class="card-text"><strong>Dernière MAJ le </strong>
+                        <p class="card-text"><strong>Dernière modification le </strong>
                             <?=htmlentities(date('d-m-Y', strtotime($_SESSION['user']->updated_at)))?>
                         </p> 
 
@@ -112,16 +132,17 @@
             </div>
 
             <div class="col-12 text-center">
-                <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDeleteYourAccount();">Désactiver mon compte</a>
+                <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDisableYourAccount();">Désactiver mon compte</a>
 
-                <a href="/../controllers/commentForm-ctrl.php" class=" bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDisableYourAccount();">Supprimer mon compte</a>
+                <a href="/../controllers/commentForm-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDeleteYourAccount();">Supprimer mon compte</a>
 
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<script src="/../assets/js/checkConfirm.js"></script>
 
 
 
