@@ -52,11 +52,17 @@
                         <?=htmlentities(date('d-m-Y', strtotime($articleInfo->updated_at)))?>          
                     </p>
 
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <a href="/../admin/controllers/edit-article-ctrl.php?id=<?=htmlentities($articleInfo->id)?>"
+                                class="border text-info btn btn-success">Modifier l'article ?</a>
+                        </div>
 
-                    <a href="/../admin/controllers/edit-article-ctrl.php?id=<?=htmlentities($articleInfo->id)?>"
-                        class="btn btn-primary">Modifier l'article ?</a>
-                    <a href="/../admin/controllers/list-article-ctrl.php" class="btn btn-primary">Retour à la liste
-                        des articles</a>
+                        <div>
+                            <a href="/../admin/controllers/list-article-ctrl.php" class="border btn btn-success">Retour à la liste
+                                des articles</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

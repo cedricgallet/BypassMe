@@ -64,10 +64,10 @@
                         <?php } else { ?>
 
                             <div class="d-flex mb-4">
-                                <div class='card-text text-danger text-start me-1'>Status du compte > 
+                                <div class='card-text text-success text-start me-1'>Status du compte > 
                                 </div>
 
-                                <div class='card-text text-danger text-center'><strong>ACTIVÉ</strong>
+                                <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
                                 </div>
                             </div>
                     
