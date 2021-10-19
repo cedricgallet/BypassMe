@@ -3,18 +3,20 @@ session_start(); // Démarrage de la session
 require_once(dirname(__FILE__).'/../../models/Article.php');//models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
+// *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
+// ********************************************************************************************************
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
@@ -27,10 +29,9 @@ $arrayCategories = ['web','reseau','humaine','applicative'];//tabeau pour la bou
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
     // On verifie l'existance et on nettoie
-    $categories = trim($_POST ['categories']);
-    $title = trim($_POST ['title']);
-    $article = trim($_POST ['article']);
-
+    $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); // On nettoie
+    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); // On nettoie
+    $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); // On nettoie
 
     //On test si le champ n'est pas vide
     if(empty($categories)){

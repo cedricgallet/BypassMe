@@ -17,7 +17,7 @@
                     if(!array_key_exists($msgCode, $displayMsg)){
                         $msgCode = 0;
                     }
-                    echo '<div class="d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                 } 
 
                 ?>
@@ -32,7 +32,7 @@
                         <input type="text" 
                                 name="pseudo" 
                                 id="pseudo" 
-                                class="form-control card-header"
+                                class="form-control text-info bg-transparent"
                                 title="Le pseudo ne doit pas contenir les caractères suivant: > <"
                                 placeholder="Entrez votre pseudo"
                                 autocomplete="given-name"
@@ -50,7 +50,7 @@
 
                         <input type="email" 
                                 name="email" 
-                                class="form-control card-header" 
+                                class="form-control text-info bg-transparent" 
                                 id="email" 
                                 aria-describedby="emailHelp" 
                                 placeholder="Adresse e-mail" 
@@ -66,7 +66,7 @@
 
                         <input type="email" 
                                 name="email2" 
-                                class="form-control card-header" 
+                                class="form-control text-info bg-transparent" 
                                 id="email2"
                                 aria-describedby="emailHelp" 
                                 placeholder="Confirmez votre e-mail" 
@@ -82,7 +82,7 @@
 
                         <input type="password" 
                                 name="password" 
-                                class="form-control card-header" 
+                                class="form-control text-info bg-transparent" 
                                 id="password"
                                 placeholder="Votre mot de passe" 
                                 autocomplete="new-password" 
@@ -100,7 +100,7 @@
 
                         <input type="password" 
                                 name="password2" 
-                                class="form-control card-header" 
+                                class="form-control text-info bg-transparent" 
                                 id="password2"
                                 placeholder="Confirmez votre mot de passe" 
                                 autocomplete="new-password" 

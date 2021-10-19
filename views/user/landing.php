@@ -1,8 +1,19 @@
+<!-- Affichage d'un message d'erreur personnalisé -->
+<?php 
+
+    if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
+        if(!array_key_exists($msgCode, $displayMsg)){
+            $msgCode = 0;
+        }
+        echo '<div class="fs-3 d-flex justify-content-center align-items-center alert'.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+    } 
+
+?>
+
 <div id="bgLanding" class="container-fluid h-100">
     <div class="row justify-content-center align-items-center h-100">
-
         <div class="col-12 text-center">
-
+            
             <div><h2 class="text-center"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
             <div class="text-center"><h2><?=$title ?? ''?></h2></div>
         </div>
@@ -15,10 +26,12 @@
                 // si l'admin est connecté
                 if(isset($_SESSION['user']))
                 {
-                    $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On vérifie le mdp  par défault avec le mdp en cours de session si oui ok
 
-                    if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS)//Si la vérif est == aux constantes
-                    {
+                    $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+
+                    if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) {
+
+                    
                                             
                 ?>
                     <div class="text-center">
@@ -110,6 +123,9 @@
 
                             <a href="/../admin/controllers/list-article-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Ajouter/Modifier/supprimer
                             un article</a>
+
+                            <a href="/../admin/controllers/list-message-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Ajouter/Modifier/supprimer
+                            un message</a>
 
                             <a href="/../admin/controllers/list-comment-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Ajouter/Modifier/supprimer
                             un commentaire</a>

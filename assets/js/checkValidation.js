@@ -3,10 +3,10 @@
     (() => {
         'use strict';
 
-        // Récupérez tous les formulaires auxquels nous voulons appliquer des styles de validation Bootstrap personnalisés.
+        // Récupérez tous les formulaires pour appliquer des styles de validation Bootstrap personnalisés.
         const forms = document.querySelectorAll('.needs-validation');
 
-        // Bouclez sur les tous les formulaires et empêchez la soumission
+        // Bouclez sur tous les formulaires et empêchez la soumission
         Array.prototype.slice.call(forms).forEach((form) => {
             form.addEventListener('submit', (event) => {
                 if (!form.checkValidity()) {

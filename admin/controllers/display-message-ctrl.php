@@ -1,6 +1,6 @@
 <?php
-session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../../models/Comment.php';//Models
+session_start();
+require_once dirname(__FILE__) . '/../../models/Contact.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURISER ACCES PAGE******************************************
@@ -18,13 +18,22 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 }
 // ********************************************************************************************************
 
-// Nettoyage de l'id de l'utilisateur passé en GET dans l'url
+$title = 'Consultation d\'un message en cours ...';
+
+
+// Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
-/*********************************************************/
 
-// Suppression de l'article 
-$code = intval(Comment::deleteComment($id));
+// Appel à la méthode statique permettant de récupérer tous les infos d'un seul article
+$messageInfo = Contact::getMessage($id);
 
-// On redirige vers la liste des commentaires avec un code pour le message
-header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode='.$code);
-die;
+// Si le message n'existe pas, on redirige vers la liste complète avec un code erreur
+if(!$messageInfo){
+    header('location: /../admin/controllers/list-message-ctrl.php?msgCode=39');
+}
+
+/* ************* AFFICHAGE DES VUES **************************/
+
+require_once dirname(__FILE__) . '/../../views/templates/header.php';
+require_once dirname(__FILE__) . '/../../admin/views/display-message.php';
+

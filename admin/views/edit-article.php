@@ -13,7 +13,7 @@
                             if(!array_key_exists($msgCode, $displayMsg)){
                                 $msgCode = 0;
                             }
-                            echo '<div class="d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                            echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                         } 
 
                         ?>
@@ -56,7 +56,7 @@
                             <label for="state" class="col-form-label text-info">Désactiver/Activer l'article ?</label>
 
                             <select name="state" class="form-outline" required>
-                                <option selected value="<?= ($articleInfo->state) ?>">Options</option>
+                                <option selected value="<?= htmlspecialchars($articleInfo->state) ?>">Options</option>
 
                                 <option value="0">Désactiver</option>
                                 <option value="1">Activer</option>
@@ -65,10 +65,10 @@
 
                         <!-- =============================Catégories====================== -->
 
-                        <select value="<?= 'CATÉGORIES' .' '. ($articleInfo->categories ?? '');?>"
+                        <select value="<?= 'CATÉGORIES' .' '.'>'.' '. htmlentities($categories ?? '');?>"
                                 name="categories" 
                                 id="categories" 
-                                class="bg-transparent text-center form-control card-header">
+                                class="bg-transparent text-center form-control text-info">
                                     <option ></option>
 
                                     <?php foreach ($arrayCategories as $categoriesInSelect) {
@@ -84,24 +84,26 @@
                             <input type="text" 
                                     name="title" 
                                     id="title" 
-                                    class="bg-transparent text-center form-control card-header"
-                                    value="<?= 'TITRE'.' '.'>'.' '. ($articleInfo->title ?? '');?>">
+                                    class="bg-transparent text-center form-control text-info"
+                                    value="<?= 'TITRE'.' '.'>'.' '. htmlentities($title ?? '');?>">
                         </div>
 
                             <!-- ============================Article============================== -->
                         <div class="mb-3">
-                            <label for="article" class="col-form-label card-header">Contenu de l' article</label>
+                            <label for="article" class="col-form-label text-info">Contenu de l' article</label>
                             
                             <textarea
                                 
                                 name ="article" 
-                                class="form-control bg-transparent card-header" 
+                                class="form-control bg-transparent text-info" 
                                 id="article" 
+                                minlength="10" 
+                                maxlength="1500"
                                 rows="15"><?= htmlentities($article ?? '');?> 
                             </textarea>
                         </div>
 
-                        <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Mettre à jour</button>
+                        <button type="submit" class="text-info btn btn-warning rounded-pill w-100">Mettre à jour</button>
                     </form>
 
                     <div class="d-flex flex-row justify-content-between">

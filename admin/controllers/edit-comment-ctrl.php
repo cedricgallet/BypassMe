@@ -16,19 +16,15 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     die;
         
 }
-// *******************************************************************************************************
-
+// ********************************************************************************************************
 
 // Initialisation du tableau d'erreurs
-$errorsArray = array(); //ou $errorsArray = []; //déclaration d'un tableau vide
+$errorsArray = array();
 
-// Tableau des sujets disponible //
-$arraySubject = ['commenter un article','soummettre une idée','signaler un bug sur le site','signaler un lien mort','supprimer mon compte'];
+$arrayCategories = ['Web','Réseau','Humaine','Applicative'];//tabeau pour la boucle dans front
 
-// Tableau des catégories disponibles //
-$arrayCategories = ['autre','web','réseau','humaine','applicative'];
 
-$title = 'Modification d\'un commentaire en cours ...';
+$title1 = 'Modification d\'un commentaire en cours ...';
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
@@ -40,22 +36,20 @@ $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_IN
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
     
-     // ===========================Sujet=================
-    $subject = trim($_POST['subject']);
+     //**************************categories******************************
+    // On verifie l'existance et on nettoie
+    $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
-    // ===========================Categories===========================
+    //**************************article******************************
+    // On verifie l'existance et on nettoie
+    $comment = trim(filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
-    $categories = trim($_POST['categories']);
 
-    // ===========================Commentaire=================
-
-    $comment = trim($_POST['comment']);
-
-    // Si il n'y a pas d'erreurs, on met à jour l'article.
+    // Si il n'y a pas d'erreurs, on met à jour le commentaire.
     if(empty($errorsArray))
     {
 
-        $commentInfo = new Comment($subject, $categories, $comment, $state);//On instancie/On récupére les infos 
+        $commentInfo = new Comment($categories, $comment, $state);//On instancie/On récupére les infos 
 
         $result = $commentInfo->updateComment($id);//On met a jour et on ajoute en bdd        
 
@@ -72,12 +66,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
 }else{
-    $commentInfo = Comment::getComment($id);
-    // Si le commentaire n'existe pas, on redirige vers la liste complète avec un code erreur
+    $commentInfo = comment::getComment($id);
+    // Si l'comment n'existe pas, on redirige vers la liste complète avec un code erreur
     if($commentInfo)
     {
         $id = $commentInfo->id;
-        $subject = $commentInfo->subject;
         $categories = $commentInfo->categories;
         $comment = $commentInfo->comment;
         $state = $commentInfo->state;
@@ -88,7 +81,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 }
 
-// +++++++++++++++++++++++++++++++++++VUES+++++++++++++++++++++++++++++++
+
+/* ************* VUES **************************/
 require_once dirname(__FILE__) . '/../../views/templates/header.php';
 require_once dirname(__FILE__) . '/../../admin/views/edit-comment.php';
 

@@ -7,7 +7,7 @@
           if(!array_key_exists($msgCode, $displayMsg)){
               $msgCode = 0;
           }
-          echo '<div class="fs-2 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+          echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
       } ?>
       <!-- -------------------------------------------- -->
 
@@ -24,8 +24,9 @@
 
     <div class="col-12 d-flex justify-content-around">
       <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title2 ?? ''?></h2></a>
+      <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
       <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
-      <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
+      <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
     </div>
 
     <div class="col-12 mt-4 pe-4 ps-4">

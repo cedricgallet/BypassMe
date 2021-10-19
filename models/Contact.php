@@ -2,10 +2,11 @@
 include(dirname(__FILE__).'/../utils/database.php');
 
 
-class Comment{
+class Contact{
 
-    private $_categories;
-    private $_comment; 
+    private $_email;
+    private $_subject;
+    private $_message;
     private $_state;
     private $_created_at;
     private $_deleted_at;
@@ -13,39 +14,41 @@ class Comment{
     private $_pdo;
 
     /**
-     * Méthode magique appellée lors de l'instanciation de l'objet dans le controlleur. Elle permet d'hydrater notre objet 'comment'
+     * Méthode magique appellée lors de l'instanciation de l'objet dans le controlleur. Elle permet d'hydrater notre objet 'Contact'
      * 
      * @return boolean
      */
-    public function __construct($categories, $comment, $state = 1, $created_at = NULL, $deleted_at =NULL)
+    public function __construct($email, $subject, $message, $state = 1, $created_at = NULL, $deleted_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
 
-        $this->_categories = $categories;
-        $this->_comment = $comment;
+        $this->_email = $email;
+        $this->_subject = $subject;
+        $this->_message = $message;
         $this->_state = $state;                           
         $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
 
     }
-    // ****************************************************************
+
     /**
      * Méthode qui permet de créer un commentaire
      * 
      * @return boolean
      */
-    public function createComment()
+    public function createMessage()
     {
         try{
-            $sql = 'INSERT INTO `comment` (`categories`,  `comment`, `state`) 
-                    VALUES (:categories, :comment, :state);';
+            $sql = 'INSERT INTO `message` ( `email`, `subject`, `message`, `state`) 
+                    VALUES ( :email,  :subject, :message, :state);';
             
             $sth = $this->_pdo->prepare($sql);
 
 
-            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $sth->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
+            $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
+            $sth->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
+            $sth->bindValue(':message',$this->_message,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
 
             
@@ -62,83 +65,59 @@ class Comment{
         }
     }
 
-    // ****************************************************************
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Méthode qui permet de récupérer un commentaire
      * 
      * @return object
      */
     
-    public static function getComment($id)
+    public static function getMessage($id)
     {
         
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT * FROM `comment` 
+            $sql = 'SELECT * FROM `message` 
                     WHERE `id` = :id;';
             $sth = $pdo->prepare($sql);
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
+
             $sth->execute();
 
-            $commentInfo = $sth->fetch();
-            if(!$commentInfo){
-                return '8';
+            $messageInfo = $sth->fetch();
+            
+            if(!$messageInfo){
+                return '39';
             }
             
-            return $commentInfo;
+            return $messageInfo;
         }
         catch(PDOException $e){
             return $e->getCode();
         }
 
     }
-    
 
-
-     // ****************************************************************
-    
-    //  Méthode qui permet de lister tous les comment  
-    public static function getAllComment()
-    {
-        $sql = "SELECT * FROM `comment`;";
-
-        $pdo = Database::db_connect();
-
-        $req = $pdo->prepare($sql);
-
-        try {
-            if($req->execute()) 
-            {
-                // on return les données récupérées
-                return $req->fetchAll(PDO::FETCH_OBJ);
-            }
-        } catch (PDOException $ex) {
-            return $ex;
-        }
-        
-    }
-
-
-    // ****************************************************************
+    // +++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de modifier un comment
+     * Méthode qui permet de modifier un article
      * 
      * @return boolean
      */
-    public function updateComment($id)
+    public function updateMessage($id)
     {
 
         try{
-            $sql = 'UPDATE `comment` 
-                    SET `categories` = :categories, `comment` = :comment, `state`=:state
+            $sql = 'UPDATE `message` 
+                    SET `message` = :message, `subject` = :subject, `state`=:state
                     WHERE `id` = :id;';
 
             $sth = $this->_pdo->prepare($sql);
 
-            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
-            $sth->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
+            $sth->bindValue(':message',$this->_message,PDO::PARAM_STR);
+            $sth->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
 
@@ -150,29 +129,29 @@ class Comment{
 
     }
 
-      // ****************************************************************
+      // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Méthode qui permet de supprimer un utilisateur
      * 
      * @return boolean
      */
-    public static function deleteComment($id)
+    public static function deleteMessage($id)
     {
 
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'DELETE FROM `comment`
+            $sql = 'DELETE FROM `message`
                     WHERE `id` = :id;';
             $sth = $pdo->prepare($sql);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
             
             if($sth->rowCount()==0){
-                return 8;
+                return 39;
 
             }else{
-                return 9;
+                return 45;
             }
         }
         catch(PDOException $e){
@@ -181,28 +160,26 @@ class Comment{
 
     }
 
-
-
-    // ****************************************************************
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de lister tous les commentaires existants en fonction d'un mot clé et selon pagination
+     * Méthode qui permet de lister tous les messages existants en fonction d'un mot clé et selon pagination
      * 
      * @return array
      */   
     
-    public static function searchAllComment($search='', $limit=null, $offset=0)
+    public static function searchAllMessage($search='', $limit=null, $offset=0)
     {
         
         try{
             if(!is_null($limit)){ // Si une limite est fixée, il faut tout lister
-                $sql = 'SELECT * FROM `comment` 
-                WHERE `categories` LIKE :search 
-                OR `comment` LIKE :search 
+                $sql = 'SELECT * FROM `message` 
+                WHERE `subject` LIKE :search 
+                OR `message` LIKE :search 
                 LIMIT :limit OFFSET :offset;';
             } else {
-                $sql = 'SELECT * FROM `comment` 
-                WHERE `categories` LIKE :search 
-                OR `comment` LIKE :search;';
+                $sql = 'SELECT * FROM `message` 
+                WHERE `subject` LIKE :search 
+                OR `message` LIKE :search;';
             }
 
             $pdo = Database::db_connect();
@@ -223,19 +200,19 @@ class Comment{
         }
 
     }
-    // ****************************************************************
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Méthode qui permet de compter les commentaires
+     * Méthode qui permet de compter les messages
      * 
      * @return int
      */
-    public static function countComment($s)
+    public static function countMessage($s)
     {
         $pdo = Database::db_connect();
         try{
-            $sql = 'SELECT * FROM `comment`
-                WHERE `categories` LIKE :search 
-                OR `comment` LIKE :search;';
+            $sql = 'SELECT * FROM `message`
+                WHERE `subject` LIKE :search 
+                OR `message` LIKE :search;';
 
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':search','%'.$s.'%',PDO::PARAM_STR);

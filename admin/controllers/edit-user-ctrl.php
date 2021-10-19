@@ -17,7 +17,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     die;
         
 }
-// *******************************************************************************************************
+// ********************************************************************************************************
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
@@ -33,7 +33,7 @@ $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_IN
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
     
-     // pseudo
+     // ***********************pseudo**************************
     // On verifie l'existance et on nettoie
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }else{
         $errorsArray['email'] = 'Le champ est obligatoire';
     }
-    // ***************Mot de passe******************
+    // **********************Mot de passe*************************
     $password = $_POST['password'];
 
     //On test les autre champs si seulement le mdp actuel est le bon 

@@ -5,8 +5,10 @@ require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion
 
 $title1 = 'Gestion articles';
 $title2 = 'Liste des articles';
-$title3 = 'Liste des commentaires';
+$title3 = 'Liste des messages';
 $title4 = 'Liste des membres';
+$title5 = 'Liste des commentaires';
+
 
 // *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
@@ -21,7 +23,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     die;
         
 }
-// *******************************************************************************************************
+// ********************************************************************************************************
 
 
 // Récupération de la valeur recherchée et on nettoie

@@ -16,7 +16,8 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     die;
         
 }
-// *******************************************************************************************************
+// ********************************************************************************************************
+
 
 $title = 'Consultation d\'un commentaire en cours ...';
 
@@ -24,12 +25,12 @@ $title = 'Consultation d\'un commentaire en cours ...';
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// Appel à la méthode statique permettant de récupérer tous les infos d'un seul article
+// Appel à la méthode statique permettant de récupérer tous les infos d'un seul commentaire
 $commentInfo = Comment::getComment($id);
 
 // Si le commentaire n'existe pas, on redirige vers la liste complète avec un code erreur
 if(!$commentInfo){
-    header('location: /../admin/controllers/list-comment-ctrl.php?msgCode=3');
+    header('location: /../admin/controllers/list-comment-ctrl.php?msgCode=8');
 }
 
 /* ************* AFFICHAGE DES VUES **************************/

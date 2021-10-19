@@ -23,49 +23,47 @@
 
 
         <div class="col-12 d-flex justify-content-around">
+            <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
+            <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
             <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3"><?=$title2 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
             <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
-
         </div>
 
         <div class="col-12 mt-4 pe-4 ps-4">
 
             <table class="table table-hover table-responsive table-bordered">
                 <caption>
-                    <tr class="fs-3">
-                        <th scope="col">#</th><th scope="col-3">Categories</th>
-
-                        <th scope="col">Titre</th>
-                        <th scope="col">Article</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Ajouté le</th>
-                        <th scope="col">Mis a jour le</th>
-                        <th scope="col">Actions</th>
-                    </tr>
+                <tr class="fs-3">
+                    <th scope="col">#</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Sujet</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ajouté le</th>
+                    <th scope="col">Mis a jour le</th>
+                    <th scope="col">Actions</th>
+                </tr>
                 </caption>
                 <tbody>
 
                     <?php 
                     $i=0;
-                    foreach($getAllArticle as $getArticle) {
+                    foreach($getAllMessage as $AllMessage) {
                         $i++;
                         ?>
                         <tr class="text-white fs-3">
-                            <th scope="row"><?=htmlentities($getArticle->id)?></th>
-                            <td><?=htmlentities($getArticle->categories)?></td>
-                            <td><?=($getArticle->title)?></td>
-                            <td><?=($getArticle->article)?></td>
-                            <td><?=htmlentities($getArticle->state)?></td>
-                            <td ><?=htmlentities(date('d-m-Y', strtotime($getArticle->created_at)))?></td>    
-                            <td><?=htmlentities(date('d-m-Y', strtotime($getArticle->updated_at)))?></td>
+                            <th scope="row"><?=htmlentities($AllMessage->id)?></th>
+                            <td><?=htmlentities($AllMessage->email)?></td>
+                            <td><?=htmlentities($AllMessage->subject)?></td>
+                            <td><?=($AllMessage->message)?></td>
+                            <td><?=htmlentities($AllMessage->state)?></td>
+                            <td ><?=htmlentities(date('d-m-Y', strtotime($AllMessage->created_at)))?></td>    
+                            <td><?=htmlentities(date('d-m-Y', strtotime($AllMessage->updated_at)))?></td>
 
                             <td>
-                                <a href="/../../admin/controllers/display-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>"><i class="text-info far fa-edit"></i></a>
-                                <a href="/../../admin/controllers/delete-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>" onclick="return confirmDeleteArticle();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                                <a href="/../../admin/controllers/add-article-ctrl.php"><i class="text-success fas fa-plus"></i></a>
-
+                            <a href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class="text-info far fa-edit"></i></a>
+                            <a href="/../../admin/controllers/delete-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>" onclick="return confirmDeleteMessage();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
+                            <a href="/../../controllers/message-ctrl.php"><i class=" text-success fas fa-plus"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -74,26 +72,24 @@
                 <!-- =============================Pagination================== -->
                 <nav aria-label="...">
                     <ul class="pagination pagination-sm">
-                    
+                        
 
                         <?php
                         for($i=1;$i<=$nbPages;$i++){
-                        if($i==$currentPage){ ?>    
-                            <li class="page-item active" aria-current="page">
-                            <span class="ms-4 page-link text-info">
+                            if($i==$currentPage){ ?>    
+                            <li class=" page-item active" aria-current="page">
+                                <span class="ms-4 page-link text-info">
                                 <?=$i?> 
                                 <span class="visually-hidden">(current)</span>
-                            </span>
+                                </span>
                             </li>
                         <?php } else { ?>
-                            <li class="page-item"><a class="ms-4 page-link text-info" href="?currentPage=<?=$i?>&s=<?=$s?>"><?=$i?></a></li>
+                        <li class="page-item"><a class="ms-4 page-link text-info" href="?currentPage=<?=$i?>&s=<?=$s?>"><?=$i?></a></li>
                         <?php } 
                         }?>
-
-                    
                     </ul>
                 </nav>
-            </table>            
+            </table>
         </div>
     </div>
 </div>

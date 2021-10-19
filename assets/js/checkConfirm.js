@@ -20,8 +20,16 @@ function confirmDisableArticle() {
 }
 
 
+function confirmDeleteMessage() {
+    return confirm('!! ATTENTION !! Vous êtes sur le point de supprimer ce message, veuillez confirmer votre choix ?');
+}
+
+function confirmDisableMessage() {
+    return confirm('!! ATTENTION !! Vous êtes sur le point de désactiver ce message, veuillez confirmer votre choix ?');
+}
+
 function confirmDeleteComment() {
-    return confirm('!! ATTENTION !! Vous êtes sur le point de supprimer ce commentaire, veuillez confirmer votre choix ?');
+    return confirm('!! ATTENTION !! Vous êtes sur le point de supprimer ce ommentaire, veuillez confirmer votre choix ?');
 }
 
 function confirmDisableComment() {

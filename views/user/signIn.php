@@ -16,7 +16,7 @@
                             {
                                 $msgCode = 0;
                             }
-                            echo '<div class="d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                            echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                         } 
 
                     ?>
@@ -34,7 +34,7 @@
                                 <div class="form-outline">
                                     <input type="email" 
                                             name="email" 
-                                            class="form-control card-header" 
+                                            class="form-control text-info bg-transparent" 
                                             id="email" 
                                             placeholder="Adresse e-mail" 
                                             autocomplete="email"
@@ -47,7 +47,7 @@
                                 <div class="form-outline">
                                     <input type="password" 
                                             name="password" 
-                                            class="form-control card-header" 
+                                            class="form-control text-info bg-transparent" 
                                             id="password" 
                                             placeholder="Votre mot de passe" 
                                             autocomplete="off" 

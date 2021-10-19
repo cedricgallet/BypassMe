@@ -6,13 +6,15 @@ require_once(dirname(__FILE__).'/../config/config.php');//Constante + Gestion er
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
+
 $title = 'Inscription';
 
 // ================================================================================
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
-     // pseudo
+     // ************************pseudo************************
+    
     // On verifie l'existance et on nettoie
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
@@ -82,27 +84,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 
-        $user = new User($pseudo, $email, $password, $ip);//On instancie/On récupére les infos  
+        $user = new User($pseudo, $email, $password, $ip);//On instancie/On récupére les infos
 
         if(!$checkUser)//Si l'utilisateur n'existe pas
         {
+
+
             $result = $user->createUser();//On ajoute en bdd
+            
             if($result===true){//Si l ajout s'est bien passé = 1
 
-            
-            }else {
                 header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
                 die;
+            
+            } else {
+                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
+                $msgCode = $result;
             }
 
-        } else {
-            // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-            $msgCode = $result;
+        }else {
+            header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
+            die;
         }
 
-    }else {
-        header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
-        die;
     }
     
 }

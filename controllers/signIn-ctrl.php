@@ -44,15 +44,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                     $_SESSION['user'] = $user;//On crée la session
                     // +++++++++++++++++++++++Connection administration+++++++++++++++++++++++
 
-                    if($email == DEFAULT_EMAIL && $password == DEFAULT_PASS) 
-                    {
+                    $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+
+                    if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
+
                                     
-                        header('location: /../admin/controllers/list-user-ctrl.php');//On redirige vers la liste des utilisateurs
+                        header('location: /../admin/controllers/list-user-ctrl.php');//On redirige l'admin vers la liste des utilisateurs
                         die;
 
                     }else {
                         //On connecte l'utilisateur
-                        header('location: /../controllers/landing-ctrl.php');//On redirige vers le tableau de bord
+                        header('location: /../controllers/landing-ctrl.php');//On redirige l'utilisateur vers le tableau de bord
                         die;
                     }
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once(dirname(__FILE__).'/../../models/Article.php');//Models
+require_once(dirname(__FILE__).'/../../models/Contact.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURISER ACCES PAGE******************************************
@@ -18,48 +18,52 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 }
 // ********************************************************************************************************
 
+
 // Initialisation du tableau d'erreurs
-$errorsArray = array();
+$errorsArray = array(); //ou $errorsArray = []; //déclaration d'un tableau vide
 
-$arrayCategories = ['Web','Réseau','Humaine','Applicative'];//tabeau pour la boucle dans front
+// Tableau des sujets disponible //
+$arraySubject = ['Soummettre une idée','Signaler un bug sur le site','Signaler un lien mort','Supprimer mon compte'];
 
-
-$title1 = 'Modification d\'un article en cours ...';
+$title = 'Modification d\'un message en cours ...';
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// Nettoyage du status 
-$state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
+// status 
+$state = $_SESSION['user']->state;
 
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
     
-     //**************************categories******************************
-    // On verifie l'existance et on nettoie
-    $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
+    // ****************************Sujet du message***********************
 
-    //**************************Titre******************************
+    // On verifie l'existance et on nettoie
+    $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
+
+    // ******************************Categories***************************
+
     // On verifie l'existance et on nettoie
     $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
-    //**************************article******************************
+    // ******************************article***************************
+
     // On verifie l'existance et on nettoie
     $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
 
-    // Si il n'y a pas d'erreurs, on met à jour l'article.
+    // Si il n'y a pas d'erreurs, on met à jour le message.
     if(empty($errorsArray))
     {
 
-        $articleInfo = new Article($categories, $title, $article, $state);//On instancie/On récupére les infos 
+        $messageInfo = new Contact($subject, $categories, $message, $state);//On instancie/On récupére les infos 
 
-        $result = $articleInfo->updateArticle($id);//On met a jour et on ajoute en bdd        
+        $result = $messageInfo->updateMessage($id);//On met a jour et on ajoute en bdd        
 
         if($result===true){//Si l ajout s'est bien passé = 1
             
-            header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=22');//On redirige av mess succés
+            header('location: /../../admin/controllers/list-message-ctrl.php?msgCode=41');//On redirige av mess succés
             die;
 
         } else {
@@ -70,24 +74,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
 }else{
-    $articleInfo = Article::getArticle($id);
-    // Si l'article n'existe pas, on redirige vers la liste complète avec un code erreur
-    if($articleInfo)
+    $messageInfo = Contact::getMessage($id);
+    var_dump($messageInfo);die;
+    if($messageInfo)
     {
-        $id = $articleInfo->id;
-        $categories = $articleInfo->categories;
-        $title = $articleInfo->title;
-        $article = $articleInfo->article;
-        $state = $articleInfo->state;
+        $id = $messageInfo->id;
+        $subject = $messageInfo->subject;
+        $message = $messageInfo->message;
+        $state = $messageInfo->state;
 
     } else {
-        header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=23');
+        // Si le message n'existe pas, on redirige vers la liste complète avec un code erreur
+        header('location: /../../admin/controllers/list-message-ctrl.php?msgCode=39');
         die;
     }
 }
 
-
-/* ************* VUES **************************/
+// +++++++++++++++++++++++++++++++++++VUES+++++++++++++++++++++++++++++++
 require_once dirname(__FILE__) . '/../../views/templates/header.php';
-require_once dirname(__FILE__) . '/../../admin/views/edit-article.php';
+require_once dirname(__FILE__) . '/../../admin/views/edit-message.php';
 

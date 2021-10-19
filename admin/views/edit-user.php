@@ -16,7 +16,7 @@
                             if(!array_key_exists($msgCode, $displayMsg)){
                                 $msgCode = 0;
                             }
-                            echo '<div class="info-banner d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                            echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                         } 
 
                     ?>
@@ -87,10 +87,10 @@
                             <?php } else { ?>
 
                                 <div class="d-flex">
-                                    <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > 
+                                    <div class='card-text text-success text-start me-1'>Status de l'utilisateur > 
                                     </div>
 
-                                    <div class='card-text text-danger text-center'><strong>ACTIVÉ</strong>
+                                    <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
                                     </div>
                                 </div>
                         

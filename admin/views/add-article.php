@@ -19,7 +19,7 @@
                                     {
                                         $msgCode = 0;
                                     }
-                                    echo '<div class="fs-2 alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                                    echo '<div class="fs-3 alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                                 }
                             ?>
                         </div>
@@ -30,7 +30,7 @@
 
                                 <!-- =============================boucle choix catégories====================== -->
 
-                                <select name="categories" id="categories" class="bg-transparent text-center form-control card-header">
+                                <select name="categories" id="categories" class=" text-center form-control tex-info">
                                     <option value="">Choix de la catégorie</option>
 
                                     <?php foreach ($arrayCategories as $categoriesInSelect) {
@@ -45,19 +45,21 @@
                                     <input type="text" 
                                             name="title" 
                                             id="title" 
-                                            class="bg-transparent text-center form-control card-header"
+                                            class="bg-transparent text-center form-control tex-info"
                                             placeholder="Saisir le titre de l'article">
                                 </div>
 
                                     <!-- ============================Article============================== -->
                                 <div class="mb-3">
-                                    <label for="article" class="col-form-label card-header">Ecrire l' article</label>
+                                    <label for="article" class="col-form-label tex-info">Ecrire l' article</label>
                                     
                                     <textarea
                                         name ="article" 
-                                        class="bg-transparent form-control card-header" 
+                                        class="bg-transparent form-control tex-info" 
                                         id="article" 
                                         rows="9" 
+                                        minlength="10" 
+                                        maxlength="1500"
                                         placeholder="Votre article">
                                     </textarea>
                                 </div>

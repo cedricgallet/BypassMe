@@ -50,11 +50,11 @@
 
             <div class="d-flex justify-content-between">
               <div>
-                  <a href="/../admin/controllers/edit-comment-ctrl.php?id=<?=htmlentities($user->id)?>"
+                  <a href="/../../admin/controllers/edit-user-ctrl.php?id=<?=htmlentities($user->id)?>"
                       class="border text-info btn btn-success">Modifier l'utilisateur</a>
               </div>
               <div>
-                  <a href="/../admin/controllers/list-comment-ctrl.php" class="border btn btn-success">Retour à la liste
+                  <a href="/../../admin/controllers/list-user-ctrl.php" class="border btn btn-success">Retour à la liste
                       des utilisateurs</a>
               </div>
           </div>

@@ -16,7 +16,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     die;
         
 }
-// *******************************************************************************************************
+// ********************************************************************************************************
 
 // Nettoyage de l'id de l'utilisateur passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));

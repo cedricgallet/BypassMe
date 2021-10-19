@@ -11,7 +11,7 @@
                     if(!array_key_exists($msgCode, $displayMsg)){
                         $msgCode = 0;
                     }
-                    echo '<div class="d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                 } 
 
             ?>
@@ -29,7 +29,7 @@
                         <input type="text" 
                                 name="pseudo" 
                                 id="pseudo" 
-                                class="form-control"
+                                class="form-control text-info bg-transparent"
                                 title="Le pseudo ne doit pas contenir les caractères suivant: > <"
                                 autocomplete="given-name"
                                 value="<?= htmlentities($user->pseudo)?>"
@@ -46,7 +46,7 @@
 
                         <input type="email" 
                                 name="email" 
-                                class="form-control" 
+                                class="form-control text-info bg-transparent" 
                                 id="email" 
                                 aria-describedby="emailHelp" 
                                 autocomplete="email"
@@ -61,7 +61,7 @@
                         <input type="password" 
                                 id="current_password" 
                                 name="current_password"
-                                class="form-control" required>
+                                class="form-control text-info bg-transparent" required>
                     </div>
                     <div class="invalid-feedback-2"><?= htmlentities($errorsArray['current_password'] ?? '')?></div>
 
@@ -72,7 +72,7 @@
                         <input type="password" 
                                 id='errPass1'    
                                 name="new_password" 
-                                class="form-control"
+                                class="form-control text-info bg-transparent"
                                 required>
                     </div>
                     <div class="invalid-feedback-2"><?= htmlentities($errorsArray['new_password'] ?? '')?></div>
@@ -84,7 +84,7 @@
                         <input type="password" 
                                 id='errPass2' 
                                 name="new_password2"
-                                class="form-control" 
+                                class="form-control text-info bg-transparent" 
                                 required>
                         <div class="invalid-feedback-2"><?= htmlentities($errorsArray['new_password2'] ?? '')?></div>
 

@@ -1,7 +1,7 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../../models/Comment.php';//Models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once dirname(__FILE__).'/../../models/Contact.php';//Models
+require_once dirname(__FILE__).'/../../config/config.php';//Constante + gestion erreur
 
 // *****************************************SECURISER ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
@@ -23,8 +23,8 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 /*********************************************************/
 
 // Suppression de l'article 
-$code = intval(Comment::deleteComment($id));
+$code = intval(Contact::deleteMessage($id));
 
-// On redirige vers la liste des commentaires avec un code pour le message
-header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode='.$code);
+// On redirige vers la liste des articles avec un code pour le message
+header('location: /../../admin/controllers/list-message-ctrl.php?msgCode='.$code);
 die;

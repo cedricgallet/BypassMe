@@ -1,13 +1,13 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . '/../../models/Comment.php';//Models
+require_once dirname(__FILE__) . '/../../models/Contact.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-$title1 = 'Gestion commentaires';
-$title2 = 'Liste des commentaires';
-$title3 = 'Liste des messages';
-$title4 = 'Liste des membres';
-$title5 = 'Liste des articles';
+$title1 = 'Gestion Messages';
+$title5 = 'Liste des commentaires';
+$title2 = 'Liste des articles';
+$title3 = 'Liste des membres';
+$title4 = 'Liste des messages';
 
 
 // *****************************************SECURISER ACCES PAGE******************************************
@@ -32,7 +32,7 @@ $s = trim(filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING));
 $limit = NB_ELEMENTS_BY_PAGE;
 
 // Compte le nombre d'éléments au total selon la recherche
-$countItems = Comment::countComment($s);
+$countItems = Contact::countMessage($s);
 
 // Calcule le nombre de pages à afficher dans la pagination
 $nbPages = ceil($countItems / $limit);
@@ -47,10 +47,10 @@ if($currentPage <= 0 || $currentPage > $nbPages){
 //Définit à partir de quel enregistrement positionner le curseur (l'offset) dans la requête
 $offset = $limit*($currentPage-1);
 
-// Appel à la méthode statique permettant de récupérer les articles selon la recherche et la pagination
-$getAllComment = Comment::getAllComment($s,$limit,$offset);
+// Appel à la méthode statique permettant de récupérer les commentaires selon la recherche et la pagination
+$getAllMessage = Contact::searchAllMessage($s,$limit,$offset);
 
 /* *************VUES **************************/
 require_once dirname(__FILE__) .'/../../views/templates/header.php';
-require_once dirname(__FILE__) .'/../../admin/views/list-comment.php';
+require_once dirname(__FILE__) .'/../../admin/views/list-message.php';
 

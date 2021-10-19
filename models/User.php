@@ -62,6 +62,7 @@ class User
             }
             
             return $user;
+
         }
         catch(PDOException $e){
             return $e->getCode();
@@ -111,6 +112,7 @@ class User
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':ip',$this->_ip,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
+            $sth->bindValue(':confirmation_token',$token,PDO::PARAM_STR);
 
             
             if($sth->execute())
@@ -131,7 +133,7 @@ class User
         }
     }
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
 
     private function setToken()
     {
@@ -140,7 +142,8 @@ class User
         return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
     }
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
+
     public static function validateSignUp($id)
     {
         
@@ -164,7 +167,7 @@ class User
 
     }
     
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
     /**
      * Méthode qui permet de mettre à jour un utilisateur
      * 
@@ -194,7 +197,7 @@ class User
     }
 
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
     /**
      * Méthode qui permet de supprimer un utilisateur
      * 
@@ -208,9 +211,11 @@ class User
         try{
             $sql = 'DELETE FROM `user`
                     WHERE `id` = :id;';
+
             $sth = $pdo->prepare($sql);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();
+
             if($sth->rowCount()==0){
                 return 3;
 
@@ -224,7 +229,7 @@ class User
 
     }
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
     /**
      * Méthode qui permet de compter les user
      * 
@@ -249,7 +254,7 @@ class User
         
     }
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
     /**
      * Méthode qui permet de lister tous les utilisateurs existants en fonction d'un mot clé et selon pagination
      * 
@@ -288,13 +293,13 @@ class User
         }
 
     }
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ***************************************************************************************
         /**
      * Méthode qui permet de lister tous les commentaires d'un utilisateur
      * 
      * @return array
      */
-    public static function getAllByIdUser($id)
+    public static function getAllCommentByIdUser($id)
     {
 
         $pdo = Database::db_connect();
@@ -306,6 +311,35 @@ class User
                         ON `comment`.`iduser` = `user`.`id`
                         WHERE `comment`.`iduser` = :id
                         ORDER BY `comment` DESC;';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute(); 
+            return $stmt->fetchAll();
+        }
+        catch(PDOException $e){
+            return $e->getCode();
+        }
+
+    }
+
+     // ***************************************************************************************
+        /**
+     * Méthode qui permet de lister tous les messages d'un utilisateur
+     * 
+     * @return array
+     */
+    public static function getAllMessageByIdUser($id)
+    {
+
+        $pdo = Database::db_connect();
+
+        try{
+            $sql = '    SELECT `message`.`id` as `messageId`, `user`.`id` as `user_id`, `user`.*, `message`.* 
+                        FROM `message` 
+                        INNER JOIN `user`
+                        ON `message`.`iduser` = `user`.`id`
+                        WHERE `message`.`iduser` = :id
+                        ORDER BY `message` DESC;';
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute(); 

@@ -6,12 +6,13 @@ require_once(dirname(__FILE__).'/../config/regex.php');
 require_once(dirname(__FILE__).'/../models/User.php');//Models
 require_once(dirname(__FILE__).'/../config/config.php');//Constante + Gestion erreur
 
-// Si la session n'existe pas 
+// ****************************SECURITE ACCES PAGE*************************** 
 if(!isset($_SESSION['user']))
 {
     header('Location:/../controllers/signUp-ctrl.php?msgCode=38');
     die();
 }
+// ***********************************************************************************
 
 $title ='Modifier mes informations';
 $errorsArray = array();//Tableau erreur vide
