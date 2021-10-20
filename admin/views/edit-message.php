@@ -21,31 +21,21 @@
                     
                     <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
                         <div class="form-group mt-3">
-                            <!-- **********************************Status utilisateur***************************** -->
+                            <!-- **********************************Status message***************************** -->
                             <div class="form-outline">
 
-                                <?php
-                                if ($messageInfo->state == 0) {                    
+                            <?php
+                                    if ($messageInfo->state == 0) {                    
                                 ?>
 
-                                    <div class="d-flex">
-                                        <div class='card-text text-danger me-1'>Status du commentaire > 
+                                        <div class='card-text text-danger text-start me-1'>Status du message > <strong>DÉSACTIVÉ</strong>
                                         </div>
-
-                                        <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
-                                        </div>
-                                    </div>
 
                                 <?php } else { ?>
 
-                                    <div class="d-flex">
-                                        <div class='card-text text-success me-2'>Status du commentaire > 
+                                        <div class='card-text text-success text-start me-1'>Status du message > <strong>ACTIVÉ</strong>
                                         </div>
-
-                                        <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
-                                        </div>
-                                    </div>
-                        
+                            
                                 <?php } ?>
 
                             </div>
@@ -67,7 +57,7 @@
 
                             <select name="subject" 
                                     id="subject" 
-                                    class="card-header bg-transparent form-control" 
+                                    class="text-info bg-transparent form-control" 
                                     value="<?= htmlentities($subject ?? '')?>" required>
 
                                     <option><?= 'Sujet'.' '.'>'.' '. htmlentities($subject ?? '')?></option>
@@ -86,17 +76,17 @@
                                 <label for="message" class="col-form-label"></label> 
                                 <textarea
                                     name ="message" 
-                                    class="card-header bg-transparent form-control" 
+                                    class="text-info bg-transparent form-control" 
                                     id="message" 
                                     rows="9" 
                                     minlength="10" 
-                                    maxlength="1500"><?= htmlentities($message ?? '')?>
+                                    maxlength="1500"><?= 'Contenu'.' '.'>'.' '.htmlentities($message ?? '')?>
                                 </textarea>
                         </div>
                         
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['message'] ?? '')?></div>
 
-                        <button type="submit" class="text-info bg-transparent btn btn-outline-warning rounded-pill w-100 mb-2">Mettre à jour le message ?</button>
+                        <button type="submit" class="text-info bg-transparent btn btn-warning rounded-pill w-100 mb-2">Mettre à jour le message ?</button>
                         <a class="btn btn-success mt-2 rounded-pill w-100" href="/../../admin/controllers/list-message-ctrl.php">Retour à la liste
                             des messages</a>
 

@@ -3,13 +3,14 @@ session_start();
 require_once(dirname(__FILE__).'/../../models/Article.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-// *****************************************SECURISER ACCES PAGE******************************************
+// *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+//On check si le mdp par défault est le meme que le mdp en cours de session
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
@@ -21,7 +22,8 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 
-$arrayCategories = ['Web','Réseau','Humaine','Applicative'];//tabeau pour la boucle dans front
+//tabeau pour la boucle dans front
+$arrayCategories = ['web','réseau','humaine','applicative'];
 
 
 $title1 = 'Modification d\'un article en cours ...';
@@ -29,14 +31,11 @@ $title1 = 'Modification d\'un article en cours ...';
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// Nettoyage du status 
-$state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
-
-//On ne controle que s'il y a des données envoyées 
-if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
+// On controle le type(post) que si il y a des données d'envoyées 
+if($_SERVER['REQUEST_METHOD'] == 'POST') 
 { 
     
-     //**************************categories******************************
+    //**************************categories******************************
     // On verifie l'existance et on nettoie
     $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
@@ -48,7 +47,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     // On verifie l'existance et on nettoie
     $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
-
+    //**************************Status******************************
+    // On verifie l'existance et on nettoie
+    $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
+    
     // Si il n'y a pas d'erreurs, on met à jour l'article.
     if(empty($errorsArray))
     {

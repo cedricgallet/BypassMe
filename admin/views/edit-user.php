@@ -72,29 +72,19 @@
                     <div class="form-outline">
                         <label for="pseudo" class="col-form-label text-info"></label>
 
-                            <?php
-                                if ($user->state == 0) {                    
-                            ?>
+                        <?php
+                            if ($user->state == 0) {                    
+                        ?>
 
-                                <div class="d-flex">
-                                    <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > 
-                                    </div>
-
-                                    <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
-                                    </div>
+                                <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > <strong>DÉSACTIVÉ</strong>
                                 </div>
 
-                            <?php } else { ?>
+                        <?php } else { ?>
 
-                                <div class="d-flex">
-                                    <div class='card-text text-success text-start me-1'>Status de l'utilisateur > 
-                                    </div>
-
-                                    <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
-                                    </div>
+                                <div class='card-text text-success text-start me-1'>Status de l'utilisateur > <strong>ACTIVÉ</strong>
                                 </div>
-                        
-                            <?php } ?>
+                    
+                        <?php } ?>
                             
                     </div>
 

@@ -3,7 +3,7 @@ session_start();
 require_once dirname(__FILE__) . '/../../models/Article.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-// *****************************************SECURISER ACCES PAGE******************************************
+// *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
@@ -21,7 +21,8 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 $title = 'Consultation d\'un article en cours ...';
 
 
-// Nettoyage de l'id passé en GET dans l'url
+//**************************ID******************************
+// On verifie l'existance et on nettoie
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
 // Appel à la méthode statique permettant de récupérer tous les infos d'un seul article

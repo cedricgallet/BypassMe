@@ -46,27 +46,40 @@
                 </caption>
                 <tbody>
 
-                    <?php 
-                    $i=0;
-                    foreach($getAllMessage as $AllMessage) {
-                        $i++;
+                <?php 
+                $i=0;
+                foreach($getAllMessage as $AllMessage) 
+                {
+                    $i++;
+                    ?>
+                    <tr class="text-white fs-3"><th scope="row"><?=htmlentities($AllMessage->id)?></th>
+                    <td><?=htmlentities($AllMessage->email)?></td>
+                    <td><?=htmlentities($AllMessage->subject)?></td>
+                        <td><?=htmlentities($AllMessage->message)?></td>
+
+                        <?php
+                        if($AllMessage->state == 0){
                         ?>
-                        <tr class="text-white fs-3">
-                            <th scope="row"><?=htmlentities($AllMessage->id)?></th>
-                            <td><?=htmlentities($AllMessage->email)?></td>
-                            <td><?=htmlentities($AllMessage->subject)?></td>
-                            <td><?=($AllMessage->message)?></td>
-                            <td><?=htmlentities($AllMessage->state)?></td>
+
+                            <td class='text-danger bg-dark'><?= 'Désactivé';?></td>
+
+                        <?php } else {
+                        ?>
+
+                            <td class='text-success bg-dark'><?= 'Activé';?></td>
+
+                    <?php } ?>
+
                             <td ><?=htmlentities(date('d-m-Y', strtotime($AllMessage->created_at)))?></td>    
                             <td><?=htmlentities(date('d-m-Y', strtotime($AllMessage->updated_at)))?></td>
 
                             <td>
                             <a href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class="text-info far fa-edit"></i></a>
                             <a href="/../../admin/controllers/delete-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>" onclick="return confirmDeleteMessage();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                            <a href="/../../controllers/message-ctrl.php"><i class=" text-success fas fa-plus"></i></a>
+                            <a href="/../../controllers/message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class=" text-success fas fa-plus"></i></a>
                             </td>
                         </tr>
-                    <?php } ?>
+            <?php } ?>
 
                 </tbody>
                 <!-- =============================Pagination================== -->

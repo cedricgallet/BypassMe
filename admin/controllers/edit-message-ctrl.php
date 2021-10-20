@@ -3,7 +3,7 @@ session_start();
 require_once(dirname(__FILE__).'/../../models/Contact.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-// *****************************************SECURISER ACCES PAGE******************************************
+// *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
@@ -30,34 +30,42 @@ $title = 'Modification d\'un message en cours ...';
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// status 
-$state = $_SESSION['user']->state;
 
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
     
     // ****************************Sujet du message***********************
-
     // On verifie l'existance et on nettoie
     $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
     // ******************************Categories***************************
-
     // On verifie l'existance et on nettoie
-    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
+    $message = trim(filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
-    // ******************************article***************************
-
+    //**************************Status******************************
     // On verifie l'existance et on nettoie
-    $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
+    $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
+    //On test si le champ n'est pas vide
+    if(empty($subject)){
+
+        $errorsArray['subject'] = 'Le champ est obligatoire';
+        
+    }
+
+    //On test si le champ n'est pas vide
+    if(empty($message)){
+        
+        $errorsArray['message'] = 'Le champ est obligatoire';
+        
+    }    
 
     // Si il n'y a pas d'erreurs, on met à jour le message.
     if(empty($errorsArray))
     {
 
-        $messageInfo = new Contact($subject, $categories, $message, $state);//On instancie/On récupére les infos 
+        $messageInfo = new Contact("", $subject, $message, $state);//On instancie/On récupére les infos 
 
         $result = $messageInfo->updateMessage($id);//On met a jour et on ajoute en bdd        
 
@@ -75,7 +83,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 }else{
     $messageInfo = Contact::getMessage($id);
-    var_dump($messageInfo);die;
     if($messageInfo)
     {
         $id = $messageInfo->id;

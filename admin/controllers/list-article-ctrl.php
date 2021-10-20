@@ -10,7 +10,7 @@ $title4 = 'Liste des membres';
 $title5 = 'Liste des commentaires';
 
 
-// *****************************************SECURISER ACCES PAGE******************************************
+// *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;

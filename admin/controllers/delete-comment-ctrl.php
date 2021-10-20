@@ -3,7 +3,7 @@ session_start(); // Démarrage de la session
 require_once dirname(__FILE__).'/../../models/Comment.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-// *****************************************SECURISER ACCES PAGE******************************************
+// *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;

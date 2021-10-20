@@ -5,69 +5,56 @@
             <h2 class="mt-5 mb-5 text-center"><?=$title ?? ''?></h2>
 
             <div class="card rounded-2">
-                <div class="card-header text-center"><strong><?=($messageInfo->subject)?></strong></div>
-                    <div class="card-body">
+                <div class="text-center">
+                    <div class="d-flex justify-content-start mt-3 ms-3">
 
+                        <!-- **************************Status******************************** -->
                         <?php
                             if ($messageInfo->state == 0) {                    
-                            ?>
+                        ?>
 
-                                <div class="d-flex mb-4">
-                                    <div class='card-text text-danger text-start me-1'>Status du commentaire > 
-                                    </div>
-
-                                    <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
-                                    </div>
+                                <div class='card-text text-info text-start me-1'>Status du message > <strong class="text-danger">DÉSACTIVÉ</strong>
                                 </div>
 
-                            <?php } else { ?>
+                        <?php } else { ?>
 
-                                <div class="d-flex mb-4">
-                                    <div class='card-text text-success text-start me-1'>Status du commentaire > 
-                                    </div>
-
-                                    <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
-                                    </div>
+                                <div class='card-text text-info text-start me-1'>Status du message > <strong class="text-success">ACTIVÉ</strong>
                                 </div>
                     
-                            <?php } ?>
+                        <?php } ?>
+                        <!-- ************************************************************** -->
+                        
+                    </div>
+                </div>
 
+                <div class="card-body">
 
-                        <p class="card-text"><strong>Sujet - </strong>
-                            <?=($messageInfo->subject)?>
-                        </p>
+                    <p class="card-text text-center card-header"><strong>Sujet > </strong>
+                        <?=htmlentities($messageInfo->subject)?>
+                    </p>
 
-                        <p class="card-text"><strong>Catégories - </strong>
-                            <?=htmlentities($messageInfo->categories)?>
-                        </p>
+                    <p class="mt-3 card-text"><strong>Message - </strong>
+                        <?=htmlentities($messageInfo->message)?>
+                    </p>
 
-                        <p class="card-text"><strong>Commentaire - </strong>
-                            <?=($messageInfo->comment)?>
-                        </p>
-
-                        <p class="card-text"><strong>Status -</strong>
-                            <?=htmlentities($messageInfo->state)?>
-                        </p>
-
-                        <p class="card-text"><strong>Ajouté le </strong>
+                    <p class="card-text"><strong>Ajouté le </strong>
                         <?=htmlentities(date('d-m-Y', strtotime($messageInfo->created_at)))?>
-                        </p>
+                    </p>
 
-                        <p class="card-text"><strong>Dernière modification le </strong>
-                            <?=htmlentities(date('d-m-Y', strtotime($messageInfo->updated_at)))?>          
-                        </p>
+                    <p class="card-text"><strong>Dernière modification le </strong>
+                        <?=htmlentities(date('d-m-Y', strtotime($messageInfo->updated_at)))?>          
+                    </p>
+                </div>
 
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <a href="/../admin/controllers/edit-comment-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"
-                                    class="border text-info btn btn-success">Modifier</a>
-                            </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <a href="/../admin/controllers/edit-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"
+                            class="border text-info btn btn-success">Modifier le message ?</a>
+                    </div>
 
-                            <div>
-                                <a href="/../admin/controllers/list-comment-ctrl.php" class="border btn btn-success">Retour à la liste
-                                    des commentaires</a>
-                            </div>
-                        </div>
+                    <div>
+                        <a href="/../admin/controllers/list-message-ctrl.php" class="border btn btn-success">Retour à la liste
+                            des messages ?</a>
                     </div>
                 </div>
             </div>

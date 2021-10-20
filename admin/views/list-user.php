@@ -35,7 +35,7 @@
         <caption>
           <tr class="fs-3">
             <th scope="col">#</th>
-            <th scope="col">Pseudo</th>
+            <th scope="col-3">Pseudo</th>
             <th scope="col">Email</th>
             <th scope="col">Ip</th>
             <th scope="col">Status</th>
@@ -51,19 +51,32 @@
           foreach($allUsers as $user) {
               $i++;
               ?>
-              <tr class="text-white fs-3">
-                <th scope="row"><?=htmlentities($user->id)?></th>
+              <tr class="text-white fs-3"><th scope="row"><?=htmlentities($user->id)?></th>
                 <td><?=htmlentities($user->pseudo)?></td>
                 <td><?=htmlentities($user->email)?></td>
                 <td><?=htmlentities($user->ip)?></td>
-                <td><?=htmlentities($user->state)?></td>
+
+                <?php
+                if($user->state == 0){
+                  ?>
+
+                  <td class='text-danger bg-dark'><?= 'Désactivé';?></td>
+
+                  <?php
+                } else {
+                  ?>
+
+                  <td class='text-success bg-dark'><?= 'Activé';?></td>
+
+                <?php } ?>
+
                 <td ><?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?></td>    
                 <td><?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?></td>
 
                 <td>
                   <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>
                   <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                  <a href="/../../controllers/signUp-ctrl.php?id=<?=htmlentities($user->id)?>"><i class=" text-success fas fa-plus"></i></a>
+                  <a href="/../../controllers/signUp-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-success fas fa-plus"></i></a>
 
                 </td>
               </tr>

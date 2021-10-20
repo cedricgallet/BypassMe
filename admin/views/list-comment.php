@@ -35,10 +35,9 @@
             <table class="table table-hover table-responsive table-bordered">
                 <caption>
                     <tr class="fs-3">
-                        <th scope="col">#</th><th scope="col-3">Categories</th>
-
+                        <th scope="col">#</th>
                         <th scope="col">Categories</th>
-                        <th scope="col">comment</th>
+                        <th scope="col">Commentaire</th>
                         <th scope="col">Status</th>
                         <th scope="col">Ajouté le</th>
                         <th scope="col">Mis a jour le</th>
@@ -52,11 +51,24 @@
                     foreach($getAllComment as $getComment) {
                         $i++;
                         ?>
-                        <tr class="text-white fs-3">
-                            <th scope="row"><?=htmlentities($getComment->id)?></th>
+                        <tr class="text-white fs-3"><th scope="row"><?=htmlentities($getComment->id)?></th>
                             <td><?=htmlentities($getComment->categories)?></td>
                             <td><?=($getComment->comment)?></td>
-                            <td><?=htmlentities($getComment->state)?></td>
+
+                            <?php
+                            if($getComment->state == 0){
+                            ?>
+
+                            <td class='text-danger bg-dark'><?= 'Désactivé';?></td>
+
+                            <?php
+                            } else {
+                            ?>
+
+                            <td class='text-success bg-dark'><?= 'Activé';?></td>
+                            <?php } ?>
+
+                            
                             <td ><?=htmlentities(date('d-m-Y', strtotime($getComment->created_at)))?></td>    
                             <td><?=htmlentities(date('d-m-Y', strtotime($getComment->updated_at)))?></td>
 

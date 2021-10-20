@@ -111,13 +111,13 @@ class Contact{
 
         try{
             $sql = 'UPDATE `message` 
-                    SET `message` = :message, `subject` = :subject, `state`=:state
+                    SET `subject` = :subject,`message` = :message, `state`=:state
                     WHERE `id` = :id;';
 
             $sth = $this->_pdo->prepare($sql);
 
-            $sth->bindValue(':message',$this->_message,PDO::PARAM_STR);
             $sth->bindValue(':subject',$this->_subject,PDO::PARAM_STR);
+            $sth->bindValue(':message',$this->_message,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
 

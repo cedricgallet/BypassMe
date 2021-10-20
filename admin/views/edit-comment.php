@@ -22,34 +22,24 @@
                 <div class="col-12 col-lg-6">
                     <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="post">
 
-                        <!-- ===========================Status utilisateur========================== -->
+                        <!-- ===========================Status commentaire========================== -->
 
                         <div class="form-outline">
                             <label for="state" class="col-form-label text-info"></label>
 
                             <?php
-                                if ($commentInfo->state == 0) {                    
-                            ?>
+                                    if ($commentInfo->state == 0) {                    
+                                ?>
 
-                                <div class="d-flex">
-                                    <div class='card-text text-danger text-start me-1'>Status du commentaire > 
-                                    </div>
+                                        <div class='card-text text-danger text-start me-1'>Status du commentaire > <strong>DÉSACTIVÉ</strong>
+                                        </div>
 
-                                    <div class='card-text text-danger text-center'><strong>DÉSACTIVÉ</strong>
-                                    </div>
-                                </div>
+                                <?php } else { ?>
 
-                            <?php } else { ?>
-
-                                <div class="d-flex">
-                                    <div class='card-text text-success text-start me-1'>Status du commentaire > 
-                                    </div>
-
-                                    <div class='card-text text-success text-center'><strong>ACTIVÉ</strong>
-                                    </div>
-                                </div>
-                        
-                            <?php } ?>
+                                        <div class='card-text text-success text-start me-1'>Status du commentaire > <strong>ACTIVÉ</strong>
+                                        </div>
+                            
+                                <?php } ?>
 
                         </div>
 
@@ -66,22 +56,23 @@
 
                         <!-- =============================Catégories====================== -->
 
-                        <select value="<?= 'CATÉGORIES' .' '.'>'.' '. htmlentities($categories ?? '');?>"
-                                name="categories" 
-                                id="categories" 
-                                class="bg-transparent text-center form-control text-info">
-                                    <option ></option>
+                            <select name="categories" 
+                                    id="categories" 
+                                    class="text-info bg-transparent form-control mb-2" 
+                                    value="<?=htmlentities($categories ?? '')?>" required>
+
+                                    <option><?= 'Categories'.' '.'>'.' '. htmlentities($categories ?? '')?></option>
 
                                     <?php foreach ($arrayCategories as $categoriesInSelect) {
-                                        $isSelected = ($categoriesInSelect==$categories) ? 'selected': '';
-                                        echo "<option value=\"$categoriesInSelect\" $isSelected>$categoriesInSelect</option>";
-                                    }?>
+                                $isSelected = ($categoriesInSelect==$categories) ? 'selected': '';
+                                echo "<option value=\"$categoriesInSelect\" $isSelected>$categoriesInSelect</option>";}?>
+                            </select>
 
-                        </select>
+                            <div class="invalid-feedback-2"><?= htmlentities($errorsArray['categories'] ?? '')?></div>
 
-                            <!-- ============================Article============================== -->
+                            <!-- ============================Commentaire============================== -->
                         <div class="mb-3">
-                            <label for="comment" class="col-form-label text-info">Contenu de l' comment</label>
+                            <label for="comment" class="col-form-label text-warning">Contenu du commentaire*</label>
                             
                             <textarea
                                 
@@ -93,8 +84,10 @@
                                 rows="15"><?= htmlentities($comment ?? '');?> 
                             </textarea>
                         </div>
+                        <div class="invalid-feedback-2"><?= htmlentities($errorsArray['comment'] ?? '')?></div>
 
-                        <button type="submit" class="text-info btn btn-warning rounded-pill w-100">Mettre à jour</button>
+
+                        <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Mettre à jour</button>
                     </form>
 
                     <div class="d-flex flex-row justify-content-between">
@@ -110,5 +103,5 @@
     </div>
 </div>
             
-<!-- ===============================FIN INSCRIPTION============================= -->
+<!-- *********************************************** -->
 <script src="/../../assets/js/checkConfirm.js"></script>
