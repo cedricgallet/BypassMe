@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']))
 // ***********************************************************************************
 
 // Tableau des sujets disponible //
-$arraySubject = ['soummettre une idée','signaler un bug sur le site','signaler un lien mort'];
+$arraySubject = ['soummettre une idée','signaler un bug sur le site','signaler un lien mort', 'supprimer mon compte'];
 
 $title = 'Déposer un message ?';
 

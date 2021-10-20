@@ -3,7 +3,7 @@ function confirmDeleteUser() {
 }
 
 function confirmDeleteYourAccount() {
-    return confirm('!! ATTENTION !! Une demande par écrit pour la suppression du compte doit être faite, veuillez confirmer votre choix ?');
+    return confirm('!! ATTENTION !! Une demande par écrit pour la suppression du compte doit être faite dans le menu Contact > sujet > supprimer mon compte, veuillez confirmer votre choix ?');
 }
 
 function confirmDisableYourAccount() {

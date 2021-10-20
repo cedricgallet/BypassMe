@@ -1,3 +1,4 @@
+<!-- *******************************************Formulaire de contact************************************************** -->
 <div id="signInForm" class="container-fluid h-100 p-0">
     <div class="row h-100">
         <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
@@ -7,7 +8,7 @@
                 </div>
 
                 <div class="col-12 col-lg-6">
-                    <!-- Affichage d'un message d'erreur personnalisé -->
+                    <!-- *****************************Affichage d'un message d'erreur personnalisé************************** -->
                     <?php 
 
                         if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
@@ -19,7 +20,8 @@
 
                     ?>
 
-                    <!-- +++++++++++++++++++++++++++++++++++++Sujet du message+++++++++++++++++++++++++++++++++++++++++++++++= -->
+                    <!-- ************************************Sujet du message************************************-->
+
                     <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <div class="form-group mt-3">
                             <div class="mb-3">
@@ -30,16 +32,19 @@
                                         value="<?= htmlentities($subject ?? '')?>" required>
 
                                     <option>Choix du sujet</option>
-                                    <!-- ============================Boucle choix sujet================================ -->
+
+                                    <!-- **********************Boucle choix sujet******************** -->
+
                                     <?php foreach ($arraySubject as $subjectInSelect) {
                                     $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
                                     echo "<option value=\"$subjectInSelect\" $isSelected>$subjectInSelect</option>";}?>
                                 </select>
+                                
                                 <div class="invalid-feedback-2"><?=htmlentities($errorsArray['subject'] ?? '')?></div>
                             </div>
                         </div>
 
-                        <!-- ++++++++++++++++++++++++++++++++Message++++++++++++++++++++++++++-->
+                        <!-- *****************************Message******************************-->
 
                         <div class="form-group">
                             <div class="mb-3">
@@ -57,7 +62,7 @@
                         </div>
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['message'] ?? '')?></div>
 
-                        <!-- ++++++++++++++++++++++++++++Email++++++++++++++++++++++++++++++ -->
+                        <!-- **********************************Email*********************************-->
 
                         <div class="form-group">
                             <div class="mb-3">
@@ -75,7 +80,8 @@
                         </div>
                         <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
-                        <!-- ++++++++++++++++++++++++++++Mot de passe++++++++++++++++++++++++++++++ -->
+                        <!-- **********************************Password*********************************-->
+
                         <div class="form-group">
                             <div class="mb-3">
                                 <label for="password" class="col-form-label text-warning">Mot de passe*</label>
@@ -94,7 +100,7 @@
                         </div>
                         <div class='invalid-feedback-2' id='pass'><?=htmlentities($errorsArray['password'] ?? '')?></div>
 
-                        <button type="submit" class="bg-transparent card-header btn btn-warning rounded-pill w-100 mb-5">Envoyer le message</button>               
+                        <button type="submit" class="bg-transparent card-header btn btn-warning rounded-pill w-100 mb-5">Envoyer le message ?</button>               
                     </form>
                 </div>
             </div>
@@ -102,5 +108,5 @@
     </div>
 </div>
 
-<!-- ===============================FIN INSCRIPTION============================= -->
+<!-- *********************************************** -->
 <script src="/../../assets/js/checkConfirm.js"></script>

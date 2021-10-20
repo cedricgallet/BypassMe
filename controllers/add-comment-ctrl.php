@@ -1,23 +1,15 @@
 <!-- *************************************Formulaire ajout commentaire*************************************** -->
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../../models/Comment.php');//models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once(dirname(__FILE__).'/../models/Comment.php');//models
+require_once(dirname(__FILE__).'/../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-//On check si le mdp par défault est le meme que le mdp en cours de session
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
-
-if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
-    die;
-        
-}
 // ********************************************************************************************************
 
 // Initialisation du tableau d'erreurs
@@ -73,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         if($result===true){//Si l ajout s'est bien passé = 1
 
 
-            header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=11');//On redirige av mess succés
+            header('location: /../controllers/list-comment-ctrl.php?msgCode=11');//On redirige av mess succés
             die;
 
 
@@ -87,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 }
 
 // ********************************Vues****************************
-require_once dirname(__FILE__).'/../../views/templates/header.php';
-require_once dirname(__FILE__).'/../../admin/views/add-comment.php';
+require_once dirname(__FILE__).'/../views/templates/header.php';
+require_once dirname(__FILE__).'/../views/user/add-comment.php';
 
 

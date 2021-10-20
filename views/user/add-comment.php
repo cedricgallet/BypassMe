@@ -39,7 +39,7 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['categories'] ?? '')?></div>
 
 
-                                <!-- ************************************Article*******************************= -->
+                                <!-- ************************************Commentaire*******************************= -->
                                 <div class="mb-3">
                                     <label for="comment" class="col-form-label tex-info">Ecrire le commentaire</label>
                                     
@@ -56,12 +56,7 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['comment'] ?? '')?></div>
 
 
-                                <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Enregistrer le commentaire ?</button>
-                                <div class="w-100">
-                                <a class="border text-info btn btn-success mt-2" href="/../../admin/controllers/list-comment-ctrl.php">Retour à la liste
-                                des commentaires</a>
-                                </div>
-
+                                <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Envoyer le commentaire ?</button>
                             </form>
                         </div>
                     </div>

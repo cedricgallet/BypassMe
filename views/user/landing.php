@@ -14,7 +14,7 @@
     <div class="row justify-content-center align-items-center h-100">
         <div class="col-12 text-center">
             
-            <div><h2 class="text-center"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
+            <div><h2 class="text-center mt-5"><?='Bonjour'.' '. $_SESSION['user']->pseudo ?> ! </h2></div>
             <div class="text-center"><h2><?=$title ?? ''?></h2></div>
         </div>
 
@@ -49,7 +49,7 @@
                     <div class="text-center">
                         <a href="/../index.php" class="bg-dark m-2 boutton btn btnLanding border mb-2">Accueil</a>
                             
-                        <a href="/../controllers/commentForm-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border mb-2">Commenter</a>
+                        <a href="/../controllers/add-comment-ctrl.php" class="bg-dark m-2 boutton btn btnLanding border mb-2">Commenter</a>
 
                     </div>
                         
@@ -67,12 +67,12 @@
                         if ($user->state == 0) {                    
                     ?>
 
-                            <div class='card-text text-info text-start me-1'>Status de mon compte > <strong class="text-danger">DÉSACTIVÉ</strong>
+                            <div class='card-text text-info text-start me-1'>Status du compte > <strong class="text-danger">DÉSACTIVÉ</strong>
                             </div>
 
                     <?php } else { ?>
 
-                            <div class='card-text text-info text-start me-1'>Status de mon compte > <strong class="text-success">ACTIVÉ</strong>
+                            <div class='card-text text-info text-start me-1'>Status du compte > <strong class="text-success">ACTIVÉ</strong>
                             </div>
                 
                     <?php } ?>
@@ -110,7 +110,7 @@
                 // Si c'est un admnin qui est connecté
                 if(isset($_SESSION['user']))
                 {
-                    //On vérifie le mdp par défault av le mdp en cours de session
+                    //On vérifie le mdp par défault av le mdp en cours de session pour voir si c'est un admin qui est connecté
                     $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
                     //Si la vérif est == aux constantes
@@ -153,7 +153,7 @@
             <div class="col-12 text-center">
                 <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDisableYourAccount();">Désactiver mon compte</a>
 
-                <a href="/../controllers/commentForm-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDeleteYourAccount();">Supprimer mon compte</a>
+                <a href="/../controllers/message-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2" onclick="return confirmDeleteYourAccount();"><strong>Supprimer mon compte</strong></a>
 
             </div>
         </div>
