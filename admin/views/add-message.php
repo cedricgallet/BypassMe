@@ -48,7 +48,8 @@
 
                         <div class="form-group">
                             <div class="mb-3">
-                                <label for="message" class="col-form-label"></label> 
+                                <label for="message" class="col-form-label"></label>
+                                 
                                 <textarea
                                     name ="message" 
                                     class="text-info bg-transparent form-control" 
@@ -56,8 +57,8 @@
                                     rows="9"
                                     minlength="10" 
                                     maxlength="250"
-                                    placeholder="Votre message" 
-                                    required>
+                                    placeholder="Votre message"
+                                    required><?= htmlentities($message ?? '')?> 
                                 </textarea>
                         </div>
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['message'] ?? '')?></div>
@@ -67,6 +68,7 @@
                         <div class="form-group">
                             <div class="mb-3">
                                 <label for="email" class="col-form-label text-warning">Adresse Email*</label>
+
                                 <div class="form-outline">
                                     <input type="email" 
                                             name="email" 
@@ -74,7 +76,7 @@
                                             id="email" 
                                             placeholder="Adresse e-mail" 
                                             autocomplete="email"
-                                            value="<?= htmlentities($_POST['email'] ?? '')?>" required>
+                                            value="<?= htmlentities($email ?? '')?>" required>
                                 </div>
                             </div>
                         </div>
@@ -85,6 +87,7 @@
                         <div class="form-group">
                             <div class="mb-3">
                                 <label for="password" class="col-form-label text-warning">Mot de passe*</label>
+
                                 <div class="form-outline">
                                     <input type="password" 
                                             name="password" 

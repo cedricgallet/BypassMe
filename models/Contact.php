@@ -65,6 +65,31 @@ class Contact{
         }
     }
 
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public static function getMessageByEmail($email)
+    {
+
+        $pdo = Database::db_connect();
+
+        try{
+            $sql = 'SELECT * FROM `user` 
+                    WHERE `email` = :email;';
+
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':email',$email,PDO::PARAM_STR);
+
+            if($sth->execute()){
+                return($sth->fetch());
+            }
+            
+        }
+        catch(PDOException $e){
+            return $e;
+        }
+
+    }
+
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Méthode qui permet de récupérer un commentaire

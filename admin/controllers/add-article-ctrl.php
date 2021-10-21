@@ -25,7 +25,9 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 $errorsArray = array();
 
 $title1 = 'Ajouter un article';
-$arrayCategories = ['web','réseau','humaine','applicative'];//tabeau pour la boucle dans front
+
+//tabeau boucle (choix catégories) front
+$arrayCategories = ['web','réseau','humaine','applicative'];
 
 
 // *******************************************************************************************************

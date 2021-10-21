@@ -7,7 +7,7 @@
             if(!array_key_exists($msgCode, $displayMsg)){
                 $msgCode = 0;
             }
-            echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+            echo '<div class="fs-4 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
         } ?>
         <!-- -------------------------------------------- -->
 
@@ -33,7 +33,7 @@
 
             <table class="table table-hover table-responsive table-bordered">
                 <caption>
-                <tr class="fs-3">
+                <tr class="fs-3 text-info">
                     <th scope="col">#</th>
                     <th scope="col">Email</th>
                     <th scope="col">Sujet</th>
@@ -76,7 +76,7 @@
                             <td>
                             <a href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class="text-info far fa-edit"></i></a>
                             <a href="/../../admin/controllers/delete-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>" onclick="return confirmDeleteMessage();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                            <a href="/../../controllers/message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class=" text-success fas fa-plus"></i></a>
+                            <a href="/../../admin/controllers/add-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class=" text-success fas fa-plus"></i></a>
                             </td>
                         </tr>
             <?php } ?>

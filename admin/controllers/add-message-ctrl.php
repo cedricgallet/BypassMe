@@ -1,14 +1,23 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../models/Contact.php');//Models
+require_once(dirname(__FILE__).'/../../models/Contact.php');//Models
 
-// ****************************SECURITE ACCES PAGE*************************** 
-if(!isset($_SESSION['user']))
-{
-    header('Location:/../controllers/signUp-ctrl.php?msgCode=38');
-    die();
+// *****************************************SECURITE ACCES PAGE******************************************
+if (!isset($_SESSION['user'])) {
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
 }
-// ***********************************************************************************
+
+//On check si le mdp par défault est le meme que le mdp en cours de session
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+
+if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
+
+    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    die;
+        
+}
+// ********************************************************************************************************
 
 // Tableau des sujets disponible //
 $arraySubject = ['soummettre une idée','signaler un bug sur le site','signaler un lien mort', 'supprimer mon compte'];
@@ -27,7 +36,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     //On test si le champ n'est pas vide
     if(empty($subject)){
         $errorsArray['subject'] = 'Le champ est obligatoire';
-
     }
 
     // ===========================Message=================
@@ -37,7 +45,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     //On test si le champ n'est pas vide
     if(empty($message)){
         $errorsArray['message'] = 'Le champ est obligatoire';
-
     }
 
     //++++++++++++++++Email+++++++++++++++++++++++
@@ -57,9 +64,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
     // +++++++++++++++++++++Password++++++++++++++++++++++++++
-    $password = trim(filter_input(INPUT_POST, 'password')); // On nettoie
+
+    $password = $_POST['password'];
 
     if(!empty($password)) // On test si le champ n'est pas vide
+    {
+        $messageInfo = Contact::getMessageByEmail($email);//On récupère les infos 
+
+        $isPasswordOk = password_verify($password, $messageInfo->password);
+    
+    }else {
+        $errorsArray['password'] = 'Le champ est obligatoire';       
+    }
+
+
+    if($isPasswordOk)//Si mdp est le meme que celui en bdd
     {
         // Si aucune erreur, on enregistre en BDD
         if(empty($errorsArray))
@@ -71,9 +90,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             if($result===true)
             {//Si l ajout s'est bien passé = 1
 
-                //On check si l'email et le mdp par défault est le meme que le mdp en cours de session
+                //On check si le mdp par défault est le meme que le mdp en cours de session
+                $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
-                if($_SESSION['user']->email == DEFAULT_EMAIL && $_SESSION['user']->password == DEFAULT_PASS) {
+                if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) 
+                {
 
                     header('location: /../../admin/controllers/list-message-ctrl.php?msgCode=40');//On redirige l'admin av mess succés
                     die;
@@ -87,13 +108,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                 // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
                 $msgCode = $result;
             } 
+
         }
+
+    }else {
+        $errorsArray['password'] = 'Le mot de passe est incorrect';       
     }
     
 }
                 
 // ++++++++++++++++++++Templates et vues++++++++++++++++++++++++
-require_once(dirname(__FILE__).'/../views/templates/header.php');
-require_once(dirname(__FILE__).'/../views/user/message.php');
-require_once(dirname(__FILE__).'/../views/templates/footer.php');
+require_once(dirname(__FILE__).'/../../views/templates/header.php');
+require_once(dirname(__FILE__).'/../../admin/views/add-message.php');
+require_once(dirname(__FILE__).'/../../views/templates/footer.php');
 

@@ -1,20 +1,20 @@
 <div id="bgGestionAdmin" class="container-fluid h-100 p-0">
   <div class="row h-100">
 
-        <!-- Affichage d'un message d'erreur personnalisé -->
+      <!-- *****************************Affichage d'un message d'erreur personnalisé******************************** -->
       <?php 
       if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
           if(!array_key_exists($msgCode, $displayMsg)){
               $msgCode = 0;
           }
-          echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+          echo '<div class="fs-4 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
       } ?>
-      <!-- -------------------------------------------- -->
+      <!-- *********************************************************************************************************** -->
 
     <h2 class="fs-1 mt-5 text-center"><?=$title1 ?? ''?></h2>
 
     <div class="col-12">
-      <!-- +++++++++++++++++++++Recherche+++++++++++++++++ -->
+      <!-- **************************Recherche*********************** -->
       <form class="text-center" action="" method="GET">
         <input type="text" name="s" id="s" value="<?=$s?>">
         <input type="submit" value="Rechercher">
@@ -33,7 +33,7 @@
 
       <table class="table table-hover table-responsive table-bordered">
         <caption>
-          <tr class="fs-3">
+          <tr class="fs-3 text-info">
             <th scope="col">#</th>
             <th scope="col-3">Pseudo</th>
             <th scope="col">Email</th>
@@ -83,7 +83,7 @@
           <?php } ?>
 
         </tbody>
-        <!-- =============================Pagination================== -->
+        <!-- *****************Pagination*********************** -->
         <nav aria-label="...">
           <ul class="pagination pagination-sm">
             
@@ -108,5 +108,5 @@
     </div>
   </div>
 </div>
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- *********************************************** -->
 <script src="/../../assets/js/checkConfirm.js"></script>

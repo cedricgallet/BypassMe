@@ -1,5 +1,3 @@
-<!-- ++++++++++++++++++++++++++++++UPDATE MOT DE PASSE++++++++++++++++++++++++++++++++++ -->
-
 <?php   
 session_start(); // Démarrage de la session  
 require_once(dirname(__FILE__).'/../config/regex.php');
@@ -15,23 +13,33 @@ if(!isset($_SESSION['user']))
 // ***********************************************************************************
 
 $title ='Modifier mes informations';
+
 $errorsArray = array();//Tableau erreur vide
 
-$id = $_SESSION['user']->id;
-// Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur
-$user = User::get($id);
-
+// Nettoyage de l'id passé en GET dans l'url
+$id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
 if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des données d'envoyées 
 {
 
+    //**************************Mdp actuel******************************
     $current_password = $_POST['current_password'];
+
+
+    //**************************Nouveau mot de passe******************************
     $new_password = $_POST['new_password'];
+
+
+    //**************************Confirmation nouveau mot de passe******************************
     $new_password2 = $_POST['new_password2'];
 
 
-    // *************************pseudo************************
+    //**************************Status******************************
+    // On verifie l'existance et on nettoie
+    $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
+
+    // *************************pseudo************************
     // On verifie l'existance et on nettoie
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
@@ -107,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
         if(empty($errorsArray))
         {
 
-            $user = new User($pseudo, $email, $password, "","");//On instancie/On récupére les infos
+            $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos
             
             $result = $user->update($id);//On met a jour le mdp        
 
@@ -129,12 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
 
 }
     
-
-
-
-
-// +++++++++++++++++++Templates et vues+++++++++++++++++++++++++++
+// *****************************Vues*****************************
 require_once dirname(__FILE__).'/../views/templates/header.php';
 require_once dirname(__FILE__) .'/../views/user/userUpdateProfil.php';
 require_once dirname(__FILE__) .'/../views/templates/footer.php';
-

@@ -7,7 +7,7 @@
             if(!array_key_exists($msgCode, $displayMsg)){
                 $msgCode = 0;
             }
-            echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+            echo '<div class="fs-4 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
         } ?>
         <!-- -------------------------------------------- -->
 
@@ -34,7 +34,7 @@
 
             <table class="table table-hover table-responsive table-bordered">
                 <caption>
-                    <tr class="fs-3">
+                    <tr class="fs-3 text-info">
                         <th scope="col">#</th>
                         <th scope="col">Categories</th>
                         <th scope="col">Commentaire</th>
