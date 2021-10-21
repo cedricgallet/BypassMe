@@ -23,7 +23,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     die;
         
 }
-// ********************************************************************************************************
+// *******************************************************************************************************
 
 // Récupération de la valeur recherchée et on nettoie
 $s = trim(filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING));
