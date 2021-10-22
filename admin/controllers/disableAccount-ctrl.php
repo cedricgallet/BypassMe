@@ -31,15 +31,15 @@ if ($user)//Si vrai
     if ($state = 1)    
     {
 
-        $state = 0;
+        $state = 0;//On désactive l'utilisateur
 
         $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos 
 
         $result = $user->update($id);//On met a jour        
-        if($result===true){//Si l ajout s'est bien passé = 1
+        if($result===true){//Si la MAJ s'est bien passé = 1
             
 
-            // On redirige l'utilisateur vers la page d'accueil
+            // On deconnecte l'utilisateur vers la page d'accueil
             header('location: /../../controllers/signOut-ctrl.php');
             die;
 
