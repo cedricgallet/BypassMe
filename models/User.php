@@ -20,7 +20,7 @@ class User
     private $_pdo;
 
 
-    public function __construct($pseudo, $email, $password, $ip = NULL, $state = 1 , $created_at = NULL, $deleted_at = NULL,  $confirmation_token = NULL)
+    public function __construct($pseudo, $email, $password, $ip, $state = 1 , $created_at = NULL, $deleted_at = NULL,  $confirmation_token = NULL)
     {
         
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -231,7 +231,7 @@ class User
 
     // ***************************************************************************************
     /**
-     * Méthode qui permet de compter les user
+     * Méthode qui permet de compter les utilisateurs
      * 
      * @return int
      */

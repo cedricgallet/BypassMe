@@ -16,30 +16,14 @@ $title ='Modifier mes informations';
 
 $errorsArray = array();//Tableau erreur vide
 
-// Nettoyage de l'id passé en GET dans l'url
-$id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
+$id = $_SESSION['user']->id;
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des données d'envoyées 
 {
 
-    //**************************Mdp actuel******************************
-    $current_password = $_POST['current_password'];
 
-
-    //**************************Nouveau mot de passe******************************
-    $new_password = $_POST['new_password'];
-
-
-    //**************************Confirmation nouveau mot de passe******************************
-    $new_password2 = $_POST['new_password2'];
-
-
-    //**************************Status******************************
-    // On verifie l'existance et on nettoie
-    $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
-
-
-    // *************************pseudo************************
+    // *****************************Pseudo******************************
     // On verifie l'existance et on nettoie
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
@@ -74,22 +58,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
         $errorsArray['email'] = 'Le champ est obligatoire';
     }
 
-    // *************************Mot de passe actuel*************************
+    //**************************Mdp actuel******************************
+    $current_password =  $_POST['current_password'];
 
-    //On test si le champ n'est pas vide
-    if(!empty($current_password))
+    if(!empty($current_password)) // On test si le champ n'est pas vide
     {
-        //On vérifie si mdp actuel est le meme que celui en cours
-        $isPasswordOk = password_verify($current_password, $_SESSION['user']->password);
+        $user = User::get($id);//On check si l'utilisateur exite
+
+        $isPasswordOk = password_verify($current_password, $user->password);
 
     }else{
-        $errorsArray['current_password'] = 'Le champ est obligatoire';
+        $errorsArray['password'] = 'Le champ est obligatoire';
     }
 
 
-    // *************************Nouveau mot de passe*************************
 
-    //On test les autre champs si seulement le mdp actuel est le bon 
+    //**************************Nouveau mot de passe + Confirmation nouveau mot de passe********************
+    $new_password = $_POST['new_password'];
+    $new_password2 = $_POST['new_password2'];
+
+
     if(!empty($new_password) && !empty($new_password2))
     {
 
@@ -106,36 +94,71 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
         $errorsArray['new_password'] = 'Le champ est obligatoire';
         $errorsArray['new_password2'] = 'Le champ est obligatoire';
     }
-    
 
-    if($isPasswordOk)//Si mdp actuel est le meme que celui en cours
+
+   
+    // Et si aucune erreur
+    if (empty($errorsArray)) 
     {
-
-        // Et si aucune erreur, on met a jour 
-        if(empty($errorsArray))
+        if($isPasswordOk)//Si mdp actuel est le meme que celui en bdd
         {
 
-            $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos
+
+
+            $user = new User($pseudo, $email, $password, "", "");//On instancie/On récupére les infos
             
             $result = $user->update($id);//On met a jour le mdp        
-
             if($result===true){//Si la MAJ s'est bien passé = 1
                 
-                header('location: /../controllers/landing-ctrl.php?msgCode=35');//On redirige av mess succés
-                die;
+
+                // +++++++++++++++++++++++Redirection administration+++++++++++++++++++++++
+
+                //On check si le mdp par défault est le meme que le mdp en bdd
+                $passDefault =  password_verify(DEFAULT_PASS, $user->password);
+
+                if($user->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) 
+                {
+
+                                
+                    header('location: /../controllers/landing-ctrl.php?msgCode=35');//On redirige l'admin av mess succés vers vers le tableau de bord
+                    die;
+
+
+                // Sinon on redirige l' utilisateur
+                }else {
+                    //On connecte l'utilisateur
+                    header('location: /../controllers/landing-ctrl.php?msgCode=35');//On redirige l'utilisateur av mess succés vers le tableau de bord
+                    die;
+                }
+
 
             } else {
                 // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
                 $msgCode = $result;
             }
+            
 
+        }else{
+            $errorsArray['current_password'] = 'Le mot de passe est incorrect';
         }
 
-    }else{
-        $errorsArray['current_password'] = 'Le mot de passe est incorrect';
     }
 
+
+}else{
+    $user = User::get($id);//On récupère les infos 
+
+    if($user){//Si l'utilisateur existe on affiche
+        $id = $user->id;
+        $pseudo = $user->pseudo;
+        $email =$user->email;
+
+    } else { // Si l'utilisateur n'existe pas, on redirige vers la meme page avec un code erreur
+        header('location: /../controllers/userUpdateProfil-ctrl.php?msgCode=19');
+        die;
+    }
 }
+
     
 // *****************************Vues*****************************
 require_once dirname(__FILE__).'/../views/templates/header.php';

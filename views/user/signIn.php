@@ -28,8 +28,6 @@
 
                             <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                             
-                            <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
-
                                 <label for="email" class="col-form-label text-warning">Adresse Email*</label>
                                 <div class="form-outline">
                                     <input type="email" 
@@ -38,7 +36,7 @@
                                             id="email" 
                                             placeholder="Adresse e-mail" 
                                             autocomplete="email"
-                                            value="<?= htmlentities($_POST['email'] ?? '')?>" required>
+                                            value="<?= htmlentities($email ?? '')?>" required>
                                 </div>
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
@@ -53,7 +51,7 @@
                                             autocomplete="off" 
                                             minlength="8" 
                                             maxlength="20" 
-                                            value="<?= htmlentities($_POST['password'] ?? '')?>" required>
+                                            required>
                                 </div>
                                 <div class='invalid-feedback-2' id='pass'><?=htmlentities($errorsArray['password'] ?? '')?></div>
                                 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->

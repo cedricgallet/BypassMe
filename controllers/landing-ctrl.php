@@ -12,8 +12,8 @@ if(!isset($_SESSION['user']))
 
 $title = 'Bienvenue sur ton espace personnel';
 
-// Nettoyage de l'id passé en GET dans l'url
-$id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
+// On récupere et on stock l'id pour utiliser dans la fonction
+$id = $_SESSION['user']->id;
 
 //On récupère les infos
 $user = User::get($id);

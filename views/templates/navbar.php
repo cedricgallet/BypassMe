@@ -56,7 +56,7 @@
                     }
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/../controllers/message-ctrl.php">Contact</a>
+                    <a class="nav-link" href="/../admin/controllers/message-ctrl.php">Contact</a>
                 </li>
             </ul>
             <!-- ======================================RECHERCHER========================================= -->

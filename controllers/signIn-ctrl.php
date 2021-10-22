@@ -1,16 +1,17 @@
 <?php
 session_start();
-require_once dirname(__FILE__).'/../models/User.php';
-require_once dirname(__FILE__).'/../config/config.php';
+require_once dirname(__FILE__).'/../models/User.php';//Models
+require_once dirname(__FILE__).'/../config/config.php';//Gestion erreur + constante
 
-$errorsArray = array();
+$errorsArray = array();//Tableau erreur vide
+
 $title = 'Connexion';
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
-     //++++++++++++++++Email+++++++++++++++++++++++
+    //++++++++++++++++Email+++++++++++++++++++++++
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL)); // On nettoie
 
     if(!empty($email)) // On test si le champ n'est pas vide
@@ -28,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
     // +++++++++++++++++++++Password++++++++++++++++++++++++++
     $password =  $_POST['password'];
-    
+        
     if(!empty($password)) // On test si le champ n'est pas vide
     {
             // Si aucune erreur, on enregistre en BDD
@@ -41,22 +42,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                 $isPasswordOk = password_verify($password, $user->password);
                 if($isPasswordOk)//Si mdp est le meme que celui en bdd
                 {
+
+
                     $_SESSION['user'] = $user;//On crée la session
                     // +++++++++++++++++++++++Connection administration+++++++++++++++++++++++
 
-                    $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+                    //On check si le mdp par défault est le meme que le mdp en cours
+                    $passDefault =  password_verify(DEFAULT_PASS, $user->password);
 
-                    if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) {
-
-                                    
-                        header('location: /../admin/controllers/list-user-ctrl.php');//On redirige l'admin vers la liste des utilisateurs
-                        die;
+                    if($user->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) 
+                    {
+                        header('location: /../admin/controllers/list-user-ctrl.php');//On redirige vers la liste des utilisateurs
+                        die;        
 
                     }else {
                         //On connecte l'utilisateur
-                        header('location: /../controllers/landing-ctrl.php');//On redirige l'utilisateur vers le tableau de bord
+                        header('location: /../controllers/landing-ctrl.php');//On redirige vers le tableau de bord
                         die;
                     }
+
+
 
                 }else {
                     $errorsArray['password'] = 'Le mot de passe est incorrect';
@@ -68,10 +73,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             }
 
         }
-    
+
     }else{
         $errorsArray['password'] = 'Le champ est obligatoire';
     }
+
 }
 
 // +++++++++++++++++VUES++++++++++++++++++++++++++++++++++

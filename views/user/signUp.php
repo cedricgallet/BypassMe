@@ -17,7 +17,7 @@
                     if(!array_key_exists($msgCode, $displayMsg)){
                         $msgCode = 0;
                     }
-                    echo '<div class="fs-3 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    echo '<div class="fs-5 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                 } 
 
                 ?>

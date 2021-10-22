@@ -67,7 +67,7 @@ a:hover {
     height: 400px !important;
 }
 
-/* ========BACKGROUND FORM========= */
+/* ========BACKGROUND========= */
 #signUpForm {
     background-image: url(/../assets/img/bgUpForm.jpg);
     background-size: cover;
@@ -112,12 +112,8 @@ a:hover {
 #bgLanding {
     background-size: cover;
     background-image: url(/../assets/img/bgLanding.jpg);
+    height: 100%!important;
 }
-
-.btnLanding {
-    color: #0157f6!important;
-}
-
 
 /* =========ESPACES======== */
 #space {
