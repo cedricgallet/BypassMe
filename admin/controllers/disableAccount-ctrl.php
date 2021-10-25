@@ -39,7 +39,7 @@ if ($user)//Si vrai
         if($result===true){//Si la MAJ s'est bien passé = 1
             
 
-            // On deconnecte l'utilisateur vers la page d'accueil
+            // On deconnecte l'utilisateur 
             header('location: /../../controllers/signOut-ctrl.php');
             die;
 

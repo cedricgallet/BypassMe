@@ -70,8 +70,8 @@
 
                     <?php } ?>
 
-                            <td ><?=htmlentities(date('d-m-Y', strtotime($AllMessage->created_at)))?></td>    
-                            <td><?=htmlentities(date('d-m-Y', strtotime($AllMessage->updated_at)))?></td>
+                            <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($AllMessage->created_at)))?></td>    
+                            <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($AllMessage->updated_at)))?></td>
 
                             <td>
                             <a href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($AllMessage->id)?>"><i class="text-info far fa-edit"></i></a>

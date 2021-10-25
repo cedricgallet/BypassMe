@@ -70,8 +70,8 @@
 
                 <?php } ?>
 
-                <td ><?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?></td>    
-                <td><?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?></td>
+                <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->created_at)))?></td>    
+                <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->updated_at)))?></td>
 
                 <td>
                   <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>

@@ -16,7 +16,7 @@
         <h2 class="d-flex justify-content-center align-items-center mt-5 mb-5"><?=$title ?? ''?></h2>
 
         <div class="col-lg-3 mb-5">                   
-            <form id="signUpForm" class="border needs-validation rounded-3 p-2" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="POST">
+            <form id="profilForm" class="bg-dark border needs-validation rounded-3 p-2" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id?>" method="POST">
 
                 <!-- *******************************Champ pseudo********************************** -->
 

@@ -69,8 +69,8 @@
                             <?php } ?>
 
                             
-                            <td ><?=htmlentities(date('d-m-Y', strtotime($getComment->created_at)))?></td>    
-                            <td><?=htmlentities(date('d-m-Y', strtotime($getComment->updated_at)))?></td>
+                            <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($getComment->created_at)))?></td>    
+                            <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($getComment->updated_at)))?></td>
 
                             <td>
                                 <a href="/../../admin/controllers/display-comment-ctrl.php?id=<?=htmlentities($getComment->id)?>"><i class="text-info far fa-edit"></i></a>

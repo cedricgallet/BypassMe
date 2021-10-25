@@ -8,7 +8,7 @@ define('PASSWORD', 'Omnivore1#');
 define('NB_ELEMENTS_BY_PAGE', 5);
 
 // Constante connexion admin
-define('DEFAULT_EMAIL' , 'galletcedric@protonmail.com');
+define('DEFAULT_EMAIL' , 'admin@protonmail.com');
 define('DEFAULT_PASS' , 'cccccccc');
 
 // Constante limite de taille upload

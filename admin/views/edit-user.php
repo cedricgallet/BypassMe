@@ -1,8 +1,8 @@
 <!-- *************************************FORMULAIRE MAJ****************************************** -->
 <div id="editUserForm" class="container-fluid h-100 p-0">
     <div class="row h-100">
-        <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
-            <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6 h-100">
+        <div class="col-12 d-flex justify-content-end login-wrap p-0">
+            <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6">
                 <div class="d-flex">
                     <h2 class=""><?=$title ?? ''?></h2>
                 </div>
@@ -78,7 +78,7 @@
                         <label for="pseudo" class="col-form-label text-info"></label>
 
                         <?php
-                            if ($user->state == 0) {                    
+                            if ($state == 0) {                    
                         ?>
 
                                 <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > <strong>DÉSACTIVÉ</strong>

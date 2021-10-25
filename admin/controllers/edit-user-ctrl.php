@@ -117,8 +117,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     { 
         $id = $user->id;
         $pseudo = $user->pseudo;
-        $email =$user->email;
-        $state =$user->state;
+        $email = $user->email;
+        $state = $user->state;
 
 
     } else { // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur

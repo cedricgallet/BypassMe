@@ -69,8 +69,8 @@
 
                             <?php } ?>
 
-                            <td ><?=htmlentities(date('d-m-Y', strtotime($getArticle->created_at)))?></td>    
-                            <td><?=htmlentities(date('d-m-Y', strtotime($getArticle->updated_at)))?></td>
+                            <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($getArticle->created_at)))?></td>    
+                            <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($getArticle->updated_at)))?></td>
 
                             <td>
                                 <a href="/../../admin/controllers/display-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>"><i class="text-info far fa-edit"></i></a>

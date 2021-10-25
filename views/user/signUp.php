@@ -1,16 +1,15 @@
-<!-- ==============================FORMULAIRE INSCRIPTION============================= -->
-
+<!-- ***************************FORMULAIRE INSCRIPTION****************************** -->
 <div id="signUpForm" class="container-fluid h-100 p-0">
     <div class="row h-100">
         <div class="d-flex justify-content-end align-items-center  col-12 login-wrap h-100">        
 
-            <!-- =============================CHAMP PSEUDO=============================== -->
+            <!-- ******************************Champ pseudo*************************** -->
             <div class="signUpForm card bg-transparent col-12 col-lg-3">                            
             
                 <div class=""><h2 class=""><?=$title ?? ''?></h2>
                 </div>
 
-                <!-- Affichage d'un message d'erreur personnalisé -->
+                <!-- ***********************Affichage d'un message d'erreur personnalisé************************* -->
                 <?php 
 
                 if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
@@ -21,8 +20,9 @@
                 } 
 
                 ?>
+                <!-- *********************************************************************************************** -->
 
-                <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                <form id="profilForm" class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
                     <input type="hidden" value="<?= htmlentities($id ?? '') ?>" class="form-control" id="id" name="id">
 
@@ -43,7 +43,7 @@
                     <div class="invalid-feedback-2"><?=htmlentities($errorsArray['pseudo'] ?? '')?></div>
                 
 
-                    <!-- ===========================CHAMP EMAIL============================== -->
+                    <!-- ===========================CHAMP EMAIL*************************** -->
 
                     <div class="form-outline">
                     <label for="email" class="col-form-label text-warning">Adresse Email*</label>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
-                    <!-- =============================CHAMP EMAIL CONFIRMATION=========================== -->
+                    <!-- ******************************CHAMP EMAIL CONFIRMATION=========================== -->
 
                     <div class="form-outline">
                     <label for="email2" class="col-form-label text-warning">Confirmation Email*</label>
@@ -127,6 +127,6 @@
         </div>
     </div>
 </div>
-<!-- ===============================FIN INSCRIPTION============================= -->
+<!-- ***************************=FIN INSCRIPTION****************************** -->
 <script src="/../assets/js/checkPass.js"></script>
 <script src="/../../assets/js/checkValidation.js"></script>

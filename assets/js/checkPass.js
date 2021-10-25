@@ -8,4 +8,4 @@ let checkPass = ( event ) => {
 }
 
 
-signUpForm.addEventListener('submit', checkPass);
+profilForm.addEventListener('submit', checkPass);

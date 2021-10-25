@@ -96,11 +96,11 @@
                     </p>
 
                     <p class="card-text"><strong>Ajouté le </strong>
-                        <?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->created_at)))?>
                     </p>
 
                     <p class="card-text"><strong>Dernière modification le </strong>
-                        <?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?>          
+                        <?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->updated_at)))?>          
                     </p>
                 </div>
             </div>
