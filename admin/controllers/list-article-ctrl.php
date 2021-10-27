@@ -4,10 +4,10 @@ require_once dirname(__FILE__) . '/../../models/Article.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 $title1 = 'Gestion articles';
-$title2 = 'Liste des articles';
-$title3 = 'Liste des messages';
-$title4 = 'Liste des membres';
-$title5 = 'Liste des commentaires';
+$title2 = 'Articles';
+$title3 = 'Messages';
+$title4 = 'Membres';
+$title5 = 'Commentaires';
 
 
 // *****************************************SECURITE ACCES PAGE******************************************

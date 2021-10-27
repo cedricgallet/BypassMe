@@ -7,19 +7,9 @@ if (!isset($_SESSION['user'])) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
-
-//On check si le mdp par défault est le meme que le mdp en cours de session
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
-
-if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
-    die;
-        
-}
 // ********************************************************************************************************
 
-// Tableau des sujets disponible //
+// Tableau des sujets des messages //
 $arraySubject = ['soummettre une idée','signaler un bug sur le site','signaler un lien mort', 'supprimer mon compte'];
 
 $title = 'Déposer un message ?';
@@ -90,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             if($result===true)
             {//Si l ajout s'est bien passé = 1
 
-                //On check si le mdp par défault est le meme que le mdp en cours de session
+                //On check si le mdp par défault est le meme que le mdp en bdd
                 $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
                 if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) 

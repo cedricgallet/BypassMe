@@ -21,13 +21,18 @@
             </form>
         </div>
 
+        <div class="col-12 d-flex">
+            <div class="col-12 col-lg-6 text-center">
+                <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3 text-warning"><?=$title2 ?? ''?></h2></a>
+                <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
+            </div>
 
-        <div class="col-12 d-flex justify-content-around">
-            <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3"><?=$title2 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
+            <div class="col-12 col-lg-6 text-center">
+                <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
+                <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
+            </div>
         </div>
+
 
         <div class="col-12 mt-4 pe-4 ps-4">
             <table class="table table-hover table-responsive table-bordered">

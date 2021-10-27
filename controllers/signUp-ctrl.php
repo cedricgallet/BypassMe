@@ -94,7 +94,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             setcookie('cookie-email', $email, array(
 
                 'expires' => time() + 60*24*36000,//Valide 1 an
-
+                'path' => '/',
+                'domain' => '',
                 'secure' => false, //Si true cookie uniquement transmis à travers une connexion sécurisée HTTPS depuis le client.Voir $_SERVER['https']
 
                 'httponly' => true, //Si true, le cookie ne sera accessible que par le protocole HTTP. 
@@ -107,6 +108,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
             setcookie('cookie-pseudo', $pseudo , array(//Valeur cookie deja sécurisé/nettoyé
                 'expires' => time() + 60*24*36000,
+                'path' => '/',
+                'domain' => '',
                 'secure' => false,
                 'httponly' => true,
                 'samesite' => 'lax'
@@ -114,13 +117,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
             setcookie('cookie-state', $state , array(
                 'expires' => time() + 60*24*36000,
+                'path' => '/',
+                'domain' => '',
                 'secure' => false,
                 'httponly' => true,
                 'samesite' => 'lax'
                 ));
 
             // **************************************************************
-
             $result = $user->createUser();//On ajoute l'utilisateur en bdd
             
             if($result===true){//Si l'ajout s'est bien passé = 1

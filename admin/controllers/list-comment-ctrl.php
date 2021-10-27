@@ -4,10 +4,10 @@ require_once dirname(__FILE__) . '/../../models/Comment.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 $title1 = 'Gestion commentaires';
-$title2 = 'Liste des commentaires';
-$title3 = 'Liste des messages';
-$title4 = 'Liste des membres';
-$title5 = 'Liste des articles';
+$title2 = 'Commentaires';
+$title3 = 'Messages';
+$title4 = 'Membres';
+$title5 = 'Articles';
 
 
 // *****************************************SECURITE ACCES PAGE******************************************

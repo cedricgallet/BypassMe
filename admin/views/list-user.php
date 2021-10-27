@@ -13,24 +13,27 @@
 
     <h2 class="fs-1 mt-5 text-center"><?=$title1 ?? ''?></h2>
 
+    <!-- **************************Recherche*********************** -->
     <div class="col-12">
-      <!-- **************************Recherche*********************** -->
       <form class="text-center" action="" method="GET">
         <input type="text" name="s" id="s" value="<?=$s?>">
         <input type="submit" value="Rechercher">
       </form>
     </div>
 
+    <div class="col-12 d-flex">
+        <div class="col-12 col-lg-6 text-center">
+        <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3 text-warning"><?=$title2 ?? ''?></h2></a>
+            <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
+        </div>
 
-    <div class="col-12 d-flex justify-content-around">
-      <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3"><?=$title2 ?? ''?></h2></a>
-      <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
-      <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
-      <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
+        <div class="col-12 col-lg-6 text-center">
+            <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
+            <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
+        </div>
     </div>
 
     <div class="col-12 mt-4 pe-4 ps-4">
-
       <table class="table table-hover table-responsive table-bordered">
         <caption>
           <tr class="fs-3 text-info">
@@ -44,6 +47,7 @@
             <th scope="col">Actions</th>
           </tr>
         </caption>
+
         <tbody>
 
           <?php 
@@ -51,6 +55,7 @@
           foreach($allUsers as $user) {
               $i++;
               ?>
+              
               <tr class="text-white fs-3"><th scope="row"><?=htmlentities($user->id)?></th>
                 <td><?=htmlentities($user->pseudo)?></td>
                 <td><?=htmlentities($user->email)?></td>
@@ -81,8 +86,8 @@
                 </td>
               </tr>
           <?php } ?>
-
         </tbody>
+
         <!-- *****************Pagination*********************** -->
         <nav aria-label="...">
           <ul class="pagination pagination-sm">

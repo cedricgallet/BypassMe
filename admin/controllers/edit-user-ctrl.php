@@ -95,11 +95,97 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     if(empty($errorsArray))
     {
 
-        $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos 
+        $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos
 
-        $result = $user->update($id);//On met a jour        
-        if($result===true){//Si l ajout s'est bien passé = 1
+
+        $result = $user->update($id);//On met a jour 
+        
+        if ($email != $_COOKIE['cookie-email']) 
+        {
+            setcookie('cookie-email', '', time()-3600,'/','',false,true);
+            unset($_COOKIE['cookie-email']);//On vide la superglobale contenant le cookie
+
+            setcookie('cookie-email', $email , time() + 60*24*3600,'/','',false,true);
             
+        }
+        //Si les infos MAJ sont differents des cookies on supprime et on genere des nouveaux cookies
+        if ($state != $_COOKIE['cookie-email']) 
+        {
+            //On supprime le cookie en générant un cookie de meme nom avec une date de -1h par rapport au timestanp par défaut (1er jan 1970 à 0H00)
+            //(comme sa si l'utilisateur n'a pas la meme heure pas de soucis pour supprimer le cookie)
+            setcookie('cookie-email', '' , array(
+                'expires' => time()-3600,//- 1 heure par rapport au 1er janvier 1970 à 0H00
+                'path' => '/',
+                'domain' => '',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'lax'
+                ));
+
+            unset($_COOKIE['cookie-email']);//On vide la superglobale
+
+            setcookie('cookie-email', $email , array(
+                'expires' => time() + 60*24*3600,
+                'path' => '/',
+                'domain' => '',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'lax'
+                ));
+        }
+
+        if ($pseudo != $_COOKIE['cookie-pseudo']) 
+        {
+            setcookie('cookie-pseudo', '' , array(
+                'expires' => time()-3600,
+                'path' => '/',
+                'domain' => '',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'lax'
+                ));
+
+            unset($_COOKIE['cookie-pseudo']);
+
+            setcookie('cookie-pseudo', $pseudo , array(
+                'expires' => time() + 60*24*3600,
+                'path' => '/',
+                'domain' => '',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'lax'
+                ));
+
+        }
+
+        if ($state != $_COOKIE['cookie-state']) 
+        {
+            setcookie('cookie-state', '' , array(
+                'expires' => time()-3600,
+                'path' => '/',
+                'domain' => '',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'lax'
+                ));
+
+            unset($_COOKIE['cookie-state']);
+
+            setcookie('cookie-state', $state , array(
+                'expires' => time() + 60*24*3600,
+                'path' => '/',
+                'domain' => '',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'lax'
+                ));
+        }
+
+        // **************************************************************************************************************
+
+        if($result===true)//Si l ajout s'est bien passé = 1
+        {
+
             header('location: /../../admin/controllers/list-user-ctrl.php?msgCode=2');//On redirige av mess succés
 
         } else {
@@ -119,7 +205,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $pseudo = $user->pseudo;
         $email = $user->email;
         $state = $user->state;
-
 
     } else { // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
         header('location: /../../admin/views/edit-user.php?msgCode=3');

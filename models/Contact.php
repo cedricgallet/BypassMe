@@ -90,6 +90,36 @@ class Contact{
 
     }
 
+    // ***********************************************************
+
+     /**
+     * Méthode qui permet de lister tous les rdv
+     * 
+     * @return array
+     */
+    public static function getAll()
+    {
+
+        $pdo = Database::db_connect();
+
+        try{
+            $sql = 'SELECT `message`.`id` as `messageId`, `user`.`id` as `userId`, `user`.*, `message`.* 
+
+                    FROM `message` 
+                    INNER JOIN `user`
+                    ON `message`.`messageId` = `user`.`id`
+
+                    ORDER BY `message` DESC;';
+
+            $stmt = $pdo->query($sql);
+            return $stmt->fetchAll();
+        }
+        catch(PDOException $e){
+            return false;
+        }
+
+    }
+
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Méthode qui permet de récupérer un commentaire

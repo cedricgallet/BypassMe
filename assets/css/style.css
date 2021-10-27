@@ -94,25 +94,21 @@ a:hover {
 #addArticleForm {
     background-image: url(/../assets/img/bgAddArticle.jpg);
     background-size: cover;
-    height: 100%!important;
 }
 
 #editUserForm {
     background-image: url(/../assets/img/bgEditUser.jpg);
     background-size: cover;
-    height: 100%!important;
 }
 
 #bgGestionAdmin {
     background-image: url(/../assets/img/bgGestionAdmin.jpg);
     background-size: cover;
-    height: 100%!important;
 }
 
 #bgLanding {
     background-size: cover;
     background-image: url(/../assets/img/bgLanding.jpg);
-    height: 100%!important;
 }
 
 /* =========ESPACES======== */

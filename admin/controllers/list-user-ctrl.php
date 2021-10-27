@@ -5,10 +5,10 @@ require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion
 
 
 $title1 = 'Gestion membres';
-$title5 = 'Liste des commentaires';
-$title2 = 'Liste des membres';
-$title3 = 'Liste des articles';
-$title4 = 'Liste des messages';
+$title5 = 'Messages';
+$title2 = 'Membres';
+$title3 = 'Articles';
+$title4 = 'Commentaires';
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
