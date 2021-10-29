@@ -65,13 +65,13 @@
                 if($user->state == 0){
                   ?>
 
-                  <td class='text-danger bg-dark'><?= 'Désactivé';?></td>
+                  <td class='text-danger bg-dark'>Désactivé</td>
 
                   <?php
-                } else {
+                  } else {
                   ?>
 
-                  <td class='text-success bg-dark'><?= 'Activé';?></td>
+                  <td class='text-success bg-dark'>Activé</td>
 
                 <?php } ?>
 

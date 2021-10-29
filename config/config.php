@@ -76,7 +76,7 @@ $displayMsg = array(
     '39' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas été trouvé'],
     '40' => ['type' => 'alert-success', 'msg' => 'Le message a bien été ajouté'],
     '41' => ['type' => 'alert-success', 'msg' => 'Le message a bien été mis à jour'],
-    '42' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas été enregistré en base de données'],
+    '42' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas pu être enregistré'],
     '43' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas été mis à jour'],
     '44' => ['type' => 'alert-success', 'msg' => 'Le message a bien été ajouté'],
     '45' => ['type' => 'alert-danger', 'msg' => 'Le message a bien été supprimé'],

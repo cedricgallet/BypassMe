@@ -63,15 +63,15 @@
                             if($getComment->state == 0){
                             ?>
 
-                            <td class='text-danger bg-dark'><?= 'Désactivé';?></td>
+                            <td class='text-danger bg-dark'>Désactivé</td>
 
                             <?php
                             } else {
                             ?>
 
-                            <td class='text-success bg-dark'><?= 'Activé';?></td>
-                            <?php } ?>
+                            <td class='text-success bg-dark'>Activé</td>
 
+                            <?php } ?>
                             
                             <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($getComment->created_at)))?></td>    
                             <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($getComment->updated_at)))?></td>
@@ -79,7 +79,7 @@
                             <td>
                                 <a href="/../../admin/controllers/display-comment-ctrl.php?id=<?=htmlentities($getComment->id)?>"><i class="text-info far fa-edit"></i></a>
                                 <a href="/../../admin/controllers/delete-comment-ctrl.php?id=<?=htmlentities($getComment->id)?>" onclick="return confirmDeletecomment();"><i class="me-2 text-danger fas fa-trash-alt"></i></a>
-                                <a href="/../../admin/controllers/add-comment-ctrl.php"><i class="text-success fas fa-plus"></i></a>
+                                <a href="/../../admin/controllers/add-comment-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-success fas fa-plus"></i></a>
 
                             </td>
                         </tr>

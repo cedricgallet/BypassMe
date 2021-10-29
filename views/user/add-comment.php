@@ -56,7 +56,7 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['comment'] ?? '')?></div>
 
 
-                                <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Envoyer le commentaire ?</button>
+                                <button type="submit" class="form-control btn text-success border submit px-3 rounded-pill">Envoyer le commentaire ?</button>
                             </form>
                         </div>
                     </div>

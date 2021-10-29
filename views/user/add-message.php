@@ -25,6 +25,7 @@
                     <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <div class="form-group mt-3">
                             <div class="mb-3">
+                            <label for="subject" class="col-form-label text-warning">Sujet*</label>
 
                                 <select name="subject" 
                                         id="subject" 
@@ -48,7 +49,7 @@
 
                         <div class="form-group">
                             <div class="mb-3">
-                                <label for="message" class="col-form-label"></label>
+                                <label for="message" class="col-form-label text-warning">Message*</label>
                                  
                                 <textarea
                                     name ="message" 
@@ -57,7 +58,7 @@
                                     rows="9"
                                     minlength="10" 
                                     maxlength="250"
-                                    placeholder="Votre message"
+                                    placeholder=""
                                     required><?= htmlentities($message ?? '')?> 
                                 </textarea>
                         </div>
@@ -82,28 +83,7 @@
                         </div>
                         <div class="invalid-feedback-2"><?= htmlentities($errorsArray['email'] ?? '')?></div>
 
-                        <!-- **********************************Password*********************************-->
-
-                        <div class="form-group">
-                            <div class="mb-3">
-                                <label for="password" class="col-form-label text-warning">Mot de passe*</label>
-
-                                <div class="form-outline">
-                                    <input type="password" 
-                                            name="password" 
-                                            class="form-control text-info bg-transparent" 
-                                            id="password" 
-                                            placeholder="Votre mot de passe" 
-                                            autocomplete="off" 
-                                            minlength="8" 
-                                            maxlength="20" 
-                                            required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='invalid-feedback-2' id='pass'><?=htmlentities($errorsArray['password'] ?? '')?></div>
-
-                        <button type="submit" class="bg-transparent card-header btn btn-warning rounded-pill w-100 mb-5">Envoyer le message ?</button>               
+                        <button type="submit" class="form-control btn text-success border submit px-3 rounded-pill">Envoyer le message ?</button>               
                     </form>
                 </div>
             </div>

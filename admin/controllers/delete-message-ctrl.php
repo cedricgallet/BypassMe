@@ -1,6 +1,6 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../../models/Contact.php';//Models
+require_once dirname(__FILE__).'/../../models/Message.php';//Models
 require_once dirname(__FILE__).'/../../config/config.php';//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
@@ -23,7 +23,7 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 /*********************************************************/
 
 // Suppression de l'article 
-$code = intval(Contact::deleteMessage($id));
+$code = intval(Message::deleteMessage($id));
 
 // On redirige vers la liste des articles avec un code pour le message
 header('location: /../../admin/controllers/list-message-ctrl.php?msgCode='.$code);

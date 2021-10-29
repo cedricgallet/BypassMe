@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once(dirname(__FILE__).'/../../models/Contact.php');//Models
+require_once(dirname(__FILE__).'/../../models/Message.php');//Models
+require_once(dirname(__FILE__).'/../../models/User.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
@@ -25,11 +26,16 @@ $errorsArray = array(); //ou $errorsArray = []; //déclaration d'un tableau vide
 // Tableau des sujets disponible //
 $arraySubject = ['Soummettre une idée','Signaler un bug sur le site','Signaler un lien mort','Supprimer mon compte'];
 
-$title = 'Modification d\'un message en cours ...';
-
-// Nettoyage de l'id passé en GET dans l'url
+// Nettoyage de l'id du rdv passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
+// Appel à la méthode statique permettant de récupérer tous les utilisateurs
+$getUser = User::get($id);
+
+// Appel à la méthode statique permettant de récupérer un message
+$getMessage = Message::getMessage($id);
+// Récupération d'id_user
+$id_user = $getMessage->id_user;
 
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
@@ -60,42 +66,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         
         $errorsArray['message'] = 'Le champ est obligatoire';
         
-    }    
+    } 
 
     // Si il n'y a pas d'erreurs, on met à jour le message.
     if(empty($errorsArray))
     {
+        $getNewMessage = new Message($subject, $message, $state,'','',$id_user);
 
-        $messageInfo = new Contact("", $subject, $message, $state);//On instancie/On récupére les infos 
-
-        $result = $messageInfo->updateMessage($id);//On met a jour et on ajoute en bdd        
-
-        if($result===true){//Si l ajout s'est bien passé = 1
-            
-            header('location: /../../admin/controllers/list-message-ctrl.php?msgCode=41');//On redirige av mess succés
-            die;
-
+        
+        if($getNewMessage->updateMessage($id)===true){//Si la MAJ s'est bien passé ( = vrai)
+            header('location: /../../admin/controllers/list-message-ctrl.php?id='.$id.'&msgCode=41');
         } else {
-            // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-            $msgCode = $result;
-        } 
+            $msgCode=43;
+        }    
     
     }
 
-}else{
-    $messageInfo = Contact::getMessage($id);
-    if($messageInfo)
-    {
-        $id = $messageInfo->id;
-        $subject = $messageInfo->subject;
-        $message = $messageInfo->message;
-        $state = $messageInfo->state;
-
-    } else {
-        // Si le message n'existe pas, on redirige vers la liste complète avec un code erreur
-        header('location: /../../admin/controllers/list-message-ctrl.php?msgCode=39');
-        die;
-    }
 }
 
 // +++++++++++++++++++++++++++++++++++VUES+++++++++++++++++++++++++++++++

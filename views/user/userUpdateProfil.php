@@ -95,7 +95,7 @@
                 <!-- ***************************************Changer avatar********************************** -->
 
                 <div class="mt-3">
-                    <form class="border" method="POST" action="" enctype="multipart/form-data">
+                    <form class="border" method="" action="" enctype="multipart/form-data">
                         <div class="upload-wrapper">
                             <span class="w-50 file-name">Images autorisées :<hr> png, jpeg - 2Mo Max</span>
                             <label class="w-50 d-flex justify-content-center align-items-center" for="file-upload">Choisir un avatar ?<input type="file" id="file-upload" name="profile"></label>
@@ -107,7 +107,7 @@
 
                 <div class="d-flex justify-content-center align-items-center">
                     <button type="submit" 
-                            class="btn card-header border mt-3">Mettre a jour mon profil ?</button>
+                            class="btn text-success border mt-3">Mettre a jour mon profil ?</button>
                 </div>
             </form>
         </div>

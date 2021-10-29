@@ -108,8 +108,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             setcookie('cookie-email', $email , time() + 60*24*3600,'/','',false,true);
             
         }
-        //Si les infos MAJ sont differents des cookies on supprime et on genere des nouveaux cookies
-        if ($state != $_COOKIE['cookie-email']) 
+
+
+        //Si les infos MAJ sont differentes des cookies stocker chez l'utilisateur, on supprime et on genere des nouveaux cookies
+        if ($email != $_COOKIE['cookie-email']) 
         {
             //On supprime le cookie en générant un cookie de meme nom avec une date de -1h par rapport au timestanp par défaut (1er jan 1970 à 0H00)
             //(comme sa si l'utilisateur n'a pas la meme heure pas de soucis pour supprimer le cookie)

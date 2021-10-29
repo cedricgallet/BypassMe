@@ -88,41 +88,44 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         {
 
             // **************************Cookie******************************
+            //Si les cookies n'existent pas
+            if (empty($_COOKIE['cookie-email']) && empty($_COOKIE['cookie-pseudo']) && empty($_COOKIE['cookie-state'])) 
+            {
+                //On genere le cookie
+                //(Les infos du cookie stocker chez l'utilisateur peuvent etre modifier donc on sécurise)
+                setcookie('cookie-email', $email, array(
 
-            //On genere le cookie
-            //(Les infos du cookie stocker chez l'utilisateur peuvent etre modifier donc on nettoie)
-            setcookie('cookie-email', $email, array(
+                    'expires' => time() + 60*24*36000,//Valide 1 an
+                    'path' => '/',
+                    'domain' => '',
+                    'secure' => false, //Si true cookie uniquement transmis à travers une connexion sécurisée HTTPS depuis le client.Voir $_SERVER['https']
 
-                'expires' => time() + 60*24*36000,//Valide 1 an
-                'path' => '/',
-                'domain' => '',
-                'secure' => false, //Si true cookie uniquement transmis à travers une connexion sécurisée HTTPS depuis le client.Voir $_SERVER['https']
+                    'httponly' => true, //Si true, le cookie ne sera accessible que par le protocole HTTP. 
+                    //Cela signifie que le cookie ne sera pas accessible via des langages de scripts, comme Javascript. 
+                    //Il a été suggéré que cette configuration permet de limiter les attaques via XSS 
+                    //bien qu'elle ne soit pas supportée par tous les navigateurs), néanmoins ce fait est souvent contesté. true ou false
 
-                'httponly' => true, //Si true, le cookie ne sera accessible que par le protocole HTTP. 
-                //Cela signifie que le cookie ne sera pas accessible via des langages de scripts, comme Javascript. 
-                //Il a été suggéré que cette configuration permet de limiter les attaques via XSS 
-                //bien qu'elle ne soit pas supportée par tous les navigateurs), néanmoins ce fait est souvent contesté. true ou false
+                    'samesite' => 'lax'//valeur par défaut pour une meilleure défense contre les attaques de type cross-site request forgery (CSRF).
+                    ));
 
-                'samesite' => 'lax'//valeur par défaut pour une meilleure défense contre les attaques de type cross-site request forgery (CSRF).
-                ));
+                setcookie('cookie-pseudo', $pseudo , array(//Valeur cookie deja sécurisé/nettoyé
+                    'expires' => time() + 60*24*36000,
+                    'path' => '/',
+                    'domain' => '',
+                    'secure' => false,
+                    'httponly' => true,
+                    'samesite' => 'lax'
+                    ));
 
-            setcookie('cookie-pseudo', $pseudo , array(//Valeur cookie deja sécurisé/nettoyé
-                'expires' => time() + 60*24*36000,
-                'path' => '/',
-                'domain' => '',
-                'secure' => false,
-                'httponly' => true,
-                'samesite' => 'lax'
-                ));
-
-            setcookie('cookie-state', $state , array(
-                'expires' => time() + 60*24*36000,
-                'path' => '/',
-                'domain' => '',
-                'secure' => false,
-                'httponly' => true,
-                'samesite' => 'lax'
-                ));
+                setcookie('cookie-state', $state , array(
+                    'expires' => time() + 60*24*36000,
+                    'path' => '/',
+                    'domain' => '',
+                    'secure' => false,
+                    'httponly' => true,
+                    'samesite' => 'lax'
+                    ));
+            }
 
             // **************************************************************
             $result = $user->createUser();//On ajoute l'utilisateur en bdd

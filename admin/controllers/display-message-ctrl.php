@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . '/../../models/Contact.php';//Models
+require_once dirname(__FILE__) . '/../../models/Message.php';//Models
+require_once dirname(__FILE__) . '/../../models/User.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
@@ -20,22 +21,16 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 
 $title = 'Consultation d\'un message en cours ...';
 
-
-//**************************ID******************************
 // On verifie l'existance et on nettoie
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// Appel à la méthode statique permettant de récupérer tous les infos d'un seul article
-$messageInfo = Contact::getMessage($id);
+// Appel à la méthode statique permettant de récupérer tous les infos d'un seul message
+$messageInfo = Message::getMessage($id);
 
-
-// Si le message n'existe pas, on redirige vers la liste complète avec un code erreur
-if(!$messageInfo){
-    header('location: /../../admin/controllers/list-message-ctrl.php?msgCode=39');
-}
+// Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur par l'id récuperer dans $message
+$user = User::get($messageInfo->id);
 
 /* ************* AFFICHAGE DES VUES **************************/
-
 require_once dirname(__FILE__) . '/../../views/templates/header.php';
 require_once dirname(__FILE__) . '/../../admin/views/display-message.php';
 

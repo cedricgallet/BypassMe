@@ -64,13 +64,13 @@
                             if($getArticle->state == 0){
                     ?>
 
-                            <td class='text-danger bg-dark'><?= 'Désactivé';?></td>
+                            <td class='text-danger bg-dark'>Désactivé</td>
 
                             <?php
                             } else {
                             ?>
 
-                            <td class='text-success bg-dark'><?= 'Activé';?></td>
+                            <td class='text-success bg-dark'>Activé</td>
 
                             <?php } ?>
 

@@ -29,6 +29,10 @@
 
                 <div class="card-body">
 
+                    <p class="card-text text-center card-header"><strong>Email > </strong>
+                        <?=htmlentities($user->email)?>
+                    </p>
+
                     <p class="card-text text-center card-header"><strong>Sujet > </strong>
                         <?=htmlentities($messageInfo->subject)?>
                     </p>
@@ -38,22 +42,22 @@
                     </p>
 
                     <p class="card-text"><strong>Ajouté le </strong>
-                        <?=htmlentities(date('d-m-Y', strtotime($messageInfo->created_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:m', strtotime($messageInfo->created_at)))?>
                     </p>
 
                     <p class="card-text"><strong>Dernière modification le </strong>
-                        <?=htmlentities(date('d-m-Y', strtotime($messageInfo->updated_at)))?>          
+                        <?=htmlentities(date('d-m-Y à H:m', strtotime($messageInfo->updated_at)))?>          
                     </p>
                 </div>
 
                 <div class="d-flex justify-content-between">
                     <div>
-                        <a href="/../admin/controllers/edit-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"
+                        <a href="/../../admin/controllers/edit-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"
                             class="border text-info btn btn-success">Modifier le message ?</a>
                     </div>
 
                     <div>
-                        <a href="/../admin/controllers/list-message-ctrl.php" class="border btn btn-success">Retour à la liste
+                        <a href="/../../admin/controllers/list-message-ctrl.php" class="border btn btn-success">Retour à la liste
                             des messages ?</a>
                     </div>
                 </div>

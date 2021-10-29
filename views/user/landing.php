@@ -37,7 +37,7 @@
                     <div class="text-center">
                         <a href="/../index.php" class="m-2 boutton btn text-success border mb-2">Accueil</a>
 
-                        <a href="/../controllers/userUpdateProfil-ctrl.php?id=<?=htmlentities($user->id);?>" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Modifier
+                        <a href="/../controllers/userUpdateProfil-ctrl.php?id=<?=htmlentities($user->id)?>" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Modifier
                                 mes informations</a>
 
                         <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2">Déconnexion</a>
@@ -50,7 +50,7 @@
                     <div class="text-center">
                         <a href="/../index.php" class="bg-dark m-2 boutton btn text-white border mb-2">Accueil</a>
                             
-                        <a href="/../controllers/add-comment-ctrl.php" class="bg-dark m-2 boutton btn text-success border mb-2">Commenter</a>
+                        <a href="/../controllers/add-message-ctrl.php?id=<?=htmlentities($user->id)?>" class="bg-dark m-2 boutton btn text-success border mb-2">Contacter</a>
 
                     </div>
                         

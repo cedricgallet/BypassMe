@@ -16,7 +16,7 @@
                     if(!array_key_exists($msgCode, $displayMsg)){
                         $msgCode = 0;
                     }
-                    echo '<div class="fs-5 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                    echo '<div class="fs-5 d-flex justify-content-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                 } 
 
                 ?>
@@ -117,12 +117,32 @@
                     </div>
                     
 
-                    <div class="form-outline mt-4 mb-5">
+                    <div class="form-outline mt-4 mb-3">
                         <button id="btnSubmit" 
                                 type="submit" 
-                                class="form-control btn card-header border submit px-3 rounded-pill">Créer mon compte</button>
+                                class="form-control btn text-success border submit px-3 rounded-pill">Créer mon compte</button>
                     </div>
                 </form>
+                <?php
+                    // Si c'est un admnin qui est connecté
+                    if(isset($_SESSION['user']))
+                    {
+
+                        //On check si le mdp par défault est le meme que le mdp en bdd
+                        $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password); // = true ok
+
+                        if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) 
+                        {
+                        ?>
+                         <div class="form-outline">
+                            <a href="/../admin/controllers/list-user-ctrl.php" id="btnSubmit"  
+                                class="form-control btn text-success border submit px-3 rounded-pill">Retour a la liste des utilisateurs ?</a>
+                        </div>          
+                
+                    <?php }  ?>
+               <?php }  ?>
+                       
+
             </div>
         </div>
     </div>
