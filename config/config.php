@@ -7,7 +7,7 @@ define('PASSWORD', 'Omnivore1#');
 // Constante search
 define('NB_ELEMENTS_BY_PAGE', 5);
 
-// Constante connexion admin
+// Constante connexion administrateur
 define('DEFAULT_EMAIL' , 'admin@protonmail.com');
 define('DEFAULT_PASS' , 'cccccccc');
 
@@ -24,7 +24,7 @@ $displayMsg = array(
     '1' => ['type' => 'alert-success', 'msg' => 'L\'utilisateur a bien été ajouté'],
     '2' => ['type' => 'alert-success', 'msg' => 'L\'utilisateur a bien été mis à jour'],
     '3' => ['type' => 'alert-danger', 'msg' => 'L\'utilisateur n\'a pas été trouvé'],
-    '4' => ['type' => 'alert-danger', 'msg' => 'L\'utilisateur n\'a pas été enregistré en base de données'],
+    '4' => ['type' => 'alert-danger', 'msg' => 'L\'utilisateur n\'a pas été enregistré'],
     '5' => ['type' => 'alert-danger', 'msg' => 'L\'utilisateur n\'a pas été mis à jour'],
     '10' => ['type' => 'alert-success', 'msg' => 'L\'utilisateur a bien été supprimé'],
 
@@ -43,7 +43,7 @@ $displayMsg = array(
     '21' => ['type' => 'alert-success', 'msg' => 'L\'article a bien été ajouté'],
     '22' => ['type' => 'alert-success', 'msg' => 'L\'article a bien été mis à jour'],
     '23' => ['type' => 'alert-danger', 'msg' => 'L\'article n\'a pas été trouvé'],
-    '24' => ['type' => 'alert-danger', 'msg' => 'L\'article n\'a pas été enregistré en base de données'],
+    '24' => ['type' => 'alert-danger', 'msg' => 'L\'article n\'a pas été enregistré'],
     '25' => ['type' => 'alert-danger', 'msg' => 'L\'article n\'a pas été mis à jour'],
     '26' => ['type' => 'alert-success', 'msg' => 'L\'article a bien été ajouté'],
     '31' => ['type' => 'alert-danger', 'msg' => 'L\'article a bien été supprimé'],
@@ -80,6 +80,8 @@ $displayMsg = array(
     '43' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas été mis à jour'],
     '44' => ['type' => 'alert-success', 'msg' => 'Le message a bien été ajouté'],
     '45' => ['type' => 'alert-danger', 'msg' => 'Le message a bien été supprimé'],
+    
+    '46' => ['type' => 'alert-danger', 'msg' => 'Le commentaire n\'a pas été enregistré'],
 
 
 

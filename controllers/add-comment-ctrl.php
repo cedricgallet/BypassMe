@@ -2,6 +2,7 @@
 <?php
 session_start(); // Démarrage de la session  
 require_once(dirname(__FILE__).'/../models/Comment.php');//models
+require_once(dirname(__FILE__).'/../models/User.php');//models
 require_once(dirname(__FILE__).'/../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
@@ -63,15 +64,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $pdo = Database::db_connect();
         $pdo->beginTransaction();
 
-        $getNewUser = new User($pseudo, $email,'','');
-        $createUser = $getNewUser->createUser();
+        $id_comment = $_SESSION['user']->id;
 
-        $id_user = $pdo->lastInsertId();//On récupere le dernier id enregistrer(id utilisateur)
-
-        $getNewComment = new Comment($categories, $User);
+        $getNewComment = new Comment($categories, $User, '', '', '',$id_comment);
         $createComment = $user->createComment();
         
-        if($createUser === true && $createComment === true){
+        if($createComment === true){
             $pdo->commit(); // Valide la transaction et exécute toutes les requetes 
 
             header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=11');//On redirige av mess succés
@@ -80,9 +78,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         } else {
             $pdo->rollBack(); // Annulation de toutes les requêtes exécutées avant la levée de l'exception
 
-                // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-                $msgCode = $result;
-        }  
+                // Si l'enregistrement s'est mal passé, on redirige av un mess d'erreur.
+                header('location: /../../admin/controllers/list-comment-ctrl.php?msgCode=46');
+                die;
+            }  
 
     }
 

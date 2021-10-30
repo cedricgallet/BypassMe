@@ -44,24 +44,23 @@
                     </p>
 
                     <p class="card-text"><strong>Ajouté le </strong>
-                        <?=htmlentities(date('d-m-Y', strtotime($user->created_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:m', strtotime($user->created_at)))?>
                     </p>
 
                     <p class="card-text"><strong>Dernière modification le </strong>
-                        <?=htmlentities(date('d-m-Y', strtotime($user->updated_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:m', strtotime($user->updated_at)))?>
                     </p>
                 </div>
 
                 <div class="d-flex justify-content-between">
                     <div>
                         <a href="/../../admin/controllers/edit-user-ctrl.php?id=<?=htmlentities($user->id)?>"
-                            class="border text-info btn btn-success">Modifier l'utilisateur ?</a>
+                            class="border text-info btn btn-success">Modifier l'utilisateur</a>
                     </div>
 
                     <div>
                         <a href="/../../admin/controllers/list-user-ctrl.php" class="border btn btn-success">Retour à la
-                            liste
-                            des utilisateurs ?</a>
+                            liste des utilisateurs</a>
                     </div>
                 </div>
             </div>

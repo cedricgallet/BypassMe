@@ -43,28 +43,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             {
 
                 $isPasswordOk = password_verify($password, $user->password);//On vérifie le mdp
-                if($isPasswordOk)//Si mdp est le meme que celui en bdd
+                if($isPasswordOk)//Si mdp est le meme que celui en bdd(vrai)
                 {
 
-                     //On stock les valeurs recuperées pour generer les cookies et ou tester si les cookies si ils existent
+                     //On stock les valeurs recuperées pour tester si les cookies existent ou si ils n'ont pas été modifié
                     $pseudo = $user->pseudo ;
                     $email = $user->email ;
                     $state = $user->state ;
 
                     // **************************Cookie******************************
 
-                    //Si les cookies n'existent pas ou si ils sont differents des infos en bdd
-                    if (empty($_COOKIE['cookie-email']) || $_COOKIE['cookie-email'] != $email) 
+                    //Si les cookies ont été modifié (differents des infos en bdd) // 
+                    if ($_COOKIE['cookie-email'] != $email) 
                     {
+                        setcookie('cookie-email', '' , array(//On supprime le cookie
+                            'expires' => time()-3600,//- 1 heure par rapport au timestamp (1er janvier 1970 à 0H00)
+                            'path' => '/',
+                            'domain' => '',
+                            'secure' => false,
+                            'httponly' => true,
+                            'samesite' => 'lax'
+                            ));
+            
+                        unset($_COOKIE['cookie-email']);//On vide la superglobale
+            
         
-                        //Si les cookies n'existe pas on en genere                     
-                        //Les infos du cookie stocker chez l'utilisateur peuvent etre modifier donc on nettoie
+                        //On en genere des nouveaux                     
                         setcookie('cookie-email', $email, array(
 
                             'expires' => time() + 60*24*36000,//Valide 1 an
                             'path' => '/',
                             'domain' => '',
-                            'secure' => false, //Si true cookie uniquement transmis à travers une connexion sécurisée HTTPS depuis le client.$_SERVER['https']
+                            'secure' => false, //Si true cookie uniquement transmis à travers une connexion sécurisée HTTPS depuis le client.Voir $_SERVER['https']
 
                             'httponly' => true, //Si true, le cookie ne sera accessible que par le protocole HTTP. 
                             //Cela signifie que le cookie ne sera pas accessible via des langages de scripts, comme Javascript. 
@@ -75,8 +85,33 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                             ));
                     }
 
-                    if (empty($_COOKIE['cookie-pseudo']) || $_COOKIE['cookie-pseudo'] != $pseudo)
+                    //Et si les cookies n'existent pas on en genere                     
+                    if (empty($_COOKIE['cookie-email']))
                     {
+                        setcookie('cookie-email', $email, array(
+
+                            'expires' => time() + 60*24*36000,//Valide 1 an
+                            'path' => '/',
+                            'domain' => '',
+                            'secure' => false,
+                            'httponly' => true, 
+                            'samesite' => 'lax'
+                            ));
+
+                    }
+
+                    if ($_COOKIE['cookie-pseudo'] != $pseudo)
+                    {
+                        setcookie('cookie-pseudo', '' , array(
+                            'expires' => time()-3600,
+                            'path' => '/',
+                            'domain' => '',
+                            'secure' => false,
+                            'httponly' => true,
+                            'samesite' => 'lax'
+                            ));
+            
+                        unset($_COOKIE['cookie-pseudo']);
 
                         setcookie('cookie-pseudo', $pseudo , array(
                             'expires' => time() + 60*24*36000,
@@ -88,9 +123,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                             ));
                     }
 
-                    if (empty($_COOKIE['cookie-state']) || $_COOKIE['cookie-state'] != $state)
+                    if (empty($_COOKIE['cookie-pseudo'])) 
                     {
+                        
+                        setcookie('cookie-pseudo', $pseudo , array(
+                            'expires' => time() + 60*24*36000,
+                            'path' => '/',
+                            'domain' => '',
+                            'secure' => false,
+                            'httponly' => true,
+                            'samesite' => 'lax'
+                            ));
+                    }
 
+                    if ($_COOKIE['cookie-state'] != $state)
+                    {
+                        setcookie('cookie-state', '' , array(
+                            'expires' => time()-3600,
+                            'path' => '/',
+                            'domain' => '',
+                            'secure' => false,
+                            'httponly' => true,
+                            'samesite' => 'lax'
+                            ));
+            
+                        unset($_COOKIE['cookie-state']);
+
+                        setcookie('cookie-state', $state , array(
+                            'expires' => time() + 60*24*36000,
+                            'path' => '/',
+                            'domain' => '',
+                            'secure' => false,
+                            'httponly' => true,
+                            'samesite' => 'lax'
+                            ));
+                    }
+
+                    if (empty($_COOKIE['cookie-state'])) 
+                    {
+                        
                         setcookie('cookie-state', $state , array(
                             'expires' => time() + 60*24*36000,
                             'path' => '/',

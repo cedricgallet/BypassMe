@@ -29,6 +29,7 @@
 
 
                                 <!-- =============================boucle choix catégories====================== -->
+                                <label for="categories" class="col-form-label text-warning">Categories*</label>
 
                                 <select name="categories" id="categories" class="bg-transparent text-info form-control tex-info">
                                     <option value="">Choix de la catégorie</option>
@@ -44,18 +45,21 @@
                                 <!-- ==============================Titre=============================== -->
 
                                 <div class="mb-3 mt-3">
+                                <label for="title" class="col-form-label text-warning">Titre*</label>
+
                                     <input type="text" 
                                             name="title" 
                                             id="title" 
                                             class="bg-transparent form-control text-info"
-                                            value="Saisir le titre de l'article">
+                                            value=""
+                                            placeholder="">
                                 </div>
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['title'] ?? '')?></div>
 
 
                                     <!-- ============================Article============================== -->
                                 <div class="mb-3">
-                                    <label for="article" class="col-form-label text-info">Ecrire l' article</label>
+                                    <label for="article" class="col-form-label text-warning">Article*</label>
                                     
                                     <textarea
                                         name ="article" 
@@ -64,7 +68,8 @@
                                         rows="9" 
                                         minlength="10" 
                                         maxlength="1500"
-                                        placeholder="Votre article">
+                                        value=""
+                                        placeholder="">
                                     </textarea>
                                 </div>
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['article'] ?? '')?></div>

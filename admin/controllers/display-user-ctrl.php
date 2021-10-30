@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once dirname(__FILE__) . '/../../models/User.php';//Models
+// require_once dirname(__FILE__) . '/../../models/Comment.php';//Models
+// require_once dirname(__FILE__) . '/../../models/Article.php';//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
@@ -34,9 +36,10 @@ if(!$user){
     header('location: /../admin/controllers/list-user-ctrl.php?msgCode=3');
 }
 
-/* ************* AFFICHAGE DES VUES **************************/
+/* ********************* AFFICHAGE DES VUES *********************/
 
 require dirname(__FILE__) . '/../../views/templates/header.php';
 require dirname(__FILE__) . '/../../admin/views/display-user.php';
-//require dirname(__FILE__) . '/../../admin/views/display-comment.php';
+// require dirname(__FILE__) . '/../../admin/views/display-comment.php';
+// require dirname(__FILE__) . '/../../admin/views/display-article.php';
 

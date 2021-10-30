@@ -1,5 +1,5 @@
-<div id="bgGestionAdmin" class="container-fluid h-100 p-0">
-  <div class="row h-100">
+<div id="bgGestionAdmin" class="container-fluid h-100">
+  <div class="row">
 
       <!-- *****************************Affichage d'un message d'erreur personnalisé******************************** -->
       <?php 
@@ -7,7 +7,7 @@
           if(!array_key_exists($msgCode, $displayMsg)){
               $msgCode = 0;
           }
-          echo '<div class="fs-4 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+          echo '<div class="fs-4 text-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
       } ?>
       <!-- *********************************************************************************************************** -->
 
@@ -20,30 +20,27 @@
         <input type="submit" value="Rechercher">
       </form>
     </div>
-
+      <!-- *************************Lien acces listes**************************** -->
     <div class="col-12 d-flex">
-        <div class="col-12 col-lg-6 text-center">
-        <a href="/../../admin/controllers/list-user-ctrl.php"><h2 class="mt-3 text-warning"><?=$title2 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-message-ctrl.php"><h2 class="mt-3"><?=$title5 ?? ''?></h2></a>
-        </div>
-
-        <div class="col-12 col-lg-6 text-center">
-            <a href="/../../admin/controllers/list-article-ctrl.php"><h2 class="mt-3"><?=$title3 ?? ''?></h2></a>
-            <a href="/../../admin/controllers/list-comment-ctrl.php"><h2 class="mt-3"><?=$title4 ?? ''?></h2></a>
+        <div class="col-12 d-flex justify-content-around">
+            <a href="/../../admin/controllers/list-user-ctrl.php" class="fsizeLink mt-3 text-warning"><img class="img-fluid" style="height:70px; width:70px;" src="/../../assets/img/liste-user.png" alt="logo-utilisateur" title="Liste des utilisateurs"></a>
+            <a href="/../../admin/controllers/list-message-ctrl.php" class="fsizeLink mt-3 text-warning"><img class="img-fluid" style="height:70px; width:70px;" src="/../../assets/img/liste-message.jpg" alt="logo d'un message" title="Liste des messages"></a>
+            <a href="/../../admin/controllers/list-article-ctrl.php" class="fsizeLink mt-3 text-warning"><img class="img-fluid" style="height:70px; width:70px;" src="/../../assets/img/Liste-article.jpg" alt="logo d'un article" title="Liste des articles"></a>
+            <a href="/../../admin/controllers/list-comment-ctrl.php" class="fsizeLink mt-3 text-warning"><img class="img-fluid" style="height:70px; width:70px;" src="/../../assets/img/Liste-comment.jpg" alt="logo d'un commentaire" title="Liste des commentaires"></a>
         </div>
     </div>
 
     <div class="col-12 mt-4 pe-4 ps-4">
       <table class="table table-hover table-responsive table-bordered">
         <caption>
-          <tr class="fs-3 text-info">
+          <tr class="fs-4 text-info">
             <th scope="col">#</th>
             <th scope="col-3">Pseudo</th>
             <th scope="col">Email</th>
-            <th scope="col">Ip</th>
-            <th scope="col">Status</th>
             <th scope="col">Ajouté le</th>
             <th scope="col">Mis a jour le</th>
+            <th scope="col">Ip</th>
+            <th scope="col">Status</th>
             <th scope="col">Actions</th>
           </tr>
         </caption>
@@ -56,27 +53,26 @@
               $i++;
               ?>
               
-              <tr class="text-white fs-3"><th scope="row"><?=htmlentities($user->id)?></th>
+              <tr class="text-white fs-4"><th scope="row"><?=htmlentities($user->id)?></th>
                 <td><?=htmlentities($user->pseudo)?></td>
                 <td><?=htmlentities($user->email)?></td>
+                <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->created_at)))?></td>    
+                <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->updated_at)))?></td>
                 <td><?=htmlentities($user->ip)?></td>
 
                 <?php
                 if($user->state == 0){
                   ?>
 
-                  <td class='text-danger bg-dark'>Désactivé</td>
+                <td class='text-danger bg-dark'>Désactivé</td>
 
                   <?php
                   } else {
                   ?>
 
-                  <td class='text-success bg-dark'>Activé</td>
+                <td class='text-success bg-dark'>Activé</td>
 
                 <?php } ?>
-
-                <td ><?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->created_at)))?></td>    
-                <td><?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->updated_at)))?></td>
 
                 <td>
                   <a href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text-info far fa-edit"></i></a>

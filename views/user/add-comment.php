@@ -24,6 +24,7 @@
                         <!-- *******************************Boucle choix catégories**************************** -->
                         <div class="card-body h-100">
                             <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                            <label for="categories" class="col-form-label text-warning">Categories*</label>
 
                                 <select name="categories" 
                                         id="categories" 
@@ -41,7 +42,7 @@
 
                                 <!-- ************************************Commentaire*******************************= -->
                                 <div class="mb-3">
-                                    <label for="comment" class="col-form-label tex-info">Ecrire le commentaire</label>
+                                    <label for="comment" class="col-form-label text-warning">Ecrire le commentaire*</label>
                                     
                                     <textarea
                                         name ="comment" 
@@ -56,7 +57,7 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['comment'] ?? '')?></div>
 
 
-                                <button type="submit" class="form-control btn text-success border submit px-3 rounded-pill">Envoyer le commentaire ?</button>
+                                <button type="submit" class="form-control btn text-success rounded-pill">Envoyer le commentaire ?</button>
                             </form>
                         </div>
                     </div>

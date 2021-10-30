@@ -4,42 +4,47 @@ require_once(dirname(__FILE__).'/../../config/regex.php');
 require_once(dirname(__FILE__).'/../../models/User.php');//Models
 require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
 
-// *****************************************SECURITE ACCES PAGE******************************************
-if (!isset($_SESSION['user'])) {
+// *******************************SECURITE ACCES PAGE***********************************
+if (!isset($_SESSION['user'])) {//Si la session n'existe pas on redirige
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
-//On check si le mdp par défault est le meme que le mdp en cours
+//On check si le mdp par défault(constante) est le meme que le mdp en cours de session
 $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if( $_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
-    die;
-        
+    die;        
 }
-// ********************************************************************************************************
+// ***************************************************************************************
+
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
 
-$title = 'Modification d\'un utilisateur en cours ...';
+if ($_SESSION['user']->email == DEFAULT_EMAIL) 
+{
+    $title = 'Modification d\'un profil administrateur en cours ...';
+}else {
+    $title = 'Modification d\'un profil utilisateur en cours ...';
+}
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
-
 
 
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
-
      // ***********************Status**************************
+
     // On verifie l'existance et on nettoie
     $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
      // ***********************pseudo**************************
+
     // On verifie l'existance et on nettoie
     $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING));
 
@@ -85,9 +90,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $cost =['cost' => 12]; // On hash le mot de passe avec Bcrypt, via un coût de 12
         $password = password_hash($password, PASSWORD_DEFAULT,$cost);
 
-
-    }else{
-        $errorsArray['password'] = 'Le champ est obligatoire';
     }
     
 
@@ -97,8 +99,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos
 
+        // ********************************************
 
         $result = $user->update($id);//On met a jour 
+
+        // ********************************************
         
         if ($email != $_COOKIE['cookie-email']) 
         {
@@ -110,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         }
 
 
-        //Si les infos MAJ sont differentes des cookies stocker chez l'utilisateur, on supprime et on genere des nouveaux cookies
+        //Si les infos MAJ sont differentes des cookies stocker, on supprime et on genere des nouveaux cookies
         if ($email != $_COOKIE['cookie-email']) 
         {
             //On supprime le cookie en générant un cookie de meme nom avec une date de -1h par rapport au timestanp par défaut (1er jan 1970 à 0H00)

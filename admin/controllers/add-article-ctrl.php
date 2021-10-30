@@ -50,11 +50,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     // On verifie l'existance et on nettoie
     $article = trim(filter_input(INPUT_POST, 'article', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); 
 
-    //**************************Status******************************
-
-    // On verifie l'existance et on nettoie
-    $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
-
     // *********************Catégories************************
     //On test si le champ n'est pas vide
     if(empty($categories)){
@@ -81,21 +76,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
     if(empty($errorsArray))
     {
-
-        $newArticle = new Article($categories, $title, $article);//On instancie/On récupére les infos  
-
-        $result = $newArticle->createArticle();//On ajoute en bdd
-        if($result===true){//Si l ajout s'est bien passé = 1
-
+    
+        $newArticle = new Article($categories, $title, $article);//On instancie/On récupére les infos
+        $createArticle = $newArticle->createArticle();
+        
+        if($createArticle)//Si vrai
+        {
 
             header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=21');//On redirige av mess succés
             die;
 
-
         } else {
-            // Si l'enregistrement s'est mal passé, on réaffiche le formulaire av un mess d'erreur.
-            $msgCode = $result;
-        }
+
+            // Si l'enregistrement s'est mal passé, on redirige av un mess d'erreur.
+            header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=24');
+            die;
+        }  
 
     }
 

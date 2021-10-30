@@ -16,7 +16,8 @@ if (!isset($_SESSION['user'])) {
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+//On check si la constante du mot de passe administrateur est la meme que le mdp en cours de session
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
