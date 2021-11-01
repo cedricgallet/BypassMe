@@ -6,32 +6,36 @@
 
             <div class="card rounded-2">
                 <div class="text-center">
-                    <div class="d-flex justify-content-start mt-3 ms-3">
+                    <div class="d-flex justify-content-between mt-3 ms-3">
 
                         <!-- **************************Status******************************** -->
                         <?php
                       if ($user->state == 0) {                    
                   ?>
 
-                        <div class='card-text text-info text-start me-1'>Status de l'utilisateur > <strong
+                        <div class='fs-5 card-text text-warning text-start me-1'><strong>Status de l'utilisateur > </strong> <strong
                                 class="text-danger">DÉSACTIVÉ</strong>
                         </div>
 
                         <?php } else { ?>
 
-                        <div class='card-text text-info text-start me-1'>Status de l'utilisateur > <strong
+                        <div class='fs-5 card-text text-warning text-start me-1'><strong>Status de l'utilisateur > </strong> <strong
                                 class="text-success">ACTIVÉ</strong>
                         </div>
 
                         <?php } ?>
                         <!-- ************************************************************** -->
 
+                        <div class="text-end">
+                            <a href="/../../controllers/signUp-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text fas fa-plus" title="Ajouter un utilisateur"></i></a>
+                            <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt" title="supprimer l'utilisateur"></i></a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card-body">
 
-                    <p class="card-text text-center card-header"><strong>Pseudo > </strong>
+                    <p class="card-text text-center card-header">Pseudo > </Pseudo>
                         <?=htmlentities($user->pseudo)?>
                     </p>
 
@@ -55,7 +59,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <a href="/../../admin/controllers/edit-user-ctrl.php?id=<?=htmlentities($user->id)?>"
-                            class="border text-info btn btn-success">Modifier l'utilisateur</a>
+                            class="border btn btn-success">Modifier l'utilisateur</a>
                     </div>
 
                     <div>
@@ -67,3 +71,5 @@
         </div>
     </div>
 </div>
+<!-- *********************************************** -->
+<script src="/../../assets/js/checkConfirm.js"></script>

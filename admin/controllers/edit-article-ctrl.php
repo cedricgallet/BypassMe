@@ -91,5 +91,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 /* ************* VUES **************************/
 require_once dirname(__FILE__) . '/../../views/templates/header.php';
-require_once dirname(__FILE__) . '/../../admin/views/edit-article.php';
+require_once dirname(__FILE__) . '/../../admin/views/add-article.php';
 

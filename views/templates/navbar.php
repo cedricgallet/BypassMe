@@ -46,13 +46,13 @@
                     </ul>
                 </li>
 
-                <?php
-                    if(isset($_SESSION['user']))
-                    { ?>
-                        <li class='nav-item'>
-                                <a class='nav-link' href='/../controllers/bonus-ctrl.php'>Bonus</a>
-                            </li>
-            <?php   } ?>
+                <?php if(isset($_SESSION['user'])) { ?>
+
+                    <li class='nav-item'>
+                        <a class='nav-link' href='/../controllers/bonus-ctrl.php'>Bonus</a>
+                    </li>
+
+                <?php } ?>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/../controllers/add-message-ctrl.php">Contact</a>
@@ -89,16 +89,16 @@
 
                 <?php } else {  ?> 
 
-                        <li>
-                                <a href="/../controllers/signOut-ctrl.php"
-                                class="bottom text-decoration-none rounded-pill">
-                                Deconnexion </a>
-                                
-                            <a href='/../controllers/landing-ctrl.php'
-                                class='bottom text-decoration-none rounded-pill'>
-                                | Mon compte
-                            </a>
-                        </li>
+                    <li>
+                        <a href="/../controllers/signOut-ctrl.php"
+                            class="bottom text-decoration-none rounded-pill">
+                            Deconnexion </a>
+                            
+                        <a href='/../controllers/landing-ctrl.php'
+                            class='bottom text-decoration-none rounded-pill'>
+                            | Mon compte
+                        </a>
+                    </li>
 
                <?php } ?>
                 

@@ -34,8 +34,17 @@ $getUser = User::get($id);
 
 // Appel à la méthode statique permettant de récupérer un message
 $getMessage = Message::getMessage($id);
+
+//**************************id-user(Foreign Key)******************************
+// On verifie l'existance et on nettoie
+$id_user = intval(trim(filter_input(INPUT_GET, '$id_user', FILTER_SANITIZE_NUMBER_INT)));
+
 // Récupération d'id_user
-$id_user = $getMessage->id_user;
+// $id_user = $getMessage->id_user;
+
+//**************************Status******************************
+// On verifie l'existance et on nettoie
+$state = intval(trim(filter_input(INPUT_GET, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
@@ -73,7 +82,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     {
         $getNewMessage = new Message($subject, $message, $state,'','',$id_user);
 
-        
         if($getNewMessage->updateMessage($id)===true){//Si la MAJ s'est bien passé ( = vrai)
             header('location: /../../admin/controllers/list-message-ctrl.php?id='.$id.'&msgCode=41');
         } else {

@@ -51,7 +51,7 @@
                                             name="title" 
                                             id="title" 
                                             class="bg-transparent form-control text-info"
-                                            value=""
+                                            value="<?=htmlentities($title ?? '')?>"
                                             placeholder="">
                                 </div>
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['title'] ?? '')?></div>
@@ -68,8 +68,7 @@
                                         rows="9" 
                                         minlength="10" 
                                         maxlength="1500"
-                                        value=""
-                                        placeholder="">
+                                        placeholder=""><?=htmlentities($article ?? '')?>
                                     </textarea>
                                 </div>
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['article'] ?? '')?></div>

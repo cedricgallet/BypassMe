@@ -24,19 +24,17 @@
                             <!-- **********************************Status message***************************** -->
                             <div class="form-outline">
 
-                            <?php
-                                    if ($getUser->state == 0) {                    
-                                ?>
+                                <?php if ($getMessage->state == 0) { ?>
 
                                         <div class='card-text text-warning text-start me-1'>Status du message > <strong class='text-danger'>DÉSACTIVÉ</strong>
                                         </div>
 
-                                <?php } else { ?>
+                                    <?php } else { ?>
 
                                         <div class='card-text text-warning text-start me-1'>Status du message > <strong class='text-success'>ACTIVÉ</strong>
                                         </div>
                             
-                                <?php } ?>
+                                    <?php } ?>
 
                             </div>
                                     <!-- ***************************Activé/Désactivé******************** -->

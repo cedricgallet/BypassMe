@@ -30,7 +30,6 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 // Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur
 $user = User::get($id);
 
-
 // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
 if(!$user){
     header('location: /../admin/controllers/list-user-ctrl.php?msgCode=3');

@@ -18,7 +18,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 }
 // ********************************************************************************************************
 
-$title = 'Consultation d\'un article en cours ...';
+$title1 = 'Consultation d\'un article en cours ...';
 
 
 //**************************ID******************************

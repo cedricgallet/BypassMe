@@ -1,4 +1,4 @@
-<div id="bgLanding" class="container-fluid h-100 p-0">    
+<div id="" class="container-fluid h-100 p-0">    
     <div class="row h-100">
 
         <!-- ******************Affichage d'un message d'erreur personnalisé******************* -->
@@ -38,7 +38,7 @@
                         <a href="/../index.php" class="m-2 boutton btn text-success border mb-2">Accueil</a>
 
                         <a href="/../controllers/userUpdateProfil-ctrl.php?id=<?=htmlentities($user->id)?>" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Modifier
-                                mes informations</a>
+                                mon profil</a>
 
                         <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2">Déconnexion</a>
                     </div>
@@ -65,26 +65,28 @@
 
                     <!-- **************************Status******************************** -->
                     <?php
-                        if ($user->state == 0) {                    
-                    ?>
+                      if ($user->state == 0) {                    
+                  ?>
 
-                            <div class='card-text text-info text-start me-1'>Status du compte > <strong class="text-danger">DÉSACTIVÉ</strong>
-                            </div>
+                        <div class='fs-5 card-text text-warning text-start me-1'><strong>Status de l'utilisateur > </strong> <strong
+                                class="text-danger">DÉSACTIVÉ</strong>
+                        </div>
 
-                    <?php } else { ?>
+                        <?php } else { ?>
 
-                            <div class='card-text text-info text-start me-1'>Status du compte > <strong class="text-success">ACTIVÉ</strong>
-                            </div>
-                
-                    <?php } ?>
+                        <div class='fs-5 card-text text-warning text-start me-1'><strong>Status de l'utilisateur > </strong> <strong
+                                class="text-success">ACTIVÉ</strong>
+                        </div>
+
+                        <?php } ?>
                     <!-- ************************************************************** -->
                     
                 </div>
 
                 <div class="card-body">
 
-                    <p class="card-text text-center card-header"><strong>Pseudo > </strong>
-                        <?=htmlentities($user->pseudo)?>
+                    <p class="card-text card-header text-center">Pseudo -> 
+                        <?=htmlentities($user->pseudo)?>    
                     </p>
 
                     <p class="mt-3 card-text"><strong>Email - </strong>
@@ -96,14 +98,39 @@
                     </p>
 
                     <p class="card-text"><strong>Ajouté le </strong>
-                        <?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->created_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:i', strtotime($user->created_at)))?>
                     </p>
 
                     <p class="card-text"><strong>Dernière modification le </strong>
-                        <?=htmlentities(date('d-m-Y à H:i:s', strtotime($user->updated_at)))?>          
+                        <?=htmlentities(date('d-m-Y à H:i', strtotime($user->updated_at)))?>          
                     </p>
                 </div>
             </div>
+
+
+
+
+
+
+            <div class="id-card-wrapper">
+                <div class="id-card">
+                    <div class="profile-row">
+                        <div class="dp">
+                            <div class="dp-arc-outer"></div>
+                            <div class="dp-arc-inner"></div>
+                            <img src="/../assets/img/logo.png" alt="avatar choisi par l'utilisateur">
+                        </div>
+                        <div class="desc">
+                            <h1>Tony Stark</h1>
+                                <p>Strength: Ironman Suit</p>
+                                <p>Weakness: None</p>
+                                <p>Known as: Iron Man</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="col-12 col-lg-4">
@@ -141,7 +168,7 @@
                         <div class="text-center">
 
                             <a href="/../controllers/userUpdateProfil-ctrl.php?id=<?=htmlentities($user->id);?>" class="bg-dark m-2 boutton btn btnLanding border text-white mb-2">Modifier
-                                mes informations</a>
+                                mon profil</a>
                                 
                             <a href="/../controllers/signOut-ctrl.php" class="bg-dark m-2 boutton btn text-danger border mb-2">Déconnexion</a>
 
