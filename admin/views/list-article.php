@@ -33,7 +33,7 @@
     <div class="col-12 mt-4 pe-4 ps-4">
       <table class="table table-hover table-responsive table-bordered">
         <caption>
-          <tr class="fs-4 text-warning">
+          <tr class="fs-4 card-header">
             <th scope="col">#</th>
             <th scope="col-3">Categories</th>
             <th scope="col">Titre</th>
@@ -59,17 +59,13 @@
                 <td ><?=htmlentities(date('d-m-Y à H:i', strtotime($getArticle->created_at)))?></td>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getArticle->updated_at)))?></td>
 
-                <?php
-                if($getArticle->state == 0){
-                  ?>
+                <?php if($getArticle->state == 0){ ?>
+                  
+                  <td class='bg-dark'><a href="/../../admin/controllers/enableContent-ctrl.php?id=<?=htmlentities($getArticle->id)?>" class='text-danger' title="Activer l'article">Désactivé</a></td>
+                
+                <?php } else { ?>
 
-                <td class='text-danger bg-dark'>Désactivé</td>
-
-                  <?php
-                  } else {
-                  ?>
-
-                <td class='text-success bg-dark'>Activé</td>
+                  <td class='bg-dark'><a href="/../../admin/controllers/disableContent-ctrl.php?id=<?=htmlentities($getArticle->id)?>" class='text-success' title="Désactiver l'article">Activé</a></td>
 
                 <?php } ?>
               </tr>

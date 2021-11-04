@@ -1,22 +1,23 @@
 <?php   
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../config/regex.php');
-require_once(dirname(__FILE__).'/../models/User.php');//Models
-require_once(dirname(__FILE__).'/../config/config.php');//Constante + Gestion erreur
+require_once(dirname(__FILE__).'/../admin/utils/regex.php');
+require_once(dirname(__FILE__).'/../admin/models/User.php');//Models
+require_once(dirname(__FILE__).'/../admin/config/config.php');//Constante + Gestion erreur
 
 // ****************************SECURITE ACCES PAGE*************************** 
 if(!isset($_SESSION['user']))
 {
-    header('Location:/../controllers/signUp-ctrl.php?msgCode=38');
+    header('Location:/../user/controllers/signUp-ctrl.php?msgCode=38');
     die();
 }
 // ***********************************************************************************
 
-$title ='Modifier mes informations';
+$title ='Modification du profil en cours ...';
 
 $errorsArray = array();//Tableau erreur vide
 
-$id = $_SESSION['user']->id;
+// Nettoyage de l'id passé en GET dans l'url
+$id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des données d'envoyées 
@@ -110,24 +111,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
             $result = $user->update($id);//On met a jour le mdp        
             if($result===true){//Si la MAJ s'est bien passé = 1
                 
-
                 // +++++++++++++++++++++++Redirection administration+++++++++++++++++++++++
 
-                //On check si le mdp par défault est le meme que le mdp en bdd
+                //On check si le mdp par défault(constante) est le meme que le mdp en bdd
                 $passDefault =  password_verify(DEFAULT_PASS, $user->password);
 
                 if($user->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) 
                 {
 
                                 
-                    header('location: /../controllers/landing-ctrl.php?msgCode=35');//On redirige l'admin av mess succés vers vers le tableau de bord
+                    header('location: /../user/controllers/landing-ctrl.php?msgCode=35');//On redirige l'admin av mess succés vers vers le tableau de bord
                     die;
 
 
                 // Sinon on redirige l' utilisateur
                 }else {
-                    //On connecte l'utilisateur
-                    header('location: /../controllers/landing-ctrl.php?msgCode=35');//On redirige l'utilisateur av mess succés vers le tableau de bord
+                    header('location: /../user/controllers/landing-ctrl.php?msgCode=35');//On redirige l'utilisateur av mess succés vers le tableau de bord
                     die;
                 }
 
@@ -154,13 +153,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
         $email =$user->email;
 
     } else { // Si l'utilisateur n'existe pas, on redirige vers la meme page avec un code erreur
-        header('location: /../controllers/userUpdateProfil-ctrl.php?msgCode=19');
+        header('location: /../user/controllers/userUpdateProfil-ctrl.php?msgCode=19');
         die;
     }
 }
 
     
 // *****************************Vues*****************************
-require_once dirname(__FILE__).'/../views/templates/header.php';
-require_once dirname(__FILE__) .'/../views/user/userUpdateProfil.php';
-require_once dirname(__FILE__) .'/../views/templates/footer.php';
+require_once dirname(__FILE__).'/../templates/header.php';
+require_once dirname(__FILE__) .'/../user/views/userUpdateProfil.php';
+require_once dirname(__FILE__) .'/../templates/footer.php';

@@ -33,7 +33,7 @@
     <div class="col-12 mt-4 pe-4 ps-4">
       <table class="table table-hover table-responsive table-bordered">
         <caption>
-          <tr class="fs-4 text-warning">
+          <tr class="fs-4 card-header">
             <th scope="col">#</th>
             <th scope="col-3">Pseudo</th>
             <th scope="col">Email</th>
@@ -59,19 +59,15 @@
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($user->updated_at)))?></td>
                 <td><?=htmlentities($user->ip)?></td>
 
-                <?php
-                if($user->state == 0){
-                  ?>
+                  <?php if($user->state == 0){ ?>
+                  
+                    <td class='bg-dark'><a href="/../../admin/controllers/enableContent-ctrl.php?id=<?=htmlentities($user->id)?>" class='text-danger' title="Activer le compte">Désactivé</a></td>
+                  
+                  <?php } else { ?>
 
-                <td class='text-danger bg-dark'>Désactivé</td>
+                    <td class='bg-dark'><a href="/../../admin/controllers/disableContent-ctrl.php?id=<?=htmlentities($user->id)?>" class='text-success' title="Désactiver le compte">Activé</a></td>
 
-                  <?php
-                  } else {
-                  ?>
-
-                <td class='text-success bg-dark'>Activé</td>
-
-                <?php } ?>
+                  <?php } ?>
               </tr>
           <?php } ?>
         </tbody>

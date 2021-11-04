@@ -1,18 +1,18 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once dirname(__FILE__).'/../../models/Comment.php';//Models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once dirname(__FILE__).'/../../admin/models/Comment.php';//Models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
 $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }

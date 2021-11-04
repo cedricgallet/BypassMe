@@ -1,6 +1,6 @@
 <?php
 session_start();
 
-include dirname(__FILE__).'/controllers/home-page-ctrl.php';
+require_once dirname(__FILE__).'/user/controllers/home-page-ctrl.php';
 
 

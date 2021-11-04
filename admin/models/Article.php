@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__).'/../utils/database.php');
+include(dirname(__FILE__).'/../../admin/utils/database.php');
 
 
 class Article{
@@ -167,6 +167,7 @@ class Article{
         try{
             $sql = 'DELETE FROM `article`
                     WHERE `id` = :id;';
+                    
             $sth = $pdo->prepare($sql);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->execute();

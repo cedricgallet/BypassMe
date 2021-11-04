@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . '/../../models/User.php';//Models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once dirname(__FILE__) . '/../../admin/models/User.php';//Models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + gestion erreur
 
 
 $title1 = 'Gestion membres';
@@ -10,9 +10,12 @@ $title2 = 'Membres';
 $title3 = 'Articles';
 $title4 = 'Commentaires';
 
+// Nettoyage de l'id de l'utilisateur passé en GET dans l'url
+$id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
+
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
@@ -20,7 +23,7 @@ if (!isset($_SESSION['user'])) {
 $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
        
 }
@@ -52,6 +55,6 @@ $offset = $limit*($currentPage-1);
 $allUsers = User::getAll($s,$limit,$offset);
 
 /* *************VUES **************************/
-require_once dirname(__FILE__) .'/../../views/templates/header.php';
+require_once dirname(__FILE__) .'/../../templates/header.php';
 require_once dirname(__FILE__) .'/../../admin/views/list-user.php';
 

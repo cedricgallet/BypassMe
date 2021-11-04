@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once(dirname(__FILE__).'/../config/regex.php');
-require_once(dirname(__FILE__).'/../models/User.php');//Models
-require_once(dirname(__FILE__).'/../config/config.php');//Constante + Gestion erreur
+require_once(dirname(__FILE__).'/../../admin/utils/regex.php');
+require_once(dirname(__FILE__).'/../../admin/models/User.php');//Models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + Gestion erreur
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
@@ -132,7 +132,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             
             if($result===true){//Si l'ajout s'est bien passé = 1
 
-                header('location: /../controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
+                header('location: /../../user/controllers/signIn-ctrl.php?msgCode=12');//On redirige av mess succés
                 die;
             
             } else {
@@ -141,7 +141,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             }
 
         }else {
-            header('location: /../controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
+            header('location: /../../user/controllers/signUp-ctrl.php?msgCode=13');//Si l'utilisateur existe on redirige av mess erreur
             die;
         }
 
@@ -150,6 +150,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 }
 
 // **********************VUES******************************
-require_once(dirname(__FILE__).'/../views/templates/header.php');
-require_once(dirname(__FILE__).'/../views/user/signUp.php');
-require_once(dirname(__FILE__).'/../views/templates/footer.php');
+require_once(dirname(__FILE__).'/../../templates/header.php');
+require_once(dirname(__FILE__).'/../../user/views/signUp.php');
+require_once(dirname(__FILE__).'/../../templates/footer.php');

@@ -49,13 +49,13 @@
                 <?php if(isset($_SESSION['user'])) { ?>
 
                     <li class='nav-item'>
-                        <a class='nav-link' href='/../controllers/bonus-ctrl.php'>Bonus</a>
+                        <a class='nav-link' href='/../user/controllers/bonus-ctrl.php'>Bonus</a>
                     </li>
 
                 <?php } ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/../controllers/add-message-ctrl.php">Contact</a>
+                    <a class="nav-link" href="/../user/controllers/add-message-ctrl.php">Contact</a>
                 </li>
             </ul>
             <!-- ======================================RECHERCHER========================================= -->
@@ -75,13 +75,13 @@
                 <?php if(!isset($_SESSION['user'])) { ?> 
                    
                 <li>
-                    <a href="/../controllers/signIn-ctrl.php"
+                    <a href="/../user/controllers/signIn-ctrl.php"
                         class="bottom text-decoration-none rounded-pill">
                         Se connecter |</a>
                 </li>
 
                 <li>   
-                    <a href="/../controllers/signUp-ctrl.php"
+                    <a href="/../user/controllers/signUp-ctrl.php"
                         class="bottom text-decoration-none rounded-pill">
                         S'inscrire
                     </a>
@@ -90,11 +90,11 @@
                 <?php } else {  ?> 
 
                     <li>
-                        <a href="/../controllers/signOut-ctrl.php"
+                        <a href="/../user/controllers/signOut-ctrl.php"
                             class="bottom text-decoration-none rounded-pill">
                             Deconnexion </a>
                             
-                        <a href='/../controllers/landing-ctrl.php'
+                        <a href='/../user/controllers/landing-ctrl.php'
                             class='bottom text-decoration-none rounded-pill'>
                             | Mon compte
                         </a>

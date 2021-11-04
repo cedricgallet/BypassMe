@@ -1,5 +1,5 @@
 <?php
-session_start(); // Démarrage de la session
+session_start(); // Démarrage de la session  
 
 // *********************SECURISER ACCES PAGE**************
 if(!isset($_SESSION['user'])){
@@ -9,6 +9,8 @@ if(!isset($_SESSION['user'])){
 
 
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-require_once(dirname(__FILE__).'/../views/templates/header.php');
-require_once(dirname(__FILE__).'/../views/user/solutions.php');
-require_once(dirname(__FILE__).'/../views/templates/footer.php');
+require_once(dirname(__FILE__).'/../templates/header.php');
+require_once(dirname(__FILE__).'/../user/views/bonus.php');
+require_once(dirname(__FILE__).'/../templates/footer.php');
+
+

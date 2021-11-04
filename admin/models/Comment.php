@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__).'/../utils/database.php');
+require_once dirname(__FILE__).'/../../admin/utils/database.php';
 
 
 class Comment{
@@ -99,7 +99,7 @@ class Comment{
 
      // ****************************************************************
     
-    //  Méthode qui permet de lister tous les comment  
+    //  Méthode qui permet de lister tous les commentaires  
     public static function getAllComment()
     {
         $sql = "SELECT * FROM `comment`;";
@@ -123,7 +123,7 @@ class Comment{
 
     // ****************************************************************
     /**
-     * Méthode qui permet de modifier un comment
+     * Méthode qui permet de modifier un commentaires
      * 
      * @return boolean
      */
@@ -152,7 +152,7 @@ class Comment{
 
       // ****************************************************************
     /**
-     * Méthode qui permet de supprimer un utilisateur
+     * Méthode qui permet de supprimer un commentaire
      * 
      * @return boolean
      */

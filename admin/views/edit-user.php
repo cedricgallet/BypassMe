@@ -4,7 +4,7 @@
         <div class="col-12 d-flex justify-content-end login-wrap p-0">
             <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6">
                 <div class="d-flex">
-                    <h2 class=""><?=$title ?? ''?></h2>
+                    <h2 class="mb-5"><?='Profil de'.' ' .htmlentities($user->pseudo ?? '') .' '. 'en cours de modification...'?></h2>
                 </div>
 
                 
@@ -93,29 +93,17 @@
                             
                     </div>
 
-                    <div class="form-group mt-3">
-                        <label for="state" class="col-form-label text-info">Désactiver/Activer l'utilisateur ?</label>
-
-                        <select name="state" class="form-outline" required>
-                            <option selected value="<?= htmlentities($state ?? '') ?>">Options</option>
-
-                            <option value="0">Désactiver</option>
-                            <option value="1">Activer</option>
-                        </select>
-                    </div>
-
                     <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
                     <div class="form-outline mt-4 mb-5">
                         <button 
                                 id="btnSubmit" 
                                 type="submit"
-                                class="form-control card-header btn btn-warning submit px-3 rounded-pill">Mettre a jour ?</button>
+                                class="form-control card-header btn btn-warning submit px-3 rounded-pill">Mettre a jour</button>
                     </div>
 
                 </form>
-                <a class="btn btn-success" href="/../../admin/controllers/list-user-ctrl.php">Retour à la liste
-                    des utilisateurs ?</a>
+                <a class="btn btn-success" href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>">Retour</a>
             </div>
         </div>
     </div>

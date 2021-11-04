@@ -26,6 +26,6 @@ if($user && $tokenGet==$user->confirmation_token)
 }
 
 // ++++++++++++++++++++++Vues+++++++++++++++++++++++++++++++++++
-include(dirname(__FILE__) . '/../views/templates/header.php');
-include(dirname(__FILE__) . '/../views/user/signUpConfirm.php');
-include(dirname(__FILE__) . '/../views/templates/footer.php');
+include(dirname(__FILE__) . '/../templates/header.php');
+include(dirname(__FILE__) . '/../user/views/signUpConfirm.php');
+include(dirname(__FILE__) . '/../templates/footer.php');

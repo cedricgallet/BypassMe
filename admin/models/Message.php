@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__).'/../utils/database.php');
+include(dirname(__FILE__).'/../../admin/utils/database.php');
 
 
 class Message{

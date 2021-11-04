@@ -1,4 +1,16 @@
-    <div class="container-fluid">
+<!-- ******************Affichage d'un message d'erreur personnalisé******************* -->
+<?php 
+
+if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) {
+    if(!array_key_exists($msgCode, $displayMsg)){
+        $msgCode = 0;
+    }
+    echo '<div class="fs-4 d-flex justify-content-center align-items-center alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+} 
+?>
+<!-- ********************************************************************************* -->
+
+   <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 col-md-12 col-sm-12">
                 <!-- ======================CONTENU HOME PAGE===================== -->
@@ -202,6 +214,6 @@
 
 
             </div>
-            <?php require_once(dirname(__FILE__).'/../../views/templates/rightMenu.php');?>
+            <?php require_once(dirname(__FILE__).'/../../templates/rightMenu.php');?>
         </div>
     </div>

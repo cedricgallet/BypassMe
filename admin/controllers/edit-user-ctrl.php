@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once(dirname(__FILE__).'/../../config/regex.php');
-require_once(dirname(__FILE__).'/../../models/User.php');//Models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once dirname (__FILE__).'/../../admin/utils/regex.php';
+require_once dirname(__FILE__).'/../../admin/models/User.php';//Models
+require_once dirname(__FILE__).'/../../admin/config/config.php';//Constante + gestion erreur
 
 // *******************************SECURITE ACCES PAGE***********************************
 if (!isset($_SESSION['user'])) {//Si la session n'existe pas on redirige
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
@@ -14,7 +14,7 @@ if (!isset($_SESSION['user'])) {//Si la session n'existe pas on redirige
 $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if( $_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;        
 }
 // ***************************************************************************************
@@ -22,13 +22,6 @@ if( $_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 
 // Initialisation du tableau d'erreurs
 $errorsArray = array();
-
-if ($_SESSION['user']->email == DEFAULT_EMAIL) 
-{
-    $title = 'Modification d\'un profil administrateur en cours ...';
-}else {
-    $title = 'Modification d\'un profil utilisateur en cours ...';
-}
 
 // Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
@@ -221,6 +214,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 
 /* ************* VUES **************************/
-require_once dirname(__FILE__) . '/../../views/templates/header.php';
+require_once dirname(__FILE__) . '/../../templates/header.php';
 require_once dirname(__FILE__) . '/../../admin/views/edit-user.php';
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once dirname(__FILE__).'/../models/User.php';//Models
-require_once dirname(__FILE__).'/../config/config.php';//Gestion erreur + constante
+require_once dirname(__FILE__).'/../../admin/models/User.php';//Models
+require_once dirname(__FILE__).'/../../admin/config/config.php';//Gestion erreur + constante
 
 
 $errorsArray = array();//Tableau erreur vide
@@ -189,7 +189,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                         die;        
 
                     }else {
-                        header('location: /../controllers/landing-ctrl.php');//On redirige l'utilisateur vers son tableau de bord
+                        header('location: /../user/controllers/landing-ctrl.php');//On redirige l'utilisateur vers son tableau de bord
                         die;
                     }
 
@@ -200,7 +200,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
                 }
         
             }else {
-                header('location: /../controllers/signIn-ctrl.php?msgCode=19');//si le compte existe déjà on redirige av mess erreur
+                header('location: /../user/controllers/signIn-ctrl.php?msgCode=19');//si le compte existe déjà on redirige av mess erreur
                 die;
             }
 
@@ -213,6 +213,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 }
 
 // **************************VUES***************************
-require_once dirname(__FILE__).'/../views/templates/header.php';
-require_once dirname(__FILE__).'/../views/user/signIn.php';
-require_once dirname(__FILE__).'/../views/templates/footer.php';
+require_once dirname(__FILE__).'/../../templates/header.php';
+require_once dirname(__FILE__).'/../../user/views/signIn.php';
+require_once dirname(__FILE__).'/../../templates/footer.php';

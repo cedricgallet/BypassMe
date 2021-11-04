@@ -1,11 +1,11 @@
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../models/Message.php');//Models
-require_once(dirname(__FILE__).'/../models/User.php');//Models
+require_once(dirname(__FILE__).'/../../admin/models/Message.php');//Models
+require_once(dirname(__FILE__).'/../../admin/models/User.php');//Models
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 // ********************************************************************************************************
@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post)
                      
                 $pdo->commit(); // Valide la transaction et exécute toutes les requetes 
 
-                header('location: /../controllers/add-message-ctrl.php?msgCode=40');//On redirige l'admin av mess succés
+                header('location: /../../user/controllers/add-message-ctrl.php?msgCode=40');//On redirige l'admin av mess succés
                 die;
             
 
@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post)
             $pdo->rollBack(); // Annulation de toutes les requêtes exécutées avant la levée de l'exception
 
                 // Si l'enregistrement s'est mal passé, on redirige av un mess d'erreur.
-                header('location: /../controllers/add-message-ctrl.php?msgCode=42');
+                header('location: /../../user/controllers/add-message-ctrl.php?msgCode=42');
                 die;
         }  
 
@@ -99,14 +99,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post)
         $email = $user->email;
 
     } else { // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
-        header('location: /../controllers/add-message-ctrl.php?msgCode=3');
+        header('location: /../../user/controllers/add-message-ctrl.php?msgCode=3');
         die;
     }
 }
     
                 
 // ++++++++++++++++++++Templates et vues++++++++++++++++++++++++
-require_once(dirname(__FILE__).'/../views/templates/header.php');
-require_once(dirname(__FILE__).'/../views/user/add-message.php');
-require_once(dirname(__FILE__).'/../views/templates/footer.php');
+require_once(dirname(__FILE__).'/..//../templates/header.php');
+require_once(dirname(__FILE__).'/../../user/views/add-message.php');
+require_once(dirname(__FILE__).'/../../templates/footer.php');
 

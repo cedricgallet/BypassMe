@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/../config/config.php';
+require_once dirname(__FILE__).'/../../admin/config/config.php';
 
 class Database{
 
@@ -15,8 +15,8 @@ class Database{
                 self::$_pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             }
             return self::$_pdo;
-        } catch (PDOException $ex) {
-            echo sprintf('ProblÃ¨me de connexion avec l\'erreur %s', $ex->getMessage());
+        } catch (PDOException $e) {
+            echo sprintf('Problème de connexion à la base de donnée', $e->getMessage());
             die();
         }
     }

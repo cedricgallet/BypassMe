@@ -6,7 +6,7 @@
                 <p>BONJOUR</p> <!-- ===============================CONTENU DES BONUS======================================= -->
             </div>
             <!-- Génération du rightMenu: -->
-            <?php require_once dirname(__FILE__).'/../../views/templates/rightMenu.php';?>
+            <?php require_once dirname(__FILE__).'/../../templates/rightMenu.php';?>
         </div>
     </div>
 

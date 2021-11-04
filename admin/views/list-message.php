@@ -26,7 +26,7 @@
     <div class="col-12 mt-4 pe-4 ps-4">
       <table class="table table-hover table-responsive table-bordered">
         <caption>
-          <tr class="fs-4 text-warning">
+          <tr class="fs-4 card-header">
             <th scope="col">#</th>
             <th scope="col-3">Envoyé par</th>
             <th scope="col">Sujet</th>
@@ -52,20 +52,18 @@
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getMessage->created_at)))?></td></a>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getMessage->updated_at)))?></td></a>
 
-                <?php
-                if($getMessage->state == 0){
-                  ?>
+                 <?php if($getMessage->state == 0){ ?>
+                  
+                    <td class='bg-dark'><a href="/../../admin/controllers/enableContent-ctrl.php?id=<?=htmlentities($getMessage->id)?>" class='text-danger' title="Activer le message">Désactivé</a></td>
+                  
+                  <?php } else { ?>
 
-                <td class='text-danger bg-dark'>Désactivé</td>
+                    <td class='bg-dark'><a href="/../../admin/controllers/disableContent-ctrl.php?id=<?=htmlentities($getMessage->id)?>" class='text-success' title="Désactiver le message">Activé</a></td>
 
-                  <?php
-                  } else {
-                  ?>
+                  <?php } ?>
 
-                <td class='text-success bg-dark'>Activé</td>
-
-                <?php } ?>
               </tr>
+
           <?php } ?>
         </tbody>
       </table>

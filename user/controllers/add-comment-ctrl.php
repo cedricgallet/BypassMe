@@ -1,13 +1,12 @@
 <!-- *************************************Formulaire ajout commentaire*************************************** -->
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../models/Comment.php');//models
-require_once(dirname(__FILE__).'/../models/User.php');//models
-require_once(dirname(__FILE__).'/../config/config.php');//Constante + gestion erreur
+require_once(dirname(__FILE__).'/../../admin/models/Comment.php');//models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 // ********************************************************************************************************
@@ -16,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 $errorsArray = array();
 
 //tabeau (boucle front) choix catégories
-$arrayCategories = ['web','réseau','humaine','applicative'];
+$arrayCategories = ['Faille web','Faille réseau','Faille humaine','Faille applicative'];
 
 $title1 = 'Commenter un article';
 
@@ -33,42 +32,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     // On verifie l'existance et on nettoie
     $categories = trim(filter_input(INPUT_POST, 'categories', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
+     //On test si le champ n'est pas vide
+     if(empty($categories)){
+
+        $errorsArray['categories'] = 'Le champ est obligatoire';
+        
+    }
     //**************************Commentaire************************
 
     // On verifie l'existance et on nettoie
     $comment = trim(filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
-    //**************************Status******************************
-
-    // On verifie l'existance et on nettoie
-    $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
-
-
-    //On test si le champ n'est pas vide
-    if(empty($categories)){
-
-        $errorsArray['categories'] = 'Le champ est obligatoire';
-        
-    }
-
-    //On test si le champ n'est pas vide
-    if(empty($comment)){
+     //On test si le champ n'est pas vide
+     if(empty($comment)){
         
         $errorsArray['comment'] = 'Le champ est obligatoire';
         
     }
 
     if(empty($errorsArray))
-    {
+    {   
     
         $pdo = Database::db_connect();
         $pdo->beginTransaction();
 
-        $id_comment = $_SESSION['user']->id;
+        $id_user = $pdo->lastInsertId();
+        $getNewComment = new Comment($categories, $comment, $id_user, '');
+        $createComment = $getNewComment->createComment();
 
-        $getNewComment = new Comment($categories, $User, '', '', '',$id_comment);
-        $createComment = $user->createComment();
-        
+        var_dump($getNewComment);die;
+
         if($createComment === true){
             $pdo->commit(); // Valide la transaction et exécute toutes les requetes 
 
@@ -88,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 }
 
 // ********************************Vues****************************
-require_once dirname(__FILE__).'/../views/templates/header.php';
-require_once dirname(__FILE__).'/../views/user/add-comment.php';
+require_once dirname(__FILE__).'/../../templates/header.php';
+require_once dirname(__FILE__).'/../../user/views/add-comment.php';
 
 

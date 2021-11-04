@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . '/../../models/Message.php';//Models
-require_once dirname(__FILE__) . '/../../models/User.php';//Models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once dirname(__FILE__) . '/../../admin/models/Message.php';//Models
+require_once dirname(__FILE__) . '/../../admin/models/User.php';//Models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
@@ -14,7 +14,7 @@ if (!isset($_SESSION['user'])) {
 $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;       
 }
 // ********************************************************************************************************
@@ -31,6 +31,6 @@ $messageInfo = Message::getMessage($id);
 $user = User::get($messageInfo->id);
 
 /* ************* AFFICHAGE DES VUES **************************/
-require_once dirname(__FILE__) . '/../../views/templates/header.php';
+require_once dirname(__FILE__) . '/../../templates/header.php';
 require_once dirname(__FILE__) . '/../../admin/views/display-message.php';
 

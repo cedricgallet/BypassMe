@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . '/../../models/Article.php';//Models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once dirname(__FILE__) . '/../../admin/models/Article.php';//Models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + gestion erreur
 
 $title1 = 'Gestion articles';
 $title2 = 'Articles';
@@ -52,6 +52,6 @@ $offset = $limit*($currentPage-1);
 $getAllArticle = Article::getAllArticle($s,$limit,$offset);
 
 /* *************VUES **************************/
-require_once dirname(__FILE__) .'/../../views/templates/header.php';
+require_once dirname(__FILE__) .'/../../templates/header.php';
 require_once dirname(__FILE__) .'/../../admin/views/list-article.php';
 

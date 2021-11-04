@@ -1,7 +1,7 @@
 <?php
 
-require_once dirname(__FILE__).'/../utils/database.php';
-require_once dirname(__FILE__).'/../utils/sendMail.php';
+require_once dirname(__FILE__).'/../../admin/utils/database.php';
+require_once dirname(__FILE__).'/../../admin/utils/sendMail.php';
 
 class User
 {

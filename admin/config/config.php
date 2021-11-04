@@ -1,4 +1,5 @@
 <?php
+
 // Constante connexion
 define('DSN', 'mysql:host=localhost;dbname=LookThis');
 define('LOGIN', 'cedric');
@@ -79,9 +80,14 @@ $displayMsg = array(
     '42' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas pu être enregistré'],
     '43' => ['type' => 'alert-danger', 'msg' => 'Le message n\'a pas été mis à jour'],
     '44' => ['type' => 'alert-success', 'msg' => 'Le message a bien été ajouté'],
-    '45' => ['type' => 'alert-danger', 'msg' => 'Le message a bien été supprimé'],
+    '45' => ['type' => 'alert-success', 'msg' => 'Le message a bien été supprimé'],
     
     '46' => ['type' => 'alert-danger', 'msg' => 'Le commentaire n\'a pas été enregistré'],
+
+    '47' => ['type' => 'alert-danger', 'msg' => 'Le compte n\'a pas pu être désactivé'],
+    '48' => ['type' => 'alert-success', 'msg' => 'Le compte a bien été désactivé'],
+    '49' => ['type' => 'alert-danger', 'msg' => 'Le compte n\'a pas pu être activé'],
+    '50' => ['type' => 'alert-success', 'msg' => 'Le compte a bien été activé'],
 
 
 

@@ -1,12 +1,12 @@
 <!-- ***************************************Formulaire ajout article********************************************* -->
 <?php
 session_start(); // Démarrage de la session  
-require_once(dirname(__FILE__).'/../../models/Article.php');//models
-require_once(dirname(__FILE__).'/../../config/config.php');//Constante + gestion erreur
+require_once(dirname(__FILE__).'/../../admin/models/Article.php');//models
+require_once(dirname(__FILE__).'/../../admin/config/config.php');//Constante + gestion erreur
 
 // *****************************************SECURITE ACCES PAGE******************************************
 if (!isset($_SESSION['user'])) {
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
 
@@ -15,7 +15,7 @@ $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 
-    header('Location: /../../controllers/signIn-ctrl.php?msgCode=30'); 
+    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
         
 }
@@ -27,7 +27,7 @@ $errorsArray = array();
 $title1 = 'Ajouter un article';
 
 //tabeau boucle (choix catégories) front
-$arrayCategories = ['web','réseau','humaine','applicative'];
+$arrayCategories = ['Faille web','Faille réseau','Faille humaine','Faille applicative'];
 
 
 // *******************************************************************************************************
@@ -101,7 +101,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 
 // ++++++++++++++++Templates et vues+++++++++++++++++++++++++
-require_once dirname(__FILE__).'/../../views/templates/header.php';
+require_once dirname(__FILE__).'/../../templates/header.php';
 require_once dirname(__FILE__).'/../../admin/views/add-article.php';
 
 

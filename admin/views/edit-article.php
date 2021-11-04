@@ -1,4 +1,4 @@
-        <!-- ************************************Formulaire d'ajout d'article************************************ -->
+        <!-- **********************************Formulaire MAJ article********************************** -->
         <div id="addArticleForm"  class="container-fluid h-100 p-0">
                     
 
@@ -10,7 +10,7 @@
                         <div class="fw-bold mt-5 mb-5">
                             <h2><?=$title1 ?? ''?></h2>
 
-                            <!-- ***********************************Message personnalisé******************************* -->
+                            <!-- ************************Message personnalisé************************ -->
 
                             <?php 
                                 if(!empty($msgCode) || $msgCode = trim(filter_input(INPUT_GET, 'msgCode', FILTER_SANITIZE_STRING))) 
@@ -21,19 +21,18 @@
                                     }
                                     echo '<div class="fs-3 alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                                 }
-                            ?>                         
+                            ?>
                         </div>
-                        <!-- ******************************************************************************************* -->
-
+                                <!-- ***************************************************************** -->
                         <div class="card-body h-100">
                             <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
+                                <!-- ***********************boucle choix catégories********************** -->
 
-                                <!-- =============================boucle choix catégories====================== -->
                                 <label for="categories" class="col-form-label text-warning">Categories*</label>
 
                                 <select name="categories" id="categories" class="bg-transparent text-info form-control tex-info">
-                                    <option value="">Choix de la catégorie</option>
+                                    <option value="<?=htmlentities($categories ?? '')?>">Choix de la catégorie</option>
 
                                     <?php foreach ($arrayCategories as $categoriesInSelect) {
                                         $isSelected = ($categoriesInSelect==$categories) ? 'selected': '';
@@ -43,7 +42,7 @@
                                 </select>
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['categories'] ?? '')?></div>
 
-                                <!-- ==============================Titre=============================== -->
+                                <!-- ***************************Titre*************************** -->
 
                                 <div class="mb-3 mt-3">
                                 <label for="title" class="col-form-label text-warning">Titre*</label>
@@ -58,7 +57,7 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['title'] ?? '')?></div>
 
 
-                                    <!-- ============================Article============================== -->
+                                    <!-- *************************Article************************* -->
                                 <div class="mb-3">
                                     <label for="article" class="col-form-label text-warning">Article*</label>
                                     
@@ -75,9 +74,9 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['article'] ?? '')?></div>
 
 
-                                <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Enregistrer l'article</button>
+                                <button type="submit" class="card-header btn btn-warning rounded-pill w-100">Modifier l'article</button>
                                 <div class="w-100">
-                                <a class="border text-info btn btn-success mt-2" href="/../../admin/views/list-article.php.php">Retour à la liste
+                                <a class="border text-info btn btn-success mt-2" href="/../../admin/controllers/list-article-ctrl.php">Retour à la liste
                                 des articles</a>
                                 </div>
 
