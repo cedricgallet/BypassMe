@@ -41,7 +41,7 @@
                        
                         <?php } ?>
 
-                            <a href="/../../controllers/add-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"><i class="text fas fa-plus" title="Ajouter un message"></i></a>
+                            <a href="/../../user/controllers/add-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"><i class="text fas fa-plus" title="Ajouter un message"></i></a>
                             <a href="/../../admin/controllers/delete-Message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>" onclick="return confirmDeleteMessage();"><i class="me-2 text-danger fas fa-trash-alt" title="supprimer un message"></i></a>
                     </div>
 

@@ -44,7 +44,7 @@ class User
      * 
      * @return object
      */
-    public static function get($id)
+    public static function getUser($id)
     {
         
         $pdo = Database::db_connect();
@@ -72,7 +72,7 @@ class User
     
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public static function getByEmail($email)
+    public static function getByEmailUser($email)
     {
 
         $pdo = Database::db_connect();
@@ -173,20 +173,22 @@ class User
      * 
      * @return boolean
      */
-    public function update($id)
+    public function updateUser($id)
     {
 
         try{
 
-            $sql = "UPDATE `user` SET `pseudo`=:pseudo,`email`=:email ,`password`=:password, `state`=:state WHERE id = :id;";
+            $sql = "UPDATE `user` 
+                    SET `pseudo`=:pseudo,`email`=:email ,`password`=:password, `state`=:state 
+                    WHERE id = :id;";
 
             $sth = $this->_pdo->prepare($sql);
             
-            $sth->bindValue(':id',$id,PDO::PARAM_INT);
             $sth->bindValue(':pseudo',$this->_pseudo,PDO::PARAM_STR);
             $sth->bindValue(':email',$this->_email,PDO::PARAM_STR);
             $sth->bindValue(':password',$this->_password,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
+            $sth->bindValue(':id',$id,PDO::PARAM_INT);
 
             return($sth->execute()); 
         }
@@ -203,7 +205,7 @@ class User
      * 
      * @return boolean
      */
-    public static function delete($id)
+    public static function deleteUser($id)
     {
 
         $pdo = Database::db_connect();
@@ -235,7 +237,7 @@ class User
      * 
      * @return int
      */
-    public static function count($s)
+    public static function countUser($s)
     {
         $pdo = Database::db_connect();
         try{
@@ -260,7 +262,7 @@ class User
      * 
      * @return array
      */
-    public static function getAll($search='', $limit=null, $offset=0)
+    public static function getAllUser($search='', $limit=null, $offset=0)
     {
         
         try{
@@ -290,63 +292,6 @@ class User
         }
         catch(PDOException $e){
             return false;
-        }
-
-    }
-    // ***************************************************************************************
-        /**
-     * Méthode qui permet de lister tous les commentaires d'un utilisateur
-     * 
-     * @return array
-     */
-    public static function getAllCommentByIdUser($id)
-    {
-
-        $pdo = Database::db_connect();
-
-        try{
-            $sql = '    SELECT `comment`.`id` as `commentId`, `user`.`id` as `user_id`, `user`.*, `comment`.* 
-                        FROM `comment` 
-                        INNER JOIN `user`
-                        ON `comment`.`iduser` = `user`.`id`
-                        WHERE `comment`.`iduser` = :id
-                        ORDER BY `comment` DESC;';
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-            $stmt->execute(); 
-            return $stmt->fetchAll();
-        }
-        catch(PDOException $e){
-            return $e->getCode();
-        }
-
-    }
-
-     // ***************************************************************************************
-        /**
-     * Méthode qui permet de lister tous les messages d'un utilisateur
-     * 
-     * @return array
-     */
-    public static function getAllMessageByIdUser($id)
-    {
-
-        $pdo = Database::db_connect();
-
-        try{
-            $sql = '    SELECT `message`.`id` as `messageId`, `user`.`id` as `user_id`, `user`.*, `message`.* 
-                        FROM `message` 
-                        INNER JOIN `user`
-                        ON `message`.`iduser` = `user`.`id`
-                        WHERE `message`.`iduser` = :id
-                        ORDER BY `message` DESC;';
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-            $stmt->execute(); 
-            return $stmt->fetchAll();
-        }
-        catch(PDOException $e){
-            return $e->getCode();
         }
 
     }

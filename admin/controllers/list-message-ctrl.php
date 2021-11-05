@@ -27,7 +27,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 // ******************************************************************************************************
 
 // On récupère tous les messages
-$getAllMessage = Message::getAll();
+$getAllMessage = Message::getAllMess();
 
 //* **************************VUES ********************************/
 require_once dirname(__FILE__) .'/../../templates/header.php';

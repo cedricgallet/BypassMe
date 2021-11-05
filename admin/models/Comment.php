@@ -4,11 +4,12 @@ require_once dirname(__FILE__).'/../../admin/utils/database.php';
 
 class Comment{
 
-    private $_categories;
     private $_comment; 
     private $_state;
     private $_created_at;
     private $_deleted_at;
+    private $_id_user;
+    private $_id_article;
 
     private $_pdo;
 
@@ -17,16 +18,17 @@ class Comment{
      * 
      * @return boolean
      */
-    public function __construct($categories, $comment, $state = 1, $created_at = NULL, $deleted_at =NULL)
+    public function __construct($comment, $state = 1, $created_at = NULL, $deleted_at =NULL, $id_user, $id_article)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
 
-        $this->_categories = $categories;
         $this->_comment = $comment;
         $this->_state = $state;                           
         $this->_created_at = $created_at;
         $this->_deleted_at = $deleted_at;
+        $this->_id_user = $id_user;
+        $this->_id_article = $id_article;
 
     }
     // ****************************************************************
@@ -38,18 +40,20 @@ class Comment{
     public function createComment()
     {
         try{
-            $sql = 'INSERT INTO `comment` (`categories`,  `comment`, `state`) 
-                    VALUES (:categories, :comment, :state);';
+            $sql = 'INSERT INTO `comment` (`comment`, `state`, id_user, id_article) 
+                    VALUES (:comment, :state , :id_user , :id_article);';
             
             $sth = $this->_pdo->prepare($sql);
 
 
-            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
             $sth->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
+            $sth->bindValue(':id_user',$this->_id_user,PDO::PARAM_INT);
+            $sth->bindValue(':id_article',$this->_id_article,PDO::PARAM_INT);
 
             
             if($sth->execute()){
+                var_dump($sth->execute());die;//AAAAAAAAAAAA
                 return true;
             } else {
                 return false;
@@ -132,12 +136,11 @@ class Comment{
 
         try{
             $sql = 'UPDATE `comment` 
-                    SET `categories` = :categories, `comment` = :comment, `state`=:state
+                    SET `comment` = :comment, `state`=:state
                     WHERE `id` = :id;';
 
             $sth = $this->_pdo->prepare($sql);
 
-            $sth->bindValue(':categories',$this->_categories,PDO::PARAM_STR);
             $sth->bindValue(':comment',$this->_comment,PDO::PARAM_STR);
             $sth->bindValue(':state',$this->_state,PDO::PARAM_INT);
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
@@ -196,13 +199,11 @@ class Comment{
         try{
             if(!is_null($limit)){ // Si une limite est fixée, il faut tout lister
                 $sql = 'SELECT * FROM `comment` 
-                WHERE `categories` LIKE :search 
-                OR `comment` LIKE :search 
+                WHERE `comment` LIKE :search 
                 LIMIT :limit OFFSET :offset;';
             } else {
                 $sql = 'SELECT * FROM `comment` 
-                WHERE `categories` LIKE :search 
-                OR `comment` LIKE :search;';
+                WHERE `comment` LIKE :search;';
             }
 
             $pdo = Database::db_connect();
@@ -234,8 +235,7 @@ class Comment{
         $pdo = Database::db_connect();
         try{
             $sql = 'SELECT * FROM `comment`
-                WHERE `categories` LIKE :search 
-                OR `comment` LIKE :search;';
+                WHERE `comment` LIKE :search;';
 
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':search','%'.$s.'%',PDO::PARAM_STR);
@@ -247,5 +247,35 @@ class Comment{
         }
         
     }
+
+    // ***************************************************************************************
+    /**
+     * Méthode qui permet d'afficher l'utilisateur, l'article et son commentaire 
+     * 
+     * @return array
+     */
+    public static function getAllCommentByIdUser($id)
+    {
+
+        $pdo = Database::db_connect();
+
+        try{
+            $sql = '    SELECT `comment`.`id` as `id`, `user`.`id` as `user_id`, `user`.*, `comment`.* 
+                        FROM `comment` 
+                        INNER JOIN `user`
+                        ON `comment`.`iduser` = `user`.`id`
+                        WHERE `comment`.`iduser` = :id
+                        ORDER BY `comment` DESC;';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute(); 
+            return $stmt->fetchAll();
+        }
+        catch(PDOException $e){
+            return $e->getCode();
+        }
+
+    }
+
 
 }

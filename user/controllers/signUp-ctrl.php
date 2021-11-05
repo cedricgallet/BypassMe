@@ -78,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     if(empty($errorsArray))
     {
         // ON invoque la méthode statique permettant de vérifier si l'utilisateur existe si non ok (grâce a son email)
-        $checkUser = User::getByEmail($email);
+        $checkUser = User::getByEmailUser($email);
 
         $ip = $_SERVER['REMOTE_ADDR'];// On stock l'adresse IP 
 

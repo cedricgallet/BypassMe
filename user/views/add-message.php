@@ -77,7 +77,7 @@
                                             id="email" 
                                             placeholder="Adresse e-mail" 
                                             autocomplete="email"
-                                            value="<?= htmlentities($email ?? '')?>" required>
+                                            value="<?= htmlentities($getNewMessage->email ?? '')?>" required>
                                 </div>
                             </div>
                         </div>
@@ -85,6 +85,16 @@
 
                         <button type="submit" class="form-control btn text-success border submit px-3 rounded-pill">Envoyer le message ?</button>               
                     </form>
+
+                    <!-- //On check si le mdp par défault(constante) est le meme que le mdp en cours -->
+                    <?php $passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
+
+                    if($_SESSION['user']->email == DEFAULT_EMAIL && $passDefault == DEFAULT_PASS) { ?>
+
+                        <a class="border btn btn-success mt-2" href="/../../admin/controllers/list-message-ctrl.php">Retour à la liste
+                        des messages</a>
+                            
+                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -21,28 +21,12 @@
                             ?>
                         </div>
 
-                        <!-- *******************************Boucle choix catégories**************************** -->
                         <div class="card-body h-100">
                             <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
-                            <label for="categories" class="col-form-label text-warning">Categories*</label>
-
-                                <select name="categories" 
-                                        id="categories" 
-                                        class=" text-center form-control tex-info bg-transparent text-info">
-                                    <option value="">Choix de la catégorie</option>
-
-                                    <?php foreach ($arrayCategories as $categoriesInSelect) {
-                                        $isSelected = ($categoriesInSelect==$categories) ? 'selected': '';
-                                        echo "<option value=\"$categoriesInSelect\" $isSelected>$categoriesInSelect</option>";
-                                    }?>
-
-                                </select>
-                                <div class="invalid-feedback-2"><?= htmlentities($errorsArray['categories'] ?? '')?></div>
-
-
+                            
                                 <!-- ************************************Commentaire*******************************= -->
                                 <div class="mb-3">
-                                    <label for="comment" class="col-form-label text-warning">Ecrire le commentaire*</label>
+                                    <label for="comment" class="col-form-label text-warning">Commentaire*</label>
                                     
                                     <textarea
                                         name ="comment" 
@@ -57,7 +41,7 @@
                                 <div class="invalid-feedback-2"><?= htmlentities($errorsArray['comment'] ?? '')?></div>
 
 
-                                <button type="submit" class="form-control btn text-success rounded-pill">Envoyer le commentaire ?</button>
+                                <button type="submit" class="text-start form-control btn text-success border rounded-pill">Envoyer le commentaire</button>
                             </form>
                         </div>
                     </div>

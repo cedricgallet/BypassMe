@@ -28,7 +28,7 @@ $title = 'Consultation d\'un profil utilisateur en cours ...';
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
 // Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur
-$user = User::get($id);
+$user = User::getUser($id);
 
 // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
 if(!$user){

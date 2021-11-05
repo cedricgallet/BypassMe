@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
     header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
+
 // ********************************************************************************************************
 
 // Tableau des sujets des messages //
@@ -15,6 +16,11 @@ $arraySubject = ['soummettre une idée','signaler un bug sur le site','signaler 
 
 $title = 'Déposer un message ?';
 
+// Nettoyage de l'id passé en GET dans l'url
+$id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
+
+$user = User ::getUser($id);//On recupere les infos
+var_dump($user);die;
 //On ne controle que s'il y a des données envoyées 
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) 
 {   
@@ -57,51 +63,37 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post)
     }
     // ***********************************************
 
+    // Si il n'y a pas d'erreurs, on enregistre tout en une fois grâce aux transactions
     if(empty($errorsArray))
     {
-        //Utilisation des transactions
         $pdo = Database::db_connect();
         $pdo->beginTransaction();
 
-        $id_user = $_SESSION['user']->id;
+        $id_user = $_SESSION['user']->id_user;
 
-        $getNewMessage = new Message($subject, $message, '', '', '',$id_user);//On instancie/On récupére les infos 
+        $getNewMessage = new Message($subject, $message, $state, '', '',$id_user);//On instancie/On récupére les infos 
 
         $createMessage = $getNewMessage->createMessage();
 
         
         if($createMessage === true)
         {
-                     
-                $pdo->commit(); // Valide la transaction et exécute toutes les requetes 
+            $pdo->commit(); // Valide la transaction et exécute toutes les requetes 
 
-                header('location: /../../user/controllers/add-message-ctrl.php?msgCode=40');//On redirige l'admin av mess succés
-                die;
-            
-
+            header('location: /../../user/controllers/add-message-ctrl.php?msgCode=40');//On redirige l'admin av mess succés
+            die;
+        
         } else {
+
             $pdo->rollBack(); // Annulation de toutes les requêtes exécutées avant la levée de l'exception
 
-                // Si l'enregistrement s'est mal passé, on redirige av un mess d'erreur.
-                header('location: /../../user/controllers/add-message-ctrl.php?msgCode=42');
-                die;
+            // Si l'enregistrement s'est mal passé, on redirige av un mess d'erreur.
+            header('location: /../../user/controllers/add-message-ctrl.php?msgCode=42');
+            die;
         }  
 
     }
     
-}else{
-    $id = $_SESSION['user']->id;
-    $user = User::get($id);//On récupère les infos et si l'utilisateur existe
-
-    if($user)//Si vrai on affiche
-    { 
-        $id = $user->id;
-        $email = $user->email;
-
-    } else { // Si l'utilisateur n'existe pas, on redirige vers la liste complète avec un code erreur
-        header('location: /../../user/controllers/add-message-ctrl.php?msgCode=3');
-        die;
-    }
 }
     
                 

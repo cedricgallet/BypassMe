@@ -63,7 +63,7 @@
                                     
                                     <textarea
                                         name ="article" 
-                                        class="bg-transparent form-control text-info" 
+                                        class="form-control text-dark" 
                                         id="article" 
                                         rows="9" 
                                         minlength="10" 

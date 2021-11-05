@@ -28,7 +28,7 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 $messageInfo = Message::getMessage($id);
 
 // Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur par l'id récuperer dans $message
-$user = User::get($messageInfo->id);
+$user = User::getUser($id);
 
 /* ************* AFFICHAGE DES VUES **************************/
 require_once dirname(__FILE__) . '/../../templates/header.php';

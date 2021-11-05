@@ -24,7 +24,7 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
 //On récupère les infos
-$user = User::get($id);
+$user = User::getUser($id);
 
 //Si l'utilisateur existe
 if ($user->state == 0)//Si status(compte) désactivé
@@ -39,7 +39,7 @@ if ($user->state == 0)//Si status(compte) désactivé
 
     $user = new User($pseudo, $email, $password, "", $state);//On instancie/On récupére les infos 
 
-    $result = $user->update($id);//On met a jour        
+    $result = $user->updateUser($id);//On met a jour        
 
     if($result===true){//Si la MAJ s'est bien passé = true 1
         

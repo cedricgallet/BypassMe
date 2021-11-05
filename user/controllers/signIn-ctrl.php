@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             // Si aucune erreur, on enregistre en BDD
         if(empty($errorsArray))
         {
-            $user = User::getByEmail($email);//On vérifie si l'utilisateur exite
+            $user = User::getByEmailUser($email);//On vérifie si l'utilisateur exite
             
             if($user)//Si vrai = true 1
             {

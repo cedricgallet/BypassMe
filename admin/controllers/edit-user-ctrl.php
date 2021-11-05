@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
         // ********************************************
 
-        $result = $user->update($id);//On met a jour 
+        $result = $user->updateUser($id);//On met a jour 
 
         // ********************************************
         
@@ -197,7 +197,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     }
 
 }else{
-    $user = User::get($id);//On récupère les infos et si l'utilisateur existe
+    $user = User::getUser($id);//On récupère les infos et si l'utilisateur existe
 
     if($user)//Si vrai on affiche
     { 

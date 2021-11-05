@@ -46,7 +46,7 @@
               ?>
               
               <tr class="text-white fs-4"><th scope="row"><?=htmlentities($getMessage->id)?></th>
-                <td><a class="text-info" href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($getMessage->id)?>"><?=htmlentities($getMessage->email)?></td></a>
+                <td><a class="text-info" href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($getMessage->id)?>"><?=htmlentities($getMessage->pseudo)?></td></a>
                 <td><a class="text-info" href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($getMessage->id)?>"><?=htmlentities($getMessage->subject)?></td></a>
                 <td><a class="text-info" href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($getMessage->id)?>"><?=htmlentities($getMessage->message)?></td></a>
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getMessage->created_at)))?></td></a>    

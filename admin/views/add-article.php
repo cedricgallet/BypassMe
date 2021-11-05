@@ -51,7 +51,7 @@
                                     <input type="text" 
                                             name="title" 
                                             id="title" 
-                                            class="bg-transparent form-control text-info"
+                                            class="bg-transparent form-control card-header fs-4 text-center"
                                             value="<?=htmlentities($title ?? '')?>"
                                             placeholder="">
                                 </div>
@@ -64,7 +64,7 @@
                                     
                                     <textarea
                                         name ="article" 
-                                        class="bg-transparent form-control text-info" 
+                                        class="form-control text-dark" 
                                         id="article" 
                                         rows="9" 
                                         minlength="10" 

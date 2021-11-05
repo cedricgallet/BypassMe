@@ -35,7 +35,8 @@
         <caption>
           <tr class="fs-4 card-header">
             <th scope="col">#</th>
-            <th scope="col-3">Categories</th>
+            <th scope="col-3">Envoyé par</th>
+            <th scope="col">Article</th>
             <th scope="col">Commentaire</th>
             <th scope="col">Ajouté le</th>
             <th scope="col">Mis a jour le</th>
@@ -52,7 +53,6 @@
               ?>
               
               <tr class="text-white fs-4"><th scope="row"><?=htmlentities($getComment->id)?></th>
-                <td><a class="text-info" href="/../../admin/controllers/display-comment-ctrl.php?id=<?=htmlentities($getComment->id)?>"><?=htmlentities($getComment->categories)?></td></a>
                 <td><a class="text-info" href="/../../admin/controllers/display-comment-ctrl.php?id=<?=htmlentities($getComment->id)?>"><?=htmlentities($getComment->comment)?></td></a>
                 <td ><?=htmlentities(date('d-m-Y à H:i', strtotime($getComment->created_at)))?></td>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getComment->updated_at)))?></td>

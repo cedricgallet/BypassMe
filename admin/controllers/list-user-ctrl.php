@@ -36,7 +36,7 @@ $s = trim(filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING));
 $limit = NB_ELEMENTS_BY_PAGE;
 
 // Compte le nombre d'éléments au total selon la recherche
-$countItems = User::count($s);
+$countItems = User::countUser($s);
 
 // Calcule le nombre de pages à afficher dans la pagination
 $nbPages = ceil($countItems / $limit);
@@ -52,7 +52,7 @@ if($currentPage <= 0 || $currentPage > $nbPages){
 $offset = $limit*($currentPage-1);
 
 // Appel à la méthode statique permettant de récupérer les utilisateurs selon la recherche et la pagination
-$allUsers = User::getAll($s,$limit,$offset);
+$allUsers = User::getAllUser($s,$limit,$offset);
 
 /* *************VUES **************************/
 require_once dirname(__FILE__) .'/../../templates/header.php';

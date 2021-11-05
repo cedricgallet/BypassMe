@@ -46,16 +46,17 @@
                     </ul>
                 </li>
 
+                <!-- Si la session existe -->
                 <?php if(isset($_SESSION['user'])) { ?>
 
                     <li class='nav-item'>
-                        <a class='nav-link' href='/../user/controllers/bonus-ctrl.php'>Bonus</a>
+                        <a class='nav-link' href='/../user/controllers/bonus-ctrl.php?id=<?=htmlentities($_SESSION['user']->id)?>'>Bonus</a>
                     </li>
 
                 <?php } ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/../user/controllers/add-message-ctrl.php">Contact</a>
+                    <a class="nav-link" href="/../user/controllers/add-message-ctrl.php?id=<?=htmlentities($_SESSION['user']->id)?>">Contact</a>
                 </li>
             </ul>
             <!-- ======================================RECHERCHER========================================= -->

@@ -16,7 +16,7 @@ $title = 'Bienvenue sur ton espace personnel';
 $id = $_SESSION['user']->id;
 
 //On récupère les infos
-$user = User::get($id);
+$user = User::getUser($id);
 
 // +++++++++++++++++++++++VUES+++++++++++++++++++++++++++++++++
 require_once dirname(__FILE__) .'/../../templates/header.php';

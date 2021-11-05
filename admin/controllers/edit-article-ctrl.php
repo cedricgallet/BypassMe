@@ -9,7 +9,8 @@ if (!isset($_SESSION['user'])) {
     die;
 }
 
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+//On check si le mdp par défault(constante) est le meme que le mdp en cours
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
@@ -77,7 +78,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
         $categories = $articleInfo->categories;
         $title = $articleInfo->title;
         $article = $articleInfo->article;
-        $state = $articleInfo->state;
 
     } else {//si n'existe pas, on redirige vers la liste complète avec un code erreur
         header('location: /../../admin/controllers/list-article-ctrl.php?msgCode=23');
