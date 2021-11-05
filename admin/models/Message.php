@@ -75,7 +75,7 @@ class Message{
      * 
      * @return array
      */
-    public static function getAll()
+    public static function getAllMess()
     {
 
         $pdo = Database::db_connect();
