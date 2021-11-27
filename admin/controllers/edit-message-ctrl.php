@@ -91,7 +91,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     // Appel à la méthode statique permettant de récupérer les utilisateurs 
     $user = User::getUser($id_user);
     if ($user) {
-        $pseudo = $user->pseudo;
+        $pseudo = $_SESSION['user']->pseudo;
+        $state = $_SESSION['user']->state;
         
     }
 }
