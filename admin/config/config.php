@@ -66,7 +66,7 @@ $displayMsg = array(
     '20' => ['type' => 'alert-danger', 'msg' => 'Le mot de passe est incorrect'],
     '18' => ['type' => 'alert-danger', 'msg' => 'Tous les champs sont obligatoires'],
 
-    '30' => ['type' => 'alert-danger', 'msg' => 'Vous devez être administrateur pour accèder à cette page'],
+    '30' => ['type' => 'alert-danger', 'msg' => 'Vous devez être connecté pour accèder à cette page'],
 
     '35' => ['type' => 'alert-success', 'msg' => 'Votre profil a bien été mis a jour'],
     '36' => ['type' => 'alert-success', 'msg' => 'Votre avatar a été mis a jour'],
