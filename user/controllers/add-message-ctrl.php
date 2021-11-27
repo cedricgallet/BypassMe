@@ -4,9 +4,9 @@ require_once(dirname(__FILE__).'/../../admin/models/Message.php');//Models
 require_once(dirname(__FILE__).'/../../admin/models/User.php');//Models
 
 // *****************************************SECURITE ACCES PAGE******************************************
-if (!isset($_SESSION['user'])) {
-    header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
-    die;
+if(!isset($_SESSION['user'])){
+    header('Location:/../views/user/sigIn.php?msgCode=38');
+    die();
 }
 
 // ********************************************************************************************************
