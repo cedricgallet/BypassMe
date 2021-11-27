@@ -53,11 +53,11 @@
                         <a class='nav-link' href='/../user/controllers/bonus-ctrl.php'>Bonus</a>
                     </li>
 
-                <?php } ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/../user/controllers/add-message-ctrl.php">Contact</a>
+                    </li>   
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/../user/controllers/add-message-ctrl.php">Contact</a>
-                </li>
+                <?php } ?>
             </ul>
             <!-- ======================================RECHERCHER========================================= -->
 
