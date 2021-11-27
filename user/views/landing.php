@@ -76,7 +76,7 @@
             <?php } ?>
         </div>
 
-        <div id="signUpForm" class="d-flex justify-content-center col-12 mt-5">
+        <div class="d-flex justify-content-center col-12 mt-5">
 
             <div class="card rounded-2">
                 <div class="card-body">
