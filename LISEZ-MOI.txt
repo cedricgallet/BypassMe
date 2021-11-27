@@ -1,0 +1,4 @@
+Connection interface administration en mode administrateur :
+
+email -> admin@protonmail.com
+mot de passe -> cccccccc
