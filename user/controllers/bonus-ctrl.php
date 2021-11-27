@@ -9,8 +9,8 @@ if(!isset($_SESSION['user'])){
 
 
 // +++++++++++++++++++++TEMPLATES ET VUE++++++++++++++++++++++++++++
-require_once(dirname(__FILE__).'/../templates/header.php');
-require_once(dirname(__FILE__).'/../user/views/bonus.php');
-require_once(dirname(__FILE__).'/../templates/footer.php');
+require_once(dirname(__FILE__).'/../../templates/header.php');
+require_once(dirname(__FILE__).'/../../user/views/bonus.php');
+require_once(dirname(__FILE__).'/../../templates/footer.php');
 
 
