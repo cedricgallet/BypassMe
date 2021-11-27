@@ -40,6 +40,7 @@
             <th scope="col">Commentaire</th>
             <th scope="col">Ajouté le</th>
             <th scope="col">Mis a jour le</th>
+            <th scope="col">Désactivé le</th>
             <th scope="col">Status</th>
           </tr>
         </caption>
@@ -56,6 +57,7 @@
                 <td><a class="text-info" href="/../../admin/controllers/display-comment-ctrl.php?id=<?=htmlentities($getComment->id)?>"><?=htmlentities($getComment->comment)?></td></a>
                 <td ><?=htmlentities(date('d-m-Y à H:i', strtotime($getComment->created_at)))?></td>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getComment->updated_at)))?></td>
+                <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getComment->disabled_at)))?></td>
 
                 <?php if($getComment->state == 0){ ?>
                   

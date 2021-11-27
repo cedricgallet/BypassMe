@@ -9,7 +9,7 @@
                     <div class="d-flex justify-content-between mt-3 ms-3">
 
                         <!-- **************************Status******************************** -->
-                    <?php if ($messageInfo->state == 0){ ?>
+                    <?php if ($getMessageUser->state == 0){ ?>
 
                         <div class='card-text text-warning text-start me-1'><strong>Status du message > </strong> <strong
                                 class="text-danger">DÉSACTIVÉ</strong>
@@ -29,20 +29,20 @@
                 <div class=" d-flex justify-content-center text-dark border fs-5 card-header">Actions</div>
                     <div class="card-body">
                         <div class="d-flex justify-content-around mb-3 fs-4">
-                            <a href="/../../admin/controllers/edit-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"><i class="text-info far fa-edit" title="Modifier un message"></i></a>
+                            <a href="/../../admin/controllers/edit-message-ctrl.php?id=<?=htmlentities($getMessageUser->id)?>"><i class="text-info far fa-edit" title="Modifier un message"></i></a>
                         
-                        <?php if ($messageInfo->state == 0){ ?>
+                        <?php if ($getMessageUser->state == 0){ ?>
 
-                            <a href="/../admin/controllers/enableContent-ctrl.php?id=<?=htmlentities($messageInfo->id);?>" onclick="return confirmEnableMessage();"><i class="text-success far fa-check-circle" title="Activer un message"></i></a>
+                            <a href="/../admin/controllers/enableContent-ctrl.php?id=<?=htmlentities($getMessageUser->id);?>" onclick="return confirmEnableMessage();"><i class="text-success far fa-check-circle" title="Activer un message"></i></a>
                         
                         <?php } else { ?>
 
-                            <a href="/../admin/controllers/disableContent-ctrl.php?id=<?=htmlentities($messageInfo->id);?>" onclick="return confirmDisableMessage();"><i class="text-danger fa fa-ban" title="Désactiver un message"></i></a>
+                            <a href="/../admin/controllers/disableContent-ctrl.php?id=<?=htmlentities($getMessageUser->id);?>" onclick="return confirmDisableMessage();"><i class="text-danger fa fa-ban" title="Désactiver un message"></i></a>
                        
                         <?php } ?>
 
-                            <a href="/../../user/controllers/add-message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>"><i class="text fas fa-plus" title="Ajouter un message"></i></a>
-                            <a href="/../../admin/controllers/delete-Message-ctrl.php?id=<?=htmlentities($messageInfo->id)?>" onclick="return confirmDeleteMessage();"><i class="me-2 text-danger fas fa-trash-alt" title="supprimer un message"></i></a>
+                            <a href="/../../user/controllers/add-message-ctrl.php?id=<?=htmlentities($getMessageUser->id)?>"><i class="text fas fa-plus" title="Ajouter un message"></i></a>
+                            <a href="/../../admin/controllers/delete-Message-ctrl.php?id=<?=htmlentities($getMessageUser->id)?>" onclick="return confirmDeleteMessage();"><i class="me-2 text-danger fas fa-trash-alt" title="supprimer un message"></i></a>
                     </div>
 
                     <p class="card-text text-center card-header">
@@ -50,13 +50,13 @@
                     </p>
 
                     <p class="mt-5 card-text text-center"><strong>Sujet > </strong>
-                        <?=htmlentities($messageInfo->subject)?>
+                        <?=htmlentities($getMessageUser->subject)?>
                     </p>
 
                     <hr class="text-success">
 
                     <p class="mt-3 card-text mb-5"><strong>Message > </strong><br>
-                        <?=htmlentities($messageInfo->message)?>
+                        <?=htmlentities($getMessageUser->message)?>
                     </p>
 
                     <hr class="text-dark">
@@ -66,11 +66,11 @@
                     </p>
                     
                     <p class="card-text m-0"><strong>Ajouté le </strong>
-                        <?=htmlentities(date('d-m-Y à H:m', strtotime($messageInfo->created_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:m', strtotime($getMessageUser->created_at)))?>
                     </p>
 
                     <p class="card-text"><strong>Dernière modification le </strong>
-                        <?=htmlentities(date('d-m-Y à H:m', strtotime($messageInfo->updated_at)))?>
+                        <?=htmlentities(date('d-m-Y à H:m', strtotime($getMessageUser->updated_at)))?>
                     </p>
                 </div>
 

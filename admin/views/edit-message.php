@@ -3,7 +3,7 @@
         <div class="col-12 d-flex justify-content-end login-wrap p-0 h-100">
             <div class="d-flex flex-column align-items-center justify-content-center col-12 col-lg-6 h-100">
                 <div class="d-flex">
-                    <h2 class=""><?='Message de'.' '. htmlentities($getUser->pseudo ?? '').' '.'> modification en cours ...' ?? ''?></h2>
+                    <h2 class="mb-5"><?='Message de'.' '. htmlentities($pseudo ?? '').' '.'en cours de modification ...' ?? ''?></h2>
                 </div>
 
                 <!-- *************************Affichage d'un message d'erreur personnalisé************************ -->
@@ -19,47 +19,59 @@
                 ?>
                 <!-- ********************************************************************************************** -->
 
-                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']). "?id=" . $id. "&id_user=" . $id_user?>" method="post">
+                    <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']).'&FK='.htmlentities($getMessageUser->id_user ?? '')?>" method="post">
                         <div class="form-group mt-3">
                             <!-- **********************************Status message***************************** -->
                             <div class="form-outline">
 
-                                <?php if ($getMessage->state == 0) { ?>
+                                <?php if ($state == 0) { ?>
 
                                         <div class='card-text text-warning text-start me-1'>Status du message > <strong class='text-danger'>DÉSACTIVÉ</strong>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+
+                                        <!-- ************Si status = 0 ************* -->
+                                        <input
+                                            class="form-check-input "
+                                            type="checkbox"
+                                            id="state"
+                                            name="state"
+                                            value="<?=htmlentities($state = 1) ?? ''?>">
+                                            <label class="form-check-label text-success" for="state">Activer</label>
                                         </div>
 
                                     <?php } else { ?>
 
                                         <div class='card-text text-warning text-start me-1'>Status du message > <strong class='text-success'>ACTIVÉ</strong>
                                         </div>
+
+                                        <div class="form-check form-check-inline">
+
+                                        <!-- ************Si status = 1 ************* -->
+                                        <input
+                                            class="form-check-input text-danger"
+                                            type="checkbox"
+                                            id="state"
+                                            name="state"
+                                            value="<?=htmlentities($state = 0) ?? ''?>">
+                                            <label class="form-check-label text-danger" for="state">Désactiver</label>
+                                        </div>
                             
                                     <?php } ?>
 
                             </div>
-                                    <!-- ***************************Activé/Désactivé******************** -->
-                            <div class="form-group mt-3 mb-3 text-center bg-transparent">
-                            <label for="state" class="col-form-label text-info">Désactiver le message ?</label>
-
-                            <select name="state" 
-                                    class="form-outline" required>
-                                <option selected value="<?= htmlentities($getMessage->state ?? '') ?>">Options</option>
-
-                                <option value="0">Désactiver</option>
-                                <option value="1">Activer</option>
-                            </select>
-                        </div>
 
                         <!-- *****************************Boucle pour choix du sujet************************* -->
-                        <div class="mb-3">
+                        <div class="mb-3 mt-3">
                         <label for="subject" class="col-form-label text-warning">Sujet*</label>
 
                             <select name="subject" 
                                     id="subject" 
                                     class="text-info bg-transparent form-control" 
-                                    value="<?= htmlentities($getMessage->subject ?? '')?>" required>
+                                    value="<?= htmlentities($getMessageUser->subject ?? '')?>" required>
 
-                                    <option><?= htmlentities($getMessage->subject ?? '')?></option>
+                                    <option><?= htmlentities($getMessageUser->subject ?? '')?></option>
 
                                     <?php foreach ($arraySubject as $subjectInSelect) {
                                 $isSelected = ($subjectInSelect==$subject) ? 'selected': '';
@@ -79,13 +91,13 @@
                                     id="message" 
                                     rows="9" 
                                     minlength="10" 
-                                    maxlength="300"><?= htmlentities($getMessage->message ?? '')?>
+                                    maxlength="300"><?= htmlentities($getMessageUser->message ?? '')?>
                                 </textarea>
                         </div>
                         
                         <div class="invalid-feedback-2"><?=htmlentities($errorsArray['message'] ?? '')?></div>
 
-                        <button type="submit" class="text-success bg-transparent btn btn-warning rounded-pill w-100 mb-2">Mettre à jour le message ?</button>
+                        <button type="submit" class="text-success bg-transparent btn btn-warning rounded-pill w-100 mb-2">Mettre à jour le message</button>
                         <a class="btn btn-success mt-2 rounded-pill w-100" href="/../../admin/controllers/list-message-ctrl.php">Retour à la liste
                             des messages</a>
 

@@ -39,6 +39,7 @@
             <th scope="col">Email</th>
             <th scope="col">Ajouté le</th>
             <th scope="col">Mis a jour le</th>
+            <th scope="col">Désactivé le</th>
             <th scope="col">Ip</th>
             <th scope="col">Status</th>
           </tr>
@@ -57,6 +58,7 @@
                 <td><a class="text-info" title="modifier le profil" href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>"><?=htmlentities($user->email)?></td></a>
                 <td ><?=htmlentities(date('d-m-Y à H:i', strtotime($user->created_at)))?></td>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($user->updated_at)))?></td>
+                <td><?=htmlentities(date('d-m-Y à H:i', strtotime($user->disabled_at)))?></td>
                 <td><?=htmlentities($user->ip)?></td>
 
                   <?php if($user->state == 0){ ?>

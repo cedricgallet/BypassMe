@@ -40,6 +40,7 @@
             <th scope="col">Article</th>
             <th scope="col">Ajouté le</th>
             <th scope="col">Mis a jour le</th>
+            <th scope="col">Désactivé le</th>
             <th scope="col">Status</th>
           </tr>
         </caption>
@@ -58,6 +59,7 @@
                 <td><a class="text-info" href="/../../admin/controllers/display-article-ctrl.php?id=<?=htmlentities($getArticle->id)?>"><?=htmlentities($getArticle->article)?></td></a>
                 <td ><?=htmlentities(date('d-m-Y à H:i', strtotime($getArticle->created_at)))?></td>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getArticle->updated_at)))?></td>
+                <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getArticle->disabled_at)))?></td>
 
                 <?php if($getArticle->state == 0){ ?>
                   

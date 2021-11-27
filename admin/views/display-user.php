@@ -55,7 +55,7 @@
                        
                         <?php } ?>
 
-                            <a href="/../../controllers/signUp-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text fas fa-plus" title="Ajouter un utilisateur"></i></a>
+                            <a href="/../../user/controllers/signUp-ctrl.php?id=<?=htmlentities($user->id)?>"><i class="text fas fa-plus" title="Ajouter un utilisateur"></i></a>
                             <a href="/../../admin/controllers/delete-user-ctrl.php?id=<?=htmlentities($user->id)?>" onclick="return confirmDeleteUser();"><i class="me-2 text-danger fas fa-trash-alt" title="supprimer l'utilisateur"></i></a>
                     </div>
 
@@ -79,7 +79,7 @@
                         <?=htmlentities($user->ip)?>
                     </p>
 
-                    <hr class="tex-dark">
+                    <hr class="text-dark">
 
                     <p class="card-text m-0"><strong>Ajouté le </strong>
                         <?=htmlentities(date('d-m-Y à H:m', strtotime($user->created_at)))?>

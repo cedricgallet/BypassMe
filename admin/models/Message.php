@@ -8,17 +8,17 @@ class Message{
     private $_message;
     private $_state;
     private $_created_at;
-    private $_deleted_at;
+    private $_disabled_at;
     private $_id_user;
 
     private $_pdo;
 
     /**
-     * Méthode magique appellée lors de l'instanciation de l'objet dans le controlleur. Elle permet d'hydrater notre objet 'Contact'
+     * Méthode magique appellée lors de l'instanciation de l'objet dans le controlleur. Elle permet d'hydrater notre objet 'Message'
      * 
      * @return boolean
      */
-    public function __construct($subject, $message, $state = 1, $created_at = NULL, $deleted_at =NULL, $id_user)
+    public function __construct($subject, $message, $state = 1, $created_at = NULL, $disabled_at = NULL, $id_user)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
@@ -27,7 +27,7 @@ class Message{
         $this->_message = $message;
         $this->_state = $state;                           
         $this->_created_at = $created_at;
-        $this->_deleted_at = $deleted_at;
+        $this->_disabled_at = $disabled_at;
         $this->_id_user = $id_user;
 
     }
@@ -54,9 +54,9 @@ class Message{
 
             
             if($sth->execute()){
-                return true;
+                return 40;
             } else {
-                return false;
+                return 42;
             }
             
 
@@ -67,25 +67,19 @@ class Message{
     }
 
     // ***********************************************************
+    // Méthode qui permet de récupérer tous les messages 
 
-    // INNERJOIN exemple simple
-     /**SELECT * FROM users
-        INNER JOIN city ON city.id = users.city_id
-     * Méthode qui permet de lister tous les rdv
-     * 
-     * @return array
-     */
-    public static function getAllMess()
+    public static function getAllMessage()
     {
 
         $pdo = Database::db_connect();
 
         try{
-            $sql = 'SELECT `message`.`id` as `id_message`, `user`.`id` as `id_user`, `user`.*, `message`.* 
-                    FROM `message` 
-                    INNER JOIN `user`
-                    ON `message`.`id` = `user`.`id`
-                   ORDER BY `message` DESC;';
+            $sql = 'SELECT `user`.`id` as `id_user`, `user`.*, `message`.* 
+                        FROM `message` 
+                        INNER JOIN `user`
+                        ON `message`.`id_user` = `user`.`id`
+                        ORDER BY `message` DESC;';
 
             $stmt = $pdo->query($sql);
             return $stmt->fetchAll();
@@ -114,16 +108,14 @@ class Message{
             $sth = $pdo->prepare($sql);
 
             $sth->bindValue(':id',$id,PDO::PARAM_INT);
-
             $sth->execute();
-
-            $messageInfo = $sth->fetch();
+            $getMessageUser = $sth->fetch();
             
-            if(!$messageInfo){
+            if(!$getMessageUser){
                 return '39';
             }
             
-            return $messageInfo;
+            return $getMessageUser;
         }
         catch(PDOException $e){
             return $e->getCode();

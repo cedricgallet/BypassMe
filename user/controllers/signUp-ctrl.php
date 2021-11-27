@@ -92,7 +92,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
             if (empty($_COOKIE['cookie-email']) && empty($_COOKIE['cookie-pseudo']) && empty($_COOKIE['cookie-state'])) 
             {
                 //On genere le cookie
-                //(Les infos du cookie stocker chez l'utilisateur peuvent etre modifier donc on sécurise)
                 setcookie('cookie-email', $email, array(
 
                     'expires' => time() + 60*24*36000,//Valide 1 an

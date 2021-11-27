@@ -25,6 +25,7 @@
             <form class="needs-validation" action="<?=htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $id?>"
                     method="post">
 
+                    <input type="hidden" name="state" value="<?=htmlentities($state)?>">
 
                     <div class="form-outline">
                         <label for="pseudo" class="col-form-label text-info">Pseudo*</label>
@@ -67,7 +68,7 @@
                                 id="password" 
                                 name="password"
                                 class="form-control card-header"
-                                value="<?= htmlentities($password ?? '')?>">
+                                value="<?= htmlentities($user->password ?? '')?>">
                         </div>
                     <div class="invalid-feedback-2"><?= htmlentities($errorsArray['password'] ?? '')?></div>
 
@@ -77,16 +78,38 @@
                     <div class="form-outline">
                         <label for="pseudo" class="col-form-label text-info"></label>
 
-                        <?php
-                            if ($state == 0) {                    
-                        ?>
+                        <?php if ($state == 0) { ?>
 
                                 <div class='card-text text-danger text-start me-1'>Status de l'utilisateur > <strong>DÉSACTIVÉ</strong>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+
+                                <!-- ************Si status = 0 ************* -->
+                                <input
+                                    class="form-check-input "
+                                    type="checkbox"
+                                    id="state"
+                                    name="state"
+                                    value="<?=htmlentities($state = 1) ?? ''?>">
+                                    <label class="form-check-label text-success" for="state">Activer</label>
                                 </div>
 
                         <?php } else { ?>
 
                                 <div class='card-text text-success text-start me-1'>Status de l'utilisateur > <strong>ACTIVÉ</strong>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+
+                                <!-- ************Si status = 1 ************* -->
+                                <input
+                                    class="form-check-input text-danger"
+                                    type="checkbox"
+                                    id="state"
+                                    name="state"
+                                    value="<?=htmlentities($state = 0) ?? ''?>">
+                                    <label class="form-check-label text-danger" for="state">Désactiver</label>
                                 </div>
                     
                         <?php } ?>
@@ -103,7 +126,7 @@
                     </div>
 
                 </form>
-                <a class="btn btn-success" href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>">Retour</a>
+                <a class="btn btn-success" href="/../../admin/controllers/display-user-ctrl.php?id=<?=htmlentities($user->id)?>">Retour au profil</a>
             </div>
         </div>
     </div>

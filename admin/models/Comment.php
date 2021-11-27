@@ -7,7 +7,7 @@ class Comment{
     private $_comment; 
     private $_state;
     private $_created_at;
-    private $_deleted_at;
+    private $_disabled_at;
     private $_id_user;
     private $_id_article;
 
@@ -18,7 +18,7 @@ class Comment{
      * 
      * @return boolean
      */
-    public function __construct($comment, $state = 1, $created_at = NULL, $deleted_at =NULL, $id_user, $id_article)
+    public function __construct($comment, $state = 1, $created_at = NULL, $disabled_at =NULL, $id_user, $id_article)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
@@ -26,7 +26,7 @@ class Comment{
         $this->_comment = $comment;
         $this->_state = $state;                           
         $this->_created_at = $created_at;
-        $this->_deleted_at = $deleted_at;
+        $this->_disabled_at = $disabled_at;
         $this->_id_user = $id_user;
         $this->_id_article = $id_article;
 

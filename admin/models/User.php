@@ -14,13 +14,13 @@ class User
     private $_ip;
     private $_state;
     private $_created_at;
-    private $_deleted_at; 
+    private $_disabled_at; 
     private $_confirmation_token;
 
     private $_pdo;
 
 
-    public function __construct($pseudo, $email, $password, $ip, $state = 1 , $created_at = NULL, $deleted_at = NULL,  $confirmation_token = NULL)
+    public function __construct($pseudo, $email, $password, $ip, $state = 1 , $created_at = NULL, $disabled_at = NULL,  $confirmation_token = NULL)
     {
         
         // Hydratation de l'objet contenant la connexion à la BDD
@@ -30,7 +30,7 @@ class User
         $this->_ip = $ip;                           
         $this->_state = $state;                           
         $this->_created_at = $created_at;
-        $this->_deleted_at = $deleted_at;
+        $this->_disabled_at = $disabled_at;
         $this->_confirmation_token = $confirmation_token;
 
         $this->_pdo = Database::db_connect();
@@ -71,7 +71,7 @@ class User
     }
     
     
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++Récupérer infos de l'utilisateur grace à l'email++++++++++++++++++++++++++++++++
     public static function getByEmailUser($email)
     {
 

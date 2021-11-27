@@ -31,8 +31,6 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il y a des données d'envoyées 
 { 
 
-     // ***********************Status**************************
-
     // On verifie l'existance et on nettoie
     $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
@@ -198,7 +196,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
 
 }else{
     $user = User::getUser($id);//On récupère les infos et si l'utilisateur existe
-
     if($user)//Si vrai on affiche
     { 
         $id = $user->id;

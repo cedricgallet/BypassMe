@@ -9,7 +9,7 @@ class Article{
     private $_article; 
     private $_state;
     private $_created_at;
-    private $_deleted_at;
+    private $_disabled_at;
 
     private $_pdo;
 
@@ -18,7 +18,7 @@ class Article{
      * 
      * @return boolean
      */
-    public function __construct($categories, $title, $article, $state = 1, $created_at = NULL, $deleted_at =NULL)
+    public function __construct($categories, $title, $article, $state = 1, $created_at = NULL, $disabled_at =NULL)
     {
         // Hydratation de l'objet contenant la connexion à la BDD
         $this->_pdo = Database::db_connect();
@@ -28,7 +28,7 @@ class Article{
         $this->_article = $article;
         $this->_state = $state;                           
         $this->_created_at = $created_at;
-        $this->_deleted_at = $deleted_at;
+        $this->_disabled_at = $disabled_at;
 
     }
     // ****************************************************************

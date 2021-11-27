@@ -57,7 +57,7 @@
                                     id="message" 
                                     rows="9"
                                     minlength="10" 
-                                    maxlength="250"
+                                    maxlength="300"
                                     placeholder=""
                                     required><?= htmlentities($message ?? '')?> 
                                 </textarea>
@@ -75,9 +75,9 @@
                                             name="email" 
                                             class="form-control text-info bg-transparent" 
                                             id="email" 
-                                            placeholder="Adresse e-mail" 
+                                            placeholder="Votre email" 
                                             autocomplete="email"
-                                            value="<?= htmlentities($getNewMessage->email ?? '')?>" required>
+                                            value="<?=htmlentities($_COOKIE['cookie-email'] ?? '')?>" required>
                                 </div>
                             </div>
                         </div>

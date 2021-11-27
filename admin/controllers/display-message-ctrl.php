@@ -21,14 +21,20 @@ if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
 
 $title = 'Consultation d\'un message en cours ...';
 
-// On verifie l'existance et on nettoie
+// Nettoyage de l'id passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// Appel à la méthode statique permettant de récupérer tous les infos d'un seul message
-$messageInfo = Message::getMessage($id);
+// Appel à la méthode statique permettant de récupérer toutes les message d'un utilisateur
+$getMessageUser = Message::getMessage($id);
 
-// Appel à la méthode statique permettant de récupérer tous les infos d'un seul utilisateur par l'id récuperer dans $message
-$user = User::getUser($id);
+// Si le message n'existe pas, on redirige vers la liste complète avec un code erreur
+// Si le rdv n'est pas un objet, on redirige vers la liste complète avec le code erreur retourné par la méthode Appointment::get($id)
+if(!is_object($getMessageUser)){
+    header('location: /../../controllers/list-message-ctrl.php?msgCode='.$getMessageUser);
+} else {
+    $user = User::getUser($getMessageUser->id_user);
+}
+/*************************************************************/
 
 /* ************* AFFICHAGE DES VUES **************************/
 require_once dirname(__FILE__) . '/../../templates/header.php';

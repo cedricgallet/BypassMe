@@ -29,15 +29,16 @@ $arraySubject = ['Soummettre une idée','Signaler un bug sur le site','Signaler 
 // Nettoyage de l'id du rdv passé en GET dans l'url
 $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 
-// Appel à la méthode statique permettant de récupérer tous les utilisateurs
-$getUser = User::getUser($id);
+// Nettoyage de l'id_user(foreign key) passé en GET dans l'url
+$id_user = intval(trim(filter_input(INPUT_GET, 'id_user', FILTER_SANITIZE_NUMBER_INT)));
 
 // Appel à la méthode statique permettant de récupérer un message
-$getMessage = Message::getAllMess();
+$getMessageUser = Message::getMessage($id);
+
 
 //**************************id-user(Foreign Key)******************************
 // On verifie l'existance et on nettoie
-$id_user = intval(trim(filter_input(INPUT_GET, '$id_user', FILTER_SANITIZE_NUMBER_INT)));
+// $id_user = intval(trim(filter_input(INPUT_GET, '$id_user', FILTER_SANITIZE_NUMBER_INT)));
 
 // Récupération d'id_user
 // $id_user = $getMessage->id_user;
@@ -73,20 +74,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     // On verifie l'existance et on nettoie
     $state = intval(trim(filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT)));
 
-    
+    $id_user = trim(filter_input(INPUT_POST, 'idPatients', FILTER_SANITIZE_NUMBER_INT));
+
     // Si il n'y a pas d'erreurs, on met à jour le message.
     if(empty($errorsArray))
     {
         $getNewMessage = new Message($subject, $message, $state,'','',$id_user);
 
-        if($getNewMessage->updateMessage($id)===true){//Si la MAJ s'est bien passé ( = vrai)
-            header('location: /../../admin/controllers/list-message-ctrl.php?id='.$id.'&msgCode=41');
-        } else {
-            $msgCode=43;
-        }    
-    
+        $result = $getNewMessage->updateMessage($id);
+        if(!$result){
+            header('location: /../../admin/controllers/display-message-ctrl.php?id='.$id.'&msgCode=39');
+        } 
     }
 
+}else {
+    // Appel à la méthode statique permettant de récupérer les utilisateurs 
+    $user = User::getUser($id_user);
+    if ($user) {
+        $pseudo = $user->pseudo;
+        
+    }
 }
 
 // +++++++++++++++++++++++++++++++++++VUES+++++++++++++++++++++++++++++++

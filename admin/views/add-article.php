@@ -19,7 +19,7 @@
                                     {
                                         $msgCode = 0;
                                     }
-                                    echo '<div class="fs-3 alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
+                                    echo '<div class="d-flex justify-content-center fs-5 alert '.$displayMsg[$msgCode]['type'].'">'.$displayMsg[$msgCode]['msg'].'</div>';
                                 }
                             ?>                         
                         </div>

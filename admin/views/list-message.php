@@ -33,6 +33,7 @@
             <th scope="col">Message</th>
             <th scope="col">Ajouté le</th>
             <th scope="col">Mis a jour le</th>
+            <th scope="col">Désactivé le</th>
             <th scope="col">Status</th>
           </tr>
         </caption>
@@ -41,7 +42,7 @@
 
           <?php 
           $i=0;
-          foreach($getAllMessage as $getMessage) {
+          foreach($getMessageUser as $getMessage) {
               $i++;
               ?>
               
@@ -51,6 +52,7 @@
                 <td><a class="text-info" href="/../../admin/controllers/display-message-ctrl.php?id=<?=htmlentities($getMessage->id)?>"><?=htmlentities($getMessage->message)?></td></a>
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getMessage->created_at)))?></td></a>    
                 <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getMessage->updated_at)))?></td></a>
+                <td><?=htmlentities(date('d-m-Y à H:i', strtotime($getMessage->disabled_at)))?></td></a>
 
                  <?php if($getMessage->state == 0){ ?>
                   
