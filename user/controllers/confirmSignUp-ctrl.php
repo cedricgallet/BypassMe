@@ -12,7 +12,7 @@ $id = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)));
 $tokenGet = trim(filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING));
 
 // Récupération du compte user en bdd
-$user = User::get($id);
+$user = User::getUser($id);
 
 //Comparer le token en GET avec le token en base
 if($user && $tokenGet==$user->confirmation_token)

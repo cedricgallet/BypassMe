@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
 
     if(!empty($current_password)) // On test si le champ n'est pas vide
     {
-        $user = User::get($id);//On check si l'utilisateur exite
+        $user = User::getUser($id);//On check si l'utilisateur exite
 
         $isPasswordOk = password_verify($current_password, $user->password);
 
@@ -108,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
 
             $user = new User($pseudo, $email, $password, "", "");//On instancie/On récupére les infos
             
-            $result = $user->update($id);//On met a jour le mdp        
+            $result = $user->updateUser($id);//On met a jour le mdp        
             if($result===true){//Si la MAJ s'est bien passé = 1
                 
                 // +++++++++++++++++++++++Redirection administration+++++++++++++++++++++++
@@ -145,7 +145,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")//On controle le type que si il y a des 
 
 
 }else{
-    $user = User::get($id);//On récupère les infos 
+    $user = User::getUser($id);//On récupère les infos 
 
     if($user){//Si l'utilisateur existe on affiche
         $id = $user->id;
