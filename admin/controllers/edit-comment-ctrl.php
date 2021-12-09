@@ -8,8 +8,8 @@ if (!isset($_SESSION['user'])) {
     header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
     die;
 }
-
-$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);//On check si le mdp par défault est le meme que le mdp en cours
+//On check si le mdp par défault est le meme que le mdp en cours
+$passDefault =  password_verify(DEFAULT_PASS, $_SESSION['user']->password);
 
 if($_SESSION['user']->email != DEFAULT_EMAIL && $passDefault != DEFAULT_PASS) {
     header('Location: /../../user/controllers/signIn-ctrl.php?msgCode=30'); 
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') // On controle le type(post) que si il 
     if(empty($errorsArray))
     {
 
-        $commentInfo = new Comment($categories, $comment, $state);//On instancie/On récupére les infos 
+        $commentInfo = new Comment($categories, $comment, $state, "","","");//On instancie/On récupére les infos 
 
         $result = $commentInfo->updateComment($id);//On met a jour et on ajoute en bdd        
 
